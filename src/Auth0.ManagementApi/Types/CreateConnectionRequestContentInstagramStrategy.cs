@@ -1,0 +1,122 @@
+using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(
+    typeof(CreateConnectionRequestContentInstagramStrategy.CreateConnectionRequestContentInstagramStrategySerializer)
+)]
+[Serializable]
+public readonly record struct CreateConnectionRequestContentInstagramStrategy : IStringEnum
+{
+    public static readonly CreateConnectionRequestContentInstagramStrategy Instagram = new(
+        Values.Instagram
+    );
+
+    public CreateConnectionRequestContentInstagramStrategy(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static CreateConnectionRequestContentInstagramStrategy FromCustom(string value)
+    {
+        return new CreateConnectionRequestContentInstagramStrategy(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        CreateConnectionRequestContentInstagramStrategy value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        CreateConnectionRequestContentInstagramStrategy value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(CreateConnectionRequestContentInstagramStrategy value) =>
+        value.Value;
+
+    public static explicit operator CreateConnectionRequestContentInstagramStrategy(string value) =>
+        new(value);
+
+    internal class CreateConnectionRequestContentInstagramStrategySerializer
+        : JsonConverter<CreateConnectionRequestContentInstagramStrategy>
+    {
+        public override CreateConnectionRequestContentInstagramStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CreateConnectionRequestContentInstagramStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentInstagramStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override CreateConnectionRequestContentInstagramStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentInstagramStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentInstagramStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Instagram = "instagram";
+    }
+}

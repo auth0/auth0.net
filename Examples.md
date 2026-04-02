@@ -14,9 +14,6 @@
   - [3.4. Challenge an already enrolled user](#34-challenge-an-already-enrolled-user)
   - [3.5. Get the list of Authenticators for a user](#35-get-the-list-of-authenticators-for-a-user)
   - [3.6. Delete an enrolled authenticator](#36-delete-an-enrolled-authenticator)
-- [4. Monitor Client / Organization Quota when authenticating using Client Credentials (M2M)](#4-client-organization-quota-when-authenticating-using-client-credentials-m2m)
-  - [4.1. Monitor quota when authenticating using Client Credentials (M2M)](#41-monitor-quota-when-authenticating-using-client-credentials-m2m)
-  - [4.1 Rate limit exception when quota is breached while authenticating using Client Credentials (M2M)](#42-rate-limit-exception-when-quota-is-breached-while-authenticating-using-client-credentials-m2m)
 
 ## 1. Client Initialization
 
@@ -37,7 +34,7 @@ public class ExampleApp
         public Task<T> GetAsync<T>(
             Uri uri,
             IDictionary<string, string> headers = null,
-            CancellationToken cancellationToken = new CancellationToken())
+            CancellationToken cancellationToken = default)
         {
             // Custom Implementation
             return (Task<T>)Task.CompletedTask;
@@ -48,7 +45,7 @@ public class ExampleApp
             Uri uri,
             object body,
             IDictionary<string, string> headers = null,
-            CancellationToken cancellationToken = new CancellationToken())
+            CancellationToken cancellationToken = default)
         {
             // Custom Implementation
             return (Task<T>)Task.CompletedTask;
@@ -63,7 +60,7 @@ public class ExampleApp
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ## 2. Login With Client Credentials
 
@@ -91,7 +88,7 @@ public async Task LoginWithClientCredentials()
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ## 3. Authenticate using Resource Owner Password Grant Flow with MFA
 
@@ -103,7 +100,6 @@ Head [here](https://auth0.com/docs/secure/multi-factor-authentication/authentica
 - We then extract the `mfa_token` from the exception and use that to enroll / challenge the user.
 
 ```csharp
-public async Task LoginWithClientCredentials()
 public async Task LoginWithRopgWithMfa()
 {
     var authClient = new AuthenticationApiClient("my.custom.domain");
@@ -148,7 +144,7 @@ var resp = await authClient.AssociateMfaAuthenticatorAsync(
 ### 3.3. Use the code to verify and get the access token.
 
 ```csharp
-var token = await _apiClient.GetTokenAsync(new MfaOobTokenRequest()
+var token = await authClient.GetTokenAsync(new MfaOobTokenRequest()
     {
         ClientId = _clientId,
         ClientSecret = _clientSecret,
@@ -162,7 +158,7 @@ var token = await _apiClient.GetTokenAsync(new MfaOobTokenRequest()
 ### 3.4. Challenge an already enrolled user
 
 ```csharp
-var response = await _apiClient.MfaChallenge(
+var response = await authClient.MfaChallenge(
     new MfaChallengeRequest()
     {
         ClientId = _clientId,
@@ -190,91 +186,7 @@ await authClient.DeleteMfaAuthenticatorAsync(
     });
 ```
 
-⬆️ [Go to Top](#)
-
-## 4. Client / Organization Quota when authenticating using Client Credentials (M2M)
-
-Assuming the Client and Organization Quota is configured using one of the options as shown [here](#2-update-m2m-token-quota-at-different-levels).
-
-### 4.1 Monitor quota when authenticating using Client Credentials (M2M)
-
-You can monitor the usage on every authentication request like below
-
-```csharp
-public async Task LoginWithClientCredentialsAndMonitorClientQuota()
-{
-    var authClient = new AuthenticationApiClient("my.custom.domain");
-
-    // Fetch the access token using the Client Credentials.
-    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
-    {
-        Audience = "audience",
-        ClientId = "clientId",
-        ClientSecret = "clientSecret",
-    });
-
-    Console.WriteLine($"Access Token : {accessTokenResponse.AccessToken}");
-
-    var clientQuota = accessTokenResponse.Headers.GetClientQuotaLimit();
-    Console.WriteLine($"Client Quota remaining in the hour bucket : {clientQuota.PerHour.Remaining }");
-    Console.WriteLine($"Client Quota configured in the hour bucket : {clientQuota.PerHour.Quota }");
-    Console.WriteLine($"Client Quota for the hour bucket is refreshed after (in secs): {clientQuota.PerHour.ResetAfter }");
-
-    Console.WriteLine($"Client Quota remaining in the Day bucket : {clientQuota.PerDay.Remaining }");
-    Console.WriteLine($"Client Quota configured in the Day bucket : {clientQuota.PerDay.Quota }");
-    Console.WriteLine($"Client Quota for the Day bucket is refreshed after (in secs): {clientQuota.PerDay.ResetAfter }");
-
-    var orgQuota = accessTokenResponse.Headers.GetOrganizationQuotaLimit();
-    Console.WriteLine($"Organization Quota remaining in the hour bucket : {orgQuota.PerHour.Remaining }");
-    Console.WriteLine($"Organization Quota configured in the hour bucket : {orgQuota.PerHour.Quota }");
-    Console.WriteLine($"Organization Quota for the hour bucket is refreshed after (in secs): {orgQuota.PerHour.ResetAfter }");
-
-    Console.WriteLine($"Organization Quota remaining in the Day bucket : {orgQuota.PerDay.Remaining }");
-    Console.WriteLine($"Organization Quota configured in the Day bucket : {orgQuota.PerDay.Quota }");
-    Console.WriteLine($"Organization Quota for the Day bucket is refreshed after (in secs): {orgQuota.PerDay.ResetAfter }");
-}
-```
-
-⬆️ [Go to Top](#)
-
-### 4.2 Rate limit exception when quota is breached while authenticating using Client Credentials (M2M)
-
-When the token quota is breached (either at client level OR at org level), the server returns a 429 with some extra headers that we can use to extract details of the failure.
-Below is an example where there is a client quota breach.
-
-```csharp
-public async Task LoginWithClientCredentialsAndMonitorClientQuota()
-{
-    var authClient = new AuthenticationApiClient("my.custom.domain");
-
-    try
-    {
-        // Fetch the access token using the Client Credentials.
-        var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
-        {
-            Audience = "audience",
-            ClientId = "clientId",
-            ClientSecret = "clientSecret",
-        });
-        Console.WriteLine($"Access Token : {accessTokenResponse.AccessToken}");
-    }
-    catch (RateLimitApiException ex)
-    {
-        Console.WriteLine($"Error message : {ex.ApiError.Message}");
-        Console.WriteLine($"x-RateLimit-Limit : {ex.RateLimit.Limit}")
-        Console.WriteLine($"x-RateLimit-Remaining : {ex.RateLimit.Remaining}")
-        Console.WriteLine($"x-RateLimit-Reset : {ex.RateLimit.Reset}")
-        Console.WriteLine($"Retry-After : {ex.RateLimit.RetryAfter}")
-        Console.WriteLine($"Time to reset the breached client quota: {ex.RateLimit.ClientQuotaLimit.PerHour.ResetAfter}");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("An exception occurred");
-    }
-}
-```
-
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 # Management API
 
@@ -296,155 +208,221 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
 
 ## 1. Management Client Initialization
 
-To initialize the Management API client, you also need the Authentication API client to get the access token required by the Management API client constructor.
+The recommended way to initialize the Management API client is using the `ManagementClient` wrapper, which abstracts token management via an `ITokenProvider`.
+
+**Client credentials** (recommended — tokens are acquired and refreshed automatically):
 
 ```csharp
+using Auth0.ManagementApi;
+
 public async Task Initialize()
+{
+    var client = new ManagementClient(new ManagementClientOptions
+    {
+        Domain = "my.custom.domain",
+        TokenProvider = new ClientCredentialsTokenProvider(
+            domain: "my.custom.domain",
+            clientId: "clientId",
+            clientSecret: "clientSecret"
+        )
+    });
+
+    // Tokens are acquired and refreshed automatically
+    var users = await client.Users.ListAsync(new ListUsersRequestParameters());
+}
+```
+
+**Async delegate** (retrieve tokens from an external source such as a vault):
+
+```csharp
+var client = new ManagementClient(new ManagementClientOptions
+{
+    Domain = "my.custom.domain",
+    TokenProvider = new DelegateTokenProvider(ct => GetTokenFromVaultAsync(ct))
+});
+```
+
+If you prefer to manage tokens yourself, you can use the `ManagementApiClient` directly:
+
+```csharp
+using Auth0.ManagementApi;
+
+public async Task InitializeWithManualToken()
 {
     var authClient = new AuthenticationApiClient("my.custom.domain");
 
     // Fetch the access token using the Client Credentials.
     var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
     {
-        Audience = "audience",
+        Audience = "https://my.custom.domain/api/v2/",
         ClientId = "clientId",
         ClientSecret = "clientSecret",
     });
 
-    managementClient = new ManagementApiClient(accessTokenResponse.AccessToken, "my.custom.domain");
+    var apiClient = new ManagementApiClient(
+        token: accessTokenResponse.AccessToken,
+        clientOptions: new ClientOptions { BaseUrl = "https://my.custom.domain/api/v2" });
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ## 2. Update M2M Token Quota at different levels
 
 ### 2.1 Update Default Token Quota at Tenant level
 
-Assuming you have an access token available with the required scopes.
+Assuming you have a `ManagementClient` or `ManagementApiClient` initialized as shown above.
 
 ```csharp
+using Auth0.ManagementApi;
 
-    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
-    var tenantUpdateSettings = new TenantSettingsUpdateRequest()
+var tenantUpdateSettings = new UpdateTenantSettingsRequestContent
+{
+    DefaultTokenQuota = new DefaultTokenQuota
     {
-        DefaultTokenQuota = new DefaultTokenQuota()
+        Clients = new TokenQuotaConfiguration
         {
-            Clients = new TokenQuota()
+            ClientCredentials = new TokenQuotaClientCredentials
             {
-                ClientCredentials = new Quota()
-                {
-                    Enforce = true,
-                    PerDay = 200,
-                    PerHour = 100
-                }
-            },
-            Organizations = new TokenQuota()
+                Enforce = true,
+                PerDay = 200,
+                PerHour = 100
+            }
+        },
+        Organizations = new TokenQuotaConfiguration
+        {
+            ClientCredentials = new TokenQuotaClientCredentials
             {
-                ClientCredentials = new Quota()
-                {
-                    Enforce = true,
-                    PerDay = 200,
-                    PerHour = 100
-                }
+                Enforce = true,
+                PerDay = 200,
+                PerHour = 100
             }
         }
-    };
+    }
+};
 
-    var updatedSettings = await apiClient.TenantSettings.UpdateAsync(tenantUpdateSettings);
-
+var updatedSettings = await client.Tenants.Settings.UpdateAsync(tenantUpdateSettings);
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 2.2 Update Token Quota at Client level
 
-Assuming you have an access token available with the required scopes.
+Assuming you have a `ManagementClient` or `ManagementApiClient` initialized as shown above.
 
 ```csharp
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Core;
 
-    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
-
-    var clientUpdateRequest = new ClientUpdateRequest()
+var clientUpdateRequest = new UpdateClientRequestContent
+{
+    TokenQuota = Optional<UpdateTokenQuota?>.Of(new UpdateTokenQuota
     {
-        TokenQuota = new TokenQuota()
+        ClientCredentials = new TokenQuotaClientCredentials
         {
-            ClientCredentials = new Quota()
-            {
-                Enforce = true,
-                PerDay = 200,
-                PerHour = 100
-            }
+            Enforce = true,
+            PerDay = 200,
+            PerHour = 100
         }
-    };
+    })
+};
 
-    var clientUpdateResponse = await apiClient.Clients.UpdateAsync("client_id", clientUpdateRequest);
-
+var clientUpdateResponse = await client.Clients.UpdateAsync("client_id", clientUpdateRequest);
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 2.3 Update Token Quota at Organisation level
 
-Assuming you have an access token available with the required scopes.
+Assuming you have a `ManagementClient` or `ManagementApiClient` initialized as shown above.
 
 ```csharp
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Core;
 
-    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
-
-    var orgUpdateRequest = new OrganizationUpdateRequest()
+var orgUpdateRequest = new UpdateOrganizationRequestContent
+{
+    TokenQuota = Optional<UpdateTokenQuota?>.Of(new UpdateTokenQuota
     {
-        TokenQuota = new TokenQuota()
+        ClientCredentials = new TokenQuotaClientCredentials
         {
-            ClientCredentials = new Quota()
-            {
-                Enforce = true,
-                PerDay = 200,
-                PerHour = 100
-            }
+            Enforce = true,
+            PerDay = 200,
+            PerHour = 100
         }
-    };
+    })
+};
 
-    var orgUpdateResponse = await apiClient.Organizations.UpdateAsync("org_id", orgUpdateRequest);
-
+var orgUpdateResponse = await client.Organizations.UpdateAsync("org_id", orgUpdateRequest);
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ## 3. Get Job Error Details
 
-When a job fails, you can get the error details using the `GetErrorDetailsAsync` method.
-The response (of type `JobError`) will either contain `JobImportErrorDetails[]` or `JobErrorDetails` depending on the type of job.
+When a job fails, you can get the error details using the `Jobs.Errors.GetAsync` method.
+The response is an undiscriminated union type that will contain either `IEnumerable<GetJobErrorResponseContent>` (for import job errors) or `GetJobGenericErrorResponseContent` (for other job errors).
 
-Assuming you have an access token available with the required scopes and the `apiClient` is initialized as shown in the previous sections.
+Assuming you have a `ManagementClient` or `ManagementApiClient` initialized as shown above.
 
 ```csharp
+using Auth0.ManagementApi;
 
-public async void GetJobErrorDetails(string jobId) {
+public async Task GetJobErrorDetails(string jobId)
+{
+    var jobError = await client.Jobs.Errors.GetAsync(jobId);
 
-    var jobId = "your_job_id";
-    var jobError = await apiClient.Jobs.GetErrorDetailsAsync(jobId);
+    // Handle the response based on its type using Visit() for side effects
+    jobError.Visit(
+        importErrors =>
+        {
+            // Handle import job errors (IEnumerable<GetJobErrorResponseContent>)
+            foreach (var error in importErrors)
+            {
+                Console.WriteLine($"User object: {error.User}");
+                if (error.Errors != null)
+                {
+                    foreach (var err in error.Errors)
+                    {
+                        Console.WriteLine($"Error Code: {err.Code}");
+                        Console.WriteLine($"Error Message: {err.Message}");
+                        Console.WriteLine($"Error Path: {err.Path}");
+                    }
+                }
+            }
+        },
+        genericError =>
+        {
+            // Handle generic job errors (GetJobGenericErrorResponseContent)
+            Console.WriteLine($"Job Type: {genericError.Type}");
+            Console.WriteLine($"Job Status: {genericError.Status}");
+            Console.WriteLine($"Job Id: {genericError.Id}");
+            Console.WriteLine($"Job Connection Id: {genericError.ConnectionId}");
+            Console.WriteLine($"Job Created At: {genericError.CreatedAt}");
+            Console.WriteLine($"Job Status Details: {genericError.StatusDetails}");
+        }
+    );
 
-    Console.WriteLine($"Job ID: {jobId}");
-    Console.WriteLine($"Job Type: {jobError.JobErrorDetails.Type}");
-    Console.WriteLine($"Job Status: {jobError.JobErrorDetails.Status}");
-    Console.WriteLine($"Job Id: {jobError.JobErrorDetails.Id}");
-    Console.WriteLine($"Job Connection: {jobError.JobErrorDetails.Connection}");
-    Console.WriteLine($"Job Connection Id: {jobError.JobErrorDetails.ConnectionId}");
-    Console.WriteLine($"Job Created At: {jobError.JobErrorDetails.CreatedAt}");
-    Console.WriteLine($"Job Status Details: {jobError.JobErrorDetails.StatusDetails}");
+    // Alternative: Use Match() to return a value
+    var summary = jobError.Match(
+        importErrors => $"Import job with {importErrors.Count()} errors",
+        genericError => $"Job {genericError.Id} failed with status: {genericError.Status}"
+    );
+    Console.WriteLine(summary);
 
-    // OR
-    Console.WriteLine($"Job User object: {jobError.JobImportErrorDetails[0].User}");
-    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Code}");
-    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Message}");
-    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Path}");
+    // Alternative: Use TryGet methods for conditional access
+    if (jobError.TryGetListOfGetJobErrorResponseContent(out var errors))
+    {
+        Console.WriteLine($"Found {errors!.Count()} import errors");
+    }
+    else if (jobError.TryGetGetJobGenericErrorResponseContent(out var generic))
+    {
+        Console.WriteLine($"Generic error: {generic!.StatusDetails}");
+    }
 }
-
-
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ## 4. Manage Network Access Control Lists (ACLs)
 You can read more about ACLs on the [Docs](https://auth0.com/docs/secure/tenant-access-control-list)
@@ -452,42 +430,47 @@ You can read more about ACLs on the [Docs](https://auth0.com/docs/secure/tenant-
 ### 4.1 Create a Network ACL
 
 Assuming a scenario where you want to create a Network ACL that blocks traffic from a specific country,
-you can use the following code snippet. This example uses the `NetworkAclClient` to create a new Network ACL
+you can use the following code snippet. This example uses the `NetworkAcls` client to create a new Network ACL
 with a rule that blocks traffic from an Imaginary country (IMG).
 
 ```csharp
-public async void CreateNetworkAcl() {
+using Auth0.ManagementApi;
 
-    var networkAcl = new NetworkAclCreateRequest
+public async Task CreateNetworkAcl()
+{
+    var networkAcl = new CreateNetworkAclRequestContent
     {
         Active = true,
         Priority = 1,
         Description = "Reject all traffic from imaginary Country",
-        NetworkAclRule = new NetworkAclRule
+        Rule = new NetworkAclRule
         {
             Action = new NetworkAclAction { Block = true },
             Match = new NetworkAclMatch
             {
                 GeoCountryCodes = new List<string> { "IMG" }
             },
-            Scope = NetworkAclScope.Management
+            Scope = NetworkAclRuleScopeEnum.Management
         }
     };
 
-    await apiClient.NetworkAclClient.CreateAsync(networkAcl);
+    await client.NetworkAcls.CreateAsync(networkAcl);
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 4.2 Get all Network ACLs configured
 
 ```csharp
-public async void GetAllNetworkAcls() {
+using Auth0.ManagementApi;
 
-    var networkAcls = await apiClient.NetworkAclClient.GetAllAsync();
+public async Task GetAllNetworkAcls()
+{
+    var pager = await client.NetworkAcls.ListAsync(new ListNetworkAclsRequestParameters());
 
-    foreach (var acl in networkAcls) {
+    await foreach (var acl in pager)
+    {
         Console.WriteLine($"Network ACL ID: {acl.Id}");
         Console.WriteLine($"Description: {acl.Description}");
         Console.WriteLine($"Priority: {acl.Priority}");
@@ -498,14 +481,16 @@ public async void GetAllNetworkAcls() {
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 4.3 Get a specific Network ACL configuration
 
 ```csharp
-public async void GetNetworkAcl(string aclId) {
+using Auth0.ManagementApi;
 
-    var networkAcl = await apiClient.NetworkAclClient.GetAsync(aclId);
+public async Task GetNetworkAcl(string aclId)
+{
+    var networkAcl = await client.NetworkAcls.GetAsync(aclId);
 
     Console.WriteLine($"Network ACL ID: {networkAcl.Id}");
     Console.WriteLine($"Description: {networkAcl.Description}");
@@ -516,18 +501,21 @@ public async void GetNetworkAcl(string aclId) {
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 4.4 Update Network ACL with a PATCH request
 Assuming you have the id of the ACL to update, you can use the following code snippet.
 ```csharp
-public async void UpdateNetworkAcl() {
-    var patchUpdateRequest = new NetworkAclPatchUpdateRequest()
+using Auth0.ManagementApi;
+
+public async Task UpdateNetworkAcl(string aclId)
+{
+    var updateRequest = new UpdateNetworkAclRequestContent
     {
         Active = false,
         Priority = 2,
         Description = "Updated description for examples",
-        NetworkAclRule = new NetworkAclRule
+        Rule = new NetworkAclRule
         {
             Action = new NetworkAclAction { Block = true },
             Match = new NetworkAclMatch
@@ -537,25 +525,29 @@ public async void UpdateNetworkAcl() {
             NotMatch = new NetworkAclMatch
             {
                 GeoCountryCodes = new List<string> { "CA" }
-            }
+            },
+            Scope = NetworkAclRuleScopeEnum.Management
         }
     };
-    await apiClient.NetworkAclClient.UpdateAsync(aclId, patchUpdateRequest);
+    await client.NetworkAcls.UpdateAsync(aclId, updateRequest);
 }
 ```
 
-⬆️ [Go to Top](#)
+[Go to Top](#)
 
 ### 4.5 Update Network ACL with a PUT request
 Assuming you have the id of the ACL to update, you can use the following code snippet.
 ```csharp
-public async void UpdateNetworkAcl() {
-    var putUpdateRequest = new NetworkAclPutUpdateRequest()
+using Auth0.ManagementApi;
+
+public async Task SetNetworkAcl(string aclId)
+{
+    var setRequest = new SetNetworkAclRequestContent
     {
         Active = false,
         Priority = 2,
         Description = "Updated description for examples",
-        NetworkAclRule = new NetworkAclRule
+        Rule = new NetworkAclRule
         {
             Action = new NetworkAclAction { Block = true },
             Match = new NetworkAclMatch
@@ -565,84 +557,12 @@ public async void UpdateNetworkAcl() {
             NotMatch = new NetworkAclMatch
             {
                 GeoCountryCodes = new List<string> { "CA" }
-            }
+            },
+            Scope = NetworkAclRuleScopeEnum.Management
         }
     };
-    await apiClient.NetworkAclClient.UpdateAsync(aclId, putUpdateRequest);
+    await client.NetworkAcls.SetAsync(aclId, setRequest);
 }
 ```
 
-⬆️ [Go to Top](#)
-
-## 5. Using a Custom Domain with the Management API
-
-When your tenant uses a [custom domain](https://auth0.com/docs/customize/custom-domains), certain Management API endpoints accept an `Auth0-Custom-Domain` header so that generated URLs (e.g. in email verification tickets or password-change tickets) use your custom domain instead of the default Auth0 domain. The SDK can add this header automatically on the [supported endpoints](#supported-endpoints).
-
-### 5.1 Let the client manage the connection (simplest)
-
-Pass `customDomain` to the `ManagementApiClient` constructor and omit the `connection` argument. The client creates its own `HttpClientManagementConnection` internally with the custom domain already wired in.
-
-```csharp
-public async Task InitializeWithCustomDomain()
-{
-    var authClient = new AuthenticationApiClient("tenant.auth0.com");
-
-    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
-    {
-        Audience = "https://tenant.auth0.com/api/v2/",
-        ClientId = "clientId",
-        ClientSecret = "clientSecret",
-    });
-
-    // No explicit connection — the client creates one internally and wires in the custom domain.
-    var managementClient = new ManagementApiClient(
-        accessTokenResponse.AccessToken,
-        "tenant.auth0.com",
-        connection: null,
-        customDomain: "login.example.com");
-}
-```
-
-### 5.2 Bring your own connection
-
-If you already supply an `HttpClientManagementConnection` (e.g. to configure retries or inject an `HttpClient`), pass the custom domain directly to the connection constructor instead.
-
-```csharp
-public async Task InitializeWithCustomDomainAndOwnConnection()
-{
-    var authClient = new AuthenticationApiClient("tenant.auth0.com");
-
-    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
-    {
-        Audience = "https://tenant.auth0.com/api/v2/",
-        ClientId = "clientId",
-        ClientSecret = "clientSecret",
-    });
-
-    var connection = new HttpClientManagementConnection(
-        httpClient: null,
-        options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 5 },
-        customDomain: "login.example.com");
-
-    var managementClient = new ManagementApiClient(
-        accessTokenResponse.AccessToken,
-        "tenant.auth0.com",
-        connection);
-}
-```
-
-### Supported endpoints
-
-The `Auth0-Custom-Domain` header is automatically included only on the following endpoints. It is silently omitted from all others.
-
-| Endpoint |
-|---|
-| `POST /api/v2/jobs/verification-email` |
-| `POST /api/v2/tickets/email-verification` |
-| `POST /api/v2/tickets/password-change` |
-| `GET/POST /api/v2/organizations/{id}/invitations` |
-| `GET/POST /api/v2/users` and `GET /api/v2/users/{id}` |
-| `POST /api/v2/guardian/enrollments/ticket` |
-| `POST /api/v2/self-service-profiles/{id}/sso-ticket` |
-
-⬆️ [Go to Top](#)
+[Go to Top](#)

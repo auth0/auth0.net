@@ -14,5 +14,15 @@ ignore:
     - '*':
         reason: We are not a server.
         expires: 2019-10-03T00:00:00.000Z
+  snyk:lic:nuget:springcomp.gppg.runtime:Unknown:
+    - '*':
+        reason: Seems like a false alarm. Valid license present.
+        created: 2026-02-04T00:00:00.000Z
+        expires: 2027-12-31T00:00:00.000Z
+  snyk:lic:nuget:springcomp.gplex.runtime:Unknown:
+    - '*':
+        reason: Seems like a false alarm. Valid license present.
+        created: 2026-02-04T00:00:00.000Z
+        expires: 2027-12-31T00:00:00.000Z
 patch: {}
 

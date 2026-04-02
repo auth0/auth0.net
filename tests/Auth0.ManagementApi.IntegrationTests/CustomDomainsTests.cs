@@ -1,245 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-
-using Auth0.Core.Exceptions;
-using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.Clients;
-using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Paging;
-
+using Auth0.Tests.Shared;
 using FluentAssertions;
-using Moq;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class CustomDomainsTestsFixture : TestBaseFixture
+public class CustomDomainsTests : TestBase
 {
-    public override async Task DisposeAsync()
-    {
-        foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
-        {
-            await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
-        }
-
-        ApiClient.Dispose();
-    }
-}
-
-public class CustomDomainsTests : IClassFixture<CustomDomainsTestsFixture>
-{
-    private readonly Mock<IManagementConnection> _mockConnection;
-    private readonly CustomDomainsClient _client;
-    private readonly CustomDomainsTestsFixture fixture;
-
-    public CustomDomainsTests(CustomDomainsTestsFixture fixture)
-    {
-        this.fixture = fixture;
-        _mockConnection = new Mock<IManagementConnection>();
-        _client = new CustomDomainsClient(
-            _mockConnection.Object,
-            new Uri("https://test.auth0.com/api/v2/"),
-            new Dictionary<string, string>());
-    }
-    [Fact]
+    // Tests for custom domains are limited. This is available only on the brucke tenant, and also, we cannot test full CRUD sequence because (1) the tenant
+    // allow for only one custom domain and (2) others depend on that domain, so we cannot just go and delete it. We are therefore limited in scope to
+    // what we can test. For now, this at least allow us to test that the serialization and the GET methods work correctly
+    [Fact(Skip = "Run manually")]
     public async Task Test_custom_domains()
     {
-        // Test getting all custom domains
-        var domains = await fixture.ApiClient.CustomDomains.GetAllAsync();
-        domains.Should().HaveCountGreaterThan(0); 
-        
-        var customDomain = await fixture.ApiClient.CustomDomains.CreateAsync(
-            new CustomDomainCreateRequest
+        var managementApiUrl = GetVariable("BRUCKE_MANAGEMENT_API_URL");
+        var domain = managementApiUrl.Replace("https://", "").TrimEnd('/');
+
+        using (var apiClient = new ManagementClient(new ManagementClientOptions
+        {
+            Domain = domain,
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"), GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET"))
+        }))
+        {
+            // Test getting all custom domains
+            var domains = (await apiClient.CustomDomains.ListAsync(new ListCustomDomainsRequestParameters())).ToList();
+            domains.Should().HaveCount(1); // There is only one custom domain currently registered on this tenant
+
+            string id = domains[0].CustomDomainId;
+
+            // Test getting a single custom domain
+            var customDomain = await apiClient.CustomDomains.GetAsync(id);
+            customDomain.Should().NotBeNull();
+            customDomain.CustomDomainId.Should().Be(id);
+
+            // Test updating a custom domain
+            var updateRequest = new UpdateCustomDomainRequestContent
             {
-                Domain = "test.dx-sdks.club", 
-                Type = CustomDomainCertificateProvisioning.Auth0ManagedCertificate,
-                VerificationMethod = "txt"
+                TlsPolicy = CustomDomainTlsPolicyEnum.Recommended,
+                CustomClientIpHeader = null
+            };
+
+            var updatedCustomDomain = await apiClient.CustomDomains.UpdateAsync(id, updateRequest);
+            updatedCustomDomain.Should().NotBeNull();
+            updatedCustomDomain.CustomClientIpHeader.Should().Be(updateRequest.CustomClientIpHeader);
+            updatedCustomDomain.TlsPolicy.Should().Be("recommended");
+
+            string non_existent_id = "cd_XXw4P8C04x1Aa9e5";
+
+            // Test deleting a non-existent domain
+            // (this does not throw for a non-existent domain?)
+            await apiClient.CustomDomains.DeleteAsync(non_existent_id);
+
+            // Test verifying a non-existing id. This will give 404
+            Func<Task> verifyFunc = async () => await apiClient.CustomDomains.VerifyAsync(non_existent_id);
+            await verifyFunc.Should().ThrowAsync<NotFoundError>();
+
+            // Test adding a new domain. The BRUCKE tenant only allows one, so this should throw
+            Func<Task> createFunc = async () => await apiClient.CustomDomains.CreateAsync(new CreateCustomDomainRequestContent
+            {
+                Domain = "test.brucke.club",
+                Type = CustomDomainProvisioningTypeEnum.Auth0ManagedCerts,
+                VerificationMethod = CustomDomainVerificationMethodEnum.Txt
             });
-        
-        var id = customDomain.CustomDomainId;
-        fixture.TrackIdentifier(CleanUpType.CustomDomains, id);
-        
-        // Test getting a single custom domain
-        var domain = await fixture.ApiClient.CustomDomains.GetAsync(id);
-        domain.Should().NotBeNull();
-        domain.CustomDomainId.Should().Be(id);
-        
-        // Test updating a custom domain
-        var updateRequest = new CustomDomainUpdateRequest()
-        {
-            TlsPolicy = "recommended",
-            CustomClientIpHeader = null
-        };
-
-        var updatedCustomDomain = await fixture.ApiClient.CustomDomains.UpdateAsync(id, updateRequest);
-        updatedCustomDomain.Should().NotBeNull();
-        updatedCustomDomain.CustomClientIpHeader.Should().Be(updateRequest.CustomClientIpHeader);
-        updatedCustomDomain.TlsPolicy.Should().Be(updateRequest.TlsPolicy);
-        
-        var nonExistentId = "cd_XXw4P8C04x1Aa9e5";
-        await fixture.ApiClient.CustomDomains.DeleteAsync(nonExistentId);
-
-        // Test verifying a non-existing id. This will give 404
-        var verifyFunc = async () => await fixture.ApiClient.CustomDomains.VerifyAsync(nonExistentId);
-        
-        verifyFunc.Should().Throw<ApiException>()
-            .WithMessage($"The custom domain {nonExistentId} does not exist");
-
-        await fixture.ApiClient.CustomDomains.DeleteAsync(id);
-        
-        var afterRunCustomDomains =
-            await fixture.ApiClient.CustomDomains.GetAllAsync(
-                new CustomDomainsGetAllRequest()
-                {
-                    Sort = "domain:1"
-                }, new CheckpointPaginationInfo());
-        
-        afterRunCustomDomains.Should().NotContain(x => x.CustomDomainId == id);
-        fixture.UnTrackIdentifier(CleanUpType.CustomDomains, id);
+            await createFunc.Should().ThrowAsync<ManagementApiException>();
+        }
     }
-    
-    /// <summary>
-    /// Sets up the mock to capture the URI passed to GetAsync. Returns a holder
-    /// whose <c>Value</c> is populated after the call under test completes.
-    /// </summary>
-    private (Func<Uri> GetUri, Func<JsonConverter[]> GetConverters) SetupCapture(
-        ICheckpointPagedList<CustomDomain> response = null)
-    {
-        Uri capturedUri = null;
-        JsonConverter[] capturedConverters = null;
-
-        _mockConnection
-            .Setup(c => c.GetAsync<ICheckpointPagedList<CustomDomain>>(
-                It.IsAny<Uri>(),
-                It.IsAny<IDictionary<string, string>>(),
-                It.IsAny<JsonConverter[]>(),
-                It.IsAny<CancellationToken>()))
-            .Callback<Uri, IDictionary<string, string>, JsonConverter[], CancellationToken>(
-                (uri, _, converters, _) =>
-                {
-                    capturedUri = uri;
-                    capturedConverters = converters;
-                })
-            .ReturnsAsync(response ?? new CheckpointPagedList<CustomDomain>());
-
-        return (() => capturedUri, () => capturedConverters);
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Throws_When_Request_Is_Null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            _client.GetAllAsync(null!, null));
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Returns_Result_From_Connection()
-    {
-        var expected = new CheckpointPagedList<CustomDomain>
-        {
-            new CustomDomain { IsDefault = true },
-            new CustomDomain { IsDefault = false }
-        };
-        SetupCapture(expected);
-
-        var result = await _client.GetAllAsync(new CustomDomainsGetAllRequest(), null);
-
-        result.Should().HaveCount(2);
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Calls_Correct_Endpoint()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest(), null);
-
-        getUri().AbsolutePath.Should().EndWith("custom-domains");
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Includes_Query_In_QueryString_When_Provided()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest { Query = "domain:example.com" }, null);
-
-        getUri().Query.Should().Contain("q=domain%3Aexample.com");
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Includes_Fields_In_QueryString_When_Provided()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest { Fields = "domain,status" }, null);
-
-        getUri().Query.Should().Contain("fields=domain%2Cstatus");
-    }
-
-    [Theory]
-    [InlineData(true, "include_fields=true")]
-    [InlineData(false, "include_fields=false")]
-    public async Task GetAllAsync_Includes_IncludeFields_In_QueryString_When_Provided(bool includeFields, string expectedParam)
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest { IncludeFields = includeFields }, null);
-
-        getUri().Query.Should().Contain(expectedParam);
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Includes_Sort_In_QueryString_When_Provided()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest { Sort = "domain:1" }, null);
-
-        getUri().Query.Should().Contain("sort=domain%3A1");
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Includes_Take_And_From_When_CheckpointPaginationInfo_Provided()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(
-            new CustomDomainsGetAllRequest(),
-            new CheckpointPaginationInfo(take: 25, from: "cd_abc123"));
-
-        getUri().Query.Should().Contain("take=25");
-        getUri().Query.Should().Contain("from=cd_abc123");
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Omits_From_Param_When_CheckpointPaginationInfo_From_Is_Null()
-    {
-        var (getUri, _) = SetupCapture();
-
-        await _client.GetAllAsync(
-            new CustomDomainsGetAllRequest(),
-            new CheckpointPaginationInfo(take: 50));
-
-        getUri().Query.Should().Contain("take=50");
-        getUri().Query.Should().NotContain("from=");
-    }
-
-    [Fact]
-    public async Task GetAllAsync_Passes_CheckpointConverters_To_Connection()
-    {
-        var (_, getConverters) = SetupCapture();
-
-        await _client.GetAllAsync(new CustomDomainsGetAllRequest(), null);
-
-        getConverters().Should().NotBeNull();
-        getConverters().Should().HaveCount(1);
-        getConverters()[0].Should().BeAssignableTo<JsonConverter>();
-        getConverters()[0].CanConvert(typeof(ICheckpointPagedList<CustomDomain>)).Should().BeTrue();
-    }
-    
 }

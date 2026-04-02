@@ -1,12 +1,14 @@
-﻿using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.Guardian;
+using Auth0.ManagementApi.Guardian.Factors;
+using Auth0.ManagementApi.Guardian.Factors.Duo;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.Tests.Shared;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
@@ -36,9 +38,9 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
     [Fact]
     public async Task Can_retrieve_guardian_factors()
     {
-        var response = await fixture.ApiClient.Guardian.GetFactorsAsync();
+        var response = await fixture.ApiClient.Guardian.Factors.ListAsync();
 
-        response.Should().HaveCount(8);
+        response.Count().Should().Be(8);
 
         foreach (var guardianFactor in response)
         {
@@ -49,50 +51,53 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
     [Fact]
     public async Task Retrieving_non_existent_enrollment_throws()
     {
-        Func<Task> getFunc = async () => await fixture.ApiClient.Guardian.GetEnrollmentAsync("dev_123456");
+        Func<Task> getFunc = async () => await fixture.ApiClient.Guardian.Enrollments.GetAsync("dev_123456");
 
-        (await getFunc.Should().ThrowAsync<ErrorApiException>())
-            .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
+        // The SDK throws ManagementApiException with status 404 for non-existent enrollments
+        (await getFunc.Should().ThrowAsync<ManagementApiException>())
+            .And.StatusCode.Should().Be(404);
     }
 
     [Fact]
     public async Task Deleting_non_existent_enrollment_throws()
     {
-        Func<Task> deleteFunc = async () => await fixture.ApiClient.Guardian.DeleteEnrollmentAsync("dev_123456");
+        Func<Task> deleteFunc = async () => await fixture.ApiClient.Guardian.Enrollments.DeleteAsync("dev_123456");
 
-        (await deleteFunc.Should().ThrowAsync<ErrorApiException>())
-            .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
+        // The SDK throws ManagementApiException with status 404 for non-existent enrollments
+        (await deleteFunc.Should().ThrowAsync<ManagementApiException>())
+            .And.StatusCode.Should().Be(404);
     }
 
     [Fact]
     public async Task Can_perform_sms_template_maintenance()
     {
         // Get the current templates
-        var initialTemplates = await fixture.ApiClient.Guardian.GetSmsTemplatesAsync();
+        var initialTemplates = await fixture.ApiClient.Guardian.Factors.Sms.GetTemplatesAsync();
         initialTemplates.Should().NotBeNull();
 
         // Update the templates
-        var templateUpdateRequest = new GuardianSmsEnrollmentTemplates
+        var templateUpdateRequest = new SetGuardianFactorSmsTemplatesRequestContent
         {
             EnrollmentMessage = $"This is the enrollment message {Guid.NewGuid()}",
             VerificationMessage = $"This is the verification message {Guid.NewGuid()}"
         };
-        var templateUpdateResponse = await fixture.ApiClient.Guardian.UpdateSmsTemplatesAsync(templateUpdateRequest);
-        templateUpdateResponse.Should().BeEquivalentTo(templateUpdateRequest);
+        var templateUpdateResponse = await fixture.ApiClient.Guardian.Factors.Sms.SetTemplatesAsync(templateUpdateRequest);
+        templateUpdateResponse.EnrollmentMessage.Should().Be(templateUpdateRequest.EnrollmentMessage);
+        templateUpdateResponse.VerificationMessage.Should().Be(templateUpdateRequest.VerificationMessage);
     }
 
     [Fact]
     public async Task Can_create_enrollment_ticket()
     {
-        Connection connection = null;
-        User user = null;
+        CreateConnectionResponseContent connection = null;
+        CreateUserResponseContent user = null;
         try
         {
             // Create a connection for creating a user
-            connection = await fixture.ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            connection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
             {
                 Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-                Strategy = "auth0",
+                Strategy = ConnectionIdentityProviderEnum.Auth0,
                 EnabledClients = new[]
                 {
                     TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
@@ -103,26 +108,24 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
             fixture.TrackIdentifier(CleanUpType.Connections, connection.Id);
 
             // Create a new user
-            var userCreateRequest = new UserCreateRequest
-            {
-                Connection = connection.Name,
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = "jd78w3hku23134?"
-            };
+            var userCreateRequest = TestBaseUtils.CreateUserRequest(
+                connection: connection.Name,
+                email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                emailVerified: true,
+                password: "jd78w3hku23134?"
+            );
             user = await fixture.ApiClient.Users.CreateAsync(userCreateRequest);
 
             fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Create an enrollment request
-            var request = new CreateGuardianEnrollmentTicketRequest
+            var request = new CreateGuardianEnrollmentTicketRequestContent
             {
                 UserId = user.UserId,
-                MustSendMail = false,
-                EmailAddress = user.Email,
-                EmailLocale = "en-US"
+                SendMail = false,
+                Email = user.Email
             };
-            var response = await fixture.ApiClient.Guardian.CreateEnrollmentTicketAsync(request);
+            var response = await fixture.ApiClient.Guardian.Enrollments.CreateTicketAsync(request);
             response.TicketId.Should().NotBeNull();
             response.TicketUrl.Should().NotBeNull();
         }
@@ -147,121 +150,119 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
     [Fact]
     public async Task Can_update_factors()
     {
-        UpdateGuardianFactorResponse response;
+        SetGuardianFactorResponseContent response;
 
-        response = await fixture.ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
-        {
-            Factor = GuardianFactorName.Sms,
-            IsEnabled = false
-        });
-        response.IsEnabled.Should().BeFalse();
+        response = await fixture.ApiClient.Guardian.Factors.SetAsync(
+            GuardianFactorNameEnum.Sms,
+            new SetGuardianFactorRequestContent { Enabled = false });
+        response.Enabled.Should().BeFalse();
 
-        response = await fixture.ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
-        {
-            Factor = GuardianFactorName.Sms,
-            IsEnabled = true
-        });
-        response.IsEnabled.Should().BeTrue();
+        response = await fixture.ApiClient.Guardian.Factors.SetAsync(
+            GuardianFactorNameEnum.Sms,
+            new SetGuardianFactorRequestContent { Enabled = true });
+        response.Enabled.Should().BeTrue();
 
-        response = await fixture.ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
-        {
-            Factor = GuardianFactorName.PushNotifications,
-            IsEnabled = false
-        });
-        response.IsEnabled.Should().BeFalse();
+        response = await fixture.ApiClient.Guardian.Factors.SetAsync(
+            GuardianFactorNameEnum.PushNotification,
+            new SetGuardianFactorRequestContent { Enabled = false });
+        response.Enabled.Should().BeFalse();
 
-        response = await fixture.ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
-        {
-            Factor = GuardianFactorName.Sms,
-            IsEnabled = true
-        });
-        response.IsEnabled.Should().BeTrue();
+        response = await fixture.ApiClient.Guardian.Factors.SetAsync(
+            GuardianFactorNameEnum.Sms,
+            new SetGuardianFactorRequestContent { Enabled = true });
+        response.Enabled.Should().BeTrue();
     }
 
     [Fact]
     public async Task Can_update_twilio_provider_configuration()
     {
-        var request = new UpdateGuardianTwilioConfigurationRequest
+        var request = new SetGuardianFactorsProviderPhoneTwilioRequestContent
         {
             AuthToken = Guid.NewGuid().ToString("N"),
             From = "+123456789",
             Sid = Guid.NewGuid().ToString("N")
         };
-        var response = await fixture.ApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
-        response.Should().BeEquivalentTo(request);
+        var response = await fixture.ApiClient.Guardian.Factors.Phone.SetTwilioProviderAsync(request);
+        response.AuthToken.Should().Be(request.AuthToken);
+        response.From.Should().Be(request.From);
+        response.Sid.Should().Be(request.Sid);
 
 
-        request = new UpdateGuardianTwilioConfigurationRequest
+        request = new SetGuardianFactorsProviderPhoneTwilioRequestContent
         {
             AuthToken = Guid.NewGuid().ToString("N"),
             MessagingServiceSid = Guid.NewGuid().ToString("N"),
             Sid = Guid.NewGuid().ToString("N")
         };
-        response = await fixture.ApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
-        response.Should().BeEquivalentTo(request);
+        response = await fixture.ApiClient.Guardian.Factors.Phone.SetTwilioProviderAsync(request);
+        response.AuthToken.Should().Be(request.AuthToken);
+        response.MessagingServiceSid.Should().Be(request.MessagingServiceSid);
+        response.Sid.Should().Be(request.Sid);
 
-        response = await fixture.ApiClient.Guardian.GetTwilioConfigurationAsync();
-        response.Should().BeEquivalentTo(request);
+        var fetchedResponse = await fixture.ApiClient.Guardian.Factors.Phone.GetTwilioProviderAsync();
+        fetchedResponse.AuthToken.Should().Be(request.AuthToken);
+        fetchedResponse.MessagingServiceSid.Should().Be(request.MessagingServiceSid);
+        fetchedResponse.Sid.Should().Be(request.Sid);
     }
 
     [Fact]
     public async Task Can_update_phone_messagetypes()
     {
-        var response = 
-            await fixture.ApiClient.Guardian.UpdatePhoneMessageTypesAsync(
-                new GuardianPhoneMessageTypes
+        var response =
+            await fixture.ApiClient.Guardian.Factors.Phone.SetMessageTypesAsync(
+                new SetGuardianFactorPhoneMessageTypesRequestContent
                 {
-                    MessageTypes = new List<string> { "sms" }
+                    MessageTypes = new List<GuardianFactorPhoneFactorMessageTypeEnum> { GuardianFactorPhoneFactorMessageTypeEnum.Sms }
                 });
-            
-        response.MessageTypes.Count.Should().Be(1);
 
-        response = await fixture.ApiClient.Guardian.UpdatePhoneMessageTypesAsync(
-            new GuardianPhoneMessageTypes
+        response.MessageTypes.Count().Should().Be(1);
+
+        response = await fixture.ApiClient.Guardian.Factors.Phone.SetMessageTypesAsync(
+            new SetGuardianFactorPhoneMessageTypesRequestContent
             {
-                MessageTypes = new List<string> { "sms", "voice" }
+                MessageTypes = new List<GuardianFactorPhoneFactorMessageTypeEnum> { GuardianFactorPhoneFactorMessageTypeEnum.Sms, GuardianFactorPhoneFactorMessageTypeEnum.Voice }
             });
-            
-        response.MessageTypes.Count.Should().Be(2);
 
-        response = await fixture.ApiClient.Guardian.GetPhoneMessageTypesAsync();
-        response.MessageTypes.Count.Should().Be(2);
+        response.MessageTypes.Count().Should().Be(2);
+
+        var getMessageTypesResponse = await fixture.ApiClient.Guardian.Factors.Phone.GetMessageTypesAsync();
+        getMessageTypesResponse.MessageTypes.Count().Should().Be(2);
     }
-        
+
     [Fact]
-    public async Task Update_Get_duo_configuration_successfully()
+    public async void Update_Get_duo_configuration_successfully()
     {
-        var configurationPatchRequestRequest = new DuoConfigurationPatchRequest()
+        var configurationPatchRequestRequest = new UpdateGuardianFactorDuoSettingsRequestContent
         {
             Host = "api-hostname",
             Ikey = "someKey",
             Skey = "someSecret"
         };
-        var configurationPutRequestRequest = new DuoConfigurationPutRequest()
+        var configurationPutRequestRequest = new SetGuardianFactorDuoSettingsRequestContent
         {
             Host = "api-hostname",
             Ikey = "someKey",
             Skey = "someSecret"
         };
-            
-        // Update using PATCH 
+
+        // Update using PATCH
         var updatedDuoConfiguration =
-            await fixture.ApiClient.Guardian.UpdateDuoConfigurationAsync(configurationPatchRequestRequest);
+            await fixture.ApiClient.Guardian.Factors.Duo.Settings.UpdateAsync(configurationPatchRequestRequest);
         updatedDuoConfiguration.Should().NotBeNull();
         updatedDuoConfiguration.Ikey.Should().Be("someKey");
         updatedDuoConfiguration.Skey.Should().Be("someSecret");
         updatedDuoConfiguration.Host.Should().Be("api-hostname");
-            
+
         // Update using PUT
-        updatedDuoConfiguration =
-            await fixture.ApiClient.Guardian.UpdateDuoConfigurationAsync(configurationPutRequestRequest);
-        updatedDuoConfiguration.Should().NotBeNull();
-        updatedDuoConfiguration.Ikey.Should().Be("someKey");
-        updatedDuoConfiguration.Skey.Should().Be("someSecret");
-        updatedDuoConfiguration.Host.Should().Be("api-hostname");
-            
+        var setDuoConfiguration =
+            await fixture.ApiClient.Guardian.Factors.Duo.Settings.SetAsync(configurationPutRequestRequest);
+        setDuoConfiguration.Should().NotBeNull();
+        setDuoConfiguration.Ikey.Should().Be("someKey");
+        setDuoConfiguration.Skey.Should().Be("someSecret");
+        setDuoConfiguration.Host.Should().Be("api-hostname");
+
         // Get DUO configuration
-        var duoConfiguration = await fixture.ApiClient.Guardian.GetDuoConfigurationAsync();
+        var duoConfiguration = await fixture.ApiClient.Guardian.Factors.Duo.Settings.GetAsync();
         duoConfiguration.Should().NotBeNull();
         duoConfiguration.Ikey.Should().Be("someKey");
         duoConfiguration.Skey.Should().Be("someSecret");
@@ -271,151 +272,127 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
     [Fact]
     public async void Update_Get_PhoneProviderConfiguration_successfully()
     {
-        var phoneProviderConfiguration = new PhoneProviderConfiguration()
+        var phoneProviderConfiguration = new SetGuardianFactorsProviderPhoneRequestContent
         {
-            PhoneProvider = PhoneProvider.Auth0,
+            Provider = GuardianFactorsProviderSmsProviderEnum.Auth0,
         };
 
         // update phone provider configuration
-        var updatedProviderConfiguration = 
-            await fixture.ApiClient.Guardian.UpdatePhoneProviderConfigurationAsync(phoneProviderConfiguration);
+        var updatedProviderConfiguration =
+            await fixture.ApiClient.Guardian.Factors.Phone.SetProviderAsync(phoneProviderConfiguration);
         updatedProviderConfiguration.Should().NotBeNull();
-        updatedProviderConfiguration.PhoneProvider.Should().Be(PhoneProvider.Auth0);
-            
+        updatedProviderConfiguration.Provider.Should().Be(GuardianFactorsProviderSmsProviderEnum.Auth0);
+
         // Get the Phone provider configuration explicitly
-        phoneProviderConfiguration = await fixture.ApiClient.Guardian.GetPhoneProviderConfigurationAsync();
-        phoneProviderConfiguration.Should().NotBeNull();
-        phoneProviderConfiguration.PhoneProvider.Should().Be(PhoneProvider.Auth0);
+        var fetchedPhoneProviderConfiguration = await fixture.ApiClient.Guardian.Factors.Phone.GetSelectedProviderAsync();
+        fetchedPhoneProviderConfiguration.Should().NotBeNull();
+        fetchedPhoneProviderConfiguration.Provider.Should().Be(GuardianFactorsProviderSmsProviderEnum.Auth0);
     }
-        
+
     [Fact]
     public async void Update_Get_GuardianPhoneEnrollmentTemplate_successfully()
     {
-        var phoneEnrollmentTemplate = new GuardianPhoneEnrollmentTemplate()
+        var phoneEnrollmentTemplate = new SetGuardianFactorPhoneTemplatesRequestContent
         {
             EnrollmentMessage = "Enrollment message",
             VerificationMessage = "Verification message"
         };
 
-        // update phone enrollment template 
-        var updatedPhoneEnrollmentTemplate = 
-            await fixture.ApiClient.Guardian.UpdatePhoneEnrollmentTemplateAsync(phoneEnrollmentTemplate);
+        // update phone enrollment template
+        var updatedPhoneEnrollmentTemplate =
+            await fixture.ApiClient.Guardian.Factors.Phone.SetTemplatesAsync(phoneEnrollmentTemplate);
         updatedPhoneEnrollmentTemplate.Should().NotBeNull();
-        updatedPhoneEnrollmentTemplate.Should().BeEquivalentTo(phoneEnrollmentTemplate);
-            
+        updatedPhoneEnrollmentTemplate.EnrollmentMessage.Should().Be(phoneEnrollmentTemplate.EnrollmentMessage);
+        updatedPhoneEnrollmentTemplate.VerificationMessage.Should().Be(phoneEnrollmentTemplate.VerificationMessage);
+
         // Get the phone enrollment template configuration explicitly
-        var fetchedPhoneEnrollmentTemplate = await fixture.ApiClient.Guardian.GetPhoneEnrollmentTemplateAsync();
+        var fetchedPhoneEnrollmentTemplate = await fixture.ApiClient.Guardian.Factors.Phone.GetTemplatesAsync();
         fetchedPhoneEnrollmentTemplate.Should().NotBeNull();
-        fetchedPhoneEnrollmentTemplate.Should().BeEquivalentTo(phoneEnrollmentTemplate);
+        fetchedPhoneEnrollmentTemplate.EnrollmentMessage.Should().Be(phoneEnrollmentTemplate.EnrollmentMessage);
+        fetchedPhoneEnrollmentTemplate.VerificationMessage.Should().Be(phoneEnrollmentTemplate.VerificationMessage);
     }
-        
+
     [Fact(Skip = "Run Manually - Requires certificate setup.")]
     public async void Update_Get_PushNotificationApnsProviderConfiguration_successfully()
     {
-        var apnsConfigurationPutUpdateRequest = new PushNotificationApnsConfigurationPutUpdateRequest()
+        var apnsConfigurationUpdateRequest = new SetGuardianFactorsProviderPushNotificationApnsRequestContent
         {
             BundleId = "com.auth0.test",
             Sandbox = true,
             P12 = "random_string"
         };
-            
-        var apnsConfigurationPatchUpdateRequest = new PushNotificationApnsConfigurationPatchUpdateRequest()
-        {
-            BundleId = "com.auth0.test",
-            Sandbox = false,
-            P12 = "random_string"
-        };
 
-        // update Push notification APNS provider configuration using PUT
-        var apnsConfigurationUpdateResponse = 
-            await fixture.ApiClient.Guardian.UpdatePushNotificationApnsProviderConfigurationAsync(apnsConfigurationPutUpdateRequest);
+        // update Push notification APNS provider configuration
+        var apnsConfigurationUpdateResponse =
+            await fixture.ApiClient.Guardian.Factors.PushNotification.SetApnsProviderAsync(apnsConfigurationUpdateRequest);
         apnsConfigurationUpdateResponse.Should().NotBeNull();
-            
-        apnsConfigurationUpdateResponse.Sandbox.Should().Be(apnsConfigurationPutUpdateRequest.Sandbox);
-        apnsConfigurationUpdateResponse.BundleId.Should().Be(apnsConfigurationPutUpdateRequest.BundleId);
-            
-        // update Push notification APNS provider configuration using PATCH
-        apnsConfigurationUpdateResponse = 
-            await fixture.ApiClient.Guardian.UpdatePushNotificationApnsProviderConfigurationAsync(apnsConfigurationPutUpdateRequest);
+
+        apnsConfigurationUpdateResponse.Sandbox.Should().Be(apnsConfigurationUpdateRequest.Sandbox);
+        apnsConfigurationUpdateResponse.BundleId.Should().Be(apnsConfigurationUpdateRequest.BundleId);
+
+        // update Push notification APNS provider configuration again
+        apnsConfigurationUpdateRequest.Sandbox = false;
+        apnsConfigurationUpdateResponse =
+            await fixture.ApiClient.Guardian.Factors.PushNotification.SetApnsProviderAsync(apnsConfigurationUpdateRequest);
         apnsConfigurationUpdateResponse.Should().NotBeNull();
-            
-        apnsConfigurationUpdateResponse.Sandbox.Should().Be(apnsConfigurationPutUpdateRequest.Sandbox);
-        apnsConfigurationUpdateResponse.BundleId.Should().Be(apnsConfigurationPutUpdateRequest.BundleId);
-            
-        // Get the phone enrollment template configuration explicitly
-        var fetchedApnsProviderConfiguration = await fixture.ApiClient.Guardian.GetPushNotificationApnsProviderConfigurationAsync();
+
+        apnsConfigurationUpdateResponse.Sandbox.Should().Be(apnsConfigurationUpdateRequest.Sandbox);
+        apnsConfigurationUpdateResponse.BundleId.Should().Be(apnsConfigurationUpdateRequest.BundleId);
+
+        // Get the APNS provider configuration explicitly
+        var fetchedApnsProviderConfiguration = await fixture.ApiClient.Guardian.Factors.PushNotification.GetApnsProviderAsync();
         fetchedApnsProviderConfiguration.Should().NotBeNull();
-        fetchedApnsProviderConfiguration.Sandbox.Should().Be(apnsConfigurationPatchUpdateRequest.Sandbox);
-        fetchedApnsProviderConfiguration.BundleId.Should().Be(apnsConfigurationPatchUpdateRequest.BundleId);
+        fetchedApnsProviderConfiguration.Sandbox.Should().Be(apnsConfigurationUpdateRequest.Sandbox);
+        fetchedApnsProviderConfiguration.BundleId.Should().Be(apnsConfigurationUpdateRequest.BundleId);
     }
 
     [Fact(Skip = "Run Manually - Requires FCM setup")]
     public async void Test_Update_Fcm_configuration_successfully()
     {
-        var fcmConfigurationPatchUpdateRequest = new FcmConfigurationPatchUpdateRequest()
+        var fcmConfigurationRequest = new SetGuardianFactorsProviderPushNotificationFcmRequestContent
         {
             ServerKey = "server_key"
         };
-            
-        var fcmConfigurationPutUpdateRequest = new FcmConfigurationPutUpdateRequest()
-        {
-            ServerKey = "server_key"
-        };
-            
-        var fcmV1ConfigurationPatchUpdateRequest = new FcmV1ConfigurationPatchUpdateRequest()
+
+        var fcmV1ConfigurationRequest = new SetGuardianFactorsProviderPushNotificationFcmv1RequestContent
         {
             ServerCredentials = "server_credentials"
         };
-            
-        var fcmV1ConfigurationPutUpdateRequest = new FcmV1ConfigurationPutUpdateRequest()
-        {
-            ServerCredentials = "server_credentials"
-        };
-            
-        // Update FCM configuration with Patch
+
+        // Update FCM configuration
         var response =
-            await fixture.ApiClient.Guardian.UpdatePushNotificationFcmConfigurationAsync(fcmConfigurationPatchUpdateRequest);
+            await fixture.ApiClient.Guardian.Factors.PushNotification.SetFcmProviderAsync(fcmConfigurationRequest);
         response.Should().NotBeNull();
-            
-        // Update FCM configuration with Put
+
+        // Update FCMV1 configuration
         response =
-            await fixture.ApiClient.Guardian.UpdatePushNotificationFcmConfigurationAsync(fcmConfigurationPutUpdateRequest);
-        response.Should().NotBeNull();
-            
-        // Update FCMV1 configuration with Patch
-        response =
-            await fixture.ApiClient.Guardian.UpdatePushNotificationFcmV1ConfigurationAsync(fcmV1ConfigurationPatchUpdateRequest);
-        response.Should().NotBeNull();
-            
-        // Update FCMV1 configuration with Put
-        response =
-            await fixture.ApiClient.Guardian.UpdatePushNotificationFcmV1ConfigurationAsync(fcmV1ConfigurationPutUpdateRequest);
+            await fixture.ApiClient.Guardian.Factors.PushNotification.SetFcmv1ProviderAsync(fcmV1ConfigurationRequest);
         response.Should().NotBeNull();
     }
-        
+
     [Fact]
     public async void Update_Get_PushNotificationProviderConfiguration_successfully()
     {
-        var pushNotificationProviderConfiguration = new PushNotificationProviderConfiguration()
+        var pushNotificationProviderConfiguration = new SetGuardianFactorsProviderPushNotificationRequestContent
         {
-            PushNotificationProvider = PushNotificationProvider.Direct,
+            Provider = GuardianFactorsProviderPushNotificationProviderDataEnum.Direct,
         };
 
         // update push notification provider configuration
-        var updatedProviderConfiguration = 
-            await fixture.ApiClient.Guardian.UpdatePushNotificationProviderConfigurationAsync(
+        var updatedProviderConfiguration =
+            await fixture.ApiClient.Guardian.Factors.PushNotification.SetProviderAsync(
                 pushNotificationProviderConfiguration);
-            
+
         updatedProviderConfiguration.Should().NotBeNull();
-        updatedProviderConfiguration.PushNotificationProvider.Should().Be(PushNotificationProvider.Direct);
-            
+        updatedProviderConfiguration.Provider.Should().Be(GuardianFactorsProviderPushNotificationProviderDataEnum.Direct);
+
         // Get the Push Notification provider configuration explicitly
-        pushNotificationProviderConfiguration = 
-            await fixture.ApiClient.Guardian.GetPushNotificationProviderConfigurationAsync();
-        pushNotificationProviderConfiguration.Should().NotBeNull();
-        updatedProviderConfiguration.PushNotificationProvider.Should().Be(PushNotificationProvider.Direct);
+        var fetchedPushNotificationProviderConfiguration =
+            await fixture.ApiClient.Guardian.Factors.PushNotification.GetSelectedProviderAsync();
+        fetchedPushNotificationProviderConfiguration.Should().NotBeNull();
+        fetchedPushNotificationProviderConfiguration.Provider.Should().Be(GuardianFactorsProviderPushNotificationProviderDataEnum.Direct);
     }
-        
+
     [Fact]
     public async void Update_Get_MultifactorAuthenticationPolicies_successfully()
     {
@@ -423,20 +400,20 @@ public class GuardianTests : IClassFixture<GuardianTestsFixture>
         {
             // update MFA policy
             var updatedMfaPolicy =
-                await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies(["all-applications"]);
+                await fixture.ApiClient.Guardian.Policies.SetAsync(new[] { MfaPolicyEnum.AllApplications });
 
             updatedMfaPolicy.Should().NotBeNull();
-            updatedMfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+            updatedMfaPolicy.Should().Contain(MfaPolicyEnum.AllApplications);
 
-            // Get the Push Notification provider configuration explicitly
+            // Get the MFA policy
             var mfaPolicy =
-                await fixture.ApiClient.Guardian.GetMultifactorAuthenticationPolicies();
+                await fixture.ApiClient.Guardian.Policies.ListAsync();
             mfaPolicy.Should().NotBeNull();
-            mfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+            mfaPolicy.Should().Contain(MfaPolicyEnum.AllApplications);
         }
         finally
         {
-            await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies([]);    
+            await fixture.ApiClient.Guardian.Policies.SetAsync(Array.Empty<MfaPolicyEnum>());
         }
     }
 }

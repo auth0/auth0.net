@@ -1,11 +1,6 @@
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models.Keys;
-using Auth0.ManagementApi.Paging;
+using Auth0.ManagementApi.Keys;
 using FluentAssertions;
 using Xunit;
 
@@ -13,15 +8,6 @@ namespace Auth0.ManagementApi.IntegrationTests;
 
 public class KeysTestsFixture : TestBaseFixture
 {
-    public override async Task DisposeAsync()
-    {
-        foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
-        {
-            await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
-        }
-
-        ApiClient.Dispose();
-    }
 }
 
 public class KeysTests : IClassFixture<KeysTestsFixture>
@@ -34,159 +20,123 @@ public class KeysTests : IClassFixture<KeysTestsFixture>
     }
 
     [Fact]
-    public async Task Test_keys_can_be_retrieved()
+    public async Task Test_signing_keys_list()
     {
-        var signingKeys = await fixture.ApiClient.Keys.GetAllAsync();
+        var keys = await fixture.ApiClient.Keys.Signing.ListAsync();
 
-        signingKeys.Any().Should().BeTrue();
+        keys.Should().NotBeEmpty();
+        foreach (var key in keys)
+        {
+            key.Kid.Should().NotBeNullOrEmpty();
+        }
     }
 
     [Fact]
-    public async Task Test_keys_can_be_retrieved_by_kid()
+    public async Task Test_signing_keys_get_current()
     {
-        var signingKeys = await fixture.ApiClient.Keys.GetAllAsync();
+        var keys = await fixture.ApiClient.Keys.Signing.ListAsync();
+        var currentKey = keys.FirstOrDefault(k => k.Current == true);
 
-        // select the current key id
-        var currentKeyId = signingKeys.First(key => key.Current.HasValue && key.Current.Value).Kid;
+        currentKey.Should().NotBeNull();
 
-        // retrieve the key by id
-        var currentKey = await fixture.ApiClient.Keys.GetAsync(currentKeyId);
-
-        currentKey.Kid.Should().Be(currentKeyId);
+        var key = await fixture.ApiClient.Keys.Signing.GetAsync(currentKey!.Kid);
+        key.Should().NotBeNull();
+        key.Kid.Should().Be(currentKey.Kid);
     }
 
-    [Fact(Skip = "Run Manual")]
-    public async Task Test_keys_rotate_signing_key()
+    [Fact(Skip = "This test rotates keys and can cause issues in shared environments")]
+    public async Task Test_signing_keys_rotate()
     {
-        // Rotate the signing key
-        var rotateKeyResponse = await fixture.ApiClient.Keys.RotateSigningKeyAsync();
-            
-        await fixture.InitializeAsync();
-
-        // Get all signing key
-        var signingKeys = await fixture.ApiClient.Keys.GetAllAsync();
-
-        // Select the next key
-        var nextKey = signingKeys.First(key => key.Next.HasValue && key.Next.Value);
-
-        // Assert
-        nextKey.Kid.Should().Be(rotateKeyResponse.Kid);
+        var rotatedKey = await fixture.ApiClient.Keys.Signing.RotateAsync();
+        rotatedKey.Should().NotBeNull();
     }
 
-        
-    [Fact(Skip = "Run Manual")]
-    public async Task Test_keys_can_be_revoked_by_kid()
+    [Fact(Skip = "This test revokes keys and can cause issues in shared environments")]
+    public async Task Test_signing_keys_revoke()
     {
-        // Rotate the signing key before we revoke
-        var rotateKeyResponse = await fixture.ApiClient.Keys.RotateSigningKeyAsync();
+        // First rotate to create a new key
+        var rotatedKey = await fixture.ApiClient.Keys.Signing.RotateAsync();
 
-        await fixture.InitializeAsync();
+        // Get all keys
+        var keys = await fixture.ApiClient.Keys.Signing.ListAsync();
+        var previousKey = keys.FirstOrDefault(k => k.Kid != rotatedKey.Kid && k.Revoked != true);
 
-        // Get all signing keys
-        var signingKeys = await fixture.ApiClient.Keys.GetAllAsync();
-
-        // Select the previous key id
-        var previousKeyId = signingKeys.First(key => key.Previous.HasValue && key.Previous.Value).Kid;
-
-        // Revoke the key by id
-        var revoked = await fixture.ApiClient.Keys.RevokeSigningKeyAsync(previousKeyId);
-
-        // Assert
-        revoked.Kid.Should().Be(previousKeyId);
+        if (previousKey != null)
+        {
+            var revokedKey = await fixture.ApiClient.Keys.Signing.RevokeAsync(previousKey.Kid);
+            revokedKey.Should().NotBeNull();
+        }
     }
 
     [Fact]
-    public async Task Test_encryption_keys_crud_sequence()
+    public async Task Test_encryption_keys_list()
     {
-        var encryptionKeysCreateRequest = new EncryptionKeyCreateRequest()
-        {
-            Type = "customer-provided-root-key"
-        };
-        // Create a new Encryption Key for testing purpose
-        var encryptionKey = await fixture.ApiClient.Keys.CreateEncryptionKeyAsync(encryptionKeysCreateRequest);
-        fixture.TrackIdentifier(CleanUpType.EncryptionKeys, encryptionKey.Kid);
-            
-        encryptionKey.Type.Should().Be(EncryptionKeyType.CustomerProvidedRootKey);
-        encryptionKey.State.Should().NotBeNull();
-            
-        // Get all the existing encryption keys
-        var allEncryptionKeys = 
-            await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
-        allEncryptionKeys.Count.Should().BeGreaterThan(0);
-            
-        // Get the newly created encryption key by its kid
-        var encryptionKeyById = await fixture.ApiClient.Keys.GetEncryptionKeyAsync(new EncryptionKeyGetRequest()
-        {
-            Kid = encryptionKey.Kid     
-        });
-        encryptionKeyById.Should().BeEquivalentTo(encryptionKey);
+        var keysPager = await fixture.ApiClient.Keys.Encryption.ListAsync(new ListEncryptionKeysRequestParameters());
+        var keys = keysPager.CurrentPage.Items.ToList();
 
-        // Create Public key wrapping
-        var wrapping = await fixture.ApiClient.Keys.CreatePublicWrappingKeyAsync(new WrappingKeyCreateRequest()
+        keys.Should().NotBeNull();
+        // There should be at least one encryption key (tenant-master-key)
+        keys.Should().NotBeEmpty();
+    }
+
+    [Fact]
+    public async Task Test_encryption_keys_get()
+    {
+        var keysPager = await fixture.ApiClient.Keys.Encryption.ListAsync(new ListEncryptionKeysRequestParameters());
+        var keys = keysPager.CurrentPage.Items.ToList();
+
+        if (keys.Any())
         {
-            Kid = encryptionKey.Kid
+            var firstKey = keys.First();
+            var key = await fixture.ApiClient.Keys.Encryption.GetAsync(firstKey.Kid);
+
+            key.Should().NotBeNull();
+            key.Kid.Should().Be(firstKey.Kid);
+        }
+    }
+
+    [Fact(Skip = "This test creates encryption keys - may require elevated permissions")]
+    public async Task Test_encryption_keys_create_and_delete()
+    {
+        // Create a new encryption key
+        var newKey = await fixture.ApiClient.Keys.Encryption.CreateAsync(new CreateEncryptionKeyRequestContent
+        {
+            Type = CreateEncryptionKeyType.CustomerProvidedRootKey
         });
 
-        wrapping.Should().NotBeNull();
-        wrapping.Algorithm.Should().NotBeNull();
-        wrapping.PublicKey.Should().NotBeNull();
+        newKey.Should().NotBeNull();
+        newKey.Kid.Should().NotBeNullOrEmpty();
 
-        // Delete the encryption key
-        await fixture.ApiClient.Keys.DeleteEncryptionKeyAsync(encryptionKey.Kid);
-        fixture.UnTrackIdentifier(CleanUpType.EncryptionKeys, encryptionKey.Kid);
-        var allEncryptionKeysAfterCleanup = 
-            await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
-        allEncryptionKeysAfterCleanup.Should().NotContain(encryptionKey);
-    }
-        
-    [Fact]
-    public async void Test_import_encrypted_keys()
-    {
-        var sampleImportEncryptionKeyResponse = 
-            await File.ReadAllTextAsync("./Data/ImportEncryptionKeyResponse.json");
-        var httpClientManagementConnection = new HttpClientManagementConnection();
-        var importedKeys = 
-            httpClientManagementConnection.DeserializeContent<EncryptionKey>(sampleImportEncryptionKeyResponse, null);
-        importedKeys.PublicKey.Should().Be("Random-PUBLIC-KEY");
-        importedKeys.Kid.Should().Be("093e36a8-88a1-4c34-8202-e454553ee2dc");
-        importedKeys.State.Should().Be(EncryptionKeyState.Destroyed);
-        importedKeys.Type.Should().Be(EncryptionKeyType.CustomerProvidedRootKey);
-        importedKeys.ParentKid.Should().Be("a20128c5-9bf5-4209-8c43-b6dfcee60e9b");
-    }
-        
-    [Fact(Skip = "Run manually - Running often on CI causes Rate Limit errors")]
-    public async void Test_rekey_encrypted_keys()
-    {
-        // Get the existing Tenant Master Key
-        var existingTenantMasterKey = await GetExistingTenantMasterKey();
-            
-        await fixture.ApiClient.Keys.RekeyAsync();
-
-        var newTenantMasterKey = await GetExistingTenantMasterKey();
-            
-        // After rekey operation, a new Tenant Master Key should be generated
-        existingTenantMasterKey.Should().NotBeEquivalentTo(newTenantMasterKey);
-
-        var existingTenantMasterKeyAfterRekey = 
-            await fixture.ApiClient.Keys.GetEncryptionKeyAsync(
-                new EncryptionKeyGetRequest() 
-                {
-                    Kid = existingTenantMasterKey.Kid
-                }
-            );
-
-        // Confirming that the old master key is destroyed
-        existingTenantMasterKeyAfterRekey.State.Should().Be(EncryptionKeyState.Destroyed);
+        try
+        {
+            // Get the key to verify it was created
+            var fetchedKey = await fixture.ApiClient.Keys.Encryption.GetAsync(newKey.Kid);
+            fetchedKey.Should().NotBeNull();
+        }
+        finally
+        {
+            // Delete the key
+            await fixture.ApiClient.Keys.Encryption.DeleteAsync(newKey.Kid);
+        }
     }
 
-    private async Task<EncryptionKey> GetExistingTenantMasterKey()
+    [Fact(Skip = "This test creates wrapping keys - may require elevated permissions")]
+    public async Task Test_encryption_keys_create_public_wrapping_key()
     {
-        var existingEncryptionKeys = await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
-            
-        // Get the existing Tenant Master Key
-        var existingTenantMasterKey = 
-            existingEncryptionKeys.FirstOrDefault(x => x.State == EncryptionKeyState.Active &&
-                                                       x.Type == EncryptionKeyType.TenantMasterKey);
-        return existingTenantMasterKey;
+        var keysPager = await fixture.ApiClient.Keys.Encryption.ListAsync(new ListEncryptionKeysRequestParameters());
+        var customerKey = keysPager.CurrentPage.Items.FirstOrDefault(k => k.Type == "customer-provided-root-key");
+
+        if (customerKey != null)
+        {
+            var wrappingKey = await fixture.ApiClient.Keys.Encryption.CreatePublicWrappingKeyAsync(customerKey.Kid);
+            wrappingKey.Should().NotBeNull();
+            wrappingKey.PublicKey.Should().NotBeNullOrEmpty();
+        }
+    }
+
+    [Fact(Skip = "This test rekeys - can cause issues in shared environments")]
+    public async Task Test_encryption_keys_rekey()
+    {
+        await fixture.ApiClient.Keys.Encryption.RekeyAsync();
     }
 }

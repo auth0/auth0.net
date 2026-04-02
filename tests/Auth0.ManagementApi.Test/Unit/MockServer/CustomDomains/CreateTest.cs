@@ -1,0 +1,81 @@
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Test.Unit.MockServer;
+using Auth0.ManagementApi.Test.Utils;
+using NUnit.Framework;
+
+namespace Auth0.ManagementApi.Test.Unit.MockServer.CustomDomains;
+
+[TestFixture]
+[Parallelizable(ParallelScope.Self)]
+public class CreateTest : BaseMockServerTest
+{
+    [NUnit.Framework.Test]
+    public async Task MockServerTest()
+    {
+        const string requestJson = """
+            {
+              "domain": "domain",
+              "type": "auth0_managed_certs"
+            }
+            """;
+
+        const string mockResponse = """
+            {
+              "custom_domain_id": "custom_domain_id",
+              "domain": "domain",
+              "primary": true,
+              "is_default": true,
+              "status": "pending_verification",
+              "type": "auth0_managed_certs",
+              "verification": {
+                "methods": [
+                  {
+                    "name": "cname",
+                    "record": "record"
+                  }
+                ],
+                "status": "verified",
+                "error_msg": "error_msg",
+                "last_verified_at": "last_verified_at"
+              },
+              "custom_client_ip_header": "custom_client_ip_header",
+              "tls_policy": "tls_policy",
+              "domain_metadata": {
+                "key": "value"
+              },
+              "certificate": {
+                "status": "provisioning",
+                "error_msg": "error_msg",
+                "certificate_authority": "letsencrypt",
+                "renews_before": "renews_before"
+              },
+              "relying_party_identifier": "relying_party_identifier"
+            }
+            """;
+
+        Server
+            .Given(
+                WireMock
+                    .RequestBuilders.Request.Create()
+                    .WithPath("/custom-domains")
+                    .WithHeader("Content-Type", "application/json")
+                    .UsingPost()
+                    .WithBodyAsJson(requestJson)
+            )
+            .RespondWith(
+                WireMock
+                    .ResponseBuilders.Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(mockResponse)
+            );
+
+        var response = await Client.CustomDomains.CreateAsync(
+            new CreateCustomDomainRequestContent
+            {
+                Domain = "domain",
+                Type = CustomDomainProvisioningTypeEnum.Auth0ManagedCerts,
+            }
+        );
+        JsonAssert.AreEqual(response, mockResponse);
+    }
+}

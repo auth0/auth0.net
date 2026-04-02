@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, v8 ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, v8 ]
 
 env:
   AUTH0_AUTHENTICATION_API_URL: '${{ vars.AUTH0_AUTHENTICATION_API_URL }}'
@@ -114,8 +114,10 @@ jobs:
         path: .
         key: ${{ env.CACHE_KEY }}
     - name: Test Management API
-      run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-    
+      run: |
+        dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura && \
+        dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
     - name: Update codecov report
       uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # pin@5.5.2
       with:

@@ -1,0 +1,120 @@
+using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(
+    typeof(ConnectionResponseContentDropboxStrategy.ConnectionResponseContentDropboxStrategySerializer)
+)]
+[Serializable]
+public readonly record struct ConnectionResponseContentDropboxStrategy : IStringEnum
+{
+    public static readonly ConnectionResponseContentDropboxStrategy Dropbox = new(Values.Dropbox);
+
+    public ConnectionResponseContentDropboxStrategy(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static ConnectionResponseContentDropboxStrategy FromCustom(string value)
+    {
+        return new ConnectionResponseContentDropboxStrategy(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        ConnectionResponseContentDropboxStrategy value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        ConnectionResponseContentDropboxStrategy value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(ConnectionResponseContentDropboxStrategy value) =>
+        value.Value;
+
+    public static explicit operator ConnectionResponseContentDropboxStrategy(string value) =>
+        new(value);
+
+    internal class ConnectionResponseContentDropboxStrategySerializer
+        : JsonConverter<ConnectionResponseContentDropboxStrategy>
+    {
+        public override ConnectionResponseContentDropboxStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionResponseContentDropboxStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentDropboxStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override ConnectionResponseContentDropboxStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentDropboxStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentDropboxStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Dropbox = "dropbox";
+    }
+}

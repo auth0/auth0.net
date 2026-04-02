@@ -12,4 +12,6 @@ public class TestingConstants
     public static string ResourceServerPrefix = $"{Suffix}";
     public static string OrganizationPrefix = $"{Suffix}";
     public static string UserEmailDomain = $"{Suffix}@nonexistingdomain.aaa";
+    public static string EntityPrefix = $"{Suffix}";
+    public static string RolePrefix = $"{Suffix}";
 }

@@ -1,5 +1,5 @@
 ﻿using Auth0.AuthenticationApi.Models;
-using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
@@ -15,8 +15,8 @@ public class AccessTokenTestsFixture : TestBaseFixture
 {
     public AuthenticationApiClient AuthenticationApiClient;
 
-    public Connection Connection;
-    public User NewUser;
+    public CreateConnectionResponseContent Connection;
+    public CreateUserResponseContent NewUser;
     public string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
     public override async Task InitializeAsync()
@@ -26,25 +26,23 @@ public class AccessTokenTestsFixture : TestBaseFixture
         AuthenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
         // We will need a connection to add the users to...
-        Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        Connection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
         TrackIdentifier(CleanUpType.Connections, Connection.Id);
 
         // Add a new user
-        var newUserRequest = new UserCreateRequest
+        NewUser = await ApiClient.Users.CreateAsync(new CreateUserRequestContent
         {
             Connection = Connection.Name,
             Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
             EmailVerified = true,
             Password = Password
-        };
-
-        NewUser = await ApiClient.Users.CreateAsync(newUserRequest);
+        });
 
         TrackIdentifier(CleanUpType.Users, NewUser.UserId);
     }

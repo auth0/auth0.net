@@ -1,0 +1,136 @@
+using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(
+    typeof(PhoneTemplateNotificationTypeEnum.PhoneTemplateNotificationTypeEnumSerializer)
+)]
+[Serializable]
+public readonly record struct PhoneTemplateNotificationTypeEnum : IStringEnum
+{
+    public static readonly PhoneTemplateNotificationTypeEnum OtpVerify = new(Values.OtpVerify);
+
+    public static readonly PhoneTemplateNotificationTypeEnum OtpEnroll = new(Values.OtpEnroll);
+
+    public static readonly PhoneTemplateNotificationTypeEnum ChangePassword = new(
+        Values.ChangePassword
+    );
+
+    public static readonly PhoneTemplateNotificationTypeEnum BlockedAccount = new(
+        Values.BlockedAccount
+    );
+
+    public static readonly PhoneTemplateNotificationTypeEnum PasswordBreach = new(
+        Values.PasswordBreach
+    );
+
+    public PhoneTemplateNotificationTypeEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static PhoneTemplateNotificationTypeEnum FromCustom(string value)
+    {
+        return new PhoneTemplateNotificationTypeEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(PhoneTemplateNotificationTypeEnum value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(PhoneTemplateNotificationTypeEnum value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(PhoneTemplateNotificationTypeEnum value) => value.Value;
+
+    public static explicit operator PhoneTemplateNotificationTypeEnum(string value) => new(value);
+
+    internal class PhoneTemplateNotificationTypeEnumSerializer
+        : JsonConverter<PhoneTemplateNotificationTypeEnum>
+    {
+        public override PhoneTemplateNotificationTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new PhoneTemplateNotificationTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            PhoneTemplateNotificationTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override PhoneTemplateNotificationTypeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new PhoneTemplateNotificationTypeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            PhoneTemplateNotificationTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string OtpVerify = "otp_verify";
+
+        public const string OtpEnroll = "otp_enroll";
+
+        public const string ChangePassword = "change_password";
+
+        public const string BlockedAccount = "blocked_account";
+
+        public const string PasswordBreach = "password_breach";
+    }
+}

@@ -3,7 +3,7 @@ using Auth0.ManagementApi;
 
 namespace Auth0.IntegrationTests.Shared.CleanUp;
 
-public class CustomDomainsCleanUpStrategy(ManagementApiClient apiClient)
+public class CustomDomainsCleanUpStrategy(ManagementClient apiClient)
     : CleanUpStrategy(CleanUpType.CustomDomains, apiClient)
 {
     public override async Task Run(string id)

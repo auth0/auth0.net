@@ -9,14 +9,17 @@ namespace Auth0.AuthenticationApi.IntegrationTests;
 
 public class TestBaseFixture : IAsyncLifetime
 {
-    public ManagementApiClient ApiClient { get; private set; }
+    public ManagementClient ApiClient { get; private set; }
     protected IDictionary<CleanUpType, IList<string>> identifiers = new Dictionary<CleanUpType, IList<string>>();
 
     public virtual async Task InitializeAsync()
     {
-        string token = await TestBaseUtils.GenerateManagementApiToken();
-
-        ApiClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+        ApiClient = new ManagementClient(new ManagementClientOptions
+        {
+            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"),
+            TokenProvider = new ClientCredentialsTokenProvider(TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")),
+            MaxRetries = 9
+        });
     }
 
     public virtual async Task DisposeAsync()

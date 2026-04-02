@@ -1,255 +1,822 @@
-using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Paging;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+using Auth0.ManagementApi.Clients;
+using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
 
-namespace Auth0.ManagementApi.Clients;
+namespace Auth0.ManagementApi;
 
-/// <summary>
-/// Contains methods to access the /clients endpoints.
-/// </summary>
-public class ClientsClient : BaseClient, IClientsClient
+public partial class ClientsClient : IClientsClient
 {
-    private readonly JsonConverter[] converters = [new PagedListConverter<Client>("clients")];
-    private readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Client>("clients")];
-    private readonly JsonConverter[] enabledClientsConverters = [new CheckpointPagedListConverter<Connection>("connections")];
+    private readonly RawClient _client;
 
-    /// <summary>
-    /// Initializes a new instance of <see cref="ClientsClient"/>.
-    /// </summary>
-    /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
-    /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-    /// <param name="defaultHeaders">Dictionary containing default headers included with every request this client makes.</param>
-    public ClientsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
-        : base(connection, baseUri, defaultHeaders)
+    internal ClientsClient(RawClient client)
     {
+        _client = client;
+        Credentials = new CredentialsClient(_client);
+        Connections = new Auth0.ManagementApi.Clients.ConnectionsClient(_client);
     }
 
+    public ICredentialsClient Credentials { get; }
+
+    public Auth0.ManagementApi.Clients.IConnectionsClient Connections { get; }
+
     /// <summary>
-    /// Creates a new client application.
+    /// Retrieve clients (applications and SSO integrations) matching provided filters. A list of fields to include or exclude may also be specified.
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    ///
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     The following can be retrieved with any scope:
+    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:clients</c> or
+    ///     <c>read:client_keys</c> scope:
+    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
+    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
+    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
+    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
+    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
+    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
+    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
+    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
+    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
+    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
+    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
+    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
+    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
+    ///     <c>organization_require_behavior</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the
+    ///     <c>read:client_keys</c> or <c>read:client_credentials</c> scope:
+    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
+    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
+    ///   </description></item>
+    /// </list>
     /// </summary>
-    /// <param name="request">The <see cref="ClientCreateRequest"/> containing the properties of the new client.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The new <see cref="Client"/> that has been created.</returns>
-    public Task<Client> CreateAsync(ClientCreateRequest request, CancellationToken cancellationToken = default)
+    private WithRawResponseTask<ListClientsOffsetPaginatedResponseContent> ListInternalAsync(
+        ListClientsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("clients"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        return new WithRawResponseTask<ListClientsOffsetPaginatedResponseContent>(
+            ListInternalAsyncCore(request, options, cancellationToken)
+        );
     }
 
-    /// <summary>
-    /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
-    /// </summary>
-    /// <param name="id">The id of the client to delete.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-    public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
+    private async Task<
+        WithRawResponse<ListClientsOffsetPaginatedResponseContent>
+    > ListInternalAsyncCore(
+        ListClientsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>
-    /// Retrieves a list of all client applications.
-    /// </summary>
-    /// <param name="request">Specifies criteria to use when querying clients.</param>
-    /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
-    public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
-    {
-        request.ThrowIfNull();
-
-        var queryStrings = BuildClientQueryStrings(request);
-
-        if (pagination != null)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 10)
+            .Add("fields", request.Fields.IsDefined ? request.Fields.Value : null)
+            .Add(
+                "include_fields",
+                request.IncludeFields.IsDefined ? request.IncludeFields.Value : null
+            )
+            .Add("page", request.Page.IsDefined ? request.Page.Value : null)
+            .Add("per_page", request.PerPage.IsDefined ? request.PerPage.Value : null)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
+            .Add("is_global", request.IsGlobal.IsDefined ? request.IsGlobal.Value : null)
+            .Add(
+                "is_first_party",
+                request.IsFirstParty.IsDefined ? request.IsFirstParty.Value : null
+            )
+            .Add("app_type", request.AppType.IsDefined ? request.AppType.Value : null)
+            .Add(
+                "external_client_id",
+                request.ExternalClientId.IsDefined ? request.ExternalClientId.Value : null
+            )
+            .Add("q", request.Q.IsDefined ? request.Q.Value : null)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Get,
+                    Path = "clients",
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
         {
-            queryStrings["page"] = pagination.PageNo.ToString();
-            queryStrings["per_page"] = pagination.PerPage.ToString();
-            queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
-        }
-
-        return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters, cancellationToken);
-    }
-        
-    /// <inheritdoc cref="IClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)"/> 
-    public Task<ICheckpointPagedList<Client>> GetAllAsync(GetClientsRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
-    {
-        request.ThrowIfNull();
-
-        var queryStrings = BuildClientQueryStrings(request);
-
-        if (pagination != null)
-        {
-            queryStrings["from"] = pagination.From?.ToString();
-            queryStrings["take"] = pagination.Take.ToString();
-        }
-
-        return Connection.GetAsync<ICheckpointPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, checkpointConverters, cancellationToken);
-    }
-
-    /// <summary>
-    /// Retrieves a client by its id.
-    /// </summary>
-    /// <param name="id">The id of the client to retrieve.</param>
-    /// <param name="fields">
-    /// A comma separated list of fields to include or exclude (depending on includeFields) from the
-    /// result, empty to retrieve all fields.
-    /// </param>
-    /// <param name="includeFields">
-    /// true if the fields specified are to be included in the result, false otherwise (defaults to
-    /// true)
-    /// </param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The <see cref="Client"/> retrieved.</returns>
-    public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)
-    {
-        return Connection.GetAsync<Client>(BuildUri($"clients/{EncodePath(id)}",
-            new Dictionary<string, string>
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
             {
-                {"fields", fields},
-                {"include_fields", includeFields.ToString().ToLower()}
-            }), DefaultHeaders, cancellationToken: cancellationToken);
+                var responseData = JsonUtils.Deserialize<ListClientsOffsetPaginatedResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<ListClientsOffsetPaginatedResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
     }
 
-    /// <summary>
-    /// Rotate a client secret. The generated secret is NOT base64 encoded.
-    /// </summary>
-    /// <param name="id">The id of the client which secret needs to be rotated.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
-    public Task<Client> RotateClientSecret(string id, CancellationToken cancellationToken = default)
+    private async Task<WithRawResponse<CreateClientResponseContent>> CreateAsyncCore(
+        CreateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{EncodePath(id)}/rotate-secret"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = "clients",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<CreateClientResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<CreateClientResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 409:
+                        throw new ConflictError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
     }
 
-    /// <summary>
-    /// Updates a client application.
-    /// </summary>
-    /// <param name="id">The id of the client you want to update.</param>
-    /// <param name="request">The <see cref="ClientUpdateRequest"/> containing the properties of the client you want to update.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The <see cref="Client"/> that was updated.</returns>
-    public Task<Client> UpdateAsync(string id, ClientUpdateRequest request, CancellationToken cancellationToken = default)
-    {
-        return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>
-    /// Creates a new client credential.
-    /// </summary>
-    /// <param name="clientId">The id of the client for which you want to create the credential.</param>
-    /// <param name="request">The <see cref="ClientCredentialCreateRequest"/> containing the properties of the new client credential.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The new <see cref="Credential"/> that has been created.</returns>
-    public Task<Credential> CreateCredentialAsync(string clientId, ClientCredentialCreateRequest request, CancellationToken cancellationToken = default)
-    {
-        return Connection.SendAsync<Credential>(HttpMethod.Post, BuildUri($"clients/{EncodePath(clientId)}/credentials"), request, DefaultHeaders, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>
-    /// Update a client credential.
-    /// </summary>
-    /// <param name="clientId">The id of the client for which you want to update the credential.</param>
-    /// <param name="credentialId">The id of the credential to update.</param>
-    /// <param name="request">The <see cref="ClientCredentialUpdateRequest"/> containing the properties of the new client credential.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>The new <see cref="Credential"/> that has been created.</returns>
-    public Task<Credential> UpdateCredentialAsync(string clientId, string credentialId, ClientCredentialUpdateRequest request, CancellationToken cancellationToken = default)
-    {
-        return Connection.SendAsync<Credential>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>
-    /// Retrieves a list of all credentials for a client.
-    /// </summary>
-    /// <param name="clientId">The id of the client for which you want to retrieve the credentials.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>An <see cref="IList{Credential}"/> containing the client's credentials.</returns>
-    public Task<IList<Credential>> GetAllCredentialsAsync(string clientId, CancellationToken cancellationToken = default)
-    {
-        return Connection.GetAsync<IList<Credential>>(BuildUri($"clients/{EncodePath(clientId)}/credentials"), DefaultHeaders, null, cancellationToken);
-    }
-
-    /// <summary>
-    /// Retrieves a specific credential for a client.
-    /// </summary>
-    /// <param name="clientId">The id of the client for which you want to retrieve the credential.</param>
-    /// <param name="credentialId">The id of the credential to retrieve.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="Credential"/> containing the client's credential.</returns>
-    public Task<Credential> GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
-    {
-        return Connection.GetAsync<Credential>(BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), DefaultHeaders, null, cancellationToken);
-    }
-
-    /// <summary>
-    /// Deletes a specific credential registered with the provided client.
-    /// </summary>
-    /// <param name="clientId">The id of the client for which you want to remove the credential.</param>
-    /// <param name="credentialId">The id of the credential to remove.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-    public Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
-    {
-        return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
-    }
-
-    /// <inheritdoc cref="IClientsClient.GetEnabledConnectionsForClientAsync(string,Auth0.ManagementApi.Models.EnabledConnectionsForClientGetRequest,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)"/>
-    public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(
+    private async Task<WithRawResponse<GetClientResponseContent>> GetAsyncCore(
         string id,
-        EnabledConnectionsForClientGetRequest? request,
-        CheckpointPaginationInfo? pagination, CancellationToken cancellationToken = default)
+        GetClientRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        id.ThrowIfNull();
-        
-        var queryStrings = new List<Tuple<string, string?>>()
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 2)
+            .Add("fields", request.Fields.IsDefined ? request.Fields.Value : null)
+            .Add(
+                "include_fields",
+                request.IncludeFields.IsDefined ? request.IncludeFields.Value : null
+            )
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Get,
+                    Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
         {
-            new("fields", request?.Fields),
-            new("include_fields", request?.IncludeFields?.ToString().ToLower())
-        };
-
-        if (request?.Strategy != null)
-        {
-            queryStrings.AddRange(
-                request.Strategy.Select(eachStrategy => new Tuple<string, string?>("strategy", eachStrategy)));    
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<GetClientResponseContent>(responseBody)!;
+                return new WithRawResponse<GetClientResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
         }
-
-        if (pagination != null)
         {
-            queryStrings.Add(new Tuple<string, string?>("from", pagination.From));
-            queryStrings.Add(new Tuple<string, string?>("take", pagination.Take.ToString()));
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
         }
-        
-        return Connection.GetAsync<ICheckpointPagedList<Connection>>(
-            BuildUri($"clients/{EncodePath(id)}/connections", queryStrings),
-            DefaultHeaders,
-            enabledClientsConverters,
-            cancellationToken);
+    }
+
+    private async Task<WithRawResponse<UpdateClientResponseContent>> UpdateAsyncCore(
+        string id,
+        UpdateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethodExtensions.Patch,
+                    Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<UpdateClientResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<UpdateClientResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
+    private async Task<WithRawResponse<RotateClientSecretResponseContent>> RotateSecretAsyncCore(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = string.Format(
+                        "clients/{0}/rotate-secret",
+                        ValueConvert.ToPathParameterString(id)
+                    ),
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<RotateClientSecretResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<RotateClientSecretResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
     }
 
     /// <summary>
-    /// Builds common query strings for client requests.
+    /// Retrieve clients (applications and SSO integrations) matching provided filters. A list of fields to include or exclude may also be specified.
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    ///
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     The following can be retrieved with any scope:
+    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:clients</c> or
+    ///     <c>read:client_keys</c> scope:
+    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
+    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
+    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
+    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
+    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
+    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
+    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
+    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
+    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
+    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
+    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
+    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
+    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
+    ///     <c>organization_require_behavior</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the
+    ///     <c>read:client_keys</c> or <c>read:client_credentials</c> scope:
+    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
+    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
+    ///   </description></item>
+    /// </list>
     /// </summary>
-    /// <param name="request">The client request containing query parameters.</param>
-    /// <returns>A dictionary of query string parameters.</returns>
-    private Dictionary<string, string> BuildClientQueryStrings(GetClientsRequest request)
+    /// <example><code>
+    /// await client.Clients.ListAsync(
+    ///     new ListClientsRequestParameters
+    ///     {
+    ///         Fields = "fields",
+    ///         IncludeFields = true,
+    ///         Page = 1,
+    ///         PerPage = 1,
+    ///         IncludeTotals = true,
+    ///         IsGlobal = true,
+    ///         IsFirstParty = true,
+    ///         AppType = "app_type",
+    ///         ExternalClientId = "external_client_id",
+    ///         Q = "q",
+    ///     }
+    /// );
+    /// </code></example>
+    public async Task<Pager<Client>> ListAsync(
+        ListClientsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        var queryStrings = new Dictionary<string, string>
+        request = request with { };
+        var pager = await OffsetPager<
+            ListClientsRequestParameters,
+            RequestOptions?,
+            ListClientsOffsetPaginatedResponseContent,
+            int?,
+            int?,
+            Client
+        >
+            .CreateInstanceAsync(
+                request,
+                options,
+                async (request, options, cancellationToken) =>
+                    await ListInternalAsync(request, options, cancellationToken),
+                request => request.Page.GetValueOrDefault(0),
+                (request, offset) =>
+                {
+                    request.Page = offset;
+                },
+                request => request.PerPage.GetValueOrDefault(0),
+                response => response.Clients?.ToList(),
+                null,
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        return pager;
+    }
+
+    /// <summary>
+    /// Create a new client (application or SSO integration). For more information, read <see href="https://www.auth0.com/docs/get-started/auth0-overview/create-applications">Create Applications</see>
+    /// <see href="https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on>"&gt;API Endpoints for Single Sign-On</see>.
+    ///
+    /// Notes:
+    /// - We recommend leaving the `client_secret` parameter unspecified to allow the generation of a safe secret.
+    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use
+    /// <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c>
+    /// to configure the client with client secret (basic or post) or with no authentication method (none).
+    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, specify fully defined credentials.
+    /// These credentials will be automatically enabled for Private Key JWT authentication on the client.
+    /// - To configure <c>client_authentication_methods</c>, the <c>create:client_credentials</c> scope is required.
+    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
+    ///
+    /// SSO Integrations created via this endpoint will accept login requests and share user profile information.
+    /// </summary>
+    /// <example><code>
+    /// await client.Clients.CreateAsync(new CreateClientRequestContent { Name = "name" });
+    /// </code></example>
+    public WithRawResponseTask<CreateClientResponseContent> CreateAsync(
+        CreateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<CreateClientResponseContent>(
+            CreateAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified.
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     The following properties can be retrieved with any of the scopes:
+    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:clients</c> or
+    ///     <c>read:client_keys</c> scopes:
+    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
+    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
+    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
+    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
+    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
+    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
+    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
+    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
+    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
+    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
+    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
+    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
+    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
+    ///     <c>organization_require_behavior</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:client_keys</c> or <c>read:client_credentials</c> scopes:
+    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
+    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
+    ///   </description></item>
+    /// </list>
+    /// </summary>
+    /// <example><code>
+    /// await client.Clients.GetAsync(
+    ///     "id",
+    ///     new GetClientRequestParameters { Fields = "fields", IncludeFields = true }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<GetClientResponseContent> GetAsync(
+        string id,
+        GetClientRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<GetClientResponseContent>(
+            GetAsyncCore(id, request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Delete a client and related configuration (rules, connections, etc).
+    /// </summary>
+    /// <example><code>
+    /// await client.Clients.DeleteAsync("id");
+    /// </code></example>
+    public async Task DeleteAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Delete,
+                    Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
         {
-            {"fields", request.Fields},
-            {"include_fields", request.IncludeFields?.ToString().ToLower()},
-            {"is_global", request.IsGlobal?.ToString().ToLower()},
-            {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-            {"q", request.Query}
-        };
+            return;
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
 
-        if (request.AppType != null)
-            queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
+    /// <summary>
+    /// Updates a client's settings. For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    ///
+    /// Notes:
+    /// - The `client_secret` and `signing_key` attributes can only be updated with the `update:client_keys` scope.
+    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c> to configure the client with client secret (basic or post) or with no authentication method (none).
+    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
+    /// - To configure <c>client_authentication_methods</c>, the <c>update:client_credentials</c> scope is required.
+    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
+    /// - To change a client's <c>is_first_party</c> property to <c>false</c>, the <c>organization_usage</c> and <c>organization_require_behavior</c> properties must be unset.
+    /// </summary>
+    /// <example><code>
+    /// await client.Clients.UpdateAsync("id", new UpdateClientRequestContent());
+    /// </code></example>
+    public WithRawResponseTask<UpdateClientResponseContent> UpdateAsync(
+        string id,
+        UpdateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<UpdateClientResponseContent>(
+            UpdateAsyncCore(id, request, options, cancellationToken)
+        );
+    }
 
-        return queryStrings;
+    /// <summary>
+    /// Rotate a client secret.
+    ///
+    /// This endpoint cannot be used with clients configured with Private Key JWT authentication method (client_authentication_methods configured with private_key_jwt). The generated secret is NOT base64 encoded.
+    ///
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications/rotate-client-secret">Rotate Client Secrets</see>.
+    /// </summary>
+    /// <example><code>
+    /// await client.Clients.RotateSecretAsync("id");
+    /// </code></example>
+    public WithRawResponseTask<RotateClientSecretResponseContent> RotateSecretAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<RotateClientSecretResponseContent>(
+            RotateSecretAsyncCore(id, options, cancellationToken)
+        );
     }
 }

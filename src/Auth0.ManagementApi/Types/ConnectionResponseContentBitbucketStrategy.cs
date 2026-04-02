@@ -1,0 +1,122 @@
+using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(
+    typeof(ConnectionResponseContentBitbucketStrategy.ConnectionResponseContentBitbucketStrategySerializer)
+)]
+[Serializable]
+public readonly record struct ConnectionResponseContentBitbucketStrategy : IStringEnum
+{
+    public static readonly ConnectionResponseContentBitbucketStrategy Bitbucket = new(
+        Values.Bitbucket
+    );
+
+    public ConnectionResponseContentBitbucketStrategy(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static ConnectionResponseContentBitbucketStrategy FromCustom(string value)
+    {
+        return new ConnectionResponseContentBitbucketStrategy(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        ConnectionResponseContentBitbucketStrategy value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        ConnectionResponseContentBitbucketStrategy value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(ConnectionResponseContentBitbucketStrategy value) =>
+        value.Value;
+
+    public static explicit operator ConnectionResponseContentBitbucketStrategy(string value) =>
+        new(value);
+
+    internal class ConnectionResponseContentBitbucketStrategySerializer
+        : JsonConverter<ConnectionResponseContentBitbucketStrategy>
+    {
+        public override ConnectionResponseContentBitbucketStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionResponseContentBitbucketStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentBitbucketStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override ConnectionResponseContentBitbucketStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentBitbucketStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentBitbucketStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Bitbucket = "bitbucket";
+    }
+}

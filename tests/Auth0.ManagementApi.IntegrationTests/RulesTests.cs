@@ -1,11 +1,9 @@
-﻿using System;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
-using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
 using Auth0.IntegrationTests.Shared.CleanUp;
 
@@ -13,8 +11,6 @@ namespace Auth0.ManagementApi.IntegrationTests;
 
 public class RulesTestsFixture : TestBaseFixture
 {
-    public readonly List<LogStream> TestCreatedStreams = new();
-
     public override async Task DisposeAsync()
     {
         foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
@@ -39,10 +35,11 @@ public class RulesTests : IClassFixture<RulesTestsFixture>
     public async Task Test_rules_crud_sequence()
     {
         // Get all rules
-        var rulesBefore = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
+        var rulesBeforePager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters());
+        var rulesBefore = rulesBeforePager.CurrentPage.Items.ToList();
 
         // Add a new rule
-        var newRuleRequest = new RuleCreateRequest
+        var newRuleRequest = new CreateRuleRequestContent
         {
             Name = $"{TestingConstants.RulesRefix}-{Guid.NewGuid():N}",
             Script = @"function (user, context, callback) {
@@ -57,11 +54,12 @@ public class RulesTests : IClassFixture<RulesTestsFixture>
         newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
         // Get all the rules again, and check that we now have one more
-        var rulesAfter = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
+        var rulesAfterPager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters());
+        var rulesAfter = rulesAfterPager.CurrentPage.Items.ToList();
         rulesAfter.Count.Should().Be(rulesBefore.Count + 1);
 
         // Update the Rule
-        var updateRuleRequest = new RuleUpdateRequest
+        var updateRuleRequest = new UpdateRuleRequestContent
         {
             Name = $"{TestingConstants.RulesRefix}-{Guid.NewGuid():N}"
         };
@@ -70,52 +68,62 @@ public class RulesTests : IClassFixture<RulesTestsFixture>
         updateRuleResponse.Name.Should().Be(updateRuleRequest.Name);
 
         // Get a single rule
-        var rule = await fixture.ApiClient.Rules.GetAsync(newRuleResponse.Id);
+        var rule = await fixture.ApiClient.Rules.GetAsync(newRuleResponse.Id, new GetRuleRequestParameters());
         rule.Should().NotBeNull();
         rule.Name.Should().Be(updateRuleRequest.Name);
 
         // Delete the rule, and ensure we get exception when trying to fetch it again
         await fixture.ApiClient.Rules.DeleteAsync(rule.Id);
-        Func<Task> getFunc = async () => await fixture.ApiClient.Rules.GetAsync(rule.Id);
-        getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
+        Func<Task> getFunc = async () => await fixture.ApiClient.Rules.GetAsync(rule.Id, new GetRuleRequestParameters());
+        await getFunc.Should().ThrowAsync<NotFoundError>();
         fixture.UnTrackIdentifier(CleanUpType.Rules, newRuleResponse.Id);
     }
-        
+
     [Fact]
     public async Task Test_when_paging_not_specified_does_not_include_totals()
     {
         // Act
-        var rules = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
-            
+        var rulesPager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters());
+
         // Assert
-        Assert.Null(rules.Paging);
+        rulesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
-    public async Task Test_paging_does_not_include_totals()
+    public async Task Test_paging_with_totals()
     {
         // Act
-        var rules = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, false));
-            
+        var rulesPager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
+
         // Assert
-        Assert.Null(rules.Paging);
+        rulesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Test_paging_includes_totals()
     {
         // Act
-        var rules = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, true));
-            
+        var rulesPager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
+
         // Assert
-        Assert.NotNull(rules.Paging);
+        rulesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact(Skip = "Rules have been deprecated as on 18th November 2024")]
     public async Task Test_without_paging()
     {
         // Add a new rule
-        var newRule = await fixture.ApiClient.Rules.CreateAsync(new RuleCreateRequest
+        var newRule = await fixture.ApiClient.Rules.CreateAsync(new CreateRuleRequestContent
         {
             Name = $"i{TestingConstants.RulesRefix}-{Guid.NewGuid():N}",
             Script = @"function (user, context, callback) {
@@ -128,10 +136,10 @@ public class RulesTests : IClassFixture<RulesTestsFixture>
         newRule.Should().NotBeNull();
 
         // Act
-        var rules = await fixture.ApiClient.Rules.GetAllAsync(new GetRulesRequest());
+        var rulesPager = await fixture.ApiClient.Rules.ListAsync(new ListRulesRequestParameters());
 
         // Assert
-        rules.Paging.Should().BeNull();
+        var rules = rulesPager.CurrentPage.Items.ToList();
         rules.Count.Should().BeGreaterThan(0);
 
         await fixture.ApiClient.Rules.DeleteAsync(newRule.Id);

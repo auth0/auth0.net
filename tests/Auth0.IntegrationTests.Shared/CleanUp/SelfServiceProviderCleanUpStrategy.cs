@@ -5,7 +5,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public class SelfServiceProviderCleanUpStrategy : CleanUpStrategy
 {
-    public SelfServiceProviderCleanUpStrategy(ManagementApiClient apiClient) : base(CleanUpType.SelfServiceProvider, apiClient)
+    public SelfServiceProviderCleanUpStrategy(ManagementClient apiClient) : base(CleanUpType.SelfServiceProvider, apiClient)
     {
             
     }
@@ -13,6 +13,6 @@ public class SelfServiceProviderCleanUpStrategy : CleanUpStrategy
     public override async Task Run(string id)
     {
         System.Diagnostics.Debug.WriteLine("Running SelfServiceProviderCleanup");
-        await ApiClient.SelfServiceProfilesClient.DeleteAsync(id);
+        await ApiClient.SelfServiceProfiles.DeleteAsync(id);
     }
 }

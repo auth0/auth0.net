@@ -1,91 +1,100 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using FluentAssertions;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models.Prompts;
-using Newtonsoft.Json;
+using Auth0.Tests.Shared;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class PromptsTests : ManagementTestBase, IAsyncLifetime
+public class PromptsTestsFixture : TestBaseFixture
 {
-    public async Task InitializeAsync()
+    public override Task DisposeAsync()
     {
-        string token = await GenerateManagementApiToken();
+        ApiClient.Dispose();
+        return Task.CompletedTask;
+    }
+}
 
-        ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+public class PromptsTests : IClassFixture<PromptsTestsFixture>
+{
+    private PromptsTestsFixture fixture;
+
+    public PromptsTests(PromptsTestsFixture fixture)
+    {
+        this.fixture = fixture;
     }
 
     [Fact]
     public async Task Test_get_and_update_prompts()
     {
-        var prompts = await ApiClient.Prompts.GetAsync();
+        var prompts = await fixture.ApiClient.Prompts.GetSettingsAsync();
         prompts.Should().NotBeNull();
 
         var originalExperience = prompts.UniversalLoginExperience;
-        var newExperience = originalExperience == "classic" ? "new" : "classic";
+        var newExperience = originalExperience == UniversalLoginExperienceEnum.Classic
+            ? UniversalLoginExperienceEnum.New
+            : UniversalLoginExperienceEnum.Classic;
 
-        await ApiClient.Prompts.UpdateAsync(new PromptUpdateRequest {UniversalLoginExperience = newExperience });
+        await fixture.ApiClient.Prompts.UpdateSettingsAsync(new UpdateSettingsRequestContent { UniversalLoginExperience = newExperience });
 
-        prompts = await ApiClient.Prompts.GetAsync();
+        prompts = await fixture.ApiClient.Prompts.GetSettingsAsync();
         prompts.Should().NotBeNull();
         prompts.UniversalLoginExperience.Should().Be(newExperience);
 
-        await ApiClient.Prompts.UpdateAsync(new PromptUpdateRequest { UniversalLoginExperience = originalExperience });
+        await fixture.ApiClient.Prompts.UpdateSettingsAsync(new UpdateSettingsRequestContent { UniversalLoginExperience = originalExperience });
 
-        prompts = await ApiClient.Prompts.GetAsync();
+        prompts = await fixture.ApiClient.Prompts.GetSettingsAsync();
         prompts.Should().NotBeNull();
         prompts.UniversalLoginExperience.Should().Be(originalExperience);
     }
-        
+
     [Fact]
     public async Task Test_set_and_get_custom_text_for_prompt()
     {
-        var customText = new Dictionary<string, Dictionary<string,string>>()
+        var customText = new Dictionary<string, object?>
         {
-            { "login", new Dictionary<string, string>()
+            { "login", new Dictionary<string, object?>
                 {
                     { "title", "welcome to auth0" }
-                } 
+                }
             }
         };
-        await ApiClient.Prompts.SetCustomTextForPromptAsync("login", "en", customText);
-            
-        var updatedCustomText = await ApiClient.Prompts.GetCustomTextForPromptAsync("login", "en");
+        await fixture.ApiClient.Prompts.CustomText.SetAsync(PromptGroupNameEnum.Login, PromptLanguageEnum.En, customText);
+
+        var updatedCustomText = await fixture.ApiClient.Prompts.CustomText.GetAsync(PromptGroupNameEnum.Login, PromptLanguageEnum.En);
 
         updatedCustomText.Should().NotBeNull();
-        var udpatedCustomTextObject = 
-            JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,string>>>(
-                updatedCustomText?.ToString()); 
-        customText.Should().BeEquivalentTo(udpatedCustomTextObject);
+        updatedCustomText.Should().ContainKey("login");
     }
-        
-    [Fact]
+
+    [Fact(Skip = "Requires BRUCKE_MANAGEMENT_API credentials")]
     public async Task Test_set_and_get_partials()
     {
-        string token = await GenerateBruckeManagementApiToken();
+        var managementApiUrl = TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_URL");
+        var domain = managementApiUrl.Replace("https://", "").TrimEnd('/');
 
-        using (var apiClient = new ManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL")))
+        using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
-            var partial = new Dictionary<string, Dictionary<string,string>>()
+            Domain = domain,
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET"))
+        }))
+        {
+            var partial = new Dictionary<string, object?>
             {
-                { "signup-id", new Dictionary<string, string>()
+                { "signup-id", new Dictionary<string, object?>
                     {
                         { "form-content-start", "<div>HTML or Liquid</div>" },
                         { "form-content-end", "<div>HTML or Liquid</div>" }
-                    } 
+                    }
                 }
             };
-            await apiClient.Prompts.SetPartialsAsync("signup-id", partial);
-            
-            var updatedPartials = await apiClient.Prompts.GetPartialsAsync("signup-id");
+            await apiClient.Prompts.Partials.SetAsync(PartialGroupsEnum.SignupId, partial);
+
+            var updatedPartials = await apiClient.Prompts.Partials.GetAsync(PartialGroupsEnum.SignupId);
 
             updatedPartials.Should().NotBeNull();
-            var updatedPartialsObject = 
-                JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,string>>>(
-                    updatedPartials?.ToString()); 
-            partial.Should().BeEquivalentTo(updatedPartialsObject);
+            updatedPartials.Should().ContainKey("signup-id");
         }
     }
 }

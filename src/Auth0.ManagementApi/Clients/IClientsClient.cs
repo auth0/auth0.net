@@ -1,132 +1,153 @@
-namespace Auth0.ManagementApi.Clients;
+using Auth0.ManagementApi.Clients;
+using Auth0.ManagementApi.Core;
 
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Models;
-using Paging;
+namespace Auth0.ManagementApi;
 
-public interface IClientsClient
+public partial interface IClientsClient
 {
-  /// <summary>
-  /// Creates a new client application.
-  /// </summary>
-  /// <param name="request">The <see cref="ClientCreateRequest"/> containing the properties of the new client.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The new <see cref="Client"/> that has been created.</returns>
-  Task<Client> CreateAsync(ClientCreateRequest request, CancellationToken cancellationToken = default);
+    public ICredentialsClient Credentials { get; }
+    public Auth0.ManagementApi.Clients.IConnectionsClient Connections { get; }
 
-  /// <summary>
-  /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
-  /// </summary>
-  /// <param name="id">The id of the client to delete.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-  Task DeleteAsync(string id, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Retrieve clients (applications and SSO integrations) matching provided filters. A list of fields to include or exclude may also be specified.
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    ///
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     The following can be retrieved with any scope:
+    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:clients</c> or
+    ///     <c>read:client_keys</c> scope:
+    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
+    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
+    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
+    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
+    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
+    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
+    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
+    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
+    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
+    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
+    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
+    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
+    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
+    ///     <c>organization_require_behavior</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the
+    ///     <c>read:client_keys</c> or <c>read:client_credentials</c> scope:
+    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
+    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
+    ///   </description></item>
+    /// </list>
+    /// </summary>
+    Task<Pager<Client>> ListAsync(
+        ListClientsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
-  /// <summary>
-  /// Retrieves a list of all client applications.
-  /// </summary>
-  /// <param name="request">Specifies criteria to use when querying clients.</param>
-  /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
-  Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
-    
-  /// <summary>
-  /// Retrieves a list of all client applications.
-  /// </summary>
-  /// <param name="request">Specifies criteria to use when querying clients.</param>
-  /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>An <see cref="ICheckpointPagedList{Client}"/> containing the clients.</returns>
-  Task<ICheckpointPagedList<Client>> GetAllAsync(GetClientsRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Create a new client (application or SSO integration). For more information, read <see href="https://www.auth0.com/docs/get-started/auth0-overview/create-applications">Create Applications</see>
+    /// <see href="https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on>"&gt;API Endpoints for Single Sign-On</see>.
+    ///
+    /// Notes:
+    /// - We recommend leaving the `client_secret` parameter unspecified to allow the generation of a safe secret.
+    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use
+    /// <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c>
+    /// to configure the client with client secret (basic or post) or with no authentication method (none).
+    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, specify fully defined credentials.
+    /// These credentials will be automatically enabled for Private Key JWT authentication on the client.
+    /// - To configure <c>client_authentication_methods</c>, the <c>create:client_credentials</c> scope is required.
+    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
+    ///
+    /// SSO Integrations created via this endpoint will accept login requests and share user profile information.
+    /// </summary>
+    WithRawResponseTask<CreateClientResponseContent> CreateAsync(
+        CreateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
-  /// <summary>
-  /// Retrieves a client by its id.
-  /// </summary>
-  /// <param name="id">The id of the client to retrieve.</param>
-  /// <param name="fields">
-  /// A comma separated list of fields to include or exclude (depending on includeFields) from the
-  /// result, empty to retrieve all fields.
-  /// </param>
-  /// <param name="includeFields">
-  /// true if the fields specified are to be included in the result, false otherwise (defaults to
-  /// true)
-  /// </param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The <see cref="Client"/> retrieved.</returns>
-  Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified.
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     The following properties can be retrieved with any of the scopes:
+    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:clients</c> or
+    ///     <c>read:client_keys</c> scopes:
+    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
+    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
+    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
+    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
+    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
+    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
+    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
+    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
+    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
+    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
+    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
+    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
+    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
+    ///     <c>organization_require_behavior</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     The following properties can only be retrieved with the <c>read:client_keys</c> or <c>read:client_credentials</c> scopes:
+    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
+    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
+    ///   </description></item>
+    /// </list>
+    /// </summary>
+    WithRawResponseTask<GetClientResponseContent> GetAsync(
+        string id,
+        GetClientRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
-  /// <summary>
-  /// Rotate a client secret. The generated secret is NOT base64 encoded.
-  /// </summary>
-  /// <param name="id">The id of the client which secret needs to be rotated.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
-  Task<Client> RotateClientSecret(string id, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Delete a client and related configuration (rules, connections, etc).
+    /// </summary>
+    Task DeleteAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
-  /// <summary>
-  /// Updates a client application.
-  /// </summary>
-  /// <param name="id">The id of the client you want to update.</param>
-  /// <param name="request">The <see cref="ClientUpdateRequest"/> containing the properties of the client you want to update.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The <see cref="Client"/> that was updated.</returns>
-  Task<Client> UpdateAsync(string id, ClientUpdateRequest request, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Updates a client's settings. For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    ///
+    /// Notes:
+    /// - The `client_secret` and `signing_key` attributes can only be updated with the `update:client_keys` scope.
+    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c> to configure the client with client secret (basic or post) or with no authentication method (none).
+    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
+    /// - To configure <c>client_authentication_methods</c>, the <c>update:client_credentials</c> scope is required.
+    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
+    /// - To change a client's <c>is_first_party</c> property to <c>false</c>, the <c>organization_usage</c> and <c>organization_require_behavior</c> properties must be unset.
+    /// </summary>
+    WithRawResponseTask<UpdateClientResponseContent> UpdateAsync(
+        string id,
+        UpdateClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
-  /// <summary>
-  /// Creates a new client credential.
-  /// </summary>
-  /// <param name="clientId">The id of the client for which you want to create the credential.</param>
-  /// <param name="request">The <see cref="ClientCredentialCreateRequest"/> containing the properties of the new client credential.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The new <see cref="Credential"/> that has been created.</returns>
-  Task<Credential> CreateCredentialAsync(string clientId, ClientCredentialCreateRequest request, CancellationToken cancellationToken = default);
-
-  /// <summary>
-  /// Update a client credential.
-  /// </summary>
-  /// <param name="clientId">The id of the client for which you want to update the credential.</param>
-  /// <param name="credentialId">The id of the credential to update.</param>
-  /// <param name="request">The <see cref="ClientCredentialUpdateRequest"/> containing the properties of the new client credential.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>The new <see cref="Credential"/> that has been created.</returns>
-  Task<Credential> UpdateCredentialAsync(string clientId, string credentialId, ClientCredentialUpdateRequest request, CancellationToken cancellationToken = default);
-
-  /// <summary>
-  /// Retrieves a list of all credentials for a client.
-  /// </summary>
-  /// <param name="clientId">The id of the client for which you want to retrieve the credentials.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>An <see cref="IList{Credential}"/> containing the client's credentials.</returns>
-  Task<IList<Credential>> GetAllCredentialsAsync(string clientId, CancellationToken cancellationToken = default);
-
-  /// <summary>
-  /// Retrieves a specific credential for a client.
-  /// </summary>
-  /// <param name="clientId">The id of the client for which you want to retrieve the credential.</param>
-  /// <param name="credentialId">The id of the credential to retrieve.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>A <see cref="Credential"/> containing the client's credential.</returns>
-  Task<Credential> GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default);
-
-  /// <summary>
-  /// Deletes a specific credential registered with the provided client.
-  /// </summary>
-  /// <param name="clientId">The id of the client for which you want to remove the credential.</param>
-  /// <param name="credentialId">The id of the credential to remove.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-  Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default);
-  
-  /// <summary>
-  /// Retrieve all connections that are enabled for the specified client.
-  /// </summary>
-  /// <param name="id">ID of the client for which to retrieve enabled connections.</param>
-  /// <param name="request">Specifies criteria to use when querying clients.</param>
-  /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
-  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>An <see cref="ICheckpointPagedList{Connection}"/> containing the enabled connections.</returns>
-  public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(string id, EnabledConnectionsForClientGetRequest? request, CheckpointPaginationInfo? pagination, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Rotate a client secret.
+    ///
+    /// This endpoint cannot be used with clients configured with Private Key JWT authentication method (client_authentication_methods configured with private_key_jwt). The generated secret is NOT base64 encoded.
+    ///
+    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications/rotate-client-secret">Rotate Client Secrets</see>.
+    /// </summary>
+    WithRawResponseTask<RotateClientSecretResponseContent> RotateSecretAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

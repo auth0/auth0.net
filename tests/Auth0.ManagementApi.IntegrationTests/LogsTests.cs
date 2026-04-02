@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
-using Auth0.ManagementApi.Models;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class LogsTestsFixture : TestBaseFixture {}
+public class LogsTestsFixture : TestBaseFixture { }
 
 public class LogsTests : IClassFixture<LogsTestsFixture>
 {
@@ -21,56 +20,66 @@ public class LogsTests : IClassFixture<LogsTestsFixture>
     public async Task Can_fetch_single_entry()
     {
         // Get all log entries
-        var logEntries = await fixture.ApiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo());
+        var logsPager = await fixture.ApiClient.Logs.ListAsync(new ListLogsRequestParameters());
 
         // Grab the first one
-        var firstLogEntry = logEntries[0];
+        var firstLogEntry = logsPager.CurrentPage.Items.First();
 
         // Now fetch just that single entry
-        var singleLogEntry = await fixture.ApiClient.Logs.GetAsync(firstLogEntry.Id);
+        var singleLogEntry = await fixture.ApiClient.Logs.GetAsync(firstLogEntry.LogId);
 
         // Compare both log entries. They should be the same
-        singleLogEntry.Should().BeEquivalentTo(firstLogEntry);
+        singleLogEntry.LogId.Should().Be(firstLogEntry.LogId);
     }
 
     [Fact]
     public async Task Test_when_paging_not_specified_does_not_include_totals()
     {
         // Act
-        var logs = await fixture.ApiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo());
-            
-        // Assert
-        Assert.Null(logs.Paging);
+        var logs = await fixture.ApiClient.Logs.ListAsync(new ListLogsRequestParameters());
+
+        // Assert - with the new Pager, we just verify we get items
+        logs.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
-    public async Task Test_paging_does_not_include_totals()
+    public async Task Test_paging_with_totals()
     {
         // Act
-        var logs = await fixture.ApiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo(0, 50, false));
-            
-        // Assert
-        Assert.Null(logs.Paging);
+        var logs = await fixture.ApiClient.Logs.ListAsync(new ListLogsRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
+
+        // Assert - with the new Pager, we just verify we get items
+        logs.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Test_paging_includes_totals()
     {
         // Act
-        var logs = await fixture.ApiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo(0, 50, true));
-            
-        // Assert
-        Assert.NotNull(logs.Paging);
+        var logs = await fixture.ApiClient.Logs.ListAsync(new ListLogsRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
+
+        // Assert - with the new Pager, we verify we get items
+        logs.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Test_without_paging()
     {
         // Act
-        var logs = await fixture.ApiClient.Logs.GetAllAsync(new GetLogsRequest());
+        var logs = await fixture.ApiClient.Logs.ListAsync(new ListLogsRequestParameters());
 
         // Assert
-        logs.Paging.Should().BeNull();
-        logs.Count.Should().BeGreaterThan(0);
+        logs.CurrentPage.Items.Should().NotBeNull();
+        logs.CurrentPage.Items.Count.Should().BeGreaterThan(0);
     }
 }

@@ -1,0 +1,25 @@
+{
+  "cliVersion": "4.43.0",
+  "generatorName": "fernapi/fern-csharp-sdk",
+  "generatorVersion": "2.55.2",
+  "generatorConfig": {
+    "namespace": "Auth0.ManagementApi",
+    "package-id": "Auth0.ManagementApi",
+    "client-class-name": "ManagementApiClient",
+    "base-api-exception-class-name": "ManagementApiException",
+    "base-exception-class-name": "ManagementException",
+    "generate-mock-server-tests": true,
+    "use-default-request-parameter-values": true,
+    "experimental-explicit-nullable-optional": true,
+    "use-undiscriminated-unions": true,
+    "redact-response-body-on-error": true,
+    "omit-fern-headers": true,
+    "output-path": {
+      "library": "src",
+      "test": "tests",
+      "solution": "."
+    }
+  },
+  "originGitCommit": "a81259fc42b81e7f98ad6ea2f458c597ef4e8bca",
+  "sdkVersion": "7.44.0"
+}
