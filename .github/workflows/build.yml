@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [ master, v8 ]
+    branches: [ master]
   pull_request:
-    branches: [ master, v8 ]
+    branches: [ master]
 
 env:
   AUTH0_AUTHENTICATION_API_URL: '${{ vars.AUTH0_AUTHENTICATION_API_URL }}'
