@@ -9,11 +9,13 @@
 - [Breaking Changes](#breaking-changes)
   - [NuGet Package](#nuget-package)
   - [Client Initialization](#client-initialization)
+  - [Serialization Library](#serialization-library)
   - [Request and Response Types](#request-and-response-types)
   - [Method Signatures](#method-signatures)
   - [Sub-client Organization](#sub-client-organization)
   - [Type Changes](#type-changes)
   - [Exception Handling](#exception-handling)
+  - [Pagination](#pagination)
 - [Migration Steps](#migration-steps)
 - [Examples](#examples)
   - [User Management](#user-management)
@@ -142,6 +144,40 @@ var client = new ManagementClient(new ManagementClientOptions
 | Custom HttpClient | Via `HttpClientManagementConnection` | `ManagementClientOptions.HttpClient` |
 | Custom Headers | Via `HttpClientManagementConnection` | `ManagementClientOptions.AdditionalHeaders` |
 
+### Serialization Library
+
+V8 uses **System.Text.Json** for serialization instead of **Newtonsoft.Json** (used in v7). This is a significant change that may affect your code if you:
+
+- Use `[JsonProperty]` attributes from Newtonsoft.Json on custom types passed to the SDK
+- Rely on Newtonsoft-specific serialization behaviors (e.g., default handling of `null`, camelCase conventions, or custom `JsonConverter` implementations)
+- Deserialize SDK response types with Newtonsoft.Json in your own code
+
+**v7:**
+```csharp
+using Newtonsoft.Json;
+
+// v7 models used Newtonsoft.Json attributes
+public class CustomMetadata
+{
+    [JsonProperty("custom_field")]
+    public string CustomField { get; set; }
+}
+```
+
+**v8:**
+```csharp
+using System.Text.Json.Serialization;
+
+// v8 models use System.Text.Json attributes
+public class CustomMetadata
+{
+    [JsonPropertyName("custom_field")]
+    public string CustomField { get; set; }
+}
+```
+
+> **Note:** The `Auth0.AuthenticationApi` package continues to use Newtonsoft.Json via `Auth0.Core`. Only `Auth0.ManagementApi` has moved to System.Text.Json.
+
 ### Request and Response Types
 
 V8 introduces specific request and response types for each operation, with different naming conventions from v7.
@@ -194,14 +230,14 @@ Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagin
 
 **v8:**
 ```csharp
-// Create user
-Task<CreateUserResponseContent> CreateAsync(
+// Create user (WithRawResponseTask<T> awaits to T directly; call .WithRawResponse() for metadata)
+WithRawResponseTask<CreateUserResponseContent> CreateAsync(
     CreateUserRequestContent request,
     RequestOptions? options = null,
     CancellationToken cancellationToken = default);
 
 // Get user
-Task<GetUserResponseContent> GetAsync(
+WithRawResponseTask<GetUserResponseContent> GetAsync(
     string id,
     GetUserRequestParameters request,
     RequestOptions? options = null,
@@ -361,7 +397,75 @@ catch (ManagementApiException ex)
 | 404 | `NotFoundError` |
 | 409 | `ConflictError` |
 | 429 | `TooManyRequestsError` |
+| 500 | `InternalServerError` |
+| 503 | `ServiceUnavailableError` |
 | Other | `ManagementApiException` |
+
+### Pagination
+
+V8 replaces `IPagedList<T>` with a `Pager<T>` abstraction that supports automatic pagination via `IAsyncEnumerable<T>`.
+
+**v7:**
+```csharp
+// Manual pagination with IPagedList<T>
+var request = new GetUsersRequest { Query = "email:*@example.com" };
+var pagination = new PaginationInfo(pageNo: 0, perPage: 50, includeTotals: true);
+
+IPagedList<User> users = await client.Users.GetAllAsync(request, pagination);
+int totalUsers = users.Paging.Total;  // Total count available directly
+
+foreach (var user in users)
+{
+    Console.WriteLine(user.Email);
+}
+
+// Manual next-page fetch
+var nextPage = new PaginationInfo(pageNo: 1, perPage: 50, includeTotals: true);
+IPagedList<User> page2 = await client.Users.GetAllAsync(request, nextPage);
+```
+
+**v8:**
+```csharp
+var request = new ListUsersRequestParameters
+{
+    Q = "email:*@example.com",
+    PerPage = 50,
+    IncludeTotals = true
+};
+
+var pager = await client.Users.ListAsync(request);
+
+// Option 1: Iterate through all items across all pages automatically
+// The pager fetches subsequent pages as needed
+await foreach (var user in pager)
+{
+    Console.WriteLine(user.Email);
+}
+
+// Option 2: Iterate page by page
+await foreach (var page in pager.AsPagesAsync())
+{
+    Console.WriteLine($"Page has {page.Items.Count} items");
+    foreach (var user in page.Items)
+    {
+        Console.WriteLine(user.Email);
+    }
+}
+
+// Option 3: Access just the current (first) page
+foreach (var user in pager.CurrentPage.Items)
+{
+    Console.WriteLine(user.Email);
+}
+
+// Manual page navigation
+if (pager.HasNextPage)
+{
+    var nextPage = await pager.GetNextPageAsync();
+}
+```
+
+> **Note:** Pagination parameters such as `Page`, `PerPage`, and `IncludeTotals` are now part of the `*RequestParameters` types (e.g., `ListUsersRequestParameters`) instead of being passed as a separate `PaginationInfo` object.
 
 ## Migration Steps
 
@@ -489,17 +593,29 @@ foreach (var user in users)
 var request = new ListUsersRequestParameters
 {
     SearchEngine = SearchEngineVersionsEnum.V3,
-    Q = "email:*@example.com"
+    Q = "email:*@example.com",
+    PerPage = 50,
+    IncludeTotals = true
 };
 
 var pager = await client.Users.ListAsync(request);
+
 // Iterate through all pages automatically
 await foreach (var user in pager)
 {
     Console.WriteLine(user.Email);
 }
 
-// Or access the current page directly
+// Or iterate page by page
+await foreach (var page in pager.AsPagesAsync())
+{
+    foreach (var user in page.Items)
+    {
+        Console.WriteLine(user.Email);
+    }
+}
+
+// Or access just the current (first) page
 foreach (var user in pager.CurrentPage.Items)
 {
     Console.WriteLine(user.Email);
@@ -593,7 +709,7 @@ if (headers.TryGetValue("X-Request-Id", out var requestId))
 }
 
 // For the default behavior, simply await without .WithRawResponse()
-var user = await client.Users.CreateAsync(...);
+var user = await client.Users.CreateAsync(request);
 ```
 
 ### Optional Fields for PATCH Operations
@@ -699,7 +815,13 @@ services.AddSingleton<IManagementApiClient>(provider =>
 var mockUsersClient = new Mock<IUsersClient>();
 mockUsersClient
     .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<GetUserRequestParameters>(), null, default))
-    .ReturnsAsync(new GetUserResponseContent { UserId = "user_123" });
+    .Returns(new WithRawResponseTask<GetUserResponseContent>(
+        Task.FromResult(new WithRawResponse<GetUserResponseContent>
+        {
+            Data = new GetUserResponseContent { UserId = "user_123" },
+            RawResponse = default!
+        })
+    ));
 ```
 
 ## Additional Notes
