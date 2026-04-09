@@ -65,4 +65,10 @@ public abstract class CustomDomainBase
     /// </summary>
     [JsonProperty("custom_client_ip_header")]
     public string CustomClientIpHeader { get; set; }
+
+    /// <summary>
+    /// Whether this is the default custom domain for the tenant.
+    /// </summary>
+    [JsonProperty("is_default")]
+    public bool IsDefault { get; set; }
 }

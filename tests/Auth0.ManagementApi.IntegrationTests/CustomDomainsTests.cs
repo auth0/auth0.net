@@ -9,6 +9,7 @@ using Auth0.ManagementApi.Clients;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using System.Net.Http;
 
 using FluentAssertions;
 using Moq;
@@ -241,5 +242,79 @@ public class CustomDomainsTests : IClassFixture<CustomDomainsTestsFixture>
         getConverters()[0].Should().BeAssignableTo<JsonConverter>();
         getConverters()[0].CanConvert(typeof(ICheckpointPagedList<CustomDomain>)).Should().BeTrue();
     }
-    
+
+    /// <summary>
+    /// Sets up the mock to capture the HTTP method, URI, and body passed to SendAsync.
+    /// Returns holders whose values are populated after the call under test completes.
+    /// </summary>
+    private (Func<Uri> GetUri, Func<HttpMethod> GetMethod, Func<object> GetBody) SetupSendCapture(
+        CustomDomain response = null)
+    {
+        Uri capturedUri = null;
+        HttpMethod capturedMethod = null;
+        object capturedBody = null;
+
+        _mockConnection
+            .Setup(c => c.SendAsync<CustomDomain>(
+                It.IsAny<HttpMethod>(),
+                It.IsAny<Uri>(),
+                It.IsAny<object>(),
+                It.IsAny<IDictionary<string, string>>(),
+                It.IsAny<IList<FileUploadParameter>>(),
+                It.IsAny<JsonConverter[]>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<HttpMethod, Uri, object, IDictionary<string, string>, IList<FileUploadParameter>, JsonConverter[], CancellationToken>(
+                (method, uri, body, _, _, _, _) =>
+                {
+                    capturedMethod = method;
+                    capturedUri = uri;
+                    capturedBody = body;
+                })
+            .ReturnsAsync(response ?? new CustomDomain());
+
+        return (() => capturedUri, () => capturedMethod, () => capturedBody);
+    }
+
+    [Fact]
+    public async Task GetDefaultAsync_Calls_Correct_Endpoint()
+    {
+        Uri capturedUri = null;
+        _mockConnection
+            .Setup(c => c.GetAsync<CustomDomain>(
+                It.IsAny<Uri>(),
+                It.IsAny<IDictionary<string, string>>(),
+                It.IsAny<JsonConverter[]>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<Uri, IDictionary<string, string>, JsonConverter[], CancellationToken>(
+                (uri, _, _, _) => capturedUri = uri)
+            .ReturnsAsync(new CustomDomain());
+
+        await _client.GetDefaultAsync();
+
+        capturedUri.AbsolutePath.Should().EndWith("custom-domains/default");
+    }
+
+    [Fact]
+    public async Task SetDefaultAsync_Calls_Correct_Endpoint_With_PATCH()
+    {
+        var (getUri, getMethod, _) = SetupSendCapture();
+
+        await _client.SetDefaultAsync(new CustomDomainSetDefaultRequest { Domain = "login.example.com" });
+
+        getUri().AbsolutePath.Should().EndWith("custom-domains/default");
+        getMethod().Method.Should().Be("PATCH");
+    }
+
+    [Fact]
+    public async Task SetDefaultAsync_Sends_Domain_In_Body()
+    {
+        var (_, _, getBody) = SetupSendCapture();
+
+        await _client.SetDefaultAsync(new CustomDomainSetDefaultRequest { Domain = "login.example.com" });
+
+        var body = getBody().Should().BeOfType<CustomDomainSetDefaultRequest>().Subject;
+        body.Domain.Should().Be("login.example.com");
+    }
+
+
 }
