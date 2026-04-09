@@ -77,7 +77,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                     ShowAsButton = false,
                     Options = new SelfServiceSsoConnectionConfigOptions()
                     {
-                        DomainAliases = new []{"alias1", "alias2"},
+                        DomainAliases = new []{"alias1.example.com", "alias2.example.com"},
                         IconUrl = "https://cdn2.auth0.com/styleguide/latest/lib/logos/img/favicon.png",
                         IdpInitiated = new SelfServiceSsoConnectionConfigIdpInitiated()
                         {
