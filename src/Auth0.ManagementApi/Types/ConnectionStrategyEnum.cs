@@ -20,8 +20,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
     public static readonly ConnectionStrategyEnum Bitbucket = new(Values.Bitbucket);
 
-    public static readonly ConnectionStrategyEnum Aol = new(Values.Aol);
-
     public static readonly ConnectionStrategyEnum Auth0Oidc = new(Values.Auth0Oidc);
 
     public static readonly ConnectionStrategyEnum Auth0 = new(Values.Auth0);
@@ -49,8 +47,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
     public static readonly ConnectionStrategyEnum Facebook = new(Values.Facebook);
 
     public static readonly ConnectionStrategyEnum Fitbit = new(Values.Fitbit);
-
-    public static readonly ConnectionStrategyEnum Flickr = new(Values.Flickr);
 
     public static readonly ConnectionStrategyEnum Github = new(Values.Github);
 
@@ -236,8 +232,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
         public const string Bitbucket = "bitbucket";
 
-        public const string Aol = "aol";
-
         public const string Auth0Oidc = "auth0-oidc";
 
         public const string Auth0 = "auth0";
@@ -265,8 +259,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
         public const string Facebook = "facebook";
 
         public const string Fitbit = "fitbit";
-
-        public const string Flickr = "flickr";
 
         public const string Github = "github";
 

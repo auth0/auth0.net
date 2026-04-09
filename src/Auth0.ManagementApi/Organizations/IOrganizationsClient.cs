@@ -6,6 +6,7 @@ namespace Auth0.ManagementApi;
 public partial interface IOrganizationsClient
 {
     public Auth0.ManagementApi.Organizations.IClientGrantsClient ClientGrants { get; }
+    public Auth0.ManagementApi.Organizations.IConnectionsClient Connections { get; }
     public IDiscoveryDomainsClient DiscoveryDomains { get; }
     public IEnabledConnectionsClient EnabledConnections { get; }
     public IInvitationsClient Invitations { get; }

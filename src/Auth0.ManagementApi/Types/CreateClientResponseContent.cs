@@ -320,6 +320,28 @@ public record CreateClientResponseContent : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("async_approval_notification_channels")]
     public IEnumerable<AsyncApprovalNotificationsChannelsEnum>? AsyncApprovalNotificationChannels { get; set; }
 
+    [Optional]
+    [JsonPropertyName("external_metadata_type")]
+    public ClientExternalMetadataTypeEnum? ExternalMetadataType { get; set; }
+
+    [Optional]
+    [JsonPropertyName("external_metadata_created_by")]
+    public ClientExternalMetadataCreatedByEnum? ExternalMetadataCreatedBy { get; set; }
+
+    /// <summary>
+    /// An alternate client identifier to be used during authorization flows. Only supports CIMD-based client identifiers.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("external_client_id")]
+    public string? ExternalClientId { get; set; }
+
+    /// <summary>
+    /// URL for the JSON Web Key Set (JWKS) containing the public keys used for private_key_jwt authentication. Only present for CIMD clients using private_key_jwt authentication.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("jwks_uri")]
+    public string? JwksUri { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

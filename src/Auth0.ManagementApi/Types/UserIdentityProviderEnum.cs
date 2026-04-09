@@ -20,8 +20,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
     public static readonly UserIdentityProviderEnum Bitbucket = new(Values.Bitbucket);
 
-    public static readonly UserIdentityProviderEnum Aol = new(Values.Aol);
-
     public static readonly UserIdentityProviderEnum Auth0Oidc = new(Values.Auth0Oidc);
 
     public static readonly UserIdentityProviderEnum Auth0 = new(Values.Auth0);
@@ -49,8 +47,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
     public static readonly UserIdentityProviderEnum Facebook = new(Values.Facebook);
 
     public static readonly UserIdentityProviderEnum Fitbit = new(Values.Fitbit);
-
-    public static readonly UserIdentityProviderEnum Flickr = new(Values.Flickr);
 
     public static readonly UserIdentityProviderEnum Github = new(Values.Github);
 
@@ -236,8 +232,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
         public const string Bitbucket = "bitbucket";
 
-        public const string Aol = "aol";
-
         public const string Auth0Oidc = "auth0-oidc";
 
         public const string Auth0 = "auth0";
@@ -265,8 +259,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
         public const string Facebook = "facebook";
 
         public const string Fitbit = "fitbit";
-
-        public const string Flickr = "flickr";
 
         public const string Github = "github";
 

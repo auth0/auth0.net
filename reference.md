@@ -981,6 +981,125 @@ await client.Clients.CreateAsync(new CreateClientRequestContent { Name = "name" 
 </dl>
 </details>
 
+<details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">PreviewCimdMetadataAsync</a>(PreviewCimdMetadataRequestContent { ... }) -> WithRawResponseTask&lt;PreviewCimdMetadataResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+
+      Fetches and validates a Client ID Metadata Document without creating a client.
+      Returns the raw metadata and how it would be mapped to Auth0 client fields.
+      This endpoint is useful for testing metadata URIs before creating CIMD clients.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Clients.PreviewCimdMetadataAsync(
+    new PreviewCimdMetadataRequestContent { ExternalClientId = "external_client_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PreviewCimdMetadataRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">RegisterCimdClientAsync</a>(RegisterCimdClientRequestContent { ... }) -> WithRawResponseTask&lt;RegisterCimdClientResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+
+      Idempotent registration for Client ID Metadata Document (CIMD) clients.
+      Uses external_client_id as the unique identifier for upsert operations.
+      **Create:** Returns 201 when a new client is created (requires \
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Clients.RegisterCimdClientAsync(
+    new RegisterCimdClientRequestContent { ExternalClientId = "external_client_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `RegisterCimdClientRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">GetAsync</a>(id, GetClientRequestParameters { ... }) -> WithRawResponseTask&lt;GetClientResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -2142,6 +2261,101 @@ await client.CustomDomains.CreateAsync(
 <dd>
 
 **request:** `CreateCustomDomainRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">GetDefaultAsync</a>() -> WithRawResponseTask&lt;GetDefaultDomainResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the tenant's default domain.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.CustomDomains.GetDefaultAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">SetDefaultAsync</a>(SetDefaultCustomDomainRequestContent { ... }) -> WithRawResponseTask&lt;UpdateDefaultDomainResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Set the default custom domain for the tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.CustomDomains.SetDefaultAsync(
+    new SetDefaultCustomDomainRequestContent { Domain = "domain" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SetDefaultCustomDomainRequestContent` 
     
 </dd>
 </dl>
@@ -5895,6 +6109,70 @@ await client.Prompts.UpdateSettingsAsync(new UpdateSettingsRequestContent());
 </details>
 
 ## RefreshTokens
+<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">ListAsync</a>(GetRefreshTokensRequestParameters { ... }) -> Pager&lt;RefreshTokenResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of refresh tokens for a specific user, with optional filtering by client ID. Results are sorted by credential_id ascending.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.RefreshTokens.ListAsync(
+    new GetRefreshTokensRequestParameters
+    {
+        UserId = "user_id",
+        ClientId = "client_id",
+        From = "from",
+        Take = 1,
+        Fields = "fields",
+        IncludeFields = true,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetRefreshTokensRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetRefreshTokenResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -18154,6 +18432,271 @@ await client.Organizations.ClientGrants.DeleteAsync("id", "grant_id");
 <dd>
 
 **grantId:** `string` — The Client Grant ID to remove from the organization
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Connections
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">ListAsync</a>(id, ListOrganizationAllConnectionsRequestParameters { ... }) -> Pager&lt;OrganizationAllConnectionPost&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Connections.ListAsync(
+    "id",
+    new ListOrganizationAllConnectionsRequestParameters
+    {
+        Page = 1,
+        PerPage = 1,
+        IncludeTotals = true,
+        IsEnabled = true,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationAllConnectionsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">CreateAsync</a>(id, CreateOrganizationAllConnectionRequestParameters { ... }) -> WithRawResponseTask&lt;CreateOrganizationAllConnectionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Connections.CreateAsync(
+    "id",
+    new CreateOrganizationAllConnectionRequestParameters { ConnectionId = "connection_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CreateOrganizationAllConnectionRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">GetAsync</a>(id, connectionId) -> WithRawResponseTask&lt;GetOrganizationAllConnectionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Connections.GetAsync("id", "connection_id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**connectionId:** `string` — Connection identifier.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">DeleteAsync</a>(id, connectionId)</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Connections.DeleteAsync("id", "connection_id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**connectionId:** `string` — Connection identifier.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">UpdateAsync</a>(id, connectionId, UpdateOrganizationConnectionRequestParameters { ... }) -> WithRawResponseTask&lt;UpdateOrganizationAllConnectionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Connections.UpdateAsync(
+    "id",
+    "connection_id",
+    new UpdateOrganizationConnectionRequestParameters()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**connectionId:** `string` — Connection identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateOrganizationConnectionRequestParameters` 
     
 </dd>
 </dl>

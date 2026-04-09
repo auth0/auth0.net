@@ -72,6 +72,28 @@ public partial interface IClientsClient
     );
 
     /// <summary>
+    /// Fetches and validates a Client ID Metadata Document without creating a client.
+    ///       Returns the raw metadata and how it would be mapped to Auth0 client fields.
+    ///       This endpoint is useful for testing metadata URIs before creating CIMD clients.
+    /// </summary>
+    WithRawResponseTask<PreviewCimdMetadataResponseContent> PreviewCimdMetadataAsync(
+        PreviewCimdMetadataRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Idempotent registration for Client ID Metadata Document (CIMD) clients.
+    ///       Uses external_client_id as the unique identifier for upsert operations.
+    ///       **Create:** Returns 201 when a new client is created (requires \
+    /// </summary>
+    WithRawResponseTask<RegisterCimdClientResponseContent> RegisterCimdClientAsync(
+        RegisterCimdClientRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified.
     /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
     /// <list type="bullet">

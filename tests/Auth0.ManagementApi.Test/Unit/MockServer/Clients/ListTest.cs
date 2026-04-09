@@ -101,7 +101,11 @@ public class ListTest : BaseMockServerTest
                   "resource_server_identifier": "resource_server_identifier",
                   "async_approval_notification_channels": [
                     "guardian-push"
-                  ]
+                  ],
+                  "external_metadata_type": "cimd",
+                  "external_metadata_created_by": "admin",
+                  "external_client_id": "external_client_id",
+                  "jwks_uri": "jwks_uri"
                 }
               ]
             }
