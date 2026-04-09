@@ -27,7 +27,7 @@ public record CreateDirectoryProvisioningRequestContent : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("synchronize_groups")]
-    public string? SynchronizeGroups { get; set; }
+    public SynchronizeGroupsEnum? SynchronizeGroups { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

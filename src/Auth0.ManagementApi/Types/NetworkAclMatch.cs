@@ -47,6 +47,18 @@ public record NetworkAclMatch : IJsonOnDeserialized
     [JsonPropertyName("user_agents")]
     public IEnumerable<string>? UserAgents { get; set; }
 
+    [Optional]
+    [JsonPropertyName("hostnames")]
+    public IEnumerable<string>? Hostnames { get; set; }
+
+    [Optional]
+    [JsonPropertyName("connecting_ipv4_cidrs")]
+    public IEnumerable<string>? ConnectingIpv4Cidrs { get; set; }
+
+    [Optional]
+    [JsonPropertyName("connecting_ipv6_cidrs")]
+    public IEnumerable<string>? ConnectingIpv6Cidrs { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

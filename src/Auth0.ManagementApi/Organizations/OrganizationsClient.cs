@@ -12,6 +12,7 @@ public partial class OrganizationsClient : IOrganizationsClient
     {
         _client = client;
         ClientGrants = new Auth0.ManagementApi.Organizations.ClientGrantsClient(_client);
+        Connections = new Auth0.ManagementApi.Organizations.ConnectionsClient(_client);
         DiscoveryDomains = new DiscoveryDomainsClient(_client);
         EnabledConnections = new EnabledConnectionsClient(_client);
         Invitations = new InvitationsClient(_client);
@@ -19,6 +20,8 @@ public partial class OrganizationsClient : IOrganizationsClient
     }
 
     public Auth0.ManagementApi.Organizations.IClientGrantsClient ClientGrants { get; }
+
+    public Auth0.ManagementApi.Organizations.IConnectionsClient Connections { get; }
 
     public IDiscoveryDomainsClient DiscoveryDomains { get; }
 

@@ -64,6 +64,15 @@ public class SetTest : BaseMockServerTest
                   ],
                   "user_agents": [
                     "user_agents"
+                  ],
+                  "hostnames": [
+                    "hostnames"
+                  ],
+                  "connecting_ipv4_cidrs": [
+                    "connecting_ipv4_cidrs"
+                  ],
+                  "connecting_ipv6_cidrs": [
+                    "connecting_ipv6_cidrs"
                   ]
                 },
                 "not_match": {
@@ -93,6 +102,15 @@ public class SetTest : BaseMockServerTest
                   ],
                   "user_agents": [
                     "user_agents"
+                  ],
+                  "hostnames": [
+                    "hostnames"
+                  ],
+                  "connecting_ipv4_cidrs": [
+                    "connecting_ipv4_cidrs"
+                  ],
+                  "connecting_ipv6_cidrs": [
+                    "connecting_ipv6_cidrs"
                   ]
                 },
                 "scope": "management"

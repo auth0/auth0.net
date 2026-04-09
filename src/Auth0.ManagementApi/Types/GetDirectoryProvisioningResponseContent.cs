@@ -44,7 +44,7 @@ public record GetDirectoryProvisioningResponseContent : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("synchronize_groups")]
-    public string? SynchronizeGroups { get; set; }
+    public SynchronizeGroupsEnum? SynchronizeGroups { get; set; }
 
     /// <summary>
     /// The timestamp at which the directory provisioning configuration was created
