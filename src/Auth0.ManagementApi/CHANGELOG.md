@@ -1,5 +1,11 @@
 # Change Log
 
+## [mgmt-7.47.0](https://github.com/auth0/auth0.net/tree/mgmt-7.47.0) (2026-04-09)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.46.0...mgmt-7.47.0)
+
+**Added**
+- mgmt: Adds support to GET/PATCH default Custom domain [\#958](https://github.com/auth0/auth0.net/pull/958) ([kailash-b](https://github.com/kailash-b))
+
 ## [mgmt-7.46.0](https://github.com/auth0/auth0.net/tree/mgmt-7.46.0) (2026-03-26)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.45.1...mgmt-7.46.0)
 
