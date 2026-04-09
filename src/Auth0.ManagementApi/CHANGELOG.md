@@ -1,5 +1,16 @@
 # Change Log
-## [mgmt-8.0.0](https://github.com/auth0/auth0.net/tree/mgmt-8.0.0) (2026-04-02)
+
+## [mgmt-8.1.0](https://github.com/auth0/auth0.net/tree/mgmt-8.1.0) (2026-04-09)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.0.0...mgmt-8.1.0)
+
+**Added**
+- Adds support to Get and Set Default Custom Domains [\#973](https://github.com/auth0/auth0.net/pull/973) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Adds support to manage CIMD [\#973](https://github.com/auth0/auth0.net/pull/973) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Adds new sub-client for Organization Connections endpoints [\#973](https://github.com/auth0/auth0.net/pull/973) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Removed**
+- Deprecated connection types: Flickr, AOL [\#973](https://github.com/auth0/auth0.net/pull/973) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.46.0...mgmt-8.0.0)
 
 v8 is a major release of `Auth0.ManagementApi` featuring a completely redesigned, OpenAPI-generated SDK. The Authentication API (`Auth0.AuthenticationApi`) remains **unchanged**.
