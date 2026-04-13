@@ -248,7 +248,7 @@ public partial class ExecutionsClient : IExecutionsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(flowId, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

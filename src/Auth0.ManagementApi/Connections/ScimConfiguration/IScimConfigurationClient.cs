@@ -11,7 +11,7 @@ public partial interface IScimConfigurationClient
     /// <summary>
     /// Retrieve a list of SCIM configurations of a tenant.
     /// </summary>
-    Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
+    Task<Pager<Auth0.ManagementApi.ScimConfiguration>> ListAsync(
         ListScimConfigurationsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

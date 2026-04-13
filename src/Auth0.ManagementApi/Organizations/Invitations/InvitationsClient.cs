@@ -374,7 +374,7 @@ public partial class InvitationsClient : IInvitationsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

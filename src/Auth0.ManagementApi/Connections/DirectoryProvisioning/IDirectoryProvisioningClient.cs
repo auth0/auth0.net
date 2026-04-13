@@ -11,7 +11,7 @@ public partial interface IDirectoryProvisioningClient
     /// <summary>
     /// Retrieve a list of directory provisioning configurations of a tenant.
     /// </summary>
-    Task<Pager<global::Auth0.ManagementApi.DirectoryProvisioning>> ListAsync(
+    Task<Pager<Auth0.ManagementApi.DirectoryProvisioning>> ListAsync(
         ListDirectoryProvisioningsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

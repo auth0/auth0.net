@@ -631,7 +631,7 @@ public partial class ModulesClient : IModulesClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken),
+                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {
@@ -803,7 +803,7 @@ public partial class ModulesClient : IModulesClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListActionsInternalAsync(id, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {
