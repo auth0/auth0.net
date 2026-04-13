@@ -143,7 +143,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
+        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -169,7 +169,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
+        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -218,7 +218,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
+        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -251,7 +251,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
+        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, null, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -279,7 +279,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken).ConfigureAwait(false);
 
         await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm,
-            request.ClientSecret).ConfigureAwait(false);
+            request.ClientSecret, null, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -311,7 +311,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
         ).ConfigureAwait(false);
 
         await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm,
-            request.ClientSecret).ConfigureAwait(false);
+            request.ClientSecret, null, request.Nonce).ConfigureAwait(false);
 
         return response;
     }
@@ -335,7 +335,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, null)
+        await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, null, null)
             .ConfigureAwait(false);
 
         return response;
@@ -700,17 +700,27 @@ public class AuthenticationApiClient : IAuthenticationApiClient
         GC.SuppressFinalize(this);
     }
 
-    private async Task AssertIdTokenValidIfExisting(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null)
+    private async Task AssertIdTokenValidIfExisting(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null, string nonce = null)
     {
         if (!string.IsNullOrEmpty(idToken))
         {
-            await AssertIdTokenValid(idToken, audience, algorithm, clientSecret, organization).ConfigureAwait(false);
+            await AssertIdTokenValid(idToken, audience, algorithm, clientSecret, organization, nonce).ConfigureAwait(false);
         }
     }
 
-    private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null)
+    /// <summary>
+    /// Validates that an ID token meets the specified requirements.
+    /// </summary>
+    /// <param name="idToken">The ID token to validate.</param>
+    /// <param name="audience">The expected audience (aud claim).</param>
+    /// <param name="algorithm">The expected signing algorithm.</param>
+    /// <param name="clientSecret">Client secret used for HS256 signature validation; null for asymmetric algorithms.</param>
+    /// <param name="organization">Optional organization (org_id/org_name) to validate; null skips org validation.</param>
+    /// <param name="nonce">Optional nonce that must match the nonce claim in the ID token; null skips nonce validation.</param>
+    private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null, string nonce = null)
     {
         var requirements = new IdTokenRequirements(algorithm, BaseUri.AbsoluteUri, audience, idTokenValidationLeeway, null, organization);
+        requirements.Nonce = nonce;
         return idTokenValidator.Assert(requirements, idToken, clientSecret);
     }
 
