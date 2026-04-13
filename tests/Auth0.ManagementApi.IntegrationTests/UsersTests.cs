@@ -232,6 +232,7 @@ public class UsersTests : IClassFixture<UsersTestsFixture>
 
         // Assert
         usersPager.CurrentPage.Items.Should().NotBeNull();
+        ((ListUsersOffsetPaginatedResponseContent) usersPager.CurrentPage.Response).Total.Should().BeGreaterThan(0);
     }
 
     [Fact]
