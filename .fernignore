@@ -42,8 +42,6 @@ tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.Custom.props
 tests/Auth0.ManagementApi.Test/Unit/MockServer/Auth0ClientHeaderTest.cs
 tests/Auth0.ManagementApi.Test/Wrapper
 
-src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs
-src/Auth0.ManagementApi/Connections/DirectoryProvisioning/IDirectoryProvisioningClient.cs
 src/Auth0.ManagementApi/Types/ResourceServerTokenEncryptionKey.cs
 
 src/Auth0.ManagementApi/Wrapper
