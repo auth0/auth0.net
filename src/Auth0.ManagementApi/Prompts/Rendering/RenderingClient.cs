@@ -448,7 +448,7 @@ public partial class RenderingClient : IRenderingClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken),
+                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

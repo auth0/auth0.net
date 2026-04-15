@@ -247,7 +247,7 @@ public partial class BindingsClient : IBindingsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(triggerId, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

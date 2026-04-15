@@ -593,7 +593,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken),
+                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

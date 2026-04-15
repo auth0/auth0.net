@@ -214,7 +214,7 @@ public partial class MembersClient : IMembersClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

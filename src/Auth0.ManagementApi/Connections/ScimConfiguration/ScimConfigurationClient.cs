@@ -477,7 +477,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     ///     new ListScimConfigurationsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
+    public async Task<Pager<Auth0.ManagementApi.ScimConfiguration>> ListAsync(
         ListScimConfigurationsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -492,13 +492,13 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             RequestOptions?,
             ListScimConfigurationsResponseContent,
             string?,
-            ManagementApi.ScimConfiguration
+            Auth0.ManagementApi.ScimConfiguration
         >
             .CreateInstanceAsync(
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken),
+                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

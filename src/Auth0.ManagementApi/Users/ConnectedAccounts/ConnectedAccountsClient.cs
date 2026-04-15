@@ -157,7 +157,7 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

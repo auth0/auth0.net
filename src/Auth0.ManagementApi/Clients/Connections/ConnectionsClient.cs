@@ -185,7 +185,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await GetInternalAsync(id, request, options, cancellationToken)
-                        .ConfigureAwait(false),
+                        .WithRawResponse(),
                 (request, cursor) =>
                 {
                     request.From = cursor;

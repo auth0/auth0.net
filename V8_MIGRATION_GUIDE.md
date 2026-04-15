@@ -435,6 +435,12 @@ var request = new ListUsersRequestParameters
 
 var pager = await client.Users.ListAsync(request);
 
+// Access total count from the paginated response metadata (IncludeTotals must be true).
+// Note: `Total` is the server-side total across all pages, not just the current page's item count.
+var firstPageResponse = (ListUsersOffsetPaginatedResponseContent?)pager.CurrentPage.Response;
+var totalUsers = firstPageResponse?.Total;
+Console.WriteLine($"Total users: {totalUsers}");
+
 // Option 1: Iterate through all items across all pages automatically
 // The pager fetches subsequent pages as needed
 await foreach (var user in pager)
@@ -599,6 +605,12 @@ var request = new ListUsersRequestParameters
 };
 
 var pager = await client.Users.ListAsync(request);
+
+// Access total count from the paginated response metadata (IncludeTotals must be true).
+// Note: `Total` is the server-side total across all pages, not just the current page's item count.
+var firstPageResponse = (ListUsersOffsetPaginatedResponseContent?)pager.CurrentPage.Response;
+var totalUsers = firstPageResponse?.Total;
+Console.WriteLine($"Total users: {totalUsers}");
 
 // Iterate through all pages automatically
 await foreach (var user in pager)
