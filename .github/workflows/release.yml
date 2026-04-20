@@ -104,7 +104,7 @@ jobs:
         run: docfx docs-source/docfx.json        
 
       - name: Uploading Artifacts
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 
