@@ -46,3 +46,8 @@ src/Auth0.ManagementApi/Types/ResourceServerTokenEncryptionKey.cs
 
 src/Auth0.ManagementApi/Wrapper
 src/Auth0.ManagementApi/CHANGELOG.md
+
+src/Auth0.ManagementApi/Core/CustomDomainInterceptor.cs
+src/Auth0.ManagementApi/CustomDomainHeader.cs
+tests/Auth0.ManagementApi.Test/Core/CustomDomainInterceptorTest.cs
+tests/Auth0.ManagementApi.Test/Unit/MockServer/CustomDomainHeaderTest.cs
