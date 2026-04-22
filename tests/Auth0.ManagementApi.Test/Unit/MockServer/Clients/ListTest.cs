@@ -98,6 +98,14 @@ public class ListTest : BaseMockServerTest
                     "okta_oin_client_id": "okta_oin_client_id",
                     "admin_login_domain": "admin_login_domain"
                   },
+                  "my_organization_configuration": {
+                    "allowed_strategies": [
+                      "pingfederate"
+                    ],
+                    "connection_deletion_behavior": "allow"
+                  },
+                  "third_party_security_mode": "strict",
+                  "redirection_policy": "allow_always",
                   "resource_server_identifier": "resource_server_identifier",
                   "async_approval_notification_channels": [
                     "guardian-push"

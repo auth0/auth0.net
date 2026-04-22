@@ -8,22 +8,54 @@ namespace Auth0.ManagementApi;
 [Serializable]
 public readonly record struct EventStreamDeliveryEventTypeEnum : IStringEnum
 {
-    public static readonly EventStreamDeliveryEventTypeEnum UserCreated = new(Values.UserCreated);
+    public static readonly EventStreamDeliveryEventTypeEnum GroupCreated = new(Values.GroupCreated);
 
-    public static readonly EventStreamDeliveryEventTypeEnum UserDeleted = new(Values.UserDeleted);
+    public static readonly EventStreamDeliveryEventTypeEnum GroupDeleted = new(Values.GroupDeleted);
 
-    public static readonly EventStreamDeliveryEventTypeEnum UserUpdated = new(Values.UserUpdated);
+    public static readonly EventStreamDeliveryEventTypeEnum GroupMemberAdded = new(
+        Values.GroupMemberAdded
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum GroupMemberDeleted = new(
+        Values.GroupMemberDeleted
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum GroupRoleAssigned = new(
+        Values.GroupRoleAssigned
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum GroupRoleDeleted = new(
+        Values.GroupRoleDeleted
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum GroupUpdated = new(Values.GroupUpdated);
+
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionAdded = new(
+        Values.OrganizationConnectionAdded
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionRemoved = new(
+        Values.OrganizationConnectionRemoved
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionUpdated = new(
+        Values.OrganizationConnectionUpdated
+    );
 
     public static readonly EventStreamDeliveryEventTypeEnum OrganizationCreated = new(
         Values.OrganizationCreated
     );
 
-    public static readonly EventStreamDeliveryEventTypeEnum OrganizationUpdated = new(
-        Values.OrganizationUpdated
-    );
-
     public static readonly EventStreamDeliveryEventTypeEnum OrganizationDeleted = new(
         Values.OrganizationDeleted
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationGroupRoleAssigned = new(
+        Values.OrganizationGroupRoleAssigned
+    );
+
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationGroupRoleDeleted = new(
+        Values.OrganizationGroupRoleDeleted
     );
 
     public static readonly EventStreamDeliveryEventTypeEnum OrganizationMemberAdded = new(
@@ -42,31 +74,15 @@ public readonly record struct EventStreamDeliveryEventTypeEnum : IStringEnum
         Values.OrganizationMemberRoleDeleted
     );
 
-    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionAdded = new(
-        Values.OrganizationConnectionAdded
+    public static readonly EventStreamDeliveryEventTypeEnum OrganizationUpdated = new(
+        Values.OrganizationUpdated
     );
 
-    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionUpdated = new(
-        Values.OrganizationConnectionUpdated
-    );
+    public static readonly EventStreamDeliveryEventTypeEnum UserCreated = new(Values.UserCreated);
 
-    public static readonly EventStreamDeliveryEventTypeEnum OrganizationConnectionRemoved = new(
-        Values.OrganizationConnectionRemoved
-    );
+    public static readonly EventStreamDeliveryEventTypeEnum UserDeleted = new(Values.UserDeleted);
 
-    public static readonly EventStreamDeliveryEventTypeEnum GroupCreated = new(Values.GroupCreated);
-
-    public static readonly EventStreamDeliveryEventTypeEnum GroupUpdated = new(Values.GroupUpdated);
-
-    public static readonly EventStreamDeliveryEventTypeEnum GroupDeleted = new(Values.GroupDeleted);
-
-    public static readonly EventStreamDeliveryEventTypeEnum GroupMemberAdded = new(
-        Values.GroupMemberAdded
-    );
-
-    public static readonly EventStreamDeliveryEventTypeEnum GroupMemberDeleted = new(
-        Values.GroupMemberDeleted
-    );
+    public static readonly EventStreamDeliveryEventTypeEnum UserUpdated = new(Values.UserUpdated);
 
     public EventStreamDeliveryEventTypeEnum(string value)
     {
@@ -165,17 +181,33 @@ public readonly record struct EventStreamDeliveryEventTypeEnum : IStringEnum
     [Serializable]
     public static class Values
     {
-        public const string UserCreated = "user.created";
+        public const string GroupCreated = "group.created";
 
-        public const string UserDeleted = "user.deleted";
+        public const string GroupDeleted = "group.deleted";
 
-        public const string UserUpdated = "user.updated";
+        public const string GroupMemberAdded = "group.member.added";
+
+        public const string GroupMemberDeleted = "group.member.deleted";
+
+        public const string GroupRoleAssigned = "group.role.assigned";
+
+        public const string GroupRoleDeleted = "group.role.deleted";
+
+        public const string GroupUpdated = "group.updated";
+
+        public const string OrganizationConnectionAdded = "organization.connection.added";
+
+        public const string OrganizationConnectionRemoved = "organization.connection.removed";
+
+        public const string OrganizationConnectionUpdated = "organization.connection.updated";
 
         public const string OrganizationCreated = "organization.created";
 
-        public const string OrganizationUpdated = "organization.updated";
-
         public const string OrganizationDeleted = "organization.deleted";
+
+        public const string OrganizationGroupRoleAssigned = "organization.group.role.assigned";
+
+        public const string OrganizationGroupRoleDeleted = "organization.group.role.deleted";
 
         public const string OrganizationMemberAdded = "organization.member.added";
 
@@ -185,20 +217,12 @@ public readonly record struct EventStreamDeliveryEventTypeEnum : IStringEnum
 
         public const string OrganizationMemberRoleDeleted = "organization.member.role.deleted";
 
-        public const string OrganizationConnectionAdded = "organization.connection.added";
+        public const string OrganizationUpdated = "organization.updated";
 
-        public const string OrganizationConnectionUpdated = "organization.connection.updated";
+        public const string UserCreated = "user.created";
 
-        public const string OrganizationConnectionRemoved = "organization.connection.removed";
+        public const string UserDeleted = "user.deleted";
 
-        public const string GroupCreated = "group.created";
-
-        public const string GroupUpdated = "group.updated";
-
-        public const string GroupDeleted = "group.deleted";
-
-        public const string GroupMemberAdded = "group.member.added";
-
-        public const string GroupMemberDeleted = "group.member.deleted";
+        public const string UserUpdated = "user.updated";
     }
 }

@@ -24,6 +24,7 @@ public class ListTest : BaseMockServerTest
                   ],
                   "organization_usage": "deny",
                   "allow_any_organization": true,
+                  "default_for": "third_party_clients",
                   "is_system": true,
                   "subject_type": "client",
                   "authorization_details_types": [
@@ -45,6 +46,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("audience", "audience")
                     .WithParam("client_id", "client_id")
                     .WithParam("subject_type", "client")
+                    .WithParam("default_for", "third_party_clients")
                     .UsingGet()
             )
             .RespondWith(
@@ -63,6 +65,7 @@ public class ListTest : BaseMockServerTest
                 ClientId = "client_id",
                 AllowAnyOrganization = true,
                 SubjectType = ClientGrantSubjectTypeEnum.Client,
+                DefaultFor = ClientGrantDefaultForEnum.ThirdPartyClients,
             }
         );
         await foreach (var item in items)

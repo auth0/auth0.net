@@ -63,4 +63,24 @@ public partial interface IDirectoryProvisioningClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Retrieve the configured synchronized groups for a connection directory provisioning configuration.
+    /// </summary>
+    Task<Pager<SynchronizedGroupPayload>> ListSynchronizedGroupsAsync(
+        string id,
+        ListSynchronizedGroupsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Create or replace the selected groups for a connection directory provisioning configuration.
+    /// </summary>
+    Task SetAsync(
+        string id,
+        ReplaceSynchronizedGroupsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

@@ -53,6 +53,10 @@ public record ClientSessionTransferConfiguration : IJsonOnDeserialized
     [JsonPropertyName("enforce_online_refresh_tokens")]
     public bool? EnforceOnlineRefreshTokens { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("delegation")]
+    public Optional<ClientSessionTransferDelegationConfiguration?> Delegation { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

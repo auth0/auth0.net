@@ -54,7 +54,11 @@ public class UpdateTest : BaseMockServerTest
                 ],
                 "enforce_device_binding": "ip",
                 "allow_refresh_token": true,
-                "enforce_online_refresh_tokens": true
+                "enforce_online_refresh_tokens": true,
+                "delegation": {
+                  "allow_delegated_access": true,
+                  "enforce_device_binding": "ip"
+                }
               },
               "oidc_logout": {
                 "backchannel_logout_urls": [
@@ -361,6 +365,16 @@ public class UpdateTest : BaseMockServerTest
                 "admin_login_domain": "admin_login_domain",
                 "oin_submission_id": "oin_submission_id"
               },
+              "my_organization_configuration": {
+                "connection_profile_id": "connection_profile_id",
+                "user_attribute_profile_id": "user_attribute_profile_id",
+                "allowed_strategies": [
+                  "pingfederate"
+                ],
+                "connection_deletion_behavior": "allow"
+              },
+              "third_party_security_mode": "strict",
+              "redirection_policy": "allow_always",
               "resource_server_identifier": "resource_server_identifier",
               "async_approval_notification_channels": [
                 "guardian-push"

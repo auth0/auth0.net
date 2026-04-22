@@ -646,7 +646,7 @@ public partial class EventStreamsClient : IEventStreamsClient
     ///     "id",
     ///     new CreateEventStreamTestEventRequestContent
     ///     {
-    ///         EventType = EventStreamTestEventTypeEnum.UserCreated,
+    ///         EventType = EventStreamTestEventTypeEnum.GroupCreated,
     ///     }
     /// );
     /// </code></example>

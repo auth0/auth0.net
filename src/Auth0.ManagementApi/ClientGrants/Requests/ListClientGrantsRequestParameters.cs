@@ -42,6 +42,12 @@ public record ListClientGrantsRequestParameters
     [JsonIgnore]
     public Optional<ClientGrantSubjectTypeEnum?> SubjectType { get; set; }
 
+    /// <summary>
+    /// Applies this client grant as the default for all clients in the specified group. The only accepted value is `third_party_clients`, which applies the grant to all third-party clients. Per-client grants for the same audience take precedence. Mutually exclusive with `client_id`.
+    /// </summary>
+    [JsonIgnore]
+    public Optional<ClientGrantDefaultForEnum?> DefaultFor { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

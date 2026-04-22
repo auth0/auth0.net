@@ -309,6 +309,18 @@ public record UpdateClientResponseContent : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("express_configuration")]
     public ExpressConfiguration? ExpressConfiguration { get; set; }
 
+    [Optional]
+    [JsonPropertyName("my_organization_configuration")]
+    public ClientMyOrganizationResponseConfiguration? MyOrganizationConfiguration { get; set; }
+
+    [Optional]
+    [JsonPropertyName("third_party_security_mode")]
+    public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
+
+    [Optional]
+    [JsonPropertyName("redirection_policy")]
+    public ClientRedirectionPolicyEnum? RedirectionPolicy { get; set; }
+
     /// <summary>
     /// The identifier of the resource server that this client is linked to.
     /// </summary>
