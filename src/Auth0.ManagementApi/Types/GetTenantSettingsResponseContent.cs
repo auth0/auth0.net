@@ -212,6 +212,13 @@ public record GetTenantSettingsResponseContent : IJsonOnDeserialized
     public TenantSettingsResourceParameterProfile? ResourceParameterProfile { get; set; }
 
     /// <summary>
+    /// Whether the authorization server supports retrieving client metadata from a client_id URL.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("client_id_metadata_document_supported")]
+    public bool? ClientIdMetadataDocumentSupported { get; set; }
+
+    /// <summary>
     /// Whether Phone Consolidated Experience is enabled for this tenant.
     /// </summary>
     [Optional]
@@ -224,6 +231,10 @@ public record GetTenantSettingsResponseContent : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("enable_ai_guide")]
     public bool? EnableAiGuide { get; set; }
+
+    [Optional]
+    [JsonPropertyName("dynamic_client_registration_security_mode")]
+    public TenantSettingsDynamicClientRegistrationSecurityMode? DynamicClientRegistrationSecurityMode { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

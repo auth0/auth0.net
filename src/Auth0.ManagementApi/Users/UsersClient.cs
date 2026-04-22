@@ -710,7 +710,7 @@ public partial class UsersClient : IUsersClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

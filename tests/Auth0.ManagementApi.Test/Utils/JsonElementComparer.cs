@@ -92,15 +92,8 @@ public class JsonElementComparer : IEqualityComparer<JsonElement>
             case JsonValueKind.Number:
                 if (x.GetDecimal() != y.GetDecimal())
                 {
-                    if (x.GetDouble() != y.GetDouble())
-                    {
-                        if (x.GetSingle() != y.GetSingle())
-                        {
-                            _failurePath =
-                                $"{path}: Expected {x.GetDecimal()} but got {y.GetDecimal()}";
-                            return false;
-                        }
-                    }
+                    _failurePath = $"{path}: Expected {x.GetDecimal()} but got {y.GetDecimal()}";
+                    return false;
                 }
 
                 return true;

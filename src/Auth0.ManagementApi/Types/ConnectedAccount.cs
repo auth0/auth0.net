@@ -58,6 +58,13 @@ public record ConnectedAccount : IJsonOnDeserialized
     [JsonPropertyName("expires_at")]
     public DateTime? ExpiresAt { get; set; }
 
+    /// <summary>
+    /// The identifier of the organization associated with the connected account.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("organization_id")]
+    public string? OrganizationId { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

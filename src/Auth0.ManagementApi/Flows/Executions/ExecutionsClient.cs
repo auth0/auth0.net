@@ -248,7 +248,7 @@ public partial class ExecutionsClient : IExecutionsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(flowId, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;
@@ -265,7 +265,16 @@ public partial class ExecutionsClient : IExecutionsClient
     /// await client.Flows.Executions.GetAsync(
     ///     "flow_id",
     ///     "execution_id",
-    ///     new GetFlowExecutionRequestParameters()
+    ///     new GetFlowExecutionRequestParameters
+    ///     {
+    ///         Hydrate =
+    ///         [
+    ///             new List&lt;GetFlowExecutionRequestParametersHydrateEnum?&gt;()
+    ///             {
+    ///                 GetFlowExecutionRequestParametersHydrateEnum.Debug,
+    ///             },
+    ///         ],
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<GetFlowExecutionResponseContent> GetAsync(

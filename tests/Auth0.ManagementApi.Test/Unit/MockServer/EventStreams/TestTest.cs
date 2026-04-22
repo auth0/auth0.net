@@ -14,7 +14,7 @@ public class TestTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "event_type": "user.created"
+              "event_type": "group.created"
             }
             """;
 
@@ -23,7 +23,7 @@ public class TestTest : BaseMockServerTest
               "id": "id",
               "event_stream_id": "event_stream_id",
               "status": "failed",
-              "event_type": "user.created",
+              "event_type": "group.created",
               "attempts": [
                 {
                   "status": "failed",
@@ -62,7 +62,7 @@ public class TestTest : BaseMockServerTest
             "id",
             new CreateEventStreamTestEventRequestContent
             {
-                EventType = EventStreamTestEventTypeEnum.UserCreated,
+                EventType = EventStreamTestEventTypeEnum.GroupCreated,
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

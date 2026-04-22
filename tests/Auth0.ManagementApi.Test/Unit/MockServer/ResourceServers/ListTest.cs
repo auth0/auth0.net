@@ -73,6 +73,7 @@ public class ListTest : BaseMockServerTest
         var items = await Client.ResourceServers.ListAsync(
             new ListResourceServerRequestParameters
             {
+                Identifiers = [new List<string?>() { "identifiers" }],
                 Page = 1,
                 PerPage = 1,
                 IncludeTotals = true,

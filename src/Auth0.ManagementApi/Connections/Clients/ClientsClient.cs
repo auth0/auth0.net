@@ -164,7 +164,7 @@ public partial class ClientsClient : IClientsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await GetInternalAsync(id, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;

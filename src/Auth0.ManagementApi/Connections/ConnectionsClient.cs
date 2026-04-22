@@ -466,6 +466,7 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     {
     ///         From = "from",
     ///         Take = 1,
+    ///         Strategy = [new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad }],
     ///         Name = "name",
     ///         Fields = "fields",
     ///         IncludeFields = true,
@@ -493,7 +494,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 (request, cursor) =>
                 {
                     request.From = cursor;

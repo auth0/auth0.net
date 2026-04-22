@@ -298,8 +298,20 @@ public record UpdateClientRequestContent
     public Optional<ExpressConfigurationOrNull?> ExpressConfiguration { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("my_organization_configuration")]
+    public Optional<ClientMyOrganizationPatchConfiguration?> MyOrganizationConfiguration { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("async_approval_notification_channels")]
     public Optional<IEnumerable<AsyncApprovalNotificationsChannelsEnum>?> AsyncApprovalNotificationChannels { get; set; }
+
+    [Optional]
+    [JsonPropertyName("third_party_security_mode")]
+    public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
+
+    [Optional]
+    [JsonPropertyName("redirection_policy")]
+    public ClientRedirectionPolicyEnum? RedirectionPolicy { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

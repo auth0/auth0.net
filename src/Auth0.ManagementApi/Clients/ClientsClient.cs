@@ -795,7 +795,7 @@ public partial class ClientsClient : IClientsClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

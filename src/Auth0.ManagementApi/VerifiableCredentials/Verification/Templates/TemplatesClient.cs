@@ -431,7 +431,7 @@ public partial class TemplatesClient : ITemplatesClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 (request, cursor) =>
                 {
                     request.From = cursor;

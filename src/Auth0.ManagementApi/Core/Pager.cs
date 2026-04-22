@@ -95,7 +95,7 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
     private readonly SendRequest _sendRequest;
     private readonly ParseApiCallDelegate _parseApiCall;
 
-    internal delegate global::System.Threading.Tasks.Task<WithRawResponse<TResponse>> SendRequest(
+    internal delegate global::System.Threading.Tasks.Task<TResponse> SendRequest(
         TRequest request,
         TRequestOptions? options,
         CancellationToken cancellationToken
@@ -115,7 +115,7 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
         TRequest? nextRequest,
         bool hasNextPage,
         Page<TItem> page
-    ) ParseApiCallDelegate(TRequest request, WithRawResponse<TResponse> wrappedResponse);
+    ) ParseApiCallDelegate(TRequest request, TResponse response);
 
     public Page<TItem> CurrentPage { get; private set; }
     public bool HasNextPage { get; private set; }
@@ -152,8 +152,7 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
     )
     {
         request ??= Activator.CreateInstance<TRequest>();
-        var wrappedResponse = await sendRequest(request, options, cancellationToken)
-            .ConfigureAwait(false);
+        var response = await sendRequest(request, options, cancellationToken).ConfigureAwait(false);
         var parseApiCall = CreateParseApiCallDelegate(
             getItems,
             getOffset,
@@ -161,7 +160,7 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
             getStep,
             getHasNextPage
         );
-        var (nextRequest, hasNextPage, page) = parseApiCall(request, wrappedResponse);
+        var (nextRequest, hasNextPage, page) = parseApiCall(request, response);
         return new OffsetPager<TRequest, TRequestOptions, TResponse, TOffset, TStep, TItem>(
             nextRequest,
             options,
@@ -180,10 +179,10 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
         GetHasNextPage? getHasNextPage
     )
     {
-        return (request, wrappedResponse) =>
+        return (request, response) =>
             ParseApiCall(
                 request,
-                wrappedResponse,
+                response,
                 getItems,
                 getOffset,
                 setOffset,
@@ -198,9 +197,9 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
         CancellationToken cancellationToken = default
     )
     {
-        var wrappedResponse = await _sendRequest(request, options, cancellationToken)
+        var response = await _sendRequest(request, options, cancellationToken)
             .ConfigureAwait(false);
-        var (nextRequest, hasNextPageFlag, page) = _parseApiCall(request, wrappedResponse);
+        var (nextRequest, hasNextPageFlag, page) = _parseApiCall(request, response);
         _request = nextRequest;
         HasNextPage = hasNextPageFlag;
         CurrentPage = page;
@@ -209,7 +208,7 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
 
     private static (TRequest? nextRequest, bool hasNextPage, Page<TItem> page) ParseApiCall(
         TRequest request,
-        WithRawResponse<TResponse> wrappedResponse,
+        TResponse response,
         GetItems getItems,
         GetOffset getOffset,
         SetOffset setOffset,
@@ -217,16 +216,8 @@ internal sealed class OffsetPager<TRequest, TRequestOptions, TResponse, TOffset,
         GetHasNextPage? getHasNextPage
     )
     {
-        var response = wrappedResponse.Data;
         var items = getItems(response);
-        var page = items is not null
-            ? new Page<TItem>(
-                items,
-                response,
-                wrappedResponse.RawResponse.StatusCode,
-                wrappedResponse.RawResponse.Headers
-            )
-            : Page<TItem>.Empty;
+        var page = items is not null ? new Page<TItem>(items) : Page<TItem>.Empty;
         var offset = getOffset(request);
         var hasNextPage = getHasNextPage?.Invoke(response) ?? items?.Count > 0;
         if (!hasNextPage)
@@ -369,7 +360,7 @@ internal sealed class CursorPager<TRequest, TRequestOptions, TResponse, TCursor,
     /// <summary>
     /// Delegate for sending a request.
     /// </summary>
-    internal delegate global::System.Threading.Tasks.Task<WithRawResponse<TResponse>> SendRequest(
+    internal delegate global::System.Threading.Tasks.Task<TResponse> SendRequest(
         TRequest request,
         TRequestOptions? options,
         CancellationToken cancellationToken
@@ -394,7 +385,7 @@ internal sealed class CursorPager<TRequest, TRequestOptions, TResponse, TCursor,
         TRequest? nextRequest,
         bool hasNextPage,
         Page<TItem> page
-    ) ParseApiCallDelegate(TRequest request, WithRawResponse<TResponse> wrappedResponse);
+    ) ParseApiCallDelegate(TRequest request, TResponse response);
 
     /// <summary>
     /// The current <see cref="Page{TItem}"/>.
@@ -439,10 +430,9 @@ internal sealed class CursorPager<TRequest, TRequestOptions, TResponse, TCursor,
     )
     {
         request ??= Activator.CreateInstance<TRequest>();
-        var wrappedResponse = await sendRequest(request, options, cancellationToken)
-            .ConfigureAwait(false);
+        var response = await sendRequest(request, options, cancellationToken).ConfigureAwait(false);
         var parseApiCall = CreateParseApiCallDelegate(getItems, getNextCursor, setCursor);
-        var (nextRequest, hasNextPage, page) = parseApiCall(request, wrappedResponse);
+        var (nextRequest, hasNextPage, page) = parseApiCall(request, response);
         return new CursorPager<TRequest, TRequestOptions, TResponse, TCursor, TItem>(
             nextRequest,
             options,
@@ -459,18 +449,10 @@ internal sealed class CursorPager<TRequest, TRequestOptions, TResponse, TCursor,
         SetCursor setCursor
     )
     {
-        return (request, wrappedResponse) =>
+        return (request, response) =>
         {
-            var response = wrappedResponse.Data;
             var items = getItems(response);
-            var page = items is not null
-                ? new Page<TItem>(
-                    items,
-                    response,
-                    wrappedResponse.RawResponse.StatusCode,
-                    wrappedResponse.RawResponse.Headers
-                )
-                : Page<TItem>.Empty;
+            var page = items is not null ? new Page<TItem>(items) : Page<TItem>.Empty;
             var cursor = getNextCursor(response);
             var hasNextPage = cursor switch
             {
@@ -493,9 +475,9 @@ internal sealed class CursorPager<TRequest, TRequestOptions, TResponse, TCursor,
         CancellationToken cancellationToken = default
     )
     {
-        var wrappedResponse = await _sendRequest(request, options, cancellationToken)
+        var response = await _sendRequest(request, options, cancellationToken)
             .ConfigureAwait(false);
-        var (nextRequest, hasNextPage, page) = _parseApiCall(request, wrappedResponse);
+        var (nextRequest, hasNextPage, page) = _parseApiCall(request, response);
         _request = nextRequest;
         HasNextPage = hasNextPage;
         CurrentPage = page;

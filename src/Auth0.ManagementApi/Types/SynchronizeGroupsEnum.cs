@@ -12,6 +12,8 @@ public readonly record struct SynchronizeGroupsEnum : IStringEnum
 
     public static readonly SynchronizeGroupsEnum Off = new(Values.Off);
 
+    public static readonly SynchronizeGroupsEnum Selected = new(Values.Selected);
+
     public SynchronizeGroupsEnum(string value)
     {
         Value = value;
@@ -111,5 +113,7 @@ public readonly record struct SynchronizeGroupsEnum : IStringEnum
         public const string All = "all";
 
         public const string Off = "off";
+
+        public const string Selected = "selected";
     }
 }

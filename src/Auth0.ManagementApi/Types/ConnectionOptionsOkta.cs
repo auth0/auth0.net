@@ -48,6 +48,10 @@ public record ConnectionOptionsOkta : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("domain_aliases")]
     public IEnumerable<string>? DomainAliases { get; set; }
 
+    [Optional]
+    [JsonPropertyName("dpop_signing_alg")]
+    public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("federated_connections_access_tokens")]
     public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }

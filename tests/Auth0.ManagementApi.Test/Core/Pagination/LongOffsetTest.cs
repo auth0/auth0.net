@@ -1,5 +1,4 @@
 using Auth0.ManagementApi.Core;
-using global::System.Net;
 using NUnit.Framework;
 using SystemTask = global::System.Threading.Tasks.Task;
 
@@ -30,7 +29,7 @@ public class LongOffsetTest
             (_, _, _) =>
             {
                 responses.MoveNext();
-                return SystemTask.FromResult(Wrap(responses.Current));
+                return SystemTask.FromResult(responses.Current);
             },
             request => request?.Pagination?.Page ?? 0,
             (request, offset) =>
@@ -77,16 +76,4 @@ public class LongOffsetTest
     {
         public IEnumerable<string>? Items { get; set; }
     }
-
-    private static WithRawResponse<Response> Wrap(Response response) =>
-        new()
-        {
-            Data = response,
-            RawResponse = new RawResponse
-            {
-                StatusCode = HttpStatusCode.OK,
-                Url = new Uri("https://localhost"),
-                Headers = default,
-            },
-        };
 }

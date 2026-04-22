@@ -155,6 +155,7 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     "id",
     ///     new ConnectionsGetRequest
     ///     {
+    ///         Strategy = [new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad }],
     ///         From = "from",
     ///         Take = 1,
     ///         Fields = "fields",
@@ -185,7 +186,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await GetInternalAsync(id, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;

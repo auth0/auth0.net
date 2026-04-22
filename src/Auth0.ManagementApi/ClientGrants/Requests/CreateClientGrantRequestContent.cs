@@ -20,6 +20,10 @@ public record CreateClientGrantRequestContent
     public required string Audience { get; set; }
 
     [Optional]
+    [JsonPropertyName("default_for")]
+    public ClientGrantDefaultForEnum? DefaultFor { get; set; }
+
+    [Optional]
     [JsonPropertyName("organization_usage")]
     public ClientGrantOrganizationUsageEnum? OrganizationUsage { get; set; }
 

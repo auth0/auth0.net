@@ -54,6 +54,10 @@ public record CreateSelfServiceProfileSsoTicketRequestContent
     [JsonPropertyName("use_for_organization_discovery")]
     public bool? UseForOrganizationDiscovery { get; set; }
 
+    [Optional]
+    [JsonPropertyName("enabled_features")]
+    public SelfServiceProfileSsoTicketEnabledFeatures? EnabledFeatures { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

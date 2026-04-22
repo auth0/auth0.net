@@ -504,7 +504,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 (request, cursor) =>
                 {
                     request.From = cursor;
@@ -646,7 +646,7 @@ public partial class EventStreamsClient : IEventStreamsClient
     ///     "id",
     ///     new CreateEventStreamTestEventRequestContent
     ///     {
-    ///         EventType = EventStreamTestEventTypeEnum.UserCreated,
+    ///         EventType = EventStreamTestEventTypeEnum.GroupCreated,
     ///     }
     /// );
     /// </code></example>

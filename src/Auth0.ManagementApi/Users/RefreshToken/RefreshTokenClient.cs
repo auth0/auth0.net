@@ -157,7 +157,7 @@ public partial class RefreshTokenClient : IRefreshTokenClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(userId, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;

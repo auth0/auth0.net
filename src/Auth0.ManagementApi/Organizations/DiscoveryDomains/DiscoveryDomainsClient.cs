@@ -540,7 +540,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;

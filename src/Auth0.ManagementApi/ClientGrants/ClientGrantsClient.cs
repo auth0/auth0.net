@@ -37,7 +37,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 6)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 7)
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("audience", request.Audience.IsDefined ? request.Audience.Value : null)
@@ -47,6 +47,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
                 request.AllowAnyOrganization.IsDefined ? request.AllowAnyOrganization.Value : null
             )
             .Add("subject_type", request.SubjectType.IsDefined ? request.SubjectType.Value : null)
+            .Add("default_for", request.DefaultFor.IsDefined ? request.DefaultFor.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
@@ -412,6 +413,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
     ///         ClientId = "client_id",
     ///         AllowAnyOrganization = true,
     ///         SubjectType = ClientGrantSubjectTypeEnum.Client,
+    ///         DefaultFor = ClientGrantDefaultForEnum.ThirdPartyClients,
     ///     }
     /// );
     /// </code></example>
@@ -436,7 +438,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
                 request,
                 options,
                 async (request, options, cancellationToken) =>
-                    await ListInternalAsync(request, options, cancellationToken).WithRawResponse(),
+                    await ListInternalAsync(request, options, cancellationToken),
                 (request, cursor) =>
                 {
                     request.From = cursor;

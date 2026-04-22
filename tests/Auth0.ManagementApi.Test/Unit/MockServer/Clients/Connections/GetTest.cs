@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Clients;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
@@ -60,6 +61,7 @@ public class GetTest : BaseMockServerTest
             "id",
             new ConnectionsGetRequest
             {
+                Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
                 From = "from",
                 Take = 1,
                 Fields = "fields",

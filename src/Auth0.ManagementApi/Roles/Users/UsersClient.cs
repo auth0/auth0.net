@@ -192,7 +192,7 @@ public partial class UsersClient : IUsersClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 (request, cursor) =>
                 {
                     request.From = cursor;

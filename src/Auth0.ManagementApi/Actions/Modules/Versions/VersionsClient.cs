@@ -343,7 +343,7 @@ public partial class VersionsClient : IVersionsClient
                 options,
                 async (request, options, cancellationToken) =>
                     await ListInternalAsync(id, request, options, cancellationToken)
-                        .WithRawResponse(),
+                        .ConfigureAwait(false),
                 request => request.Page.GetValueOrDefault(0),
                 (request, offset) =>
                 {

@@ -26,6 +26,7 @@ public class UpdateTest : BaseMockServerTest
               ],
               "organization_usage": "deny",
               "allow_any_organization": true,
+              "default_for": "third_party_clients",
               "is_system": true,
               "subject_type": "client",
               "authorization_details_types": [
