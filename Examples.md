@@ -202,9 +202,10 @@ await authClient.DeleteMfaAuthenticatorAsync(
   - [4.3 Get a specific Network ACL configuration](#43-get-a-specific-network-acl-configuration)
   - [4.4 Update Network ACL with a PATCH request](#44-update-network-acl-with-a-patch-request)
   - [4.5 Update Network ACL with a PUT request](#45-update-network-acl-with-a-put-request)
-- [5. Using a Custom Domain with the Management API](#5-using-a-custom-domain-with-the-management-api)
-  - [5.1 Let the client manage the connection (simplest)](#51-let-the-client-manage-the-connection-simplest)
-  - [5.2 Bring your own connection](#52-bring-your-own-connection)
+- [5. Multiple Custom Domain (MCD) Header](#5-multiple-custom-domain-mcd-header)
+  - [5.1 Global configuration via ManagementClient (recommended)](#51-global-configuration-via-managementclient-recommended)
+  - [5.2 Per-request override](#52-per-request-override)
+  - [5.3 Global configuration via ManagementApiClient](#53-global-configuration-via-managementapiclient)
 
 ## 1. Management Client Initialization
 
@@ -564,5 +565,150 @@ public async Task SetNetworkAcl(string aclId)
     await client.NetworkAcls.SetAsync(aclId, setRequest);
 }
 ```
+
+[Go to Top](#)
+
+## 5. Multiple Custom Domain (MCD) Header
+
+Auth0 tenants with Multiple Custom Domains enabled must supply the `Auth0-Custom-Domain` header
+on the Management API endpoints that generate user-facing links. The affected endpoints are:
+
+- `POST /api/v2/tickets/email-verification`
+- `POST /api/v2/tickets/password-change`
+- `POST /api/v2/organizations/{id}/invitations`
+- `POST /api/v2/guardian/enrollments/ticket`
+- `POST /api/v2/jobs/verification-email`
+- `POST /api/v2/jobs/users-imports` (when `verify_email: true`)
+- `POST /api/v2/users` (Create)
+- `PATCH /api/v2/users/{id}` (Update, when `verify_email: true`)
+
+### 5.1 Global configuration via ManagementClient (recommended)
+
+When `CustomDomain` is set on `ManagementClientOptions` and no custom `HttpClient` is provided,
+the SDK automatically configures a `CustomDomainInterceptor` that strips the header from any
+endpoint not on the whitelist above.
+
+```csharp
+using Auth0.ManagementApi;
+
+public async Task UseCustomDomainGlobal()
+{
+    var client = new ManagementClient(new ManagementClientOptions
+    {
+        Domain = "my.auth0.domain",
+        TokenProvider = new ClientCredentialsTokenProvider(
+            domain: "my.auth0.domain",
+            clientId: "clientId",
+            clientSecret: "clientSecret"
+        ),
+        CustomDomain = "login.mycompany.com"
+    });
+
+    // Auth0-Custom-Domain header is sent automatically on whitelisted endpoints
+    // and stripped from all others.
+    var ticket = await client.Tickets.VerifyEmailAsync(
+        new VerifyEmailTicketRequestContent { UserId = "auth0|abc123" });
+
+    Console.WriteLine($"Ticket URL: {ticket.Ticket}");
+}
+```
+
+[Go to Top](#)
+
+### 5.2 Per-request override
+
+Use `CustomDomainHeader.For()` to supply the header for a single call without configuring it
+globally. This is useful when only a subset of calls require the header, or when you need to
+use a different domain for a specific request.
+
+```csharp
+using Auth0.ManagementApi;
+
+public async Task UseCustomDomainPerRequest()
+{
+    // Client without a global custom domain
+    var client = new ManagementClient(new ManagementClientOptions
+    {
+        Domain = "my.auth0.domain",
+        TokenProvider = new ClientCredentialsTokenProvider(
+            domain: "my.auth0.domain",
+            clientId: "clientId",
+            clientSecret: "clientSecret"
+        )
+    });
+
+    // Supply the header only for this call
+    var ticket = await client.Tickets.VerifyEmailAsync(
+        new VerifyEmailTicketRequestContent { UserId = "auth0|abc123" },
+        CustomDomainHeader.For("login.mycompany.com"));
+
+    Console.WriteLine($"Ticket URL: {ticket.Ticket}");
+
+    // Works with any whitelisted endpoint
+    var invitation = await client.Organizations.Invitations.CreateAsync(
+        "org_123",
+        new CreateOrganizationInvitationRequestContent
+        {
+            Inviter = new OrganizationInvitationInviter { Name = "Admin" },
+            Invitee = new OrganizationInvitationInvitee { Email = "user@example.com" },
+            ClientId = "clientId"
+        },
+        CustomDomainHeader.For("login.mycompany.com"));
+}
+```
+
+> **Combining with other per-request options:** `CustomDomainHeader.For()` is a convenience
+> helper that returns a `RequestOptions` pre-populated with only the `Auth0-Custom-Domain`
+> header. When you also need to set other options on the same call (additional headers, timeout,
+> retries), construct `RequestOptions` directly instead:
+>
+> ```csharp
+> await client.Tickets.VerifyEmailAsync(
+>     new VerifyEmailTicketRequestContent { UserId = "auth0|abc123" },
+>     new RequestOptions
+>     {
+>         AdditionalHeaders = new[]
+>         {
+>             new KeyValuePair<string, string?>("Auth0-Custom-Domain", "login.mycompany.com"),
+>             new KeyValuePair<string, string?>("X-Correlation-Id", "abc-123"),
+>         },
+>         MaxRetries = 1,
+>     });
+> ```
+
+[Go to Top](#)
+
+### 5.3 Global configuration via ManagementApiClient
+
+If you manage tokens yourself using `ManagementApiClient` directly, pass a `CustomDomainInterceptor`
+as the `HttpClient` handler to enable automatic header stripping.
+
+```csharp
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Core;
+
+public async Task UseCustomDomainWithManagementApiClient()
+{
+    // CustomDomainInterceptor strips the header from non-whitelisted endpoints.
+    var client = new ManagementApiClient(
+        token: "your-access-token",
+        clientOptions: new ClientOptions
+        {
+            BaseUrl = "https://my.auth0.domain/api/v2",
+            CustomDomain = "login.mycompany.com",
+            HttpClient = new HttpClient(new CustomDomainInterceptor())
+        });
+
+    var ticket = await client.Tickets.VerifyEmailAsync(
+        new VerifyEmailTicketRequestContent { UserId = "auth0|abc123" });
+
+    Console.WriteLine($"Ticket URL: {ticket.Ticket}");
+}
+```
+
+> **Note:** If you supply your own `HttpClient` alongside `CustomDomain`, the
+> `CustomDomainInterceptor` is **not** injected automatically — you must add it yourself
+> as shown above. Without it the header is still sent, but it will be present on every
+> request rather than only whitelisted ones.
 
 [Go to Top](#)

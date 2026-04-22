@@ -1,3 +1,5 @@
+using Auth0.ManagementApi.Core;
+
 namespace Auth0.ManagementApi;
 
 /// <summary>
@@ -65,12 +67,21 @@ public sealed class ManagementClient : ManagementApiClient, IDisposable
         return options;
     }
 
+    private static HttpClient CreateHttpClient(ManagementClientOptions options) =>
+        options.CustomDomain != null
+            ? new HttpClient(new CustomDomainInterceptor())
+            : new HttpClient();
+
     private static ClientOptions BuildClientOptions(ManagementClientOptions options)
     {
+        // When a custom domain is configured and no HttpClient is supplied, automatically
+        // inject CustomDomainInterceptor so the header is stripped from non-whitelisted paths.
+        var httpClient = options.HttpClient ?? CreateHttpClient(options);
+
         var clientOptions = new ClientOptions
         {
             BaseUrl = $"https://{options.Domain}/api/v2",
-            HttpClient = options.HttpClient ?? new HttpClient(),
+            HttpClient = httpClient,
             Timeout = options.Timeout ?? TimeSpan.FromSeconds(30),
             MaxRetries = options.MaxRetries ?? 2,
         };
@@ -82,6 +93,9 @@ public sealed class ManagementClient : ManagementApiClient, IDisposable
                 clientOptions.Headers[header.Key] = header.Value;
             }
         }
+
+        if (!string.IsNullOrEmpty(options.CustomDomain))
+            clientOptions.Headers[CustomDomainInterceptor.HeaderName] = options.CustomDomain;
 
         return clientOptions;
     }

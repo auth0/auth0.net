@@ -43,4 +43,18 @@ public class ManagementClientOptions
     /// Additional headers to include with every request.
     /// </summary>
     public IDictionary<string, string>? AdditionalHeaders { get; init; }
+
+    /// <summary>
+    /// Custom domain to include as the <c>Auth0-Custom-Domain</c> header on Management API
+    /// endpoints that generate user-facing links (email verification, password reset,
+    /// invitations, MFA enrollment tickets, etc.).
+    ///
+    /// <para>
+    /// When set and no <see cref="HttpClient"/> is provided, a <see cref="Core.CustomDomainInterceptor"/>
+    /// is automatically configured to strip the header from non-applicable endpoints.
+    /// When a custom <see cref="HttpClient"/> is supplied, the header is still included on
+    /// every request but stripping is the caller's responsibility.
+    /// </para>
+    /// </summary>
+    public string? CustomDomain { get; init; }
 }
