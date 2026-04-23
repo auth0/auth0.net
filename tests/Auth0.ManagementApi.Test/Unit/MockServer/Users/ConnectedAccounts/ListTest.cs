@@ -24,7 +24,8 @@ public class ListTest : BaseMockServerTest
                     "scopes"
                   ],
                   "created_at": "2024-01-15T09:30:00.000Z",
-                  "expires_at": "2024-01-15T09:30:00.000Z"
+                  "expires_at": "2024-01-15T09:30:00.000Z",
+                  "organization_id": "organization_id"
                 }
               ],
               "next": "next"

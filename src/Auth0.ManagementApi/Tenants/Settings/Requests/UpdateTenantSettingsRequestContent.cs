@@ -204,6 +204,13 @@ public record UpdateTenantSettingsRequestContent
     public TenantSettingsResourceParameterProfile? ResourceParameterProfile { get; set; }
 
     /// <summary>
+    /// Whether the authorization server supports retrieving client metadata from a client_id URL.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("client_id_metadata_document_supported")]
+    public bool? ClientIdMetadataDocumentSupported { get; set; }
+
+    /// <summary>
     /// Whether Auth0 Guide (AI-powered assistance) is enabled for this tenant.
     /// </summary>
     [Optional]
@@ -216,6 +223,10 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("phone_consolidated_experience")]
     public bool? PhoneConsolidatedExperience { get; set; }
+
+    [Optional]
+    [JsonPropertyName("dynamic_client_registration_security_mode")]
+    public TenantSettingsDynamicClientRegistrationSecurityMode? DynamicClientRegistrationSecurityMode { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

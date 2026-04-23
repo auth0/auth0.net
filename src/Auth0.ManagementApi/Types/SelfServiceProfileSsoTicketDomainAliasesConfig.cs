@@ -17,6 +17,13 @@ public record SelfServiceProfileSsoTicketDomainAliasesConfig : IJsonOnDeserializ
     [JsonPropertyName("domain_verification")]
     public required SelfServiceProfileSsoTicketDomainVerificationEnum DomainVerification { get; set; }
 
+    /// <summary>
+    /// List of domains that will be submitted for verification during the self-service SSO flow.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("pending_domains")]
+    public IEnumerable<string>? PendingDomains { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

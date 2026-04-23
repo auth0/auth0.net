@@ -100,6 +100,10 @@ public record UpdateConnectionOptions : IJsonOnDeserialized, IJsonOnSerializing
     public bool? ApiEnableUsers { get; set; }
 
     [Optional]
+    [JsonPropertyName("api_enable_groups")]
+    public bool? ApiEnableGroups { get; set; }
+
+    [Optional]
     [JsonPropertyName("basic_profile")]
     public bool? BasicProfile { get; set; }
 

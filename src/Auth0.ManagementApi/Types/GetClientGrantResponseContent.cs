@@ -50,6 +50,10 @@ public record GetClientGrantResponseContent : IJsonOnDeserialized
     [JsonPropertyName("allow_any_organization")]
     public bool? AllowAnyOrganization { get; set; }
 
+    [Optional]
+    [JsonPropertyName("default_for")]
+    public ClientGrantDefaultForEnum? DefaultFor { get; set; }
+
     /// <summary>
     /// If enabled, this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
     /// </summary>
