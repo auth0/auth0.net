@@ -801,7 +801,7 @@ public partial class ClientsClient : IClientsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Clients?.ToList(),
                 null,
                 cancellationToken

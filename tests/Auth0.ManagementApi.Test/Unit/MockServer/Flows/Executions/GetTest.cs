@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Flows;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
@@ -45,7 +46,14 @@ public class GetTest : BaseMockServerTest
         var response = await Client.Flows.Executions.GetAsync(
             "flow_id",
             "execution_id",
-            new GetFlowExecutionRequestParameters()
+            new GetFlowExecutionRequestParameters
+            {
+                Hydrate =
+                    new List<GetFlowExecutionRequestParametersHydrateEnum?>()
+                    {
+                        GetFlowExecutionRequestParametersHydrateEnum.Debug,
+                    },
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

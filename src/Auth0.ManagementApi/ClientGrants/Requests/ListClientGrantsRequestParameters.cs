@@ -43,7 +43,7 @@ public record ListClientGrantsRequestParameters
     public Optional<ClientGrantSubjectTypeEnum?> SubjectType { get; set; }
 
     /// <summary>
-    /// Applies this client grant as the default for all clients in the specified group. The only accepted value is `third_party_clients`, which applies the grant to all third-party clients. Per-client grants for the same audience take precedence. Mutually exclusive with `client_id`.
+    /// Applies this client grant as the default for all clients in the specified group. The only accepted value is <see href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants#default-permissions-for-third-party-applications">`third_party_clients`</see>, which applies the grant to all third-party clients. Per-client grants for the same audience take precedence. Mutually exclusive with `client_id`.
     /// </summary>
     [JsonIgnore]
     public Optional<ClientGrantDefaultForEnum?> DefaultFor { get; set; }

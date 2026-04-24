@@ -716,7 +716,7 @@ public partial class UsersClient : IUsersClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Users?.ToList(),
                 null,
                 cancellationToken

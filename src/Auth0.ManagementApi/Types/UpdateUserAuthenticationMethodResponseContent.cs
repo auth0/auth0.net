@@ -89,6 +89,13 @@ public record UpdateUserAuthenticationMethodResponseContent : IJsonOnDeserialize
     public string? RelyingPartyIdentifier { get; set; }
 
     /// <summary>
+    /// Whether the authentication method has been confirmed.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("confirmed")]
+    public bool? Confirmed { get; set; }
+
+    /// <summary>
     /// Authentication method creation date
     /// </summary>
     [Optional]

@@ -235,6 +235,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
     ///     {
     ///         Audience = "audience",
     ///         ClientId = "client_id",
+    ///         GrantIds = [new List&lt;string?&gt;() { "grant_ids" }],
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
@@ -268,7 +269,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.ClientGrants?.ToList(),
                 null,
                 cancellationToken

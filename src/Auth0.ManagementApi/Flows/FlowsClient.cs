@@ -398,6 +398,13 @@ public partial class FlowsClient : IFlowsClient
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
+    ///         Hydrate =
+    ///         [
+    ///             new List&lt;ListFlowsRequestParametersHydrateEnum?&gt;()
+    ///             {
+    ///                 ListFlowsRequestParametersHydrateEnum.FormCount,
+    ///             },
+    ///         ],
     ///         Synchronous = true,
     ///     }
     /// );
@@ -427,7 +434,7 @@ public partial class FlowsClient : IFlowsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Flows?.ToList(),
                 null,
                 cancellationToken
@@ -451,7 +458,19 @@ public partial class FlowsClient : IFlowsClient
     }
 
     /// <example><code>
-    /// await client.Flows.GetAsync("id", new GetFlowRequestParameters());
+    /// await client.Flows.GetAsync(
+    ///     "id",
+    ///     new GetFlowRequestParameters
+    ///     {
+    ///         Hydrate =
+    ///         [
+    ///             new List&lt;GetFlowRequestParametersHydrateEnum?&gt;()
+    ///             {
+    ///                 GetFlowRequestParametersHydrateEnum.FormCount,
+    ///             },
+    ///         ],
+    ///     }
+    /// );
     /// </code></example>
     public WithRawResponseTask<GetFlowResponseContent> GetAsync(
         string id,

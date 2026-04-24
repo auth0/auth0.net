@@ -25,6 +25,12 @@ public record ListGroupsRequestParameters
     public Optional<string?> ExternalId { get; set; }
 
     /// <summary>
+    /// Search for groups by name or external ID.
+    /// </summary>
+    [JsonIgnore]
+    public Optional<string?> Search { get; set; }
+
+    /// <summary>
     /// A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields
     /// </summary>
     [JsonIgnore]

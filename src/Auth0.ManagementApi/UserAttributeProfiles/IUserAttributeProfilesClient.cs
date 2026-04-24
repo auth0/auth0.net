@@ -14,7 +14,7 @@ public partial interface IUserAttributeProfilesClient
     );
 
     /// <summary>
-    /// Retrieve details about a single User Attribute Profile specified by ID.
+    /// Create a User Attribute Profile
     /// </summary>
     WithRawResponseTask<CreateUserAttributeProfileResponseContent> CreateAsync(
         CreateUserAttributeProfileRequestContent request,

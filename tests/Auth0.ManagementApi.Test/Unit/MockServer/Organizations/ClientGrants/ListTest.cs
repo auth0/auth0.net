@@ -55,6 +55,7 @@ public class ListTest : BaseMockServerTest
             {
                 Audience = "audience",
                 ClientId = "client_id",
+                GrantIds = new List<string?>() { "grant_ids" },
                 Page = 1,
                 PerPage = 1,
                 IncludeTotals = true,

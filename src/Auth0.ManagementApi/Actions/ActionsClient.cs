@@ -620,7 +620,7 @@ public partial class ActionsClient : IActionsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Actions?.ToList(),
                 null,
                 cancellationToken

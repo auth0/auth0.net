@@ -267,7 +267,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.DeviceCredentials?.ToList(),
                 null,
                 cancellationToken

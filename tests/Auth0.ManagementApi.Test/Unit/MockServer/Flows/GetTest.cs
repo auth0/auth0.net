@@ -45,7 +45,17 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Flows.GetAsync("id", new GetFlowRequestParameters());
+        var response = await Client.Flows.GetAsync(
+            "id",
+            new GetFlowRequestParameters
+            {
+                Hydrate =
+                    new List<GetFlowRequestParametersHydrateEnum?>()
+                    {
+                        GetFlowRequestParametersHydrateEnum.FormCount,
+                    },
+            }
+        );
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

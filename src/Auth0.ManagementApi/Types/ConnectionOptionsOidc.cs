@@ -100,6 +100,10 @@ public record ConnectionOptionsOidc : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("token_endpoint_auth_signing_alg")]
     public Optional<ConnectionTokenEndpointAuthSigningAlgEnum?> TokenEndpointAuthSigningAlg { get; set; }
 
+    [Optional]
+    [JsonPropertyName("token_endpoint_jwtca_aud_format")]
+    public ConnectionTokenEndpointJwtcaAudFormatEnumOidc? TokenEndpointJwtcaAudFormat { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("upstream_params")]
     public Optional<Dictionary<

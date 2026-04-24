@@ -35,13 +35,14 @@ public partial class GroupsClient : IGroupsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 7)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 8)
             .Add(
                 "connection_id",
                 request.ConnectionId.IsDefined ? request.ConnectionId.Value : null
             )
             .Add("name", request.Name.IsDefined ? request.Name.Value : null)
             .Add("external_id", request.ExternalId.IsDefined ? request.ExternalId.Value : null)
+            .Add("search", request.Search.IsDefined ? request.Search.Value : null)
             .Add("fields", request.Fields.IsDefined ? request.Fields.Value : null)
             .Add(
                 "include_fields",
@@ -226,6 +227,7 @@ public partial class GroupsClient : IGroupsClient
     ///         ConnectionId = "connection_id",
     ///         Name = "name",
     ///         ExternalId = "external_id",
+    ///         Search = "search",
     ///         Fields = "fields",
     ///         IncludeFields = true,
     ///         From = "from",

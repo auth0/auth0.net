@@ -607,7 +607,7 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
     }
 
     /// <summary>
-    /// Retrieve details about a single User Attribute Profile specified by ID.
+    /// Create a User Attribute Profile
     /// </summary>
     /// <example><code>
     /// await client.UserAttributeProfiles.CreateAsync(
