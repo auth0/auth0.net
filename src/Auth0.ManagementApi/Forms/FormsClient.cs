@@ -388,6 +388,13 @@ public partial class FormsClient : IFormsClient
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
+    ///         Hydrate =
+    ///         [
+    ///             new List&lt;FormsRequestParametersHydrateEnum?&gt;()
+    ///             {
+    ///                 FormsRequestParametersHydrateEnum.FlowCount,
+    ///             },
+    ///         ],
     ///     }
     /// );
     /// </code></example>
@@ -416,7 +423,7 @@ public partial class FormsClient : IFormsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Forms?.ToList(),
                 null,
                 cancellationToken
@@ -440,7 +447,19 @@ public partial class FormsClient : IFormsClient
     }
 
     /// <example><code>
-    /// await client.Forms.GetAsync("id", new GetFormRequestParameters());
+    /// await client.Forms.GetAsync(
+    ///     "id",
+    ///     new GetFormRequestParameters
+    ///     {
+    ///         Hydrate =
+    ///         [
+    ///             new List&lt;FormsRequestParametersHydrateEnum?&gt;()
+    ///             {
+    ///                 FormsRequestParametersHydrateEnum.FlowCount,
+    ///             },
+    ///         ],
+    ///     }
+    /// );
     /// </code></example>
     public WithRawResponseTask<GetFormResponseContent> GetAsync(
         string id,

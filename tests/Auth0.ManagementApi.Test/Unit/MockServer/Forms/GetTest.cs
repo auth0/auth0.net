@@ -92,7 +92,17 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Forms.GetAsync("id", new GetFormRequestParameters());
+        var response = await Client.Forms.GetAsync(
+            "id",
+            new GetFormRequestParameters
+            {
+                Hydrate =
+                    new List<FormsRequestParametersHydrateEnum?>()
+                    {
+                        FormsRequestParametersHydrateEnum.FlowCount,
+                    },
+            }
+        );
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

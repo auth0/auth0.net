@@ -170,7 +170,7 @@ public partial class RolesClient : IRolesClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Roles?.ToList(),
                 null,
                 cancellationToken

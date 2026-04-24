@@ -528,7 +528,7 @@ public partial class EncryptionClient : IEncryptionClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Keys?.ToList(),
                 null,
                 cancellationToken

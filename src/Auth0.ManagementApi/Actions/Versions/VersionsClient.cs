@@ -347,7 +347,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Versions?.ToList(),
                 null,
                 cancellationToken

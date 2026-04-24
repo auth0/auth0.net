@@ -637,7 +637,7 @@ public partial class ModulesClient : IModulesClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Modules?.ToList(),
                 null,
                 cancellationToken
@@ -809,7 +809,7 @@ public partial class ModulesClient : IModulesClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Actions?.ToList(),
                 null,
                 cancellationToken

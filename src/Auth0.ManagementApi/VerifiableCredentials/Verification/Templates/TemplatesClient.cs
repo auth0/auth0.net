@@ -14,7 +14,7 @@ public partial class TemplatesClient : ITemplatesClient
     }
 
     /// <summary>
-    /// List a verifiable credential templates.
+    /// List verifiable credential templates.
     /// </summary>
     private WithRawResponseTask<ListVerifiableCredentialTemplatesPaginatedResponseContent> ListInternalAsync(
         ListVerifiableCredentialTemplatesRequestParameters request,
@@ -403,7 +403,7 @@ public partial class TemplatesClient : ITemplatesClient
     }
 
     /// <summary>
-    /// List a verifiable credential templates.
+    /// List verifiable credential templates.
     /// </summary>
     /// <example><code>
     /// await client.VerifiableCredentials.Verification.Templates.ListAsync(

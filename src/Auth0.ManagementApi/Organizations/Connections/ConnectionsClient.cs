@@ -450,7 +450,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Connections?.ToList(),
                 null,
                 cancellationToken

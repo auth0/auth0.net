@@ -14,6 +14,8 @@ public readonly record struct EmailProviderNameEnum : IStringEnum
 
     public static readonly EmailProviderNameEnum Sendgrid = new(Values.Sendgrid);
 
+    public static readonly EmailProviderNameEnum Resend = new(Values.Resend);
+
     public static readonly EmailProviderNameEnum Ses = new(Values.Ses);
 
     public static readonly EmailProviderNameEnum Sparkpost = new(Values.Sparkpost);
@@ -127,6 +129,8 @@ public readonly record struct EmailProviderNameEnum : IStringEnum
         public const string Mandrill = "mandrill";
 
         public const string Sendgrid = "sendgrid";
+
+        public const string Resend = "resend";
 
         public const string Ses = "ses";
 

@@ -166,7 +166,7 @@ public partial class UserGrantsClient : IUserGrantsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Grants?.ToList(),
                 null,
                 cancellationToken

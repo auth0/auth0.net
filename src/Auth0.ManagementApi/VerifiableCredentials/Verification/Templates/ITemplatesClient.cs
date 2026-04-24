@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.VerifiableCredentials.Verification;
 public partial interface ITemplatesClient
 {
     /// <summary>
-    /// List a verifiable credential templates.
+    /// List verifiable credential templates.
     /// </summary>
     Task<Pager<VerifiableCredentialTemplateResponse>> ListAsync(
         ListVerifiableCredentialTemplatesRequestParameters request,

@@ -242,12 +242,21 @@ public class UsersTests : IClassFixture<UsersTestsFixture>
         var usersPager = await fixture.ApiClient.Users.ListAsync(new ListUsersRequestParameters
         {
             Page = 0,
-            PerPage = 50,
+            PerPage = 25,
             IncludeTotals = true
         });
 
-        // Assert
-        usersPager.CurrentPage.Items.Should().NotBeNull();
+        // Assert- totals are reported on the first page
+        var firstPageResponse = (ListUsersOffsetPaginatedResponseContent)usersPager.CurrentPage.Response;
+        firstPageResponse.Should().NotBeNull();
+        firstPageResponse?.Total.Should().BeGreaterThan(0);
+        await foreach (var page in usersPager.AsPagesAsync())
+        {
+            foreach (var user in page)
+            {
+                user.UserId.Should().NotBeNullOrEmpty();
+            }
+        }
     }
 
     [Fact]

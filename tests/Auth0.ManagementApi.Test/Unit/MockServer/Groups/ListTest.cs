@@ -39,6 +39,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("connection_id", "connection_id")
                     .WithParam("name", "name")
                     .WithParam("external_id", "external_id")
+                    .WithParam("search", "search")
                     .WithParam("fields", "fields")
                     .WithParam("from", "from")
                     .WithParam("take", "1")
@@ -57,6 +58,7 @@ public class ListTest : BaseMockServerTest
                 ConnectionId = "connection_id",
                 Name = "name",
                 ExternalId = "external_id",
+                Search = "search",
                 Fields = "fields",
                 IncludeFields = true,
                 From = "from",

@@ -253,7 +253,7 @@ public partial class BindingsClient : IBindingsClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.Bindings?.ToList(),
                 null,
                 cancellationToken

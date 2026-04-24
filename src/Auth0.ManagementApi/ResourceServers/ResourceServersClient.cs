@@ -417,6 +417,7 @@ public partial class ResourceServersClient : IResourceServersClient
     /// await client.ResourceServers.ListAsync(
     ///     new ListResourceServerRequestParameters
     ///     {
+    ///         Identifiers = [new List&lt;string?&gt;() { "identifiers" }],
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
@@ -449,7 +450,7 @@ public partial class ResourceServersClient : IResourceServersClient
                 {
                     request.Page = offset;
                 },
-                request => request.PerPage.GetValueOrDefault(0),
+                null,
                 response => response.ResourceServers?.ToList(),
                 null,
                 cancellationToken
