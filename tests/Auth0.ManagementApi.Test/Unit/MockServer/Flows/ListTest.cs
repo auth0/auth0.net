@@ -12,21 +12,21 @@ public class ListTest : BaseMockServerTest
     public async Task MockServerTest()
     {
         const string mockResponse = """
-                                    {
-                                      "start": 1.1,
-                                      "limit": 1.1,
-                                      "total": 1.1,
-                                      "flows": [
-                                        {
-                                          "id": "id",
-                                          "name": "name",
-                                          "created_at": "2024-01-15T09:30:00.000Z",
-                                          "updated_at": "2024-01-15T09:30:00.000Z",
-                                          "executed_at": "executed_at"
-                                        }
-                                      ]
-                                    }
-                                    """;
+            {
+              "start": 1.1,
+              "limit": 1.1,
+              "total": 1.1,
+              "flows": [
+                {
+                  "id": "id",
+                  "name": "name",
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "updated_at": "2024-01-15T09:30:00.000Z",
+                  "executed_at": "executed_at"
+                }
+              ]
+            }
+            """;
 
         Server
             .Given(

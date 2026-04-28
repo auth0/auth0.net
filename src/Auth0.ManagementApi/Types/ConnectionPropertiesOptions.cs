@@ -158,6 +158,22 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("password_options")]
     public ConnectionPasswordOptions? PasswordOptions { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("id_token_signed_response_algs")]
+    public Optional<IEnumerable<ConnectionIdTokenSignedResponseAlgEnum>?> IdTokenSignedResponseAlgs { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("token_endpoint_auth_method")]
+    public Optional<ConnectionTokenEndpointAuthMethodEnum?> TokenEndpointAuthMethod { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("token_endpoint_auth_signing_alg")]
+    public Optional<ConnectionTokenEndpointAuthSigningAlgEnum?> TokenEndpointAuthSigningAlg { get; set; }
+
+    [Optional]
+    [JsonPropertyName("token_endpoint_jwtca_aud_format")]
+    public ConnectionTokenEndpointJwtcaAudFormatEnumOidc? TokenEndpointJwtcaAudFormat { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 
