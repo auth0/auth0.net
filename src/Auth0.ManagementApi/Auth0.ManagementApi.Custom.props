@@ -22,6 +22,11 @@
     <ProjectReference Include="..\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0'))">
+    <PackageReference Include="System.Net.ServerSentEvents" Version="9.0.14" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.14" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
     <Version>8.1.0</Version>
