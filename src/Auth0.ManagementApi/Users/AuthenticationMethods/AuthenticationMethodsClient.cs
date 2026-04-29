@@ -559,7 +559,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Authenticators?.ToList(),
                 null,
                 cancellationToken

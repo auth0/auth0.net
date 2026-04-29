@@ -67,6 +67,9 @@ public class CreateTest : BaseMockServerTest
                   "policy": "deny_all"
                 }
               },
+              "authorization_policy": {
+                "policy_id": "policy_id"
+              },
               "client_id": "client_id"
             }
             """;

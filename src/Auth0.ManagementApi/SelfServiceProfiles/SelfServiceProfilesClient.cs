@@ -447,7 +447,7 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.SelfServiceProfiles?.ToList(),
                 null,
                 cancellationToken

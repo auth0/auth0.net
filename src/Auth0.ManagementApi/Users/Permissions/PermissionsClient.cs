@@ -173,7 +173,7 @@ public partial class PermissionsClient : IPermissionsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Permissions?.ToList(),
                 null,
                 cancellationToken

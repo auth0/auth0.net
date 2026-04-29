@@ -436,7 +436,7 @@ public partial class NetworkAclsClient : INetworkAclsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.NetworkAcls?.ToList(),
                 null,
                 cancellationToken

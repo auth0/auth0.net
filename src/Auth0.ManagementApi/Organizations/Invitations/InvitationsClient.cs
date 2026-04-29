@@ -380,7 +380,7 @@ public partial class InvitationsClient : IInvitationsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Invitations?.ToList(),
                 null,
                 cancellationToken

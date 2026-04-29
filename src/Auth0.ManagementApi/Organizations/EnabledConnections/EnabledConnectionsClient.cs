@@ -446,7 +446,7 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.EnabledConnections?.ToList(),
                 null,
                 cancellationToken

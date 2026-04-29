@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.SelfServiceProfiles;
 public partial interface ICustomTextClient
 {
     /// <summary>
-    /// Retrieves text customizations for a given self-service profile, language and Self Service SSO Flow page.
+    /// Retrieves text customizations for a given self-service profile, language and Self-Service Enterprise Configuration flow page.
     /// </summary>
     WithRawResponseTask<Dictionary<string, string>> ListAsync(
         string id,
@@ -16,7 +16,7 @@ public partial interface ICustomTextClient
     );
 
     /// <summary>
-    /// Updates text customizations for a given self-service profile, language and Self Service SSO Flow page.
+    /// Updates text customizations for a given self-service profile, language and Self-Service Enterprise Configuration flow page.
     /// </summary>
     WithRawResponseTask<Dictionary<string, string>> SetAsync(
         string id,

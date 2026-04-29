@@ -450,7 +450,7 @@ public partial class ResourceServersClient : IResourceServersClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.ResourceServers?.ToList(),
                 null,
                 cancellationToken

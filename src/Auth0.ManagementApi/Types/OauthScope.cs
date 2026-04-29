@@ -436,6 +436,11 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteEventStreams = new(Values.DeleteEventStreams);
 
     /// <summary>
+    /// Read Events
+    /// </summary>
+    public static readonly OauthScope ReadEvents = new(Values.ReadEvents);
+
+    /// <summary>
     /// Read Federated Connections Tokens
     /// </summary>
     public static readonly OauthScope ReadFederatedConnectionsTokens = new(
@@ -1714,6 +1719,11 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Event Streams
         /// </summary>
         public const string DeleteEventStreams = "delete:event_streams";
+
+        /// <summary>
+        /// Read Events
+        /// </summary>
+        public const string ReadEvents = "read:events";
 
         /// <summary>
         /// Read Federated Connections Tokens

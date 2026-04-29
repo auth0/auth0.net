@@ -48,6 +48,9 @@ public class ListTest : BaseMockServerTest
                     "mechanism": "mtls",
                     "required": true
                   },
+                  "authorization_policy": {
+                    "policy_id": "policy_id"
+                  },
                   "client_id": "client_id"
                 }
               ]
@@ -73,7 +76,7 @@ public class ListTest : BaseMockServerTest
         var items = await Client.ResourceServers.ListAsync(
             new ListResourceServerRequestParameters
             {
-                Identifiers = new List<string?> { "identifiers" },
+                Identifiers = [new List<string?>() { "identifiers" }],
                 Page = 1,
                 PerPage = 1,
                 IncludeTotals = true,

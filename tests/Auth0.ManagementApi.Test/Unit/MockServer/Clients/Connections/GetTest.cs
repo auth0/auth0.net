@@ -61,7 +61,7 @@ public class GetTest : BaseMockServerTest
             "id",
             new ConnectionsGetRequest
             {
-                Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
+                Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
                 From = "from",
                 Take = 1,
                 Fields = "fields",

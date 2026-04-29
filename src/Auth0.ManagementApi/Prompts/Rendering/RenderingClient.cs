@@ -454,7 +454,7 @@ public partial class RenderingClient : IRenderingClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Configs?.ToList(),
                 null,
                 cancellationToken
