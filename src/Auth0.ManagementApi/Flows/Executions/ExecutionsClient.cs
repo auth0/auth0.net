@@ -267,13 +267,10 @@ public partial class ExecutionsClient : IExecutionsClient
     ///     "execution_id",
     ///     new GetFlowExecutionRequestParameters
     ///     {
-    ///         Hydrate =
-    ///         [
-    ///             new List&lt;GetFlowExecutionRequestParametersHydrateEnum?&gt;()
-    ///             {
-    ///                 GetFlowExecutionRequestParametersHydrateEnum.Debug,
-    ///             },
-    ///         ],
+    ///         Hydrate = new List&lt;GetFlowExecutionRequestParametersHydrateEnum?&gt;()
+    ///         {
+    ///             GetFlowExecutionRequestParametersHydrateEnum.Debug,
+    ///         },
     ///     }
     /// );
     /// </code></example>

@@ -51,13 +51,10 @@ public class ListTest : BaseMockServerTest
                 Page = 1,
                 PerPage = 1,
                 IncludeTotals = true,
-                Hydrate =
-                [
-                    new List<FormsRequestParametersHydrateEnum?>()
-                    {
-                        FormsRequestParametersHydrateEnum.FlowCount,
-                    },
-                ],
+                Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+                {
+                    FormsRequestParametersHydrateEnum.FlowCount,
+                },
             }
         );
         await foreach (var item in items)

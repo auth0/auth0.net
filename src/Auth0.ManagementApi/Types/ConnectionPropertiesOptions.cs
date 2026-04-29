@@ -158,6 +158,10 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("password_options")]
     public ConnectionPasswordOptions? PasswordOptions { get; set; }
 
+    [Optional]
+    [JsonPropertyName("assertion_decryption_settings")]
+    public ConnectionAssertionDecryptionSettings? AssertionDecryptionSettings { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("id_token_signed_response_algs")]
     public Optional<IEnumerable<ConnectionIdTokenSignedResponseAlgEnum>?> IdTokenSignedResponseAlgs { get; set; }

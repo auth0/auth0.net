@@ -15,6 +15,10 @@ public record ConnectionOptionsCommonSaml : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [Optional]
+    [JsonPropertyName("assertion_decryption_settings")]
+    public ConnectionAssertionDecryptionSettings? AssertionDecryptionSettings { get; set; }
+
+    [Optional]
     [JsonPropertyName("cert")]
     public string? Cert { get; set; }
 

@@ -22,7 +22,8 @@ public record SubscribeEventsRequestParameters
     /// Event type(s) to listen for. Specify multiple times for multiple types (e.g., ?event_type=user.created&event_type=user.updated). If not provided, all event types will be streamed.
     /// </summary>
     [JsonIgnore]
-    public Optional<EventStreamSubscribeEventsEventTypeParam?> EventType { get; set; }
+    public IEnumerable<EventStreamSubscribeEventsEventTypeEnum?> EventType { get; set; } =
+        new List<EventStreamSubscribeEventsEventTypeEnum?>();
 
     /// <inheritdoc />
     public override string ToString()

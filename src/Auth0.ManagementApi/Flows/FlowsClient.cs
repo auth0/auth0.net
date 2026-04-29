@@ -398,13 +398,10 @@ public partial class FlowsClient : IFlowsClient
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
-    ///         Hydrate =
-    ///         [
-    ///             new List&lt;ListFlowsRequestParametersHydrateEnum?&gt;()
-    ///             {
-    ///                 ListFlowsRequestParametersHydrateEnum.FormCount,
-    ///             },
-    ///         ],
+    ///         Hydrate = new List&lt;ListFlowsRequestParametersHydrateEnum?&gt;()
+    ///         {
+    ///             ListFlowsRequestParametersHydrateEnum.FormCount,
+    ///         },
     ///         Synchronous = true,
     ///     }
     /// );
@@ -462,13 +459,10 @@ public partial class FlowsClient : IFlowsClient
     ///     "id",
     ///     new GetFlowRequestParameters
     ///     {
-    ///         Hydrate =
-    ///         [
-    ///             new List&lt;GetFlowRequestParametersHydrateEnum?&gt;()
-    ///             {
-    ///                 GetFlowRequestParametersHydrateEnum.FormCount,
-    ///             },
-    ///         ],
+    ///         Hydrate = new List&lt;GetFlowRequestParametersHydrateEnum?&gt;()
+    ///         {
+    ///             GetFlowRequestParametersHydrateEnum.FormCount,
+    ///         },
     ///     }
     /// );
     /// </code></example>

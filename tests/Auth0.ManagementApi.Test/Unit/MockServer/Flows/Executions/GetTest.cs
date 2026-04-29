@@ -48,13 +48,10 @@ public class GetTest : BaseMockServerTest
             "execution_id",
             new GetFlowExecutionRequestParameters
             {
-                Hydrate =
-                [
-                    new List<GetFlowExecutionRequestParametersHydrateEnum?>()
-                    {
-                        GetFlowExecutionRequestParametersHydrateEnum.Debug,
-                    },
-                ],
+                Hydrate = new List<GetFlowExecutionRequestParametersHydrateEnum?>()
+                {
+                    GetFlowExecutionRequestParametersHydrateEnum.Debug,
+                },
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
