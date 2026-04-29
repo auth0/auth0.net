@@ -22,7 +22,7 @@ public record UpdateSelfServiceProfileRequestContent
     public Optional<SelfServiceProfileBrandingProperties?> Branding { get; set; }
 
     /// <summary>
-    /// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`]
+    /// List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`]
     /// </summary>
     [Optional]
     [JsonPropertyName("allowed_strategies")]

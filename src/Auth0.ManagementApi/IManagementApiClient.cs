@@ -19,6 +19,7 @@ public partial interface IManagementApiClient
     public IDeviceCredentialsClient DeviceCredentials { get; }
     public IEmailTemplatesClient EmailTemplates { get; }
     public IEventStreamsClient EventStreams { get; }
+    public IEventsClient Events { get; }
     public IFlowsClient Flows { get; }
     public IFormsClient Forms { get; }
     public IUserGrantsClient UserGrants { get; }

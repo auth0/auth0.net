@@ -62,7 +62,7 @@ public class ListTest : BaseMockServerTest
             {
                 From = "from",
                 Take = 1,
-                Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
+                Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
                 Name = "name",
                 Fields = "fields",
                 IncludeFields = true,

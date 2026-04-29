@@ -21,8 +21,9 @@ public record CreateConnectionRequestContentPaypal : IJsonOnDeserialized
     [JsonPropertyName("options")]
     public ConnectionOptionsPaypal? Options { get; set; }
 
+    [Optional]
     [JsonPropertyName("name")]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Use of this property is NOT RECOMMENDED. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients.

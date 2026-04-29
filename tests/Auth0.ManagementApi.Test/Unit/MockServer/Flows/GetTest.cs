@@ -50,10 +50,12 @@ public class GetTest : BaseMockServerTest
             new GetFlowRequestParameters
             {
                 Hydrate =
+                [
                     new List<GetFlowRequestParametersHydrateEnum?>()
                     {
                         GetFlowRequestParametersHydrateEnum.FormCount,
                     },
+                ],
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

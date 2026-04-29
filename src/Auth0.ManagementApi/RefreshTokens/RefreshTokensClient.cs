@@ -362,6 +362,72 @@ public partial class RefreshTokensClient : IRefreshTokensClient
     }
 
     /// <summary>
+    /// Revoke refresh tokens in bulk by ID list, user, user+client, or client.
+    /// </summary>
+    /// <example><code>
+    /// await client.RefreshTokens.RevokeAsync(new RevokeRefreshTokensRequestContent());
+    /// </code></example>
+    public async Task RevokeAsync(
+        RevokeRefreshTokensRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = "refresh-tokens/revoke",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            return;
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
+    /// <summary>
     /// Retrieve refresh token information.
     /// </summary>
     /// <example><code>

@@ -123,6 +123,10 @@ public record GetResourceServerResponseContent : IJsonOnDeserialized
     [JsonPropertyName("subject_type_authorization")]
     public ResourceServerSubjectTypeAuthorization? SubjectTypeAuthorization { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("authorization_policy")]
+    public Optional<ResourceServerAuthorizationPolicy?> AuthorizationPolicy { get; set; }
+
     /// <summary>
     /// The client ID of the client that this resource server is linked to
     /// </summary>
