@@ -155,7 +155,7 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     "id",
     ///     new ConnectionsGetRequest
     ///     {
-    ///         Strategy = [new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad }],
+    ///         Strategy = new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad },
     ///         From = "from",
     ///         Take = 1,
     ///         Fields = "fields",

@@ -1805,7 +1805,7 @@ await client.Connections.ListAsync(
     {
         From = "from",
         Take = 1,
-        Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
+        Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
         Name = "name",
         Fields = "fields",
         IncludeFields = true,
@@ -3418,7 +3418,10 @@ client.Events.SubscribeAsync(
     {
         From = "from",
         FromTimestamp = "from_timestamp",
-        EventType = EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+        EventType = new List<EventStreamSubscribeEventsEventTypeEnum?>()
+        {
+            EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+        },
     }
 );
 ```
@@ -3467,13 +3470,10 @@ await client.Flows.ListAsync(
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
-        Hydrate =
-        [
-            new List<ListFlowsRequestParametersHydrateEnum?>()
-            {
-                ListFlowsRequestParametersHydrateEnum.FormCount,
-            },
-        ],
+        Hydrate = new List<ListFlowsRequestParametersHydrateEnum?>()
+        {
+            ListFlowsRequestParametersHydrateEnum.FormCount,
+        },
         Synchronous = true,
     }
 );
@@ -3560,13 +3560,10 @@ await client.Flows.GetAsync(
     "id",
     new GetFlowRequestParameters
     {
-        Hydrate =
-        [
-            new List<GetFlowRequestParametersHydrateEnum?>()
-            {
-                GetFlowRequestParametersHydrateEnum.FormCount,
-            },
-        ],
+        Hydrate = new List<GetFlowRequestParametersHydrateEnum?>()
+        {
+            GetFlowRequestParametersHydrateEnum.FormCount,
+        },
     }
 );
 ```
@@ -3711,13 +3708,10 @@ await client.Forms.ListAsync(
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
-        Hydrate =
-        [
-            new List<FormsRequestParametersHydrateEnum?>()
-            {
-                FormsRequestParametersHydrateEnum.FlowCount,
-            },
-        ],
+        Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+        {
+            FormsRequestParametersHydrateEnum.FlowCount,
+        },
     }
 );
 ```
@@ -3803,13 +3797,10 @@ await client.Forms.GetAsync(
     "id",
     new GetFormRequestParameters
     {
-        Hydrate =
-        [
-            new List<FormsRequestParametersHydrateEnum?>()
-            {
-                FormsRequestParametersHydrateEnum.FlowCount,
-            },
-        ],
+        Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+        {
+            FormsRequestParametersHydrateEnum.FlowCount,
+        },
     }
 );
 ```
@@ -6696,7 +6687,7 @@ Retrieve details of all APIs associated with your tenant.
 await client.ResourceServers.ListAsync(
     new ListResourceServerRequestParameters
     {
-        Identifiers = [new List<string?>() { "identifiers" }],
+        Identifiers = new List<string?>() { "identifiers" },
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
@@ -13279,7 +13270,7 @@ await client.Clients.Connections.GetAsync(
     "id",
     new ConnectionsGetRequest
     {
-        Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
+        Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
         From = "from",
         Take = 1,
         Fields = "fields",
@@ -15334,13 +15325,10 @@ await client.Flows.Executions.GetAsync(
     "execution_id",
     new GetFlowExecutionRequestParameters
     {
-        Hydrate =
-        [
-            new List<GetFlowExecutionRequestParametersHydrateEnum?>()
-            {
-                GetFlowExecutionRequestParametersHydrateEnum.Debug,
-            },
-        ],
+        Hydrate = new List<GetFlowExecutionRequestParametersHydrateEnum?>()
+        {
+            GetFlowExecutionRequestParametersHydrateEnum.Debug,
+        },
     }
 );
 ```
@@ -18774,7 +18762,7 @@ await client.Organizations.ClientGrants.ListAsync(
     {
         Audience = "audience",
         ClientId = "client_id",
-        GrantIds = [new List<string?>() { "grant_ids" }],
+        GrantIds = new List<string?>() { "grant_ids" },
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,

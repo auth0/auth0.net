@@ -22,6 +22,10 @@ public record ConnectionOptionsPingFederate : IJsonOnDeserialized, IJsonOnSerial
     public string? SigningCert { get; set; }
 
     [Optional]
+    [JsonPropertyName("assertion_decryption_settings")]
+    public ConnectionAssertionDecryptionSettings? AssertionDecryptionSettings { get; set; }
+
+    [Optional]
     [JsonPropertyName("cert")]
     public string? Cert { get; set; }
 

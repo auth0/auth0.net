@@ -388,13 +388,10 @@ public partial class FormsClient : IFormsClient
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,
-    ///         Hydrate =
-    ///         [
-    ///             new List&lt;FormsRequestParametersHydrateEnum?&gt;()
-    ///             {
-    ///                 FormsRequestParametersHydrateEnum.FlowCount,
-    ///             },
-    ///         ],
+    ///         Hydrate = new List&lt;FormsRequestParametersHydrateEnum?&gt;()
+    ///         {
+    ///             FormsRequestParametersHydrateEnum.FlowCount,
+    ///         },
     ///     }
     /// );
     /// </code></example>
@@ -451,13 +448,10 @@ public partial class FormsClient : IFormsClient
     ///     "id",
     ///     new GetFormRequestParameters
     ///     {
-    ///         Hydrate =
-    ///         [
-    ///             new List&lt;FormsRequestParametersHydrateEnum?&gt;()
-    ///             {
-    ///                 FormsRequestParametersHydrateEnum.FlowCount,
-    ///             },
-    ///         ],
+    ///         Hydrate = new List&lt;FormsRequestParametersHydrateEnum?&gt;()
+    ///         {
+    ///             FormsRequestParametersHydrateEnum.FlowCount,
+    ///         },
     ///     }
     /// );
     /// </code></example>

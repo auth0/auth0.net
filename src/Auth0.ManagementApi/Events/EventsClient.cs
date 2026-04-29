@@ -22,7 +22,10 @@ public partial class EventsClient : IEventsClient
     ///     {
     ///         From = "from",
     ///         FromTimestamp = "from_timestamp",
-    ///         EventType = EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+    ///         EventType = new List&lt;EventStreamSubscribeEventsEventTypeEnum?&gt;()
+    ///         {
+    ///             EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+    ///         },
     ///     }
     /// );
     /// </code></example>
@@ -38,10 +41,7 @@ public partial class EventsClient : IEventsClient
                 "from_timestamp",
                 request.FromTimestamp.IsDefined ? request.FromTimestamp.Value : null
             )
-            .AddDeepObject(
-                "event_type",
-                request.EventType.IsDefined ? request.EventType.Value : null
-            )
+            .Add("event_type", request.EventType)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()

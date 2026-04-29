@@ -96,13 +96,10 @@ public class GetTest : BaseMockServerTest
             "id",
             new GetFormRequestParameters
             {
-                Hydrate =
-                [
-                    new List<FormsRequestParametersHydrateEnum?>()
-                    {
-                        FormsRequestParametersHydrateEnum.FlowCount,
-                    },
-                ],
+                Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+                {
+                    FormsRequestParametersHydrateEnum.FlowCount,
+                },
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

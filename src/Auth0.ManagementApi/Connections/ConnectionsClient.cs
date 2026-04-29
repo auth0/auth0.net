@@ -466,7 +466,7 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     {
     ///         From = "from",
     ///         Take = 1,
-    ///         Strategy = [new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad }],
+    ///         Strategy = new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad },
     ///         Name = "name",
     ///         Fields = "fields",
     ///         IncludeFields = true,

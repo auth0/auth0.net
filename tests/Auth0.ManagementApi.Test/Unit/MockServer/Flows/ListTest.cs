@@ -50,13 +50,10 @@ public class ListTest : BaseMockServerTest
                 Page = 1,
                 PerPage = 1,
                 IncludeTotals = true,
-                Hydrate =
-                [
-                    new List<ListFlowsRequestParametersHydrateEnum?>()
-                    {
-                        ListFlowsRequestParametersHydrateEnum.FormCount,
-                    },
-                ],
+                Hydrate = new List<ListFlowsRequestParametersHydrateEnum?>()
+                {
+                    ListFlowsRequestParametersHydrateEnum.FormCount,
+                },
                 Synchronous = true,
             }
         );
