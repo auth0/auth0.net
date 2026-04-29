@@ -434,7 +434,7 @@ public partial class FlowsClient : IFlowsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Flows?.ToList(),
                 null,
                 cancellationToken

@@ -313,7 +313,7 @@ public partial class LogsClient : ILogsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Logs?.ToList(),
                 null,
                 cancellationToken

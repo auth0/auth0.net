@@ -423,7 +423,7 @@ public partial class FormsClient : IFormsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Forms?.ToList(),
                 null,
                 cancellationToken

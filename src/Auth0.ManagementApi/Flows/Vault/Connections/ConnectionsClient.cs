@@ -427,7 +427,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Connections?.ToList(),
                 null,
                 cancellationToken

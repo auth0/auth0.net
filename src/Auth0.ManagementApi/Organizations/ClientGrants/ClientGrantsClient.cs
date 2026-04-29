@@ -269,7 +269,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.ClientGrants?.ToList(),
                 null,
                 cancellationToken

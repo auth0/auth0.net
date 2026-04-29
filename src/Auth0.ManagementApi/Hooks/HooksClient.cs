@@ -441,7 +441,7 @@ public partial class HooksClient : IHooksClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Hooks?.ToList(),
                 null,
                 cancellationToken

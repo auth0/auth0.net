@@ -169,7 +169,7 @@ public partial class OrganizationsClient : IOrganizationsClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Organizations?.ToList(),
                 null,
                 cancellationToken

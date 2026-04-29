@@ -5,7 +5,7 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// If provided, this will create a new connection for the SSO flow with the given configuration
+/// If provided, this will create a new connection for the Self-Service Enterprise Configuration flow with the given configuration
 /// </summary>
 [Serializable]
 public record SelfServiceProfileSsoTicketConnectionConfig : IJsonOnDeserialized
@@ -15,7 +15,7 @@ public record SelfServiceProfileSsoTicketConnectionConfig : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// The name of the connection that will be created as a part of the SSO flow.
+    /// The name of the connection that will be created as a part of the Self-Service Enterprise Configuration flow.
     /// </summary>
     [JsonPropertyName("name")]
     public required string Name { get; set; }

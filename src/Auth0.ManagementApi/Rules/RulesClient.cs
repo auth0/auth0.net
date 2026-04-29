@@ -444,7 +444,7 @@ public partial class RulesClient : IRulesClient
                 {
                     request.Page = offset;
                 },
-                null,
+                request => request.PerPage.GetValueOrDefault(0),
                 response => response.Rules?.ToList(),
                 null,
                 cancellationToken
