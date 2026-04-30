@@ -1,5 +1,34 @@
 # Change Log
 
+## [mgmt-8.2.0](https://github.com/auth0/auth0.net/tree/mgmt-8.2.0) (2026-04-30)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.1.0...mgmt-8.2.0)
+
+**Added**
+- SSE Events streaming: Added `IEventsClient` with `SubscribeAsync` returning `IAsyncEnumerable<EventStreamSubscribeEventsResponseContent>` for real-time event consumption with cursor-based resumption and typed CloudEvent variants (user, client, connection, organization, etc.) [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- New `GoneError` exception (HTTP 410) for expired stream cursors in SSE event streams [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Refresh token bulk revocation: Added `RefreshTokensClient.RevokeAsync` to bulk-revoke tokens by `Ids`, `UserId`, or `ClientId` [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Branding identifiers: Added `BrandingIdentifiers` type with `LoginDisplay`, `OtpAutocomplete`, and `PhoneDisplay` configuration options [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- SAML assertion decryption: Added `ConnectionAssertionDecryptionSettings` for configuring SAML assertion decryption on connections [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Custom domain header forwarding: Added `ManagementClientOptions.CustomDomain` to inject `Auth0-Custom-Header` on allow-listed Management API endpoints via a new `CustomDomainInterceptor` [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- Directory Provisioning: Added `ListSynchronizedGroupsAsync` and `SetAsync` to `DirectoryProvisioningClient` for managing synchronized groups on a connection [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- New query filters: `Strategy` on `Connections.ListAsync`, `Hydrate` on Flows/Forms/FlowExecutions endpoints, `Search` on `Groups.ListAsync`, `Identifiers` on `ResourceServers.ListAsync`, and `GrantIds` on `Organizations.ClientGrants.ListAsync` [\#987](https://github.com/auth0/auth0.net/pull/987) ([kailash-b](https://github.com/kailash-b))
+- Email providers: Added `Resend` as a supported value in `EmailProviderNameEnum` [\#987](https://github.com/auth0/auth0.net/pull/987) ([kailash-b](https://github.com/kailash-b))
+- `UpdateUserAuthenticationMethodResponseContent`: Added `Confirmed` (`bool?`) property to indicate whether an authentication method has been confirmed [\#987](https://github.com/auth0/auth0.net/pull/987) ([kailash-b](https://github.com/kailash-b))
+- Client configuration: Added `ThirdPartySecurityMode`, `RedirectionPolicy`, and `MyOrganizationConfiguration` properties on Client request/response types [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- Client Grants: Added `DefaultFor` property and a matching `DefaultFor` filter on `ClientGrants.ListAsync` [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- Tenant Settings: Added `DynamicClientRegistrationSecurityMode` and `ClientIdMetadataDocumentSupported` on tenant settings request/response types [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- DPoP support on connections: Added `DpopSigningAlg` property to `ConnectionOptionsOidc`, `ConnectionOptionsOkta`, and `ConnectionPropertiesOptions` [\#984](https://github.com/auth0/auth0.net/pull/984) ([kailash-b](https://github.com/kailash-b))
+- Pagination metadata: `Page<TItem>` now exposes `Response`, `StatusCode`, and `Headers` from the underlying HTTP response, populated via `WithRawResponse()` in pager requests [\#976](https://github.com/auth0/auth0.net/pull/976) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Fixed**
+- `RefreshTokens.GetAsync` now correctly handles `BadRequestError` (HTTP 400) responses; previously only 401, 403, and 404 were handled [\#987](https://github.com/auth0/auth0.net/pull/987) ([kailash-b](https://github.com/kailash-b))
+- Fixed pagination page-size handling to correctly defer page size when not specified [\#987](https://github.com/auth0/auth0.net/pull/987) ([kailash-b](https://github.com/kailash-b))
+- Path parameters and query strings now use context-aware encoding (path-segment-safe vs. query key/value character sets) to prevent malformed URL construction [\#976](https://github.com/auth0/auth0.net/pull/976) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Changed**
+- Self-Service Profiles: renamed "SSO Flow" concepts to "Enterprise Configuration" across request/response types [\#995](https://github.com/auth0/auth0.net/pull/995) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Upgraded `WireMock.Net` test dependency to `2.4.0` [\#992](https://github.com/auth0/auth0.net/pull/992) ([kailash-b](https://github.com/kailash-b))
+
 ## [mgmt-8.1.0](https://github.com/auth0/auth0.net/tree/mgmt-8.1.0) (2026-04-09)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.0.0...mgmt-8.1.0)
 
