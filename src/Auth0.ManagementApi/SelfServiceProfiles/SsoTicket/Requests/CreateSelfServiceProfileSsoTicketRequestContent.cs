@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.SelfServiceProfiles;
 public record CreateSelfServiceProfileSsoTicketRequestContent
 {
     /// <summary>
-    /// If provided, this will allow editing of the provided connection during the SSO Flow
+    /// If provided, this will allow editing of the provided connection during the Self-Service Enterprise Configuration flow
     /// </summary>
     [Optional]
     [JsonPropertyName("connection_id")]

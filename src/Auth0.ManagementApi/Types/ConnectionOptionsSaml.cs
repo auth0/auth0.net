@@ -77,6 +77,10 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
     public string? UserIdAttribute { get; set; }
 
     [Optional]
+    [JsonPropertyName("assertion_decryption_settings")]
+    public ConnectionAssertionDecryptionSettings? AssertionDecryptionSettings { get; set; }
+
+    [Optional]
     [JsonPropertyName("cert")]
     public string? Cert { get; set; }
 

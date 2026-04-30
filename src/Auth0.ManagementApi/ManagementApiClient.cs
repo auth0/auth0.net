@@ -42,6 +42,7 @@ public partial class ManagementApiClient : IManagementApiClient
         DeviceCredentials = new DeviceCredentialsClient(_client);
         EmailTemplates = new EmailTemplatesClient(_client);
         EventStreams = new EventStreamsClient(_client);
+        Events = new EventsClient(_client);
         Flows = new FlowsClient(_client);
         Forms = new FormsClient(_client);
         UserGrants = new UserGrantsClient(_client);
@@ -96,6 +97,8 @@ public partial class ManagementApiClient : IManagementApiClient
     public IEmailTemplatesClient EmailTemplates { get; }
 
     public IEventStreamsClient EventStreams { get; }
+
+    public IEventsClient Events { get; }
 
     public IFlowsClient Flows { get; }
 

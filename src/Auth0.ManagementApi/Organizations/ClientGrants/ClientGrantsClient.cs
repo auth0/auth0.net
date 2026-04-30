@@ -235,7 +235,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
     ///     {
     ///         Audience = "audience",
     ///         ClientId = "client_id",
-    ///         GrantIds = [new List&lt;string?&gt;() { "grant_ids" }],
+    ///         GrantIds = new List&lt;string?&gt;() { "grant_ids" },
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,

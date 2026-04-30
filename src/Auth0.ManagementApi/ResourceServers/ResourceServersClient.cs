@@ -417,7 +417,7 @@ public partial class ResourceServersClient : IResourceServersClient
     /// await client.ResourceServers.ListAsync(
     ///     new ListResourceServerRequestParameters
     ///     {
-    ///         Identifiers = [new List&lt;string?&gt;() { "identifiers" }],
+    ///         Identifiers = new List&lt;string?&gt;() { "identifiers" },
     ///         Page = 1,
     ///         PerPage = 1,
     ///         IncludeTotals = true,

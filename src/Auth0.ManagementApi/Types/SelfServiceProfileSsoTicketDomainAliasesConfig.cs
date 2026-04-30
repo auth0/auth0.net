@@ -5,7 +5,7 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Configuration for the setup of the connection’s domain_aliases in the self-service SSO flow.
+/// Configuration for the setup of the connection’s domain_aliases in the Self-Service Enterprise Configuration flow.
 /// </summary>
 [Serializable]
 public record SelfServiceProfileSsoTicketDomainAliasesConfig : IJsonOnDeserialized
@@ -18,7 +18,7 @@ public record SelfServiceProfileSsoTicketDomainAliasesConfig : IJsonOnDeserializ
     public required SelfServiceProfileSsoTicketDomainVerificationEnum DomainVerification { get; set; }
 
     /// <summary>
-    /// List of domains that will be submitted for verification during the self-service SSO flow.
+    /// List of domains that will be submitted for verification during the Self-Service Enterprise Configuration flow.
     /// </summary>
     [Optional]
     [JsonPropertyName("pending_domains")]

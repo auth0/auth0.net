@@ -90,6 +90,10 @@ public record UpdateResourceServerRequestContent
     [JsonPropertyName("subject_type_authorization")]
     public ResourceServerSubjectTypeAuthorization? SubjectTypeAuthorization { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("authorization_policy")]
+    public Optional<ResourceServerAuthorizationPolicy?> AuthorizationPolicy { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

@@ -49,11 +49,10 @@ public class GetTest : BaseMockServerTest
             "id",
             new GetFlowRequestParameters
             {
-                Hydrate =
-                    new List<GetFlowRequestParametersHydrateEnum?>()
-                    {
-                        GetFlowRequestParametersHydrateEnum.FormCount,
-                    },
+                Hydrate = new List<GetFlowRequestParametersHydrateEnum?>()
+                {
+                    GetFlowRequestParametersHydrateEnum.FormCount,
+                },
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

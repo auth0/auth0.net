@@ -1805,7 +1805,7 @@ await client.Connections.ListAsync(
     {
         From = "from",
         Take = 1,
-        Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
+        Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
         Name = "name",
         Fields = "fields",
         IncludeFields = true,
@@ -3385,6 +3385,71 @@ await client.EventStreams.TestAsync(
 </dl>
 </details>
 
+## Events
+<details><summary><code>client.Events.<a href="/src/Auth0.ManagementApi/Events/EventsClient.cs">SubscribeAsync</a>(SubscribeEventsRequestParameters { ... }) -> IAsyncEnumerable&lt;EventStreamSubscribeEventsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Subscribe to events via Server-Sent Events (SSE)
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+client.Events.SubscribeAsync(
+    new SubscribeEventsRequestParameters
+    {
+        From = "from",
+        FromTimestamp = "from_timestamp",
+        EventType = new List<EventStreamSubscribeEventsEventTypeEnum?>()
+        {
+            EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SubscribeEventsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Flows
 <details><summary><code>client.Flows.<a href="/src/Auth0.ManagementApi/Flows/FlowsClient.cs">ListAsync</a>(ListFlowsRequestParameters { ... }) -> Pager&lt;FlowSummary&gt;</code></summary>
 <dl>
@@ -3405,13 +3470,10 @@ await client.Flows.ListAsync(
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
-        Hydrate =
-        [
-            new List<ListFlowsRequestParametersHydrateEnum?>()
-            {
-                ListFlowsRequestParametersHydrateEnum.FormCount,
-            },
-        ],
+        Hydrate = new List<ListFlowsRequestParametersHydrateEnum?>()
+        {
+            ListFlowsRequestParametersHydrateEnum.FormCount,
+        },
         Synchronous = true,
     }
 );
@@ -3498,13 +3560,10 @@ await client.Flows.GetAsync(
     "id",
     new GetFlowRequestParameters
     {
-        Hydrate =
-        [
-            new List<GetFlowRequestParametersHydrateEnum?>()
-            {
-                GetFlowRequestParametersHydrateEnum.FormCount,
-            },
-        ],
+        Hydrate = new List<GetFlowRequestParametersHydrateEnum?>()
+        {
+            GetFlowRequestParametersHydrateEnum.FormCount,
+        },
     }
 );
 ```
@@ -3649,13 +3708,10 @@ await client.Forms.ListAsync(
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
-        Hydrate =
-        [
-            new List<FormsRequestParametersHydrateEnum?>()
-            {
-                FormsRequestParametersHydrateEnum.FlowCount,
-            },
-        ],
+        Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+        {
+            FormsRequestParametersHydrateEnum.FlowCount,
+        },
     }
 );
 ```
@@ -3741,13 +3797,10 @@ await client.Forms.GetAsync(
     "id",
     new GetFormRequestParameters
     {
-        Hydrate =
-        [
-            new List<FormsRequestParametersHydrateEnum?>()
-            {
-                FormsRequestParametersHydrateEnum.FlowCount,
-            },
-        ],
+        Hydrate = new List<FormsRequestParametersHydrateEnum?>()
+        {
+            FormsRequestParametersHydrateEnum.FlowCount,
+        },
     }
 );
 ```
@@ -6379,6 +6432,60 @@ await client.RefreshTokens.ListAsync(
 </dl>
 </details>
 
+<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">RevokeAsync</a>(RevokeRefreshTokensRequestContent { ... })</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Revoke refresh tokens in bulk by ID list, user, user+client, or client.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.RefreshTokens.RevokeAsync(new RevokeRefreshTokensRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `RevokeRefreshTokensRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetRefreshTokenResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -6580,7 +6687,7 @@ Retrieve details of all APIs associated with your tenant.
 await client.ResourceServers.ListAsync(
     new ListResourceServerRequestParameters
     {
-        Identifiers = [new List<string?>() { "identifiers" }],
+        Identifiers = new List<string?>() { "identifiers" },
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
@@ -13163,7 +13270,7 @@ await client.Clients.Connections.GetAsync(
     "id",
     new ConnectionsGetRequest
     {
-        Strategy = [new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad }],
+        Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
         From = "from",
         Take = 1,
         Fields = "fields",
@@ -15218,13 +15325,10 @@ await client.Flows.Executions.GetAsync(
     "execution_id",
     new GetFlowExecutionRequestParameters
     {
-        Hydrate =
-        [
-            new List<GetFlowExecutionRequestParametersHydrateEnum?>()
-            {
-                GetFlowExecutionRequestParametersHydrateEnum.Debug,
-            },
-        ],
+        Hydrate = new List<GetFlowExecutionRequestParametersHydrateEnum?>()
+        {
+            GetFlowExecutionRequestParametersHydrateEnum.Debug,
+        },
     }
 );
 ```
@@ -18658,7 +18762,7 @@ await client.Organizations.ClientGrants.ListAsync(
     {
         Audience = "audience",
         ClientId = "client_id",
-        GrantIds = [new List<string?>() { "grant_ids" }],
+        GrantIds = new List<string?>() { "grant_ids" },
         Page = 1,
         PerPage = 1,
         IncludeTotals = true,
@@ -21594,7 +21698,7 @@ await client.Roles.Users.AssignAsync(
 <dl>
 <dd>
 
-Retrieves text customizations for a given self-service profile, language and Self Service SSO Flow page.
+Retrieves text customizations for a given self-service profile, language and Self-Service Enterprise Configuration flow page.
 </dd>
 </dl>
 </dd>
@@ -21668,7 +21772,7 @@ await client.SelfServiceProfiles.CustomText.ListAsync(
 <dl>
 <dd>
 
-Updates text customizations for a given self-service profile, language and Self Service SSO Flow page.
+Updates text customizations for a given self-service profile, language and Self-Service Enterprise Configuration flow page.
 </dd>
 </dl>
 </dd>
@@ -21752,7 +21856,7 @@ await client.SelfServiceProfiles.CustomText.SetAsync(
 <dl>
 <dd>
 
-Creates an SSO access ticket to initiate the Self Service SSO Flow using a self-service profile.
+Creates an access ticket to initiate the Self-Service Enterprise Configuration flow using a self-service profile.
 </dd>
 </dl>
 </dd>
@@ -21817,7 +21921,7 @@ await client.SelfServiceProfiles.SsoTicket.CreateAsync(
 <dl>
 <dd>
 
-Revokes an SSO access ticket and invalidates associated sessions. The ticket will no longer be accepted to initiate a Self-Service SSO session. If any users have already started a session through this ticket, their session will be terminated. Clients should expect a `202 Accepted` response upon successful processing, indicating that the request has been acknowledged and that the revocation is underway but may not be fully completed at the time of response. If the specified ticket does not exist, a `202 Accepted` response is also returned, signaling that no further action is required.
+Revokes a Self-Service Enterprise Configuration access ticket and invalidates associated sessions. The ticket will no longer be accepted to initiate a Self-Service Enterprise Configuration session. If any users have already started a session through this ticket, their session will be terminated. Clients should expect a `202 Accepted` response upon successful processing, indicating that the request has been acknowledged and that the revocation is underway but may not be fully completed at the time of response. If the specified ticket does not exist, a `202 Accepted` response is also returned, signaling that no further action is required.
 Clients should treat these `202` responses as an acknowledgment that the request has been accepted and is in progress, even if the ticket was not found.
 </dd>
 </dl>

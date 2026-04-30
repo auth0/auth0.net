@@ -29,15 +29,17 @@ public record ConnectionResponseContentLinkedin : IJsonOnDeserialized
     [JsonPropertyName("connected_accounts")]
     public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
 
+    [Optional]
     [JsonPropertyName("id")]
-    public required string Id { get; set; }
+    public string? Id { get; set; }
 
     [Optional]
     [JsonPropertyName("realms")]
     public IEnumerable<string>? Realms { get; set; }
 
+    [Optional]
     [JsonPropertyName("name")]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Use of this property is NOT RECOMMENDED. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients.

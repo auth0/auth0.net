@@ -25,6 +25,10 @@ public record UpdateBrandingRequestContent
     public Optional<string?> LogoUrl { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("identifiers")]
+    public Optional<UpdateBrandingIdentifiers?> Identifiers { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("font")]
     public Optional<UpdateBrandingFont?> Font { get; set; }
 
