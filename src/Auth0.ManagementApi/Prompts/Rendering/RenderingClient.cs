@@ -464,7 +464,7 @@ public partial class RenderingClient : IRenderingClient
     }
 
     /// <summary>
-    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
+    /// Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.Rendering.BulkUpdateAsync(
@@ -511,7 +511,7 @@ public partial class RenderingClient : IRenderingClient
     }
 
     /// <summary>
-    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
+    /// Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.Rendering.UpdateAsync(

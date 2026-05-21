@@ -14,9 +14,9 @@ public partial class ClientsClient : IClientsClient
     }
 
     /// <summary>
-    /// Retrieve all clients that have the specified <see href="https://auth0.com/docs/authenticate/identity-providers">connection</see> enabled.
+    /// Retrieve all clients that have the specified [connection](https://auth0.com/docs/authenticate/identity-providers) enabled.
     ///
-    /// <b>Note</b>: The first time you call this endpoint, omit the <c>from</c> parameter. If there are more results, a <c>next</c> value is included in the response. You can use this for subsequent API calls. When <c>next</c> is no longer included in the response, no further results are remaining.
+    /// **Note**: The first time you call this endpoint, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no further results are remaining.
     /// </summary>
     private WithRawResponseTask<GetConnectionEnabledClientsResponseContent> GetInternalAsync(
         string id,
@@ -131,9 +131,9 @@ public partial class ClientsClient : IClientsClient
     }
 
     /// <summary>
-    /// Retrieve all clients that have the specified <see href="https://auth0.com/docs/authenticate/identity-providers">connection</see> enabled.
+    /// Retrieve all clients that have the specified [connection](https://auth0.com/docs/authenticate/identity-providers) enabled.
     ///
-    /// <b>Note</b>: The first time you call this endpoint, omit the <c>from</c> parameter. If there are more results, a <c>next</c> value is included in the response. You can use this for subsequent API calls. When <c>next</c> is no longer included in the response, no further results are remaining.
+    /// **Note**: The first time you call this endpoint, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no further results are remaining.
     /// </summary>
     /// <example><code>
     /// await client.Connections.Clients.GetAsync(

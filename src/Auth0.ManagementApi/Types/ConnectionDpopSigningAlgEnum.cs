@@ -10,6 +10,10 @@ public readonly record struct ConnectionDpopSigningAlgEnum : IStringEnum
 {
     public static readonly ConnectionDpopSigningAlgEnum Es256 = new(Values.Es256);
 
+    public static readonly ConnectionDpopSigningAlgEnum Es384 = new(Values.Es384);
+
+    public static readonly ConnectionDpopSigningAlgEnum Es512 = new(Values.Es512);
+
     public static readonly ConnectionDpopSigningAlgEnum Ed25519 = new(Values.Ed25519);
 
     public ConnectionDpopSigningAlgEnum(string value)
@@ -110,6 +114,10 @@ public readonly record struct ConnectionDpopSigningAlgEnum : IStringEnum
     public static class Values
     {
         public const string Es256 = "ES256";
+
+        public const string Es384 = "ES384";
+
+        public const string Es512 = "ES512";
 
         public const string Ed25519 = "Ed25519";
     }

@@ -15,7 +15,7 @@ public partial interface IRenderingClient
     );
 
     /// <summary>
-    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
+    /// Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
     /// </summary>
     WithRawResponseTask<BulkUpdateAculResponseContent> BulkUpdateAsync(
         BulkUpdateAculRequestContent request,
@@ -34,7 +34,7 @@ public partial interface IRenderingClient
     );
 
     /// <summary>
-    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
+    /// Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
     /// </summary>
     WithRawResponseTask<UpdateAculResponseContent> UpdateAsync(
         PromptGroupNameEnum prompt,
