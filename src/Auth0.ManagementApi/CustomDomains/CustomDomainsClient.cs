@@ -720,7 +720,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
     }
 
     /// <summary>
-    /// Retrieve details on <see href="https://auth0.com/docs/custom-domains">custom domains</see>.
+    /// Retrieve details on [custom domains](https://auth0.com/docs/custom-domains).
     /// </summary>
     /// <example><code>
     /// await client.CustomDomains.ListAsync(
@@ -754,7 +754,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
     ///
     /// - custom_client_ip_header
     /// - tls_policy
-    ///
     ///
     /// TLS Policies:
     ///
@@ -907,23 +906,31 @@ public partial class CustomDomainsClient : ICustomDomainsClient
     /// - custom_client_ip_header
     /// - tls_policy
     ///
-    /// <para>Updating CUSTOM_CLIENT_IP_HEADER for a custom domain</para>To update the <c>custom_client_ip_header</c> for a domain, the body to
+    /// **Updating CUSTOM_CLIENT_IP_HEADER for a custom domain**
+    ///
+    /// To update the `custom_client_ip_header` for a domain, the body to
     /// send should be:
-    /// <code>{ "custom_client_ip_header": "cf-connecting-ip" }</code>
     ///
-    /// <para>Updating TLS_POLICY for a custom domain</para>To update the <c>tls_policy</c> for a domain, the body to send should be:
-    /// <code>{ "tls_policy": "recommended" }</code>
+    /// ```json
+    /// { "custom_client_ip_header": "cf-connecting-ip" }
+    /// ```
     ///
+    /// **Updating TLS_POLICY for a custom domain**
+    ///
+    /// To update the `tls_policy` for a domain, the body to send should be:
+    ///
+    /// ```json
+    /// { "tls_policy": "recommended" }
+    /// ```
     ///
     /// TLS Policies:
     ///
     /// - recommended - for modern usage this includes TLS 1.2 only
     ///
-    ///
     /// Some considerations:
     ///
     /// - The TLS ciphers and protocols available in each TLS policy follow industry recommendations, and may be updated occasionally.
-    /// - The <c>compatible</c> TLS policy is no longer supported.
+    /// - The `compatible` TLS policy is no longer supported.
     /// </summary>
     /// <example><code>
     /// await client.CustomDomains.UpdateAsync("id", new UpdateCustomDomainRequestContent());
@@ -960,12 +967,12 @@ public partial class CustomDomainsClient : ICustomDomainsClient
     /// <summary>
     /// Run the verification process on a custom domain.
     ///
-    /// Note: Check the <c>status</c> field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
+    /// Note: Check the `status` field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
     ///
-    /// For <c>self_managed_certs</c>, when the custom domain is verified for the first time, the response will also include the <c>cname_api_key</c> which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
+    /// For `self_managed_certs`, when the custom domain is verified for the first time, the response will also include the `cname_api_key` which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
     ///
-    /// <see href="https://auth0.com/docs/custom-domains#step-2-verify-ownership">Learn more</see> about verifying custom domains that use Auth0 Managed certificates.
-    /// <see href="https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership">Learn more</see> about verifying custom domains that use Self Managed certificates.
+    /// [Learn more](https://auth0.com/docs/custom-domains#step-2-verify-ownership) about verifying custom domains that use Auth0 Managed certificates.
+    /// [Learn more](https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership) about verifying custom domains that use Self Managed certificates.
     /// </summary>
     /// <example><code>
     /// await client.CustomDomains.VerifyAsync("id");

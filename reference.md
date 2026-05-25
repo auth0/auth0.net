@@ -255,7 +255,7 @@ await client.Actions.DeleteAsync("id", new DeleteActionRequestParameters { Force
 <dl>
 <dd>
 
-Update an existing action. If this action is currently bound to a trigger, updating it will <strong>not</strong> affect any user flows until the action is deployed.
+Update an existing action. If this action is currently bound to a trigger, updating it will **not** affect any user flows until the action is deployed.
 </dd>
 </dl>
 </dd>
@@ -1054,10 +1054,19 @@ await client.Clients.PreviewCimdMetadataAsync(
 <dl>
 <dd>
 
+Idempotent registration for Client ID Metadata Document (CIMD) clients.
+Uses external_client_id as the unique identifier for upsert operations.
 
-      Idempotent registration for Client ID Metadata Document (CIMD) clients.
-      Uses external_client_id as the unique identifier for upsert operations.
-      **Create:** Returns 201 when a new client is created (requires \
+<strong>Create:</strong> Returns 201 when a new client is created (requires <code>create:clients</code> scope).
+<strong>Update:</strong> Returns 200 when an existing client is updated (requires <code>update:clients</code> scope).
+
+This endpoint automatically:
+<ul>
+  <li>Fetches and validates the metadata document</li>
+  <li>Maps CIMD fields to Auth0 client configuration</li>
+  <li>Creates/rotates credentials from the JWKS</li>
+  <li>Enforces CIMD security policies (HTTPS-only, no shared secrets)</li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -1767,25 +1776,23 @@ await client.ConnectionProfiles.UpdateAsync("id", new UpdateConnectionProfileReq
 <dl>
 <dd>
 
-Retrieves detailed list of all <a href="https://auth0.com/docs/authenticate/identity-providers">connections</a> that match the specified strategy. If no strategy is provided, all connections within your tenant are retrieved. This action can accept a list of fields to include or exclude from the resulting list of connections. 
+Retrieves detailed list of all [connections](https://auth0.com/docs/authenticate/identity-providers) that match the specified strategy. If no strategy is provided, all connections within your tenant are retrieved. This action can accept a list of fields to include or exclude from the resulting list of connections. 
 
 This endpoint supports two types of pagination:
-<ul>
-<li>Offset pagination</li>
-<li>Checkpoint pagination</li>
-</ul>
+
+- Offset pagination
+- Checkpoint pagination
 
 Checkpoint pagination must be used if you need to retrieve more than 1000 connections.
 
-<h2>Checkpoint Pagination</h2>
+**Checkpoint Pagination**
 
 To search by checkpoint, use the following parameters:
-<ul>
-<li><code>from</code>: Optional id from which to start selection.</li>
-<li><code>take</code>: The total amount of entries to retrieve when using the from parameter. Defaults to 50.</li>
-</ul>
 
-<b>Note</b>: The first time you call this endpoint using checkpoint pagination, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no pages are remaining.
+- `from`: Optional id from which to start selection.
+- `take`: The total amount of entries to retrieve when using the from parameter. Defaults to 50.
+
+**Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining.
 </dd>
 </dl>
 </dd>
@@ -1849,9 +1856,9 @@ await client.Connections.ListAsync(
 <dl>
 <dd>
 
-Creates a new connection according to the JSON object received in <code>body</code>.
+Creates a new connection according to the JSON object received in `body`.
 
-<b>Note:</b> If a connection with the same name was recently deleted and had a large number of associated users, the deletion may still be processing. Creating a new connection with that name before the deletion completes may fail or produce unexpected results. 
+**Note:** If a connection with the same name was recently deleted and had a large number of associated users, the deletion may still be processing. Creating a new connection with that name before the deletion completes may fail or produce unexpected results.
 </dd>
 </dl>
 </dd>
@@ -1911,7 +1918,7 @@ await client.Connections.CreateAsync(
 <dl>
 <dd>
 
-Retrieve details for a specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> along with options that can be used for identity provider configuration.
+Retrieve details for a specified [connection](https://auth0.com/docs/authenticate/identity-providers) along with options that can be used for identity provider configuration.
 </dd>
 </dl>
 </dd>
@@ -1976,9 +1983,9 @@ await client.Connections.GetAsync(
 <dl>
 <dd>
 
-Removes a specific <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> from your tenant. This action cannot be undone. Once removed, users can no longer use this connection to authenticate.
+Removes a specific [connection](https://auth0.com/docs/authenticate/identity-providers) from your tenant. This action cannot be undone. Once removed, users can no longer use this connection to authenticate.
 
-<b>Note:</b> If your connection has a large amount of users associated with it, please be aware that this operation can be long running after the response is returned and may impact concurrent <a href="https://auth0.com/docs/api/management/v2/connections/post-connections">create connection</a> requests, if they use an identical connection name. 
+**Note:** If your connection has a large amount of users associated with it, please be aware that this operation can be long running after the response is returned and may impact concurrent [create connection](https://auth0.com/docs/api/management/v2/connections/post-connections) requests, if they use an identical connection name.
 </dd>
 </dl>
 </dd>
@@ -2032,9 +2039,9 @@ await client.Connections.DeleteAsync("id");
 <dl>
 <dd>
 
-Update details for a specific <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a>, including option properties for identity provider configuration.
+Update details for a specific [connection](https://auth0.com/docs/authenticate/identity-providers), including option properties for identity provider configuration.
 
-<b>Note</b>: If you use the <code>options</code> parameter, the entire <code>options</code> object is overriden. To avoid partial data or other issues, ensure all parameters are present when using this option.
+**Note**: If you use the `options` parameter, the entire `options` object is overridden. To avoid partial data or other issues, ensure all parameters are present when using this option.
 </dd>
 </dl>
 </dd>
@@ -2096,7 +2103,7 @@ await client.Connections.UpdateAsync("id", new UpdateConnectionRequestContent())
 <dl>
 <dd>
 
-Retrieves the status of an ad/ldap connection referenced by its <code>ID</code>. <code>200 OK</code> http status code response is returned  when the connection is online, otherwise a <code>404</code> status code is returned along with an error message
+Retrieves the status of an ad/ldap connection referenced by its `ID`. `200 OK` http status code response is returned  when the connection is online, otherwise a `404` status code is returned along with an error message
 </dd>
 </dl>
 </dd>
@@ -2151,7 +2158,7 @@ await client.Connections.CheckStatusAsync("id");
 <dl>
 <dd>
 
-Retrieve details on <a href="https://auth0.com/docs/custom-domains">custom domains</a>.
+Retrieve details on [custom domains](https://auth0.com/docs/custom-domains).
 </dd>
 </dl>
 </dd>
@@ -2222,7 +2229,6 @@ Optional attributes that can be updated:
 
 - custom_client_ip_header
 - tls_policy
-
 
 TLS Policies:
 
@@ -2496,23 +2502,31 @@ These are the attributes that can be updated:
 - custom_client_ip_header
 - tls_policy
 
-<h5>Updating CUSTOM_CLIENT_IP_HEADER for a custom domain</h5>To update the <code>custom_client_ip_header</code> for a domain, the body to
+**Updating CUSTOM_CLIENT_IP_HEADER for a custom domain**
+
+To update the `custom_client_ip_header` for a domain, the body to
 send should be:
-<pre><code>{ "custom_client_ip_header": "cf-connecting-ip" }</code></pre>
 
-<h5>Updating TLS_POLICY for a custom domain</h5>To update the <code>tls_policy</code> for a domain, the body to send should be:
-<pre><code>{ "tls_policy": "recommended" }</code></pre>
+```json
+{ "custom_client_ip_header": "cf-connecting-ip" }
+```
 
+**Updating TLS_POLICY for a custom domain**
+
+To update the `tls_policy` for a domain, the body to send should be:
+
+```json
+{ "tls_policy": "recommended" }
+```
 
 TLS Policies:
 
 - recommended - for modern usage this includes TLS 1.2 only
 
-
 Some considerations:
 
 - The TLS ciphers and protocols available in each TLS policy follow industry recommendations, and may be updated occasionally.
-- The <code>compatible</code> TLS policy is no longer supported.
+- The `compatible` TLS policy is no longer supported.
 </dd>
 </dl>
 </dd>
@@ -2630,12 +2644,12 @@ await client.CustomDomains.TestAsync("id");
 
 Run the verification process on a custom domain.
 
-Note: Check the <code>status</code> field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
+Note: Check the `status` field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
 
-For <code>self_managed_certs</code>, when the custom domain is verified for the first time, the response will also include the <code>cname_api_key</code> which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
+For `self_managed_certs`, when the custom domain is verified for the first time, the response will also include the `cname_api_key` which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
 
-<a href="https://auth0.com/docs/custom-domains#step-2-verify-ownership">Learn more</a> about verifying custom domains that use Auth0 Managed certificates.
-<a href="https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership">Learn more</a> about verifying custom domains that use Self Managed certificates.
+[Learn more](https://auth0.com/docs/custom-domains#step-2-verify-ownership) about verifying custom domains that use Auth0 Managed certificates.
+[Learn more](https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership) about verifying custom domains that use Self Managed certificates.
 </dd>
 </dl>
 </dd>
@@ -4288,7 +4302,7 @@ await client.Groups.DeleteAsync("id");
 <dl>
 <dd>
 
-Retrieve all <a href="https://auth0.com/docs/hooks">hooks</a>. Accepts a list of fields to include or exclude in the result.
+Retrieve all [hooks](https://auth0.com/docs/hooks). Accepts a list of fields to include or exclude in the result.
 </dd>
 </dl>
 </dd>
@@ -4413,7 +4427,7 @@ await client.Hooks.CreateAsync(
 <dl>
 <dd>
 
-Retrieve <a href="https://auth0.com/docs/hooks">a hook</a> by its ID. Accepts a list of fields to include in the result.
+Retrieve [a hook](https://auth0.com/docs/hooks) by its ID. Accepts a list of fields to include in the result.
 </dd>
 </dl>
 </dd>
@@ -7261,7 +7275,7 @@ await client.Roles.UpdateAsync("id", new UpdateRoleRequestContent());
 <dl>
 <dd>
 
-Retrieve a filtered list of <a href="https://auth0.com/docs/rules">rules</a>. Accepts a list of fields to include or exclude.
+Retrieve a filtered list of [rules](https://auth0.com/docs/rules). Accepts a list of fields to include or exclude.
 </dd>
 </dl>
 </dd>
@@ -7325,9 +7339,9 @@ await client.Rules.ListAsync(
 <dl>
 <dd>
 
-Create a <a href="https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api">new rule</a>.
+Create a [new rule](https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api).
 
-Note: Changing a rule's stage of execution from the default <code>login_success</code> can change the rule's function signature to have user omitted.
+Note: Changing a rule's stage of execution from the default `login_success` can change the rule's function signature to have user omitted.
 </dd>
 </dl>
 </dd>
@@ -7381,7 +7395,7 @@ await client.Rules.CreateAsync(new CreateRuleRequestContent { Name = "name", Scr
 <dl>
 <dd>
 
-Retrieve <a href="https://auth0.com/docs/rules">rule</a> details. Accepts a list of fields to include or exclude in the result.
+Retrieve [rule](https://auth0.com/docs/rules) details. Accepts a list of fields to include or exclude in the result.
 </dd>
 </dl>
 </dd>
@@ -11693,28 +11707,28 @@ await client.Branding.Templates.GetUniversalLoginAsync();
 
 Update the Universal Login branding template.
 
-<p>When <code>content-type</code> header is set to <code>application/json</code>:</p>
-<pre>
-{
-  "template": "&lt;!DOCTYPE html&gt;{% assign resolved_dir = dir | default: "auto" %}&lt;html lang="{{locale}}" dir="{{resolved_dir}}"&gt;&lt;head&gt;{%- auth0:head -%}&lt;/head&gt;&lt;body class="_widget-auto-layout"&gt;{%- auth0:widget -%}&lt;/body&gt;&lt;/html&gt;"
-}
-</pre>
+When `content-type` header is set to `application/json`:
 
-<p>
-  When <code>content-type</code> header is set to <code>text/html</code>:
-</p>
-<pre>
-&lt!DOCTYPE html&gt;
+```json
+{
+  "template": "<!DOCTYPE html>{% assign resolved_dir = dir | default: \"auto\" %}<html lang=\"{{locale}}\" dir=\"{{resolved_dir}}\"><head>{%- auth0:head -%}</head><body class=\"_widget-auto-layout\">{%- auth0:widget -%}</body></html>"
+}
+```
+
+When `content-type` header is set to `text/html`:
+
+```html
+<!DOCTYPE html>
 {% assign resolved_dir = dir | default: "auto" %}
-&lt;html lang="{{locale}}" dir="{{resolved_dir}}"&gt;
-  &lt;head&gt;
+<html lang="{{locale}}" dir="{{resolved_dir}}">
+  <head>
     {%- auth0:head -%}
-  &lt;/head&gt;
-  &lt;body class="_widget-auto-layout"&gt;
+  </head>
+  <body class="_widget-auto-layout">
     {%- auth0:widget -%}
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre>
+  </body>
+</html>
+```
 </dd>
 </dl>
 </dd>
@@ -14162,9 +14176,9 @@ await client.Connections.ScimConfiguration.GetDefaultMappingAsync("id");
 <dl>
 <dd>
 
-Retrieve all clients that have the specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> enabled.
+Retrieve all clients that have the specified [connection](https://auth0.com/docs/authenticate/identity-providers) enabled.
 
-<b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
+**Note**: The first time you call this endpoint, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no further results are remaining.
 </dd>
 </dl>
 </dd>
@@ -17570,7 +17584,7 @@ await client.Guardian.Factors.Duo.Settings.UpdateAsync(
 <dl>
 <dd>
 
-Retrieve a hook's secrets by the ID of the hook. 
+Retrieve a hook's secrets by the ID of the hook.
 </dd>
 </dl>
 </dd>
@@ -17624,7 +17638,7 @@ await client.Hooks.Secrets.GetAsync("id");
 <dl>
 <dd>
 
-Add one or more secrets to an existing hook. Accepts an object of key-value pairs, where the key is the name of the secret. A hook can have a maximum of 20 secrets. 
+Add one or more secrets to an existing hook. Accepts an object of key-value pairs, where the key is the name of the secret. A hook can have a maximum of 20 secrets.
 </dd>
 </dl>
 </dd>
@@ -17689,7 +17703,7 @@ await client.Hooks.Secrets.CreateAsync(
 <dl>
 <dd>
 
-Delete one or more existing secrets for a given hook. Accepts an array of secret names to delete. 
+Delete one or more existing secrets for a given hook. Accepts an array of secret names to delete.
 </dd>
 </dl>
 </dd>
@@ -17751,7 +17765,7 @@ await client.Hooks.Secrets.DeleteAsync("id", new List<string>() { "string" });
 <dl>
 <dd>
 
-Update one or more existing secrets for an existing hook. Accepts an object of key-value pairs, where the key is the name of the existing secret. 
+Update one or more existing secrets for an existing hook. Accepts an object of key-value pairs, where the key is the name of the existing secret.
 </dd>
 </dl>
 </dd>
@@ -20674,7 +20688,7 @@ await client.Prompts.Rendering.ListAsync(
 <dl>
 <dd>
 
-Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
 </dd>
 </dl>
 </dd>
@@ -20802,7 +20816,7 @@ await client.Prompts.Rendering.GetAsync(PromptGroupNameEnum.Login, ScreenGroupNa
 <dl>
 <dd>
 
-Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+Learn more about [configuring render settings](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens) for advanced customization.
 </dd>
 </dl>
 </dd>

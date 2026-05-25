@@ -48,7 +48,7 @@ public partial interface IActionsClient
     );
 
     /// <summary>
-    /// Update an existing action. If this action is currently bound to a trigger, updating it will <b>not</b> affect any user flows until the action is deployed.
+    /// Update an existing action. If this action is currently bound to a trigger, updating it will **not** affect any user flows until the action is deployed.
     /// </summary>
     WithRawResponseTask<UpdateActionResponseContent> UpdateAsync(
         string id,

@@ -224,6 +224,10 @@ public record UpdateClientRequestContent
     [JsonPropertyName("native_social_login")]
     public NativeSocialLogin? NativeSocialLogin { get; set; }
 
+    [Optional]
+    [JsonPropertyName("fedcm_login")]
+    public FedCmLogin? FedcmLogin { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("refresh_token")]
     public Optional<ClientRefreshTokenConfiguration?> RefreshToken { get; set; }

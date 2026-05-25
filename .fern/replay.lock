@@ -6,5 +6,219 @@ generations:
     timestamp: 2026-05-12T04:47:13.201Z
     cli_version: unknown
     generator_versions: {}
-current_generation: 409821046d64fe47802d1e9df109b372de1d998f
-patches: []
+  - commit_sha: 10833198f7f22dc8865d845f315b3f437907409f
+    tree_hash: df936340ef63377188bc24b5814c66a2d409ef82
+    timestamp: 2026-05-21T10:33:44.550Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.66.5
+current_generation: 10833198f7f22dc8865d845f315b3f437907409f
+patches:
+  - id: patch-4a7a2c3e
+    content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
+    original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
+    original_message: Adds extension to convert UserDateSchema to DateTime
+    original_author: Kailash B <kailash.b@okta.com>
+    base_generation: 10833198f7f22dc8865d845f315b3f437907409f
+    files:
+      - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+    patch_content: |
+      diff --git a/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs b/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+      new file mode 100644
+      index 00000000..7d867ca6
+      --- /dev/null
+      +++ b/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+      @@ -0,0 +1,95 @@
+      +using NUnit.Framework;
+      +
+      +namespace Auth0.ManagementApi.Test.Unit.Extensions;
+      +
+      +[TestFixture]
+      +public class UserDateSchemaExtensionsTest
+      +{
+      +    [Test]
+      +    public void ToDateTime_WithValidIso8601String_ReturnsUtcDateTime()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value, Is.EqualTo(new DateTime(2024, 3, 15, 10, 30, 0, DateTimeKind.Utc)));
+      +        Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithNull_ReturnsNull()
+      +    {
+      +        UserDateSchema? schema = null;
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMapType_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromMapOfStringToUnknown(new Dictionary<string, object?>
+      +        {
+      +            { "some_key", "some_value" }
+      +        });
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMalformedString_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromString("not-a-date");
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithOffsetString_PreservesLocalKind()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+      +
+      +        var result = schema.ToDateTime();
+      +        var expectedLocal = new DateTimeOffset(2024, 6, 20, 14, 0, 0, TimeSpan.FromMinutes(330)).LocalDateTime;
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value, Is.EqualTo(expectedLocal));
+      +        Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Local));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithDateTimeOffset_ReturnsUtcConverted()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+      +
+      +        var result = schema.ToDateTime(TimeZoneInfo.Utc);
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+      +        Assert.That(result.Value, Is.EqualTo(new DateTime(2024, 6, 20, 8, 30, 0, DateTimeKind.Utc)));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMalformedStringAndTargetTimeZone_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromString("not-a-date");
+      +
+      +        var result = schema.ToDateTime(TimeZoneInfo.Utc);
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithNullTargetTimeZone_ThrowsArgumentNullException()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+      +
+      +        Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
+      +    }
+      +}
+    theirs_snapshot:
+      tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs: |
+        using NUnit.Framework;
+
+        namespace Auth0.ManagementApi.Test.Unit.Extensions;
+
+        [TestFixture]
+        public class UserDateSchemaExtensionsTest
+        {
+            [Test]
+            public void ToDateTime_WithValidIso8601String_ReturnsUtcDateTime()
+            {
+                var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value, Is.EqualTo(new DateTime(2024, 3, 15, 10, 30, 0, DateTimeKind.Utc)));
+                Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+            }
+
+            [Test]
+            public void ToDateTime_WithNull_ReturnsNull()
+            {
+                UserDateSchema? schema = null;
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithMapType_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromMapOfStringToUnknown(new Dictionary<string, object?>
+                {
+                    { "some_key", "some_value" }
+                });
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithMalformedString_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromString("not-a-date");
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithOffsetString_PreservesLocalKind()
+            {
+                var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+
+                var result = schema.ToDateTime();
+                var expectedLocal = new DateTimeOffset(2024, 6, 20, 14, 0, 0, TimeSpan.FromMinutes(330)).LocalDateTime;
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value, Is.EqualTo(expectedLocal));
+                Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Local));
+            }
+
+            [Test]
+            public void ToDateTime_WithDateTimeOffset_ReturnsUtcConverted()
+            {
+                var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+
+                var result = schema.ToDateTime(TimeZoneInfo.Utc);
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+                Assert.That(result.Value, Is.EqualTo(new DateTime(2024, 6, 20, 8, 30, 0, DateTimeKind.Utc)));
+            }
+
+            [Test]
+            public void ToDateTime_WithMalformedStringAndTargetTimeZone_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromString("not-a-date");
+
+                var result = schema.ToDateTime(TimeZoneInfo.Utc);
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithNullTargetTimeZone_ThrowsArgumentNullException()
+            {
+                var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+
+                Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
+            }
+        }
+    user_owned: true

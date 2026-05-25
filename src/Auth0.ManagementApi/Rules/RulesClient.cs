@@ -13,7 +13,7 @@ public partial class RulesClient : IRulesClient
     }
 
     /// <summary>
-    /// Retrieve a filtered list of <see href="https://auth0.com/docs/rules">rules</see>. Accepts a list of fields to include or exclude.
+    /// Retrieve a filtered list of [rules](https://auth0.com/docs/rules). Accepts a list of fields to include or exclude.
     /// </summary>
     private WithRawResponseTask<ListRulesOffsetPaginatedResponseContent> ListInternalAsync(
         ListRulesRequestParameters request,
@@ -404,7 +404,7 @@ public partial class RulesClient : IRulesClient
     }
 
     /// <summary>
-    /// Retrieve a filtered list of <see href="https://auth0.com/docs/rules">rules</see>. Accepts a list of fields to include or exclude.
+    /// Retrieve a filtered list of [rules](https://auth0.com/docs/rules). Accepts a list of fields to include or exclude.
     /// </summary>
     /// <example><code>
     /// await client.Rules.ListAsync(
@@ -454,9 +454,9 @@ public partial class RulesClient : IRulesClient
     }
 
     /// <summary>
-    /// Create a <see href="https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api">new rule</see>.
+    /// Create a [new rule](https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api).
     ///
-    /// Note: Changing a rule's stage of execution from the default <c>login_success</c> can change the rule's function signature to have user omitted.
+    /// Note: Changing a rule's stage of execution from the default `login_success` can change the rule's function signature to have user omitted.
     /// </summary>
     /// <example><code>
     /// await client.Rules.CreateAsync(new CreateRuleRequestContent { Name = "name", Script = "script" });
@@ -473,7 +473,7 @@ public partial class RulesClient : IRulesClient
     }
 
     /// <summary>
-    /// Retrieve <see href="https://auth0.com/docs/rules">rule</see> details. Accepts a list of fields to include or exclude in the result.
+    /// Retrieve [rule](https://auth0.com/docs/rules) details. Accepts a list of fields to include or exclude in the result.
     /// </summary>
     /// <example><code>
     /// await client.Rules.GetAsync(
