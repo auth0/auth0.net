@@ -101,7 +101,7 @@ public partial class VerificationEmailClient : IVerificationEmailClient
     }
 
     /// <summary>
-    /// Send an email to the specified user that asks them to click a link to <see href="https://auth0.com/docs/email/custom#verification-email">verify their email address</see>.
+    /// Send an email to the specified user that asks them to click a link to [verify their email address](https://auth0.com/docs/email/custom#verification-email).
     ///
     /// Note: You must have the `Status` toggle enabled for the verification email template for the email to be sent.
     /// </summary>

@@ -22,7 +22,6 @@ public class SetTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/prompts/login/custom-text/am")
-                    .WithHeader("Content-Type", "application/json")
                     .UsingPut()
                     .WithBodyAsJson(requestJson)
             )

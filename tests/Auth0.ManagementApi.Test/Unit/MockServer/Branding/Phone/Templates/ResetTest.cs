@@ -41,7 +41,6 @@ public class ResetTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/branding/phone/templates/id/reset")
-                    .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
             )

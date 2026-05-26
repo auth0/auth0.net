@@ -45,8 +45,10 @@ public class GetTest : BaseMockServerTest
               "multifactor": [
                 "multifactor"
               ],
+              "multifactor_last_modified": "multifactor_last_modified",
               "last_ip": "last_ip",
               "last_login": "last_login",
+              "last_password_reset": "last_password_reset",
               "logins_count": 1,
               "blocked": true,
               "given_name": "given_name",

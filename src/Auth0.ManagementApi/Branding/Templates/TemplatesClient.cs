@@ -163,7 +163,6 @@ public partial class TemplatesClient : ITemplatesClient
                     Path = "branding/templates/universal-login",
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

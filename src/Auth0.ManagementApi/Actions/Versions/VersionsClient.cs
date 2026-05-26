@@ -244,7 +244,6 @@ public partial class VersionsClient : IVersionsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

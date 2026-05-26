@@ -10,6 +10,8 @@ public readonly record struct ClientExternalMetadataTypeEnum : IStringEnum
 {
     public static readonly ClientExternalMetadataTypeEnum Cimd = new(Values.Cimd);
 
+    public static readonly ClientExternalMetadataTypeEnum Dcr = new(Values.Dcr);
+
     public ClientExternalMetadataTypeEnum(string value)
     {
         Value = value;
@@ -108,5 +110,7 @@ public readonly record struct ClientExternalMetadataTypeEnum : IStringEnum
     public static class Values
     {
         public const string Cimd = "cimd";
+
+        public const string Dcr = "dcr";
     }
 }

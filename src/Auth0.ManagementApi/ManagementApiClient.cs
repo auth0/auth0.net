@@ -54,6 +54,7 @@ public partial class ManagementApiClient : IManagementApiClient
         NetworkAcls = new NetworkAclsClient(_client);
         Organizations = new OrganizationsClient(_client);
         Prompts = new PromptsClient(_client);
+        RateLimitPolicies = new RateLimitPoliciesClient(_client);
         RefreshTokens = new RefreshTokensClient(_client);
         ResourceServers = new ResourceServersClient(_client);
         Roles = new RolesClient(_client);
@@ -121,6 +122,8 @@ public partial class ManagementApiClient : IManagementApiClient
     public IOrganizationsClient Organizations { get; }
 
     public IPromptsClient Prompts { get; }
+
+    public IRateLimitPoliciesClient RateLimitPolicies { get; }
 
     public IRefreshTokensClient RefreshTokens { get; }
 

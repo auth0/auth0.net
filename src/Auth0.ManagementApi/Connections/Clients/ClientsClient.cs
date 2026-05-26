@@ -214,7 +214,6 @@ public partial class ClientsClient : IClientsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

@@ -153,7 +153,6 @@ public partial class PartialsClient : IPartialsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

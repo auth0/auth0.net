@@ -31,6 +31,7 @@ public partial interface IManagementApiClient
     public INetworkAclsClient NetworkAcls { get; }
     public IOrganizationsClient Organizations { get; }
     public IPromptsClient Prompts { get; }
+    public IRateLimitPoliciesClient RateLimitPolicies { get; }
     public IRefreshTokensClient RefreshTokens { get; }
     public IResourceServersClient ResourceServers { get; }
     public IRolesClient Roles { get; }

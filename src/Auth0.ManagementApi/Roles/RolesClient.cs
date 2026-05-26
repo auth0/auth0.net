@@ -21,7 +21,7 @@ public partial class RolesClient : IRolesClient
     /// <summary>
     /// Retrieve detailed list of user roles created in your tenant.
     ///
-    /// <b>Note</b>: The returned list does not include standard roles available for tenant members, such as Admin or Support Access.
+    /// **Note**: The returned list does not include standard roles available for tenant members, such as Admin or Support Access.
     /// </summary>
     private WithRawResponseTask<ListRolesOffsetPaginatedResponseContent> ListInternalAsync(
         ListRolesRequestParameters request,
@@ -393,7 +393,7 @@ public partial class RolesClient : IRolesClient
     /// <summary>
     /// Retrieve detailed list of user roles created in your tenant.
     ///
-    /// <b>Note</b>: The returned list does not include standard roles available for tenant members, such as Admin or Support Access.
+    /// **Note**: The returned list does not include standard roles available for tenant members, such as Admin or Support Access.
     /// </summary>
     /// <example><code>
     /// await client.Roles.ListAsync(
@@ -441,9 +441,9 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Create a user role for <see href="https://auth0.com/docs/manage-users/access-control/rbac">Role-Based Access Control</see>.
+    /// Create a user role for [Role-Based Access Control](https://auth0.com/docs/manage-users/access-control/rbac).
     ///
-    /// <b>Note</b>: New roles are not associated with any permissions by default. To assign existing permissions to your role, review Associate Permissions with a Role. To create new permissions, review Add API Permissions.
+    /// **Note**: New roles are not associated with any permissions by default. To assign existing permissions to your role, review Associate Permissions with a Role. To create new permissions, review Add API Permissions.
     /// </summary>
     /// <example><code>
     /// await client.Roles.CreateAsync(new CreateRoleRequestContent { Name = "name" });
@@ -460,7 +460,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Retrieve details about a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> specified by ID.
+    /// Retrieve details about a specific [user role](https://auth0.com/docs/manage-users/access-control/rbac) specified by ID.
     /// </summary>
     /// <example><code>
     /// await client.Roles.GetAsync("id");
@@ -477,7 +477,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Delete a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> from your tenant. Once deleted, it is removed from any user who was previously assigned that role. This action cannot be undone.
+    /// Delete a specific [user role](https://auth0.com/docs/manage-users/access-control/rbac) from your tenant. Once deleted, it is removed from any user who was previously assigned that role. This action cannot be undone.
     /// </summary>
     /// <example><code>
     /// await client.Roles.DeleteAsync("id");
@@ -543,7 +543,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Modify the details of a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> specified by ID.
+    /// Modify the details of a specific [user role](https://auth0.com/docs/manage-users/access-control/rbac) specified by ID.
     /// </summary>
     /// <example><code>
     /// await client.Roles.UpdateAsync("id", new UpdateRoleRequestContent());

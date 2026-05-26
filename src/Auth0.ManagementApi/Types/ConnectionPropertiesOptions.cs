@@ -166,6 +166,10 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("id_token_signed_response_algs")]
     public Optional<IEnumerable<ConnectionIdTokenSignedResponseAlgEnum>?> IdTokenSignedResponseAlgs { get; set; }
 
+    [Optional]
+    [JsonPropertyName("dpop_signing_alg")]
+    public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("token_endpoint_auth_method")]
     public Optional<ConnectionTokenEndpointAuthMethodEnum?> TokenEndpointAuthMethod { get; set; }

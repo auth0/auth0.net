@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Users;
 public partial interface IMultifactorClient
 {
     /// <summary>
-    /// Invalidate all remembered browsers across all <see href="https://auth0.com/docs/multifactor-authentication">authentication factors</see> for a user.
+    /// Invalidate all remembered browsers across all [authentication factors](https://auth0.com/docs/multifactor-authentication) for a user.
     /// </summary>
     Task InvalidateRememberBrowserAsync(
         string id,
@@ -14,7 +14,7 @@ public partial interface IMultifactorClient
     );
 
     /// <summary>
-    /// Remove a <see href="https://auth0.com/docs/multifactor-authentication">multifactor</see> authentication configuration from a user's account. This forces the user to manually reconfigure the multi-factor provider.
+    /// Remove a [multifactor](https://auth0.com/docs/multifactor-authentication) authentication configuration from a user's account. This forces the user to manually reconfigure the multi-factor provider.
     /// </summary>
     Task DeleteProviderAsync(
         string id,

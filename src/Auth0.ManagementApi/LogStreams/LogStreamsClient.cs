@@ -116,7 +116,6 @@ public partial class LogStreamsClient : ILogStreamsClient
                     Path = "log-streams",
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

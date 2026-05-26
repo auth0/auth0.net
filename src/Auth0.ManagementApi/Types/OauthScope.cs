@@ -548,6 +548,21 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadGroupMembers = new(Values.ReadGroupMembers);
 
     /// <summary>
+    /// Create Group Roles
+    /// </summary>
+    public static readonly OauthScope CreateGroupRoles = new(Values.CreateGroupRoles);
+
+    /// <summary>
+    /// Read Group Roles
+    /// </summary>
+    public static readonly OauthScope ReadGroupRoles = new(Values.ReadGroupRoles);
+
+    /// <summary>
+    /// Delete Group Roles
+    /// </summary>
+    public static readonly OauthScope DeleteGroupRoles = new(Values.DeleteGroupRoles);
+
+    /// <summary>
     /// Read Groups
     /// </summary>
     public static readonly OauthScope ReadGroups = new(Values.ReadGroups);
@@ -880,6 +895,26 @@ public readonly record struct OauthScope : IStringEnum
     /// Update Prompts
     /// </summary>
     public static readonly OauthScope UpdatePrompts = new(Values.UpdatePrompts);
+
+    /// <summary>
+    /// Create Rate Limit Policies
+    /// </summary>
+    public static readonly OauthScope CreateRateLimitPolicies = new(Values.CreateRateLimitPolicies);
+
+    /// <summary>
+    /// Read Rate Limit Policies
+    /// </summary>
+    public static readonly OauthScope ReadRateLimitPolicies = new(Values.ReadRateLimitPolicies);
+
+    /// <summary>
+    /// Update Rate Limit Policies
+    /// </summary>
+    public static readonly OauthScope UpdateRateLimitPolicies = new(Values.UpdateRateLimitPolicies);
+
+    /// <summary>
+    /// Delete Rate Limit Policies
+    /// </summary>
+    public static readonly OauthScope DeleteRateLimitPolicies = new(Values.DeleteRateLimitPolicies);
 
     /// <summary>
     /// Read Refresh Tokens
@@ -1822,6 +1857,21 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadGroupMembers = "read:group_members";
 
         /// <summary>
+        /// Create Group Roles
+        /// </summary>
+        public const string CreateGroupRoles = "create:group_roles";
+
+        /// <summary>
+        /// Read Group Roles
+        /// </summary>
+        public const string ReadGroupRoles = "read:group_roles";
+
+        /// <summary>
+        /// Delete Group Roles
+        /// </summary>
+        public const string DeleteGroupRoles = "delete:group_roles";
+
+        /// <summary>
         /// Read Groups
         /// </summary>
         public const string ReadGroups = "read:groups";
@@ -2114,6 +2164,26 @@ public readonly record struct OauthScope : IStringEnum
         /// Update Prompts
         /// </summary>
         public const string UpdatePrompts = "update:prompts";
+
+        /// <summary>
+        /// Create Rate Limit Policies
+        /// </summary>
+        public const string CreateRateLimitPolicies = "create:rate_limit_policies";
+
+        /// <summary>
+        /// Read Rate Limit Policies
+        /// </summary>
+        public const string ReadRateLimitPolicies = "read:rate_limit_policies";
+
+        /// <summary>
+        /// Update Rate Limit Policies
+        /// </summary>
+        public const string UpdateRateLimitPolicies = "update:rate_limit_policies";
+
+        /// <summary>
+        /// Delete Rate Limit Policies
+        /// </summary>
+        public const string DeleteRateLimitPolicies = "delete:rate_limit_policies";
 
         /// <summary>
         /// Read Refresh Tokens

@@ -42,7 +42,6 @@ public class UpdateTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/connections/id/directory-provisioning")
-                    .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
             )

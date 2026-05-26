@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Connections.ScimConfiguration;
 public partial interface ITokensClient
 {
     /// <summary>
-    /// Retrieves all scim tokens by its connection <c>id</c>.
+    /// Retrieves all scim tokens by its connection `id`.
     /// </summary>
     WithRawResponseTask<IEnumerable<ScimTokenItem>> GetAsync(
         string id,
@@ -24,7 +24,7 @@ public partial interface ITokensClient
     );
 
     /// <summary>
-    /// Deletes a scim token by its connection <c>id</c> and <c>tokenId</c>.
+    /// Deletes a scim token by its connection `id` and `tokenId`.
     /// </summary>
     Task DeleteAsync(
         string id,

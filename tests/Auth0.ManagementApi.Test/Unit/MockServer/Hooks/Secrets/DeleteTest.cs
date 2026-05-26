@@ -21,7 +21,6 @@ public class DeleteTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/hooks/id/secrets")
-                    .WithHeader("Content-Type", "application/json")
                     .UsingDelete()
                     .WithBodyAsJson(requestJson)
             )
