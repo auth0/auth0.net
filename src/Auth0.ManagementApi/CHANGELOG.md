@@ -1,5 +1,26 @@
 # Change Log
 
+## [mgmt-8.4.0](https://github.com/auth0/auth0.net/tree/mgmt-8.4.0) (2026-05-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.3.0...mgmt-8.4.0)
+
+**Added**
+- Organizations Groups: Added `Organizations.Groups` sub-client with `ListAsync()` to list groups in an organization, plus `Organizations.Groups.Roles.ListAsync()`, `Organizations.Groups.Roles.CreateAsync()`, and `Organizations.Groups.Roles.DeleteAsync()` for managing roles assigned to organization groups [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Organization Member Effective Roles: Added `Organizations.Members.EffectiveRoles.ListAsync()` to list effective roles for an organization member, and `Sources.Groups.ListAsync()` to list group sources for a member's effective role [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- User Effective Permissions: Added `Users.EffectivePermissions.ListAsync()` to list effective permissions for a user, and `Sources.Roles.ListAsync()` to list role sources for a user's effective permission [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- User Effective Roles: Added `Users.EffectiveRoles.ListAsync()` to list effective roles for a user, and `Sources.Groups.ListAsync()` to list group sources for a user's effective role [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Roles Groups: Added `Roles.Groups` sub-client with `ListAsync()`, `AssignAsync()`, and `RemoveAsync()` for managing groups associated with a role [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Tenant Settings: Added `TenantSettingsCountryCodes` / `TenantSettingsCountryCodesResponse` and `TenantSettingsCountryCodesMode` / `TenantSettingsCountryCodesModeResponse` types for phone country code configuration, with `CountryCodes` property on `UpdateTenantSettingsRequestContent`, `GetTenantSettingsResponseContent`, and `UpdateTenantSettingsResponseContent` [\#1022](https://github.com/auth0/auth0.net/pull/1022) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Rate Limit Policies: Added `RateLimitPolicies` client with full CRUD support — `CreateAsync`, `GetAsync`, `ListAsync`, `UpdateAsync`, and `DeleteAsync` [\#1017](https://github.com/auth0/auth0.net/pull/1017) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Group Roles: Added `Groups.Roles` sub-client with `CreateAsync()`, `DeleteAsync()`, and `ListAsync()` for managing roles assigned to groups [\#1017](https://github.com/auth0/auth0.net/pull/1017) ([fern-api[bot]](https://github.com/apps/fern-api))
+- FedCM Login: Added `FedCmLogin` and `FedCmLoginGoogle` types to configure Federated Credential Management login settings for New Universal Login, with `FedcmLogin` property on `CreateClientRequestContent` and `UpdateClientRequestContent` [\#1016](https://github.com/auth0/auth0.net/pull/1016) ([fern-api[bot]](https://github.com/apps/fern-api))
+- DPoP Signing Algorithms: Added `ES384` and `ES512` values to `ConnectionDpopSigningAlgEnum` [\#1016](https://github.com/auth0/auth0.net/pull/1016) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Fixed**
+- Deserialization: Added `BooleanStringConverter` to handle boolean fields that the Auth0 server may return as JSON strings (e.g., `"true"`/`"false"`) instead of native JSON booleans, registered globally in `JsonConfiguration` [\#1015](https://github.com/auth0/auth0.net/pull/1015) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Upgraded `WireMock.Net` test dependency to `2.7.0` [\#1016](https://github.com/auth0/auth0.net/pull/1016) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-8.3.0](https://github.com/auth0/auth0.net/tree/mgmt-8.3.0) (2026-05-13)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.2.0...mgmt-8.3.0)
 
