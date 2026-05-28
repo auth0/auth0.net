@@ -18,16 +18,12 @@ internal static class JsonAssert
     }
 
     /// <summary>
-    /// Asserts that the given JSON string survives a deserialization/serialization round-trip.
-    /// Deserializes to T, re-serializes to get the canonical form, then verifies a second
-    /// round-trip produces the same canonical form (idempotency). This accounts for serializer
-    /// options like WhenWritingNull that may normalize the output.
+    /// Asserts that the given JSON string survives a deserialization/serialization round-trip
+    /// intact: deserializes to T then re-serializes and compares to the original JSON.
     /// </summary>
     internal static void Roundtrips<T>(string json)
     {
         var deserialized = JsonUtils.Deserialize<T>(json);
-        var serialized = JsonUtils.Serialize(deserialized!);
-        var deserialized2 = JsonUtils.Deserialize<T>(serialized);
-        AreEqual(deserialized2!, serialized);
+        AreEqual(deserialized!, json);
     }
 }

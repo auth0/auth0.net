@@ -4,6 +4,7 @@ namespace Auth0.ManagementApi;
 
 public partial interface IRolesClient
 {
+    public Auth0.ManagementApi.Roles.IGroupsClient Groups { get; }
     public Auth0.ManagementApi.Roles.IPermissionsClient Permissions { get; }
     public Auth0.ManagementApi.Roles.IUsersClient Users { get; }
 

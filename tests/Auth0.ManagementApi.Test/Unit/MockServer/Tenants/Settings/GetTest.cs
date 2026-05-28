@@ -116,7 +116,13 @@ public class GetTest : BaseMockServerTest
               "client_id_metadata_document_supported": true,
               "phone_consolidated_experience": true,
               "enable_ai_guide": true,
-              "dynamic_client_registration_security_mode": "strict"
+              "dynamic_client_registration_security_mode": "strict",
+              "country_codes": {
+                "list": [
+                  "list"
+                ],
+                "mode": "allow"
+              }
             }
             """;
 

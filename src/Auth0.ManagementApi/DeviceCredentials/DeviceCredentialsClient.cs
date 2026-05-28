@@ -13,7 +13,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
     }
 
     /// <summary>
-    /// Retrieve device credential information (<c>public_key</c>, <c>refresh_token</c>, or <c>rotating_refresh_token</c>) associated with a specific user.
+    /// Retrieve device credential information (`public_key`, `refresh_token`, or `rotating_refresh_token`) associated with a specific user.
     /// </summary>
     private WithRawResponseTask<ListDeviceCredentialsOffsetPaginatedResponseContent> ListInternalAsync(
         ListDeviceCredentialsRequestParameters request,
@@ -225,7 +225,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
     }
 
     /// <summary>
-    /// Retrieve device credential information (<c>public_key</c>, <c>refresh_token</c>, or <c>rotating_refresh_token</c>) associated with a specific user.
+    /// Retrieve device credential information (`public_key`, `refresh_token`, or `rotating_refresh_token`) associated with a specific user.
     /// </summary>
     /// <example><code>
     /// await client.DeviceCredentials.ListAsync(
@@ -277,9 +277,9 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
     }
 
     /// <summary>
-    /// Create a device credential public key to manage refresh token rotation for a given <c>user_id</c>. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
+    /// Create a device credential public key to manage refresh token rotation for a given `user_id`. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
     ///
-    /// When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read <see href="https://auth0.com/docs/get-started/tenant-settings/signing-keys"> Signing Keys</see>.
+    /// When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read [Signing Keys](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
     /// </summary>
     /// <example><code>
     /// await client.DeviceCredentials.CreatePublicKeyAsync(

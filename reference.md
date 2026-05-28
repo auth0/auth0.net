@@ -534,7 +534,7 @@ await client.Branding.UpdateAsync(new UpdateBrandingRequestContent());
 <dl>
 <dd>
 
-Retrieve a list of <a href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants">client grants</a>, including the scopes associated with the application/API pair.
+Retrieve a list of [client grants](https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants), including the scopes associated with the application/API pair.
 </dd>
 </dl>
 </dd>
@@ -599,7 +599,7 @@ await client.ClientGrants.ListAsync(
 <dl>
 <dd>
 
-Create a client grant for a machine-to-machine login flow. To learn more, read <a href="https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Client Credential Flow</a>.
+Create a client grant for a machine-to-machine login flow. To learn more, read [Client Credential Flow](https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow).
 </dd>
 </dl>
 </dd>
@@ -655,7 +655,7 @@ await client.ClientGrants.CreateAsync(
 <dl>
 <dd>
 
-Retrieve a single <a href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants">client grant</a>, including the
+Retrieve a single [client grant](https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants), including the
 scopes associated with the application/API pair.
 </dd>
 </dl>
@@ -710,7 +710,7 @@ await client.ClientGrants.GetAsync("id");
 <dl>
 <dd>
 
-Delete the <a href="https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Client Credential Flow</a> from your machine-to-machine application.
+Delete the [Client Credential Flow](https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) from your machine-to-machine application.
 </dd>
 </dl>
 </dd>
@@ -828,38 +828,30 @@ await client.ClientGrants.UpdateAsync("id", new UpdateClientGrantRequestContent(
 <dd>
 
 Retrieve clients (applications and SSO integrations) matching provided filters. A list of fields to include or exclude may also be specified.
-For more information, read <a href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</a> and <a href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</a>.
+For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
 
-<ul>
-  <li>
-    The following can be retrieved with any scope:
-    <code>client_id</code>, <code>app_type</code>, <code>name</code>, and <code>description</code>.
-  </li>
-  <li>
-    The following properties can only be retrieved with the <code>read:clients</code> or
-    <code>read:client_keys</code> scope:
-    <code>callbacks</code>, <code>oidc_logout</code>, <code>allowed_origins</code>,
-    <code>web_origins</code>, <code>tenant</code>, <code>global</code>, <code>config_route</code>,
-    <code>callback_url_template</code>, <code>jwt_configuration</code>,
-    <code>jwt_configuration.lifetime_in_seconds</code>, <code>jwt_configuration.secret_encoded</code>,
-    <code>jwt_configuration.scopes</code>, <code>jwt_configuration.alg</code>, <code>api_type</code>,
-    <code>logo_uri</code>, <code>allowed_clients</code>, <code>owners</code>, <code>custom_login_page</code>,
-    <code>custom_login_page_off</code>, <code>sso</code>, <code>addons</code>, <code>form_template</code>,
-    <code>custom_login_page_codeview</code>, <code>resource_servers</code>, <code>client_metadata</code>,
-    <code>mobile</code>, <code>mobile.android</code>, <code>mobile.ios</code>, <code>allowed_logout_urls</code>,
-    <code>token_endpoint_auth_method</code>, <code>is_first_party</code>, <code>oidc_conformant</code>,
-    <code>is_token_endpoint_ip_header_trusted</code>, <code>initiate_login_uri</code>, <code>grant_types</code>,
-    <code>refresh_token</code>, <code>refresh_token.rotation_type</code>, <code>refresh_token.expiration_type</code>,
-    <code>refresh_token.leeway</code>, <code>refresh_token.token_lifetime</code>, <code>refresh_token.policies</code>, <code>organization_usage</code>,
-    <code>organization_require_behavior</code>.
-  </li>
-  <li>
-    The following properties can only be retrieved with the
-    <code>read:client_keys</code> or <code>read:client_credentials</code> scope:
-    <code>encryption_key</code>, <code>encryption_key.pub</code>, <code>encryption_key.cert</code>,
-    <code>client_secret</code>, <code>client_authentication_methods</code> and <code>signing_key</code>.
-  </li>
-</ul>
+- The following can be retrieved with any scope:
+    `client_id`, `app_type`, `name`, and `description`.
+- The following properties can only be retrieved with the `read:clients` or
+    `read:client_keys` scope:
+    `callbacks`, `oidc_logout`, `allowed_origins`,
+    `web_origins`, `tenant`, `global`, `config_route`,
+    `callback_url_template`, `jwt_configuration`,
+    `jwt_configuration.lifetime_in_seconds`, `jwt_configuration.secret_encoded`,
+    `jwt_configuration.scopes`, `jwt_configuration.alg`, `api_type`,
+    `logo_uri`, `allowed_clients`, `owners`, `custom_login_page`,
+    `custom_login_page_off`, `sso`, `addons`, `form_template`,
+    `custom_login_page_codeview`, `resource_servers`, `client_metadata`,
+    `mobile`, `mobile.android`, `mobile.ios`, `allowed_logout_urls`,
+    `token_endpoint_auth_method`, `is_first_party`, `oidc_conformant`,
+    `is_token_endpoint_ip_header_trusted`, `initiate_login_uri`, `grant_types`,
+    `refresh_token`, `refresh_token.rotation_type`, `refresh_token.expiration_type`,
+    `refresh_token.leeway`, `refresh_token.token_lifetime`, `refresh_token.policies`, `organization_usage`,
+    `organization_require_behavior`.
+- The following properties can only be retrieved with the
+    `read:client_keys` or `read:client_credentials` scope:
+    `encryption_key`, `encryption_key.pub`, `encryption_key.cert`,
+    `client_secret`, `client_authentication_methods` and `signing_key`.
 </dd>
 </dl>
 </dd>
@@ -927,20 +919,20 @@ await client.Clients.ListAsync(
 <dl>
 <dd>
 
-Create a new client (application or SSO integration). For more information, read <a href="https://www.auth0.com/docs/get-started/auth0-overview/create-applications">Create Applications</a>
-<a href="https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on>">API Endpoints for Single Sign-On</a>. 
+Create a new client (application or SSO integration). For more information, read [Create Applications](https://www.auth0.com/docs/get-started/auth0-overview/create-applications)
+[API Endpoints for Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on).
 
 Notes: 
 - We recommend leaving the `client_secret` parameter unspecified to allow the generation of a safe secret.
-- The <code>client_authentication_methods</code> and <code>token_endpoint_auth_method</code> properties are mutually exclusive. Use 
-<code>client_authentication_methods</code> to configure the client with Private Key JWT authentication method. Otherwise, use <code>token_endpoint_auth_method</code>
+- The `client_authentication_methods` and `token_endpoint_auth_method` properties are mutually exclusive. Use 
+`client_authentication_methods` to configure the client with Private Key JWT authentication method. Otherwise, use `token_endpoint_auth_method`
 to configure the client with client secret (basic or post) or with no authentication method (none).
-- When using <code>client_authentication_methods</code> to configure the client with Private Key JWT authentication method, specify fully defined credentials. 
+- When using `client_authentication_methods` to configure the client with Private Key JWT authentication method, specify fully defined credentials. 
 These credentials will be automatically enabled for Private Key JWT authentication on the client. 
-- To configure <code>client_authentication_methods</code>, the <code>create:client_credentials</code> scope is required.
-- To configure <code>client_authentication_methods</code>, the property <code>jwt_configuration.alg</code> must be set to RS256.
+- To configure `client_authentication_methods`, the `create:client_credentials` scope is required.
+- To configure `client_authentication_methods`, the property `jwt_configuration.alg` must be set to RS256.
 
-<div class="alert alert-warning">SSO Integrations created via this endpoint will accept login requests and share user profile information.</div>
+SSO Integrations created via this endpoint will accept login requests and share user profile information.
 </dd>
 </dl>
 </dd>
@@ -1123,36 +1115,29 @@ await client.Clients.RegisterCimdClientAsync(
 <dd>
 
 Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified. 
-For more information, read <a href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</a> and <a href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</a>.
-<ul>
-  <li>
-    The following properties can be retrieved with any of the scopes:
-    <code>client_id</code>, <code>app_type</code>, <code>name</code>, and <code>description</code>.
-  </li>
-  <li>
-    The following properties can only be retrieved with the <code>read:clients</code> or
-    <code>read:client_keys</code> scopes:
-    <code>callbacks</code>, <code>oidc_logout</code>, <code>allowed_origins</code>,
-    <code>web_origins</code>, <code>tenant</code>, <code>global</code>, <code>config_route</code>,
-    <code>callback_url_template</code>, <code>jwt_configuration</code>,
-    <code>jwt_configuration.lifetime_in_seconds</code>, <code>jwt_configuration.secret_encoded</code>,
-    <code>jwt_configuration.scopes</code>, <code>jwt_configuration.alg</code>, <code>api_type</code>,
-    <code>logo_uri</code>, <code>allowed_clients</code>, <code>owners</code>, <code>custom_login_page</code>,
-    <code>custom_login_page_off</code>, <code>sso</code>, <code>addons</code>, <code>form_template</code>,
-    <code>custom_login_page_codeview</code>, <code>resource_servers</code>, <code>client_metadata</code>,
-    <code>mobile</code>, <code>mobile.android</code>, <code>mobile.ios</code>, <code>allowed_logout_urls</code>,
-    <code>token_endpoint_auth_method</code>, <code>is_first_party</code>, <code>oidc_conformant</code>,
-    <code>is_token_endpoint_ip_header_trusted</code>, <code>initiate_login_uri</code>, <code>grant_types</code>,
-    <code>refresh_token</code>, <code>refresh_token.rotation_type</code>, <code>refresh_token.expiration_type</code>,
-    <code>refresh_token.leeway</code>, <code>refresh_token.token_lifetime</code>, <code>refresh_token.policies</code>, <code>organization_usage</code>,
-    <code>organization_require_behavior</code>.
-  </li>
-  <li>
-    The following properties can only be retrieved with the <code>read:client_keys</code> or <code>read:client_credentials</code> scopes:
-    <code>encryption_key</code>, <code>encryption_key.pub</code>, <code>encryption_key.cert</code>,
-    <code>client_secret</code>, <code>client_authentication_methods</code> and <code>signing_key</code>.
-  </li>
-</ul>
+For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
+
+- The following properties can be retrieved with any of the scopes:
+    `client_id`, `app_type`, `name`, and `description`.
+- The following properties can only be retrieved with the `read:clients` or
+    `read:client_keys` scopes:
+    `callbacks`, `oidc_logout`, `allowed_origins`,
+    `web_origins`, `tenant`, `global`, `config_route`,
+    `callback_url_template`, `jwt_configuration`,
+    `jwt_configuration.lifetime_in_seconds`, `jwt_configuration.secret_encoded`,
+    `jwt_configuration.scopes`, `jwt_configuration.alg`, `api_type`,
+    `logo_uri`, `allowed_clients`, `owners`, `custom_login_page`,
+    `custom_login_page_off`, `sso`, `addons`, `form_template`,
+    `custom_login_page_codeview`, `resource_servers`, `client_metadata`,
+    `mobile`, `mobile.android`, `mobile.ios`, `allowed_logout_urls`,
+    `token_endpoint_auth_method`, `is_first_party`, `oidc_conformant`,
+    `is_token_endpoint_ip_header_trusted`, `initiate_login_uri`, `grant_types`,
+    `refresh_token`, `refresh_token.rotation_type`, `refresh_token.expiration_type`,
+    `refresh_token.leeway`, `refresh_token.token_lifetime`, `refresh_token.policies`, `organization_usage`,
+    `organization_require_behavior`.
+- The following properties can only be retrieved with the `read:client_keys` or `read:client_credentials` scopes:
+    `encryption_key`, `encryption_key.pub`, `encryption_key.cert`,
+    `client_secret`, `client_authentication_methods` and `signing_key`.
 </dd>
 </dl>
 </dd>
@@ -1271,15 +1256,15 @@ await client.Clients.DeleteAsync("id");
 <dl>
 <dd>
 
-Updates a client's settings. For more information, read <a href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</a> and <a href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</a>.
+Updates a client's settings. For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
 
 Notes:
 - The `client_secret` and `signing_key` attributes can only be updated with the `update:client_keys` scope.
-- The <code>client_authentication_methods</code> and <code>token_endpoint_auth_method</code> properties are mutually exclusive. Use <code>client_authentication_methods</code> to configure the client with Private Key JWT authentication method. Otherwise, use <code>token_endpoint_auth_method</code> to configure the client with client secret (basic or post) or with no authentication method (none).
-- When using <code>client_authentication_methods</code> to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
-- To configure <code>client_authentication_methods</code>, the <code>update:client_credentials</code> scope is required.
-- To configure <code>client_authentication_methods</code>, the property <code>jwt_configuration.alg</code> must be set to RS256.
-- To change a client's <code>is_first_party</code> property to <code>false</code>, the <code>organization_usage</code> and <code>organization_require_behavior</code> properties must be unset.
+- The `client_authentication_methods` and `token_endpoint_auth_method` properties are mutually exclusive. Use `client_authentication_methods` to configure the client with Private Key JWT authentication method. Otherwise, use `token_endpoint_auth_method` to configure the client with client secret (basic or post) or with no authentication method (none).
+- When using `client_authentication_methods` to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
+- To configure `client_authentication_methods`, the `update:client_credentials` scope is required.
+- To configure `client_authentication_methods`, the property `jwt_configuration.alg` must be set to RS256.
+- To change a client's `is_first_party` property to `false`, the `organization_usage` and `organization_require_behavior` properties must be unset.
 </dd>
 </dl>
 </dd>
@@ -1345,7 +1330,7 @@ Rotate a client secret.
 
 This endpoint cannot be used with clients configured with Private Key JWT authentication method (client_authentication_methods configured with private_key_jwt). The generated secret is NOT base64 encoded.
 
-For more information, read <a href="https://www.auth0.com/docs/get-started/applications/rotate-client-secret">Rotate Client Secrets</a>.
+For more information, read [Rotate Client Secrets](https://www.auth0.com/docs/get-started/applications/rotate-client-secret).
 </dd>
 </dl>
 </dd>
@@ -2704,7 +2689,7 @@ await client.CustomDomains.VerifyAsync("id");
 <dl>
 <dd>
 
-Retrieve device credential information (<code>public_key</code>, <code>refresh_token</code>, or <code>rotating_refresh_token</code>) associated with a specific user.
+Retrieve device credential information (`public_key`, `refresh_token`, or `rotating_refresh_token`) associated with a specific user.
 </dd>
 </dl>
 </dd>
@@ -2770,9 +2755,9 @@ await client.DeviceCredentials.ListAsync(
 <dl>
 <dd>
 
-Create a device credential public key to manage refresh token rotation for a given <code>user_id</code>. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
+Create a device credential public key to manage refresh token rotation for a given `user_id`. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
 
-When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read <a href="https://auth0.com/docs/get-started/tenant-settings/signing-keys"> Signing Keys</a>.
+When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read [Signing Keys](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
 </dd>
 </dl>
 </dd>
@@ -3952,7 +3937,7 @@ await client.Forms.UpdateAsync("id", new UpdateFormRequestContent());
 <dl>
 <dd>
 
-Retrieve the <a href="https://auth0.com/docs/api-auth/which-oauth-flow-to-use">grants</a> associated with your account. 
+Retrieve the [grants](https://auth0.com/docs/api-auth/which-oauth-flow-to-use) associated with your account.
 </dd>
 </dl>
 </dd>
@@ -4016,7 +4001,7 @@ await client.UserGrants.ListAsync(
 <dl>
 <dd>
 
-Delete a grant associated with your account. 
+Delete a grant associated with your account.
 </dd>
 </dl>
 </dd>
@@ -4072,7 +4057,7 @@ await client.UserGrants.DeleteByUserIdAsync(
 <dl>
 <dd>
 
-Delete a grant associated with your account. 
+Delete a grant associated with your account.
 </dd>
 </dl>
 </dd>
@@ -5940,22 +5925,20 @@ await client.NetworkAcls.UpdateAsync("id", new UpdateNetworkAclRequestContent())
 Retrieve detailed list of all Organizations available in your tenant. For more information, see Auth0 Organizations.
 
 This endpoint supports two types of pagination:
-<ul>
-<li>Offset pagination</li>
-<li>Checkpoint pagination</li>
-</ul>
+
+- Offset pagination
+- Checkpoint pagination
 
 Checkpoint pagination must be used if you need to retrieve more than 1000 organizations.
 
-<h2>Checkpoint Pagination</h2>
+**Checkpoint Pagination**
 
 To search by checkpoint, use the following parameters:
-<ul>
-<li><code>from</code>: Optional id from which to start selection.</li>
-<li><code>take</code>: The total number of entries to retrieve when using the <code>from</code> parameter. Defaults to 50.</li>
-</ul>
 
-<b>Note</b>: The first time you call this endpoint using checkpoint pagination, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no pages are remaining.
+- `from`: Optional id from which to start selection.
+- `take`: The total number of entries to retrieve when using the `from` parameter. Defaults to 50.
+
+**Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining.
 </dd>
 </dl>
 </dd>
@@ -6016,7 +5999,7 @@ await client.Organizations.ListAsync(
 <dl>
 <dd>
 
-Create a new Organization within your tenant.  To learn more about Organization settings, behavior, and configuration options, review <a href="https://auth0.com/docs/manage-users/organizations/create-first-organization">Create Your First Organization</a>.
+Create a new Organization within your tenant.  To learn more about Organization settings, behavior, and configuration options, review [Create Your First Organization](https://auth0.com/docs/manage-users/organizations/create-first-organization).
 </dd>
 </dl>
 </dd>
@@ -6124,7 +6107,7 @@ await client.Organizations.GetByNameAsync("name");
 <dl>
 <dd>
 
-Retrieve details about a single Organization specified by ID. 
+Retrieve details about a single Organization specified by ID.
 </dd>
 </dl>
 </dd>
@@ -6180,7 +6163,7 @@ await client.Organizations.GetAsync("id");
 
 Remove an Organization from your tenant.  This action cannot be undone. 
 
-<b>Note</b>: Members are automatically disassociated from an Organization when it is deleted. However, this action does <b>not</b> delete these users from your tenant.
+**Note**: Members are automatically disassociated from an Organization when it is deleted. However, this action does **not** delete these users from your tenant.
 </dd>
 </dl>
 </dd>
@@ -6234,7 +6217,7 @@ await client.Organizations.DeleteAsync("id");
 <dl>
 <dd>
 
-Update the details of a specific <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/create-organizations">Organization</a>, such as name and display name, branding options, and metadata.
+Update the details of a specific [Organization](https://auth0.com/docs/manage-users/organizations/configure-organizations/create-organizations), such as name and display name, branding options, and metadata.
 </dd>
 </dl>
 </dd>
@@ -8786,15 +8769,14 @@ await client.Tickets.ChangePasswordAsync(new ChangePasswordTicketRequestContent(
 
 Retrieve a list of all Token Exchange Profiles available in your tenant.
 
-By using this feature, you agree to the applicable Free Trial terms in <a href="https://www.okta.com/legal/">Okta’s Master Subscription Agreement</a>. It is your responsibility to securely validate the user’s subject_token. See <a href="https://auth0.com/docs/authenticate/custom-token-exchange">User Guide</a> for more details.
+By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
 
 This endpoint supports Checkpoint pagination. To search by checkpoint, use the following parameters:
-<ul>
-<li><code>from</code>: Optional id from which to start selection.</li>
-<li><code>take</code>: The total amount of entries to retrieve when using the from parameter. Defaults to 50.</li>
-</ul>
 
-<b>Note</b>: The first time you call this endpoint using checkpoint pagination, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no pages are remaining.
+- `from`: Optional id from which to start selection.
+- `take`: The total amount of entries to retrieve when using the from parameter. Defaults to 50.
+
+**Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining.
 </dd>
 </dl>
 </dd>
@@ -8852,7 +8834,7 @@ await client.TokenExchangeProfiles.ListAsync(
 
 Create a new Token Exchange Profile within your tenant.
 
-By using this feature, you agree to the applicable Free Trial terms in <a href="https://www.okta.com/legal/">Okta’s Master Subscription Agreement</a>. It is your responsibility to securely validate the user’s subject_token. See <a href="https://auth0.com/docs/authenticate/custom-token-exchange">User Guide</a> for more details.
+By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
 </dd>
 </dl>
 </dd>
@@ -8916,7 +8898,7 @@ await client.TokenExchangeProfiles.CreateAsync(
 
 Retrieve details about a single Token Exchange Profile specified by ID.
 
-By using this feature, you agree to the applicable Free Trial terms in <a href="https://www.okta.com/legal/">Okta’s Master Subscription Agreement</a>. It is your responsibility to securely validate the user’s subject_token. See <a href="https://auth0.com/docs/authenticate/custom-token-exchange">User Guide</a> for more details.
+By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
 </dd>
 </dl>
 </dd>
@@ -8972,8 +8954,7 @@ await client.TokenExchangeProfiles.GetAsync("id");
 
 Delete a Token Exchange Profile within your tenant.
 
-By using this feature, you agree to the applicable Free Trial terms in <a href="https://www.okta.com/legal/">Okta's Master Subscription Agreement</a>. It is your responsibility to securely validate the user's subject_token. See <a href="https://auth0.com/docs/authenticate/custom-token-exchange">User Guide</a> for more details.
-
+By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
 </dd>
 </dl>
 </dd>
@@ -9029,8 +9010,7 @@ await client.TokenExchangeProfiles.DeleteAsync("id");
 
 Update a Token Exchange Profile within your tenant.
 
-By using this feature, you agree to the applicable Free Trial terms in <a href="https://www.okta.com/legal/">Okta's Master Subscription Agreement</a>. It is your responsibility to securely validate the user's subject_token. See <a href="https://auth0.com/docs/authenticate/custom-token-exchange">User Guide</a> for more details.
-
+By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
 </dd>
 </dl>
 </dd>
@@ -9494,7 +9474,7 @@ await client.UserAttributeProfiles.UpdateAsync(
 <dl>
 <dd>
 
-Retrieve details of all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for a user with the given identifier (username, phone number, or email).
+Retrieve details of all [Brute-force Protection](https://auth0.com/docs/secure/attack-protection/brute-force-protection) blocks for a user with the given identifier (username, phone number, or email).
 </dd>
 </dl>
 </dd>
@@ -9554,9 +9534,9 @@ await client.UserBlocks.ListByIdentifierAsync(
 <dl>
 <dd>
 
-Remove all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given identifier (username, phone number, or email).
+Remove all [Brute-force Protection](https://auth0.com/docs/secure/attack-protection/brute-force-protection) blocks for the user with the given identifier (username, phone number, or email).
 
-Note: This endpoint does not unblock users that were <a href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</a>.
+Note: This endpoint does not unblock users that were [blocked by a tenant administrator](https://auth0.com/docs/user-profile#block-and-unblock-a-user).
 </dd>
 </dl>
 </dd>
@@ -9612,7 +9592,7 @@ await client.UserBlocks.DeleteByIdentifierAsync(
 <dl>
 <dd>
 
-Retrieve details of all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given ID.
+Retrieve details of all [Brute-force Protection](https://auth0.com/docs/secure/attack-protection/brute-force-protection) blocks for the user with the given ID.
 </dd>
 </dl>
 </dd>
@@ -9677,9 +9657,9 @@ await client.UserBlocks.ListAsync(
 <dl>
 <dd>
 
-Remove all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given ID.
+Remove all [Brute-force Protection](https://auth0.com/docs/secure/attack-protection/brute-force-protection) blocks for the user with the given ID.
 
-Note: This endpoint does not unblock users that were <a href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</a>.
+Note: This endpoint does not unblock users that were [blocked by a tenant administrator](https://auth0.com/docs/user-profile#block-and-unblock-a-user).
 </dd>
 </dl>
 </dd>
@@ -13165,7 +13145,7 @@ await client.ClientGrants.Organizations.ListAsync(
 
 Get the details of a client credential.
 
-<b>Important</b>: To enable credentials to be used for a client authentication method, set the <code>client_authentication_methods</code> property on the client. To enable credentials to be used for JWT-Secured Authorization requests set the <code>signed_request_object</code> property on the client.
+**Important**: To enable credentials to be used for a client authentication method, set the `client_authentication_methods` property on the client. To enable credentials to be used for JWT-Secured Authorization requests set the `signed_request_object` property on the client.
 </dd>
 </dl>
 </dd>
@@ -13221,37 +13201,61 @@ await client.Clients.Credentials.ListAsync("client_id");
 
 Create a client credential associated to your application. Credentials can be used to configure Private Key JWT and mTLS authentication methods, as well as for JWT-secured Authorization requests.
 
-<h5>Public Key</h5>Public Key credentials can be used to set up Private Key JWT client authentication and JWT-secured Authorization requests.
+**Public Key**
 
-Sample: <pre><code>{
+Public Key credentials can be used to set up Private Key JWT client authentication and JWT-secured Authorization requests.
+
+Sample: 
+
+```json
+{
   "credential_type": "public_key",
   "name": "string",
   "pem": "string",
   "alg": "RS256",
   "parse_expiry_from_cert": false,
   "expires_at": "2022-12-31T23:59:59Z"
-}</code></pre>
-<h5>Certificate (CA-signed & self-signed)</h5>Certificate credentials can be used to set up mTLS client authentication. CA-signed certificates can be configured either with a signed certificate or with just the certificate Subject DN.
+}
+```
 
-CA-signed Certificate Sample (pem): <pre><code>{
+**Certificate (CA-signed & self-signed)**
+
+Certificate credentials can be used to set up mTLS client authentication. CA-signed certificates can be configured either with a signed certificate or with just the certificate Subject DN.
+
+CA-signed Certificate Sample (pem): 
+
+```json
+{
   "credential_type": "x509_cert",
   "name": "string",
   "pem": "string"
-}</code></pre>CA-signed Certificate Sample (subject_dn): <pre><code>{
+}
+```
+
+CA-signed Certificate Sample (subject_dn): 
+
+```json
+{
   "credential_type": "cert_subject_dn",
   "name": "string",
   "subject_dn": "string"
-}</code></pre>Self-signed Certificate Sample: <pre><code>{
+}
+```
+
+Self-signed Certificate Sample: 
+
+```json
+{
   "credential_type": "cert_subject_dn",
   "name": "string",
   "pem": "string"
-}</code></pre>
+}
+```
 
 The credential will be created but not yet enabled for use until you set the corresponding properties in the client:
-<ul>
-  <li>To enable the credential for Private Key JWT or mTLS authentication methods, set the <code>client_authentication_methods</code> property on the client. For more information, read <a href="https://auth0.com/docs/get-started/applications/configure-private-key-jwt">Configure Private Key JWT Authentication</a> and <a href="https://auth0.com/docs/get-started/applications/configure-mtls">Configure mTLS Authentication</a></li>
-  <li>To enable the credential for JWT-secured Authorization requests, set the <code>signed_request_object</code>property on the client. For more information, read <a href="https://auth0.com/docs/get-started/applications/configure-jar">Configure JWT-secured Authorization Requests (JAR)</a></li>
-</ul>
+
+- To enable the credential for Private Key JWT or mTLS authentication methods, set the `client_authentication_methods` property on the client. For more information, read [Configure Private Key JWT Authentication](https://auth0.com/docs/get-started/applications/configure-private-key-jwt) and [Configure mTLS Authentication](https://auth0.com/docs/get-started/applications/configure-mtls)
+- To enable the credential for JWT-secured Authorization requests, set the `signed_request_object`property on the client. For more information, read [Configure JWT-secured Authorization Requests (JAR)](https://auth0.com/docs/get-started/applications/configure-jar)
 </dd>
 </dl>
 </dd>
@@ -13318,7 +13322,7 @@ await client.Clients.Credentials.CreateAsync(
 
 Get the details of a client credential.
 
-<b>Important</b>: To enable credentials to be used for a client authentication method, set the <code>client_authentication_methods</code> property on the client. To enable credentials to be used for JWT-Secured Authorization requests set the <code>signed_request_object</code> property on the client.
+**Important**: To enable credentials to be used for a client authentication method, set the `client_authentication_methods` property on the client. To enable credentials to be used for JWT-Secured Authorization requests set the `signed_request_object` property on the client.
 </dd>
 </dl>
 </dd>
@@ -13517,15 +13521,10 @@ await client.Clients.Credentials.UpdateAsync(
 <dl>
 <dd>
 
-Retrieve all connections that are enabled for the specified <a href="https://www.auth0.com/docs/get-started/applications"> Application</a>, using checkpoint pagination. A list of fields to include or exclude for each connection may also be specified.
-<ul>
-  <li>
-    This endpoint requires the <code>read:connections</code> scope and any one of <code>read:clients</code> or <code>read:client_summary</code>.
-  </li>
-  <li>
-    <b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
-  </li>
-</ul>
+Retrieve all connections that are enabled for the specified [Application](https://www.auth0.com/docs/get-started/applications), using checkpoint pagination. A list of fields to include or exclude for each connection may also be specified.
+
+- This endpoint requires the `read:connections` scope and any one of `read:clients` or `read:client_summary`.
+- **Note**: The first time you call this endpoint, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no further results are remaining.
 </dd>
 </dl>
 </dd>
@@ -19901,7 +19900,7 @@ await client.Organizations.DiscoveryDomains.GetAsync("id", "discovery_domain_id"
 <dl>
 <dd>
 
-Remove a discovery domain from an organization. This action cannot be undone. 
+Remove a discovery domain from an organization. This action cannot be undone.
 </dd>
 </dl>
 </dd>
@@ -19963,7 +19962,7 @@ await client.Organizations.DiscoveryDomains.DeleteAsync("id", "discovery_domain_
 <dl>
 <dd>
 
-Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>. The <code>use_for_organization_discovery</code> field can be <code>true</code> or <code>false</code> (default: <code>true</code>).
+Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The `status` field must be either `pending` or `verified`. The `use_for_organization_discovery` field can be `true` or `false` (default: `true`).
 </dd>
 </dl>
 </dd>
@@ -20110,7 +20109,7 @@ await client.Organizations.EnabledConnections.ListAsync(
 
 Enable a specific connection for a given Organization. To enable a connection, it must already exist within your tenant; connections cannot be created through this action.
 
-<a href="https://auth0.com/docs/authenticate/identity-providers">Connections</a> represent the relationship between Auth0 and a source of users. Available types of connections include database, enterprise, and social.
+[Connections](https://auth0.com/docs/authenticate/identity-providers) represent the relationship between Auth0 and a source of users. Available types of connections include database, enterprise, and social.
 </dd>
 </dl>
 </dd>
@@ -20239,7 +20238,7 @@ await client.Organizations.EnabledConnections.GetAsync("id", "connectionId");
 
 Disable a specific connection for an Organization. Once disabled, Organization members can no longer use that connection to authenticate. 
 
-<b>Note</b>: This action does not remove the connection from your tenant.
+**Note**: This action does not remove the connection from your tenant.
 </dd>
 </dl>
 </dd>
@@ -20376,7 +20375,7 @@ await client.Organizations.EnabledConnections.UpdateAsync(
 <dl>
 <dd>
 
-Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</a>. 
+Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review [Invite Organization Members](https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members).
 </dd>
 </dl>
 </dd>
@@ -20449,7 +20448,7 @@ await client.Organizations.Invitations.ListAsync(
 <dl>
 <dd>
 
-Create a user invitation for a specific Organization. Upon creation, the listed user receives an email inviting them to join the Organization. To learn more about Organization invitations, review <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</a>. 
+Create a user invitation for a specific Organization. Upon creation, the listed user receives an email inviting them to join the Organization. To learn more about Organization invitations, review [Invite Organization Members](https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members).
 </dd>
 </dl>
 </dd>
@@ -20631,14 +20630,8 @@ await client.Organizations.Invitations.DeleteAsync("id", "invitation_id");
 List organization members.
 This endpoint is subject to eventual consistency. New users may not be immediately included in the response and deleted users may not be immediately removed from it.
 
-<ul>
-  <li>
-    Use the <code>fields</code> parameter to optionally define the specific member details retrieved. If <code>fields</code> is left blank, all fields (except roles) are returned.
-  </li>
-  <li>
-    Member roles are not sent by default. Use <code>fields=roles</code> to retrieve the roles assigned to each listed member. To use this parameter, you must include the <code>read:organization_member_roles</code> scope in the token.
-  </li>
-</ul>
+- Use the `fields` parameter to optionally define the specific member details retrieved. If `fields` is left blank, all fields (except roles) are returned.
+- Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token.
 
 This endpoint supports two types of pagination:
 
@@ -20647,9 +20640,9 @@ This endpoint supports two types of pagination:
 
 Checkpoint pagination must be used if you need to retrieve more than 1000 organization members.
 
-<h2>Checkpoint Pagination</h2>
+**Checkpoint Pagination**
 
-To search by checkpoint, use the following parameters: - from: Optional id from which to start selection. - take: The total amount of entries to retrieve when using the from parameter. Defaults to 50. Note: The first time you call this endpoint using Checkpoint Pagination, you should omit the <code>from</code> parameter. If there are more results, a <code>next</code> value will be included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, this indicates there are no more pages remaining.
+To search by checkpoint, use the following parameters: - from: Optional id from which to start selection. - take: The total amount of entries to retrieve when using the from parameter. Defaults to 50. Note: The first time you call this endpoint using Checkpoint Pagination, you should omit the `from` parameter. If there are more results, a `next` value will be included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, this indicates there are no more pages remaining.
 </dd>
 </dl>
 </dd>
@@ -20720,9 +20713,9 @@ await client.Organizations.Members.ListAsync(
 <dl>
 <dd>
 
-Set one or more existing users as members of a specific <a href="https://auth0.com/docs/manage-users/organizations">Organization</a>.
+Set one or more existing users as members of a specific [Organization](https://auth0.com/docs/manage-users/organizations).
 
-To add a user to an Organization through this action, the user must already exist in your tenant. If a user does not yet exist, you can <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">invite them to create an account</a>, manually create them through the Auth0 Dashboard, or use the Management API.
+To add a user to an Organization through this action, the user must already exist in your tenant. If a user does not yet exist, you can [invite them to create an account](https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members), manually create them through the Auth0 Dashboard, or use the Management API.
 </dd>
 </dl>
 </dd>
@@ -20815,6 +20808,370 @@ await client.Organizations.Members.DeleteAsync(
 <dd>
 
 **request:** `DeleteOrganizationMembersRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Groups
+<details><summary><code>client.Organizations.Groups.<a href="/src/Auth0.ManagementApi/Organizations/Groups/GroupsClient.cs">ListAsync</a>(organizationId, ListOrganizationGroupsRequestParameters { ... }) -> Pager&lt;Group&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the groups that are assigned to the specified organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Groups.ListAsync(
+    "organization_id",
+    new ListOrganizationGroupsRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationId:** `string` — ID of the organization
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationGroupsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Groups Roles
+<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">ListAsync</a>(organizationId, groupId, ListOrganizationGroupRolesRequestParameters { ... }) -> Pager&lt;Role&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the roles assigned to the specified group in the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Groups.Roles.ListAsync(
+    "organization_id",
+    "group_id",
+    new ListOrganizationGroupRolesRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationId:** `string` — ID of the organization
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**groupId:** `string` — ID of the group
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationGroupRolesRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">CreateAsync</a>(organizationId, groupId, CreateOrganizationGroupRolesRequestContent { ... })</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Assign one or more roles to a specified group in the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Groups.Roles.CreateAsync(
+    "organization_id",
+    "group_id",
+    new CreateOrganizationGroupRolesRequestContent { Roles = new List<string>() { "roles" } }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationId:** `string` — ID of the organization
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**groupId:** `string` — ID of the group
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CreateOrganizationGroupRolesRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">DeleteAsync</a>(organizationId, groupId, DeleteOrganizationGroupRolesRequestContent { ... })</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Unassign one or more roles from a specified group in the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Groups.Roles.DeleteAsync(
+    "organization_id",
+    "group_id",
+    new DeleteOrganizationGroupRolesRequestContent { Roles = new List<string>() { "roles" } }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationId:** `string` — ID of the organization
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**groupId:** `string` — ID of the group
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `DeleteOrganizationGroupRolesRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Members EffectiveRoles
+<details><summary><code>client.Organizations.Members.EffectiveRoles.<a href="/src/Auth0.ManagementApi/Organizations/Members/EffectiveRoles/EffectiveRolesClient.cs">ListAsync</a>(id, userId, ListOrganizationMemberEffectiveRolesRequestParameters { ... }) -> Pager&lt;OrganizationMemberEffectiveRole&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the roles assigned to an organization member directly or through group membership.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Members.EffectiveRoles.ListAsync(
+    "id",
+    "user_id",
+    new ListOrganizationMemberEffectiveRolesRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `string` — ID of the user to list effective roles for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationMemberEffectiveRolesRequestParameters` 
     
 </dd>
 </dl>
@@ -20920,7 +21277,7 @@ await client.Organizations.Members.Roles.ListAsync(
 <dl>
 <dd>
 
-Assign one or more <a href="https://auth0.com/docs/manage-users/access-control/rbac">roles</a> to a user to determine their access for a specific Organization.
+Assign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) to a user to determine their access for a specific Organization.
 
 Users can be members of multiple Organizations with unique roles assigned for each membership. This action assigns roles to a user only for the specified Organization. Roles cannot be assigned to a user across multiple Organizations in the same call.
 </dd>
@@ -20996,7 +21353,7 @@ await client.Organizations.Members.Roles.AssignAsync(
 <dl>
 <dd>
 
-Remove one or more Organization-specific <a href="https://auth0.com/docs/manage-users/access-control/rbac">roles</a> from a given user.
+Remove one or more Organization-specific [roles](https://auth0.com/docs/manage-users/access-control/rbac) from a given user.
 
 Users can be members of multiple Organizations with unique roles assigned for each membership. This action removes roles from a user in relation to the specified Organization. Roles assigned to the user within a different Organization cannot be managed in the same call.
 </dd>
@@ -21049,6 +21406,86 @@ await client.Organizations.Members.Roles.DeleteAsync(
 <dd>
 
 **request:** `DeleteOrganizationMemberRolesRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Members EffectiveRoles Sources Groups
+<details><summary><code>client.Organizations.Members.EffectiveRoles.Sources.Groups.<a href="/src/Auth0.ManagementApi/Organizations/Members/EffectiveRoles/Sources/Groups/GroupsClient.cs">ListAsync</a>(id, userId, ListOrganizationMemberRoleSourceGroupsRequestParameters { ... }) -> Pager&lt;Group&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the groups which grant the org member a given role.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Members.EffectiveRoles.Sources.Groups.ListAsync(
+    "id",
+    "user_id",
+    new ListOrganizationMemberRoleSourceGroupsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        RoleId = "role_id",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `string` — ID of the user to list role source groups for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationMemberRoleSourceGroupsRequestParameters` 
     
 </dd>
 </dl>
@@ -21767,6 +22204,199 @@ await client.RiskAssessments.Settings.NewDevice.UpdateAsync(
 <dd>
 
 **request:** `UpdateRiskAssessmentsSettingsNewDeviceRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Roles Groups
+<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">GetAsync</a>(id, ListRoleGroupsParameters { ... }) -> Pager&lt;Group&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the groups to which the specified role is assigned.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Roles.Groups.GetAsync("id", new ListRoleGroupsParameters { From = "from", Take = 1 });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the role (service-generated).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListRoleGroupsParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">CreateAsync</a>(id, AssignRoleGroupsRequestContent { ... })</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Assign one or more groups to a specified role.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Roles.Groups.CreateAsync(
+    "id",
+    new AssignRoleGroupsRequestContent { Groups = new List<string>() { "groups" } }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the role (service-generated).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `AssignRoleGroupsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">DeleteAsync</a>(id, DeleteRoleGroupsRequestContent { ... })</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Unassign one or more groups from a specified role.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Roles.Groups.DeleteAsync(
+    "id",
+    new DeleteRoleGroupsRequestContent { Groups = new List<string>() { "groups" } }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the role (service-generated).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `DeleteRoleGroupsRequestContent` 
     
 </dd>
 </dl>
@@ -23103,6 +23733,143 @@ await client.Users.ConnectedAccounts.ListAsync(
 <dd>
 
 **request:** `GetUserConnectedAccountsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Users EffectivePermissions
+<details><summary><code>client.Users.EffectivePermissions.<a href="/src/Auth0.ManagementApi/Users/EffectivePermissions/EffectivePermissionsClient.cs">ListAsync</a>(id, ListUserEffectivePermissionsRequestParameters { ... }) -> Pager&lt;UserEffectivePermissionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the list of effective permissions for a user, taking into account permissions granted directly to the user, as well as those inherited through roles and group memberships.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.EffectivePermissions.ListAsync(
+    "id",
+    new ListUserEffectivePermissionsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        ResourceServerIdentifier = "resource_server_identifier",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the user to retrieve the permissions for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListUserEffectivePermissionsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Users EffectiveRoles
+<details><summary><code>client.Users.EffectiveRoles.<a href="/src/Auth0.ManagementApi/Users/EffectiveRoles/EffectiveRolesClient.cs">ListAsync</a>(id, ListUserEffectiveRolesRequestParameters { ... }) -> Pager&lt;UserEffectiveRole&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed list of effective roles for a user, including roles assigned directly and through group memberships.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.EffectiveRoles.ListAsync(
+    "id",
+    new ListUserEffectiveRolesRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the user to list effective roles for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListUserEffectiveRolesRequestParameters` 
     
 </dd>
 </dl>
@@ -24500,6 +25267,149 @@ await client.Users.Sessions.DeleteAsync("user_id");
 <dd>
 
 **userId:** `string` — ID of the user to get sessions for
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Users EffectivePermissions Sources Roles
+<details><summary><code>client.Users.EffectivePermissions.Sources.Roles.<a href="/src/Auth0.ManagementApi/Users/EffectivePermissions/Sources/Roles/RolesClient.cs">ListAsync</a>(id, ListUserEffectivePermissionRoleSourceRequestParameters { ... }) -> Pager&lt;UserEffectivePermissionRoleSourceResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the roles which grant the user a given permission, including roles assigned directly to the user and those inherited through group memberships.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.EffectivePermissions.Sources.Roles.ListAsync(
+    "id",
+    new ListUserEffectivePermissionRoleSourceRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        ResourceServerIdentifier = "resource_server_identifier",
+        PermissionName = "permission_name",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the user to retrieve the permissions for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListUserEffectivePermissionRoleSourceRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Users EffectiveRoles Sources Groups
+<details><summary><code>client.Users.EffectiveRoles.Sources.Groups.<a href="/src/Auth0.ManagementApi/Users/EffectiveRoles/Sources/Groups/GroupsClient.cs">ListAsync</a>(id, ListUserRoleSourceGroupsRequestParameters { ... }) -> Pager&lt;Group&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the groups that grant a user a specific role.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.EffectiveRoles.Sources.Groups.ListAsync(
+    "id",
+    new ListUserRoleSourceGroupsRequestParameters
+    {
+        RoleId = "role_id",
+        From = "from",
+        Take = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the user to list role source groups for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListUserRoleSourceGroupsRequestParameters` 
     
 </dd>
 </dl>

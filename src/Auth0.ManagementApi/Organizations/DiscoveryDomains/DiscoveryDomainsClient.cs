@@ -682,7 +682,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
     }
 
     /// <summary>
-    /// Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The <c>status</c> field must be either <c>pending</c> or <c>verified</c>. The <c>use_for_organization_discovery</c> field can be <c>true</c> or <c>false</c> (default: <c>true</c>).
+    /// Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The `status` field must be either `pending` or `verified`. The `use_for_organization_discovery` field can be `true` or `false` (default: `true`).
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.UpdateAsync(
