@@ -8,6 +8,8 @@ public partial interface IUsersClient
     public IAuthenticationMethodsClient AuthenticationMethods { get; }
     public IAuthenticatorsClient Authenticators { get; }
     public IConnectedAccountsClient ConnectedAccounts { get; }
+    public IEffectivePermissionsClient EffectivePermissions { get; }
+    public Auth0.ManagementApi.Users.IEffectiveRolesClient EffectiveRoles { get; }
     public Auth0.ManagementApi.Users.IEnrollmentsClient Enrollments { get; }
     public IFederatedConnectionsTokensetsClient FederatedConnectionsTokensets { get; }
     public Auth0.ManagementApi.Users.IGroupsClient Groups { get; }

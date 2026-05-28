@@ -228,6 +228,10 @@ public record UpdateTenantSettingsRequestContent
     [JsonPropertyName("dynamic_client_registration_security_mode")]
     public TenantSettingsDynamicClientRegistrationSecurityMode? DynamicClientRegistrationSecurityMode { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("country_codes")]
+    public Optional<TenantSettingsCountryCodes?> CountryCodes { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

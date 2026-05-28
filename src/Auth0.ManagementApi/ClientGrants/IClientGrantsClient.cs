@@ -7,7 +7,7 @@ public partial interface IClientGrantsClient
     public Auth0.ManagementApi.ClientGrants.IOrganizationsClient Organizations { get; }
 
     /// <summary>
-    /// Retrieve a list of <see href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants">client grants</see>, including the scopes associated with the application/API pair.
+    /// Retrieve a list of [client grants](https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants), including the scopes associated with the application/API pair.
     /// </summary>
     Task<Pager<ClientGrantResponseContent>> ListAsync(
         ListClientGrantsRequestParameters request,
@@ -16,7 +16,7 @@ public partial interface IClientGrantsClient
     );
 
     /// <summary>
-    /// Create a client grant for a machine-to-machine login flow. To learn more, read <see href="https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Client Credential Flow</see>.
+    /// Create a client grant for a machine-to-machine login flow. To learn more, read [Client Credential Flow](https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow).
     /// </summary>
     WithRawResponseTask<CreateClientGrantResponseContent> CreateAsync(
         CreateClientGrantRequestContent request,
@@ -25,7 +25,7 @@ public partial interface IClientGrantsClient
     );
 
     /// <summary>
-    /// Retrieve a single <see href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants">client grant</see>, including the
+    /// Retrieve a single [client grant](https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants), including the
     /// scopes associated with the application/API pair.
     /// </summary>
     WithRawResponseTask<GetClientGrantResponseContent> GetAsync(
@@ -35,7 +35,7 @@ public partial interface IClientGrantsClient
     );
 
     /// <summary>
-    /// Delete the <see href="https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Client Credential Flow</see> from your machine-to-machine application.
+    /// Delete the [Client Credential Flow](https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) from your machine-to-machine application.
     /// </summary>
     Task DeleteAsync(
         string id,

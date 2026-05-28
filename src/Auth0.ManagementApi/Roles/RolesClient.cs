@@ -10,9 +10,12 @@ public partial class RolesClient : IRolesClient
     internal RolesClient(RawClient client)
     {
         _client = client;
+        Groups = new Auth0.ManagementApi.Roles.GroupsClient(_client);
         Permissions = new Auth0.ManagementApi.Roles.PermissionsClient(_client);
         Users = new Auth0.ManagementApi.Roles.UsersClient(_client);
     }
+
+    public Auth0.ManagementApi.Roles.IGroupsClient Groups { get; }
 
     public Auth0.ManagementApi.Roles.IPermissionsClient Permissions { get; }
 

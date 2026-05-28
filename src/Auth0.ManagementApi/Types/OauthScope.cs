@@ -759,6 +759,32 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Create Organization Group Roles
+    /// </summary>
+    public static readonly OauthScope CreateOrganizationGroupRoles = new(
+        Values.CreateOrganizationGroupRoles
+    );
+
+    /// <summary>
+    /// Read Organization Group Roles
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationGroupRoles = new(
+        Values.ReadOrganizationGroupRoles
+    );
+
+    /// <summary>
+    /// Delete Organization Group Roles
+    /// </summary>
+    public static readonly OauthScope DeleteOrganizationGroupRoles = new(
+        Values.DeleteOrganizationGroupRoles
+    );
+
+    /// <summary>
+    /// Read Organization Groups
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationGroups = new(Values.ReadOrganizationGroups);
+
+    /// <summary>
     /// Create Organization Invitations
     /// </summary>
     public static readonly OauthScope CreateOrganizationInvitations = new(
@@ -777,6 +803,20 @@ public readonly record struct OauthScope : IStringEnum
     /// </summary>
     public static readonly OauthScope DeleteOrganizationInvitations = new(
         Values.DeleteOrganizationInvitations
+    );
+
+    /// <summary>
+    /// Read Organization Member Effective Roles
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationMemberEffectiveRoles = new(
+        Values.ReadOrganizationMemberEffectiveRoles
+    );
+
+    /// <summary>
+    /// Read Organization Member Role Source Groups
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationMemberRoleSourceGroups = new(
+        Values.ReadOrganizationMemberRoleSourceGroups
     );
 
     /// <summary>
@@ -1208,9 +1248,35 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Read User Effective Permissions
+    /// </summary>
+    public static readonly OauthScope ReadUserEffectivePermissions = new(
+        Values.ReadUserEffectivePermissions
+    );
+
+    /// <summary>
+    /// Read User Effective Roles
+    /// </summary>
+    public static readonly OauthScope ReadUserEffectiveRoles = new(Values.ReadUserEffectiveRoles);
+
+    /// <summary>
     /// Read User Idp Tokens
     /// </summary>
     public static readonly OauthScope ReadUserIdpTokens = new(Values.ReadUserIdpTokens);
+
+    /// <summary>
+    /// Read User Permission Source Roles
+    /// </summary>
+    public static readonly OauthScope ReadUserPermissionSourceRoles = new(
+        Values.ReadUserPermissionSourceRoles
+    );
+
+    /// <summary>
+    /// Read User Role Source Groups
+    /// </summary>
+    public static readonly OauthScope ReadUserRoleSourceGroups = new(
+        Values.ReadUserRoleSourceGroups
+    );
 
     /// <summary>
     /// Create User Tickets
@@ -2046,6 +2112,26 @@ public readonly record struct OauthScope : IStringEnum
             "delete:organization_discovery_domains";
 
         /// <summary>
+        /// Create Organization Group Roles
+        /// </summary>
+        public const string CreateOrganizationGroupRoles = "create:organization_group_roles";
+
+        /// <summary>
+        /// Read Organization Group Roles
+        /// </summary>
+        public const string ReadOrganizationGroupRoles = "read:organization_group_roles";
+
+        /// <summary>
+        /// Delete Organization Group Roles
+        /// </summary>
+        public const string DeleteOrganizationGroupRoles = "delete:organization_group_roles";
+
+        /// <summary>
+        /// Read Organization Groups
+        /// </summary>
+        public const string ReadOrganizationGroups = "read:organization_groups";
+
+        /// <summary>
         /// Create Organization Invitations
         /// </summary>
         public const string CreateOrganizationInvitations = "create:organization_invitations";
@@ -2059,6 +2145,18 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Organization Invitations
         /// </summary>
         public const string DeleteOrganizationInvitations = "delete:organization_invitations";
+
+        /// <summary>
+        /// Read Organization Member Effective Roles
+        /// </summary>
+        public const string ReadOrganizationMemberEffectiveRoles =
+            "read:organization_member_effective_roles";
+
+        /// <summary>
+        /// Read Organization Member Role Source Groups
+        /// </summary>
+        public const string ReadOrganizationMemberRoleSourceGroups =
+            "read:organization_member_role_source_groups";
 
         /// <summary>
         /// Create Organization Member Roles
@@ -2453,9 +2551,29 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteUserAttributeProfiles = "delete:user_attribute_profiles";
 
         /// <summary>
+        /// Read User Effective Permissions
+        /// </summary>
+        public const string ReadUserEffectivePermissions = "read:user_effective_permissions";
+
+        /// <summary>
+        /// Read User Effective Roles
+        /// </summary>
+        public const string ReadUserEffectiveRoles = "read:user_effective_roles";
+
+        /// <summary>
         /// Read User Idp Tokens
         /// </summary>
         public const string ReadUserIdpTokens = "read:user_idp_tokens";
+
+        /// <summary>
+        /// Read User Permission Source Roles
+        /// </summary>
+        public const string ReadUserPermissionSourceRoles = "read:user_permission_source_roles";
+
+        /// <summary>
+        /// Read User Role Source Groups
+        /// </summary>
+        public const string ReadUserRoleSourceGroups = "read:user_role_source_groups";
 
         /// <summary>
         /// Create User Tickets
