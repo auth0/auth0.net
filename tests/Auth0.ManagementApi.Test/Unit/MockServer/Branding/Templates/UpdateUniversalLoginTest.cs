@@ -19,7 +19,6 @@ public class UpdateUniversalLoginTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/branding/templates/universal-login")
-                    .WithHeader("Content-Type", "application/json")
                     .UsingPut()
                     .WithBody(requestJson)
             )

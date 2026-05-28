@@ -256,7 +256,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

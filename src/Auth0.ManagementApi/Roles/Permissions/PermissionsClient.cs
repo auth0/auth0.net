@@ -183,7 +183,7 @@ public partial class PermissionsClient : IPermissionsClient
     }
 
     /// <summary>
-    /// Add one or more <see href="https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions">permissions</see> to a specified user role.
+    /// Add one or more [permissions](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions) to a specified user role.
     /// </summary>
     /// <example><code>
     /// await client.Roles.Permissions.AddAsync(
@@ -266,7 +266,7 @@ public partial class PermissionsClient : IPermissionsClient
     }
 
     /// <summary>
-    /// Remove one or more <see href="https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions">permissions</see> from a specified user role.
+    /// Remove one or more [permissions](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions) from a specified user role.
     /// </summary>
     /// <example><code>
     /// await client.Roles.Permissions.DeleteAsync(

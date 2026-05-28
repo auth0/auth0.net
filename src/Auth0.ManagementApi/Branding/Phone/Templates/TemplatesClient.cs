@@ -399,7 +399,6 @@ public partial class TemplatesClient : ITemplatesClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

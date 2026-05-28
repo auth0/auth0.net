@@ -127,7 +127,6 @@ public partial class KeysClient : IKeysClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken
@@ -222,7 +221,6 @@ public partial class KeysClient : IKeysClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

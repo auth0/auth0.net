@@ -11,9 +11,12 @@ public partial class GroupsClient : IGroupsClient
     {
         _client = client;
         Members = new Auth0.ManagementApi.Groups.MembersClient(_client);
+        Roles = new Auth0.ManagementApi.Groups.RolesClient(_client);
     }
 
     public Auth0.ManagementApi.Groups.IMembersClient Members { get; }
+
+    public Auth0.ManagementApi.Groups.IRolesClient Roles { get; }
 
     /// <summary>
     /// List all groups in your tenant.

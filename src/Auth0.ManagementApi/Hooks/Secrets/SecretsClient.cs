@@ -151,7 +151,6 @@ public partial class SecretsClient : ISecretsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken
@@ -223,7 +222,6 @@ public partial class SecretsClient : ISecretsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken
@@ -296,7 +294,6 @@ public partial class SecretsClient : ISecretsClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

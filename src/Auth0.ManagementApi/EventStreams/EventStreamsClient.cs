@@ -141,7 +141,6 @@ public partial class EventStreamsClient : IEventStreamsClient
                     Path = "event-streams",
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

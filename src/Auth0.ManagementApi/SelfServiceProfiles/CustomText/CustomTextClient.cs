@@ -131,7 +131,6 @@ public partial class CustomTextClient : ICustomTextClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

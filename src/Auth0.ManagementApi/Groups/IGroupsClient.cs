@@ -5,6 +5,7 @@ namespace Auth0.ManagementApi;
 public partial interface IGroupsClient
 {
     public Auth0.ManagementApi.Groups.IMembersClient Members { get; }
+    public Auth0.ManagementApi.Groups.IRolesClient Roles { get; }
 
     /// <summary>
     /// List all groups in your tenant.

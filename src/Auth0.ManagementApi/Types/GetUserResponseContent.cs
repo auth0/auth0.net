@@ -103,6 +103,10 @@ public record GetUserResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("multifactor")]
     public IEnumerable<string>? Multifactor { get; set; }
 
+    [Optional]
+    [JsonPropertyName("multifactor_last_modified")]
+    public UserDateSchema? MultifactorLastModified { get; set; }
+
     /// <summary>
     /// Last IP address from which this user logged in.
     /// </summary>
@@ -113,6 +117,10 @@ public record GetUserResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [Optional]
     [JsonPropertyName("last_login")]
     public UserDateSchema? LastLogin { get; set; }
+
+    [Optional]
+    [JsonPropertyName("last_password_reset")]
+    public UserDateSchema? LastPasswordReset { get; set; }
 
     /// <summary>
     /// Total number of logins this user has performed.

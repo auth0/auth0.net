@@ -232,7 +232,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
                     ),
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken
@@ -512,7 +511,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Retrieves a scim configuration by its <c>connectionId</c>.
+    /// Retrieves a scim configuration by its `connectionId`.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.GetAsync("id");
@@ -550,7 +549,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Deletes a scim configuration by its <c>connectionId</c>.
+    /// Deletes a scim configuration by its `connectionId`.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.DeleteAsync("id");
@@ -613,7 +612,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Update a scim configuration by its <c>connectionId</c>.
+    /// Update a scim configuration by its `connectionId`.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.UpdateAsync(
@@ -638,7 +637,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Retrieves a scim configuration's default mapping by its <c>connectionId</c>.
+    /// Retrieves a scim configuration's default mapping by its `connectionId`.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.GetDefaultMappingAsync("id");

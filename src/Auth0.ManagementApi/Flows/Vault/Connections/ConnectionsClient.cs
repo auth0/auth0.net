@@ -142,7 +142,6 @@ public partial class ConnectionsClient : IConnectionsClient
                     Path = "flows/vault/connections",
                     Body = request,
                     Headers = _headers,
-                    ContentType = "application/json",
                     Options = options,
                 },
                 cancellationToken

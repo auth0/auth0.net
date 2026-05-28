@@ -67,7 +67,7 @@ public partial interface IPushNotificationClient
     );
 
     /// <summary>
-    /// Retrieve configuration details for an AWS SNS push notification provider that has been enabled for MFA. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</see>.
+    /// Retrieve configuration details for an AWS SNS push notification provider that has been enabled for MFA. To learn more, review [Configure Push Notifications for MFA](https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa).
     /// </summary>
     WithRawResponseTask<GetGuardianFactorsProviderSnsResponseContent> GetSnsProviderAsync(
         RequestOptions? options = null,
@@ -75,7 +75,7 @@ public partial interface IPushNotificationClient
     );
 
     /// <summary>
-    /// Configure the <see href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</see> (subscription required).
+    /// Configure the [AWS SNS push notification provider configuration](https://auth0.com/docs/multifactor-authentication/developer/sns-configuration) (subscription required).
     /// </summary>
     WithRawResponseTask<SetGuardianFactorsProviderPushNotificationSnsResponseContent> SetSnsProviderAsync(
         SetGuardianFactorsProviderPushNotificationSnsRequestContent request,
@@ -84,7 +84,7 @@ public partial interface IPushNotificationClient
     );
 
     /// <summary>
-    /// Configure the <see href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</see> (subscription required).
+    /// Configure the [AWS SNS push notification provider configuration](https://auth0.com/docs/multifactor-authentication/developer/sns-configuration) (subscription required).
     /// </summary>
     WithRawResponseTask<UpdateGuardianFactorsProviderPushNotificationSnsResponseContent> UpdateSnsProviderAsync(
         UpdateGuardianFactorsProviderPushNotificationSnsRequestContent request,
