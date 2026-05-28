@@ -14,6 +14,8 @@ public partial class UsersClient : IUsersClient
         AuthenticationMethods = new AuthenticationMethodsClient(_client);
         Authenticators = new AuthenticatorsClient(_client);
         ConnectedAccounts = new ConnectedAccountsClient(_client);
+        EffectivePermissions = new EffectivePermissionsClient(_client);
+        EffectiveRoles = new Auth0.ManagementApi.Users.EffectiveRolesClient(_client);
         Enrollments = new Auth0.ManagementApi.Users.EnrollmentsClient(_client);
         FederatedConnectionsTokensets = new FederatedConnectionsTokensetsClient(_client);
         Groups = new Auth0.ManagementApi.Users.GroupsClient(_client);
@@ -33,6 +35,10 @@ public partial class UsersClient : IUsersClient
     public IAuthenticatorsClient Authenticators { get; }
 
     public IConnectedAccountsClient ConnectedAccounts { get; }
+
+    public IEffectivePermissionsClient EffectivePermissions { get; }
+
+    public Auth0.ManagementApi.Users.IEffectiveRolesClient EffectiveRoles { get; }
 
     public Auth0.ManagementApi.Users.IEnrollmentsClient Enrollments { get; }
 

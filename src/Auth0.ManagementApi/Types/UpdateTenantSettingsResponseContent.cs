@@ -236,6 +236,10 @@ public record UpdateTenantSettingsResponseContent : IJsonOnDeserialized
     [JsonPropertyName("dynamic_client_registration_security_mode")]
     public TenantSettingsDynamicClientRegistrationSecurityMode? DynamicClientRegistrationSecurityMode { get; set; }
 
+    [Optional]
+    [JsonPropertyName("country_codes")]
+    public TenantSettingsCountryCodesResponse? CountryCodes { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

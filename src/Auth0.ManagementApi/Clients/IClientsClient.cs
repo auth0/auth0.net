@@ -10,38 +10,30 @@ public partial interface IClientsClient
 
     /// <summary>
     /// Retrieve clients (applications and SSO integrations) matching provided filters. A list of fields to include or exclude may also be specified.
-    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    /// For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
     ///
-    /// <list type="bullet">
-    ///   <item><description>
-    ///     The following can be retrieved with any scope:
-    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
-    ///   </description></item>
-    ///   <item><description>
-    ///     The following properties can only be retrieved with the <c>read:clients</c> or
-    ///     <c>read:client_keys</c> scope:
-    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
-    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
-    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
-    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
-    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
-    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
-    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
-    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
-    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
-    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
-    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
-    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
-    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
-    ///     <c>organization_require_behavior</c>.
-    ///   </description></item>
-    ///   <item><description>
-    ///     The following properties can only be retrieved with the
-    ///     <c>read:client_keys</c> or <c>read:client_credentials</c> scope:
-    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
-    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
-    ///   </description></item>
-    /// </list>
+    /// - The following can be retrieved with any scope:
+    ///     `client_id`, `app_type`, `name`, and `description`.
+    /// - The following properties can only be retrieved with the `read:clients` or
+    ///     `read:client_keys` scope:
+    ///     `callbacks`, `oidc_logout`, `allowed_origins`,
+    ///     `web_origins`, `tenant`, `global`, `config_route`,
+    ///     `callback_url_template`, `jwt_configuration`,
+    ///     `jwt_configuration.lifetime_in_seconds`, `jwt_configuration.secret_encoded`,
+    ///     `jwt_configuration.scopes`, `jwt_configuration.alg`, `api_type`,
+    ///     `logo_uri`, `allowed_clients`, `owners`, `custom_login_page`,
+    ///     `custom_login_page_off`, `sso`, `addons`, `form_template`,
+    ///     `custom_login_page_codeview`, `resource_servers`, `client_metadata`,
+    ///     `mobile`, `mobile.android`, `mobile.ios`, `allowed_logout_urls`,
+    ///     `token_endpoint_auth_method`, `is_first_party`, `oidc_conformant`,
+    ///     `is_token_endpoint_ip_header_trusted`, `initiate_login_uri`, `grant_types`,
+    ///     `refresh_token`, `refresh_token.rotation_type`, `refresh_token.expiration_type`,
+    ///     `refresh_token.leeway`, `refresh_token.token_lifetime`, `refresh_token.policies`, `organization_usage`,
+    ///     `organization_require_behavior`.
+    /// - The following properties can only be retrieved with the
+    ///     `read:client_keys` or `read:client_credentials` scope:
+    ///     `encryption_key`, `encryption_key.pub`, `encryption_key.cert`,
+    ///     `client_secret`, `client_authentication_methods` and `signing_key`.
     /// </summary>
     Task<Pager<Client>> ListAsync(
         ListClientsRequestParameters request,
@@ -50,18 +42,18 @@ public partial interface IClientsClient
     );
 
     /// <summary>
-    /// Create a new client (application or SSO integration). For more information, read <see href="https://www.auth0.com/docs/get-started/auth0-overview/create-applications">Create Applications</see>
-    /// <see href="https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on>"&gt;API Endpoints for Single Sign-On</see>.
+    /// Create a new client (application or SSO integration). For more information, read [Create Applications](https://www.auth0.com/docs/get-started/auth0-overview/create-applications)
+    /// [API Endpoints for Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on/api-endpoints-for-single-sign-on).
     ///
     /// Notes:
     /// - We recommend leaving the `client_secret` parameter unspecified to allow the generation of a safe secret.
-    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use
-    /// <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c>
+    /// - The `client_authentication_methods` and `token_endpoint_auth_method` properties are mutually exclusive. Use
+    /// `client_authentication_methods` to configure the client with Private Key JWT authentication method. Otherwise, use `token_endpoint_auth_method`
     /// to configure the client with client secret (basic or post) or with no authentication method (none).
-    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, specify fully defined credentials.
+    /// - When using `client_authentication_methods` to configure the client with Private Key JWT authentication method, specify fully defined credentials.
     /// These credentials will be automatically enabled for Private Key JWT authentication on the client.
-    /// - To configure <c>client_authentication_methods</c>, the <c>create:client_credentials</c> scope is required.
-    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
+    /// - To configure `client_authentication_methods`, the `create:client_credentials` scope is required.
+    /// - To configure `client_authentication_methods`, the property `jwt_configuration.alg` must be set to RS256.
     ///
     /// SSO Integrations created via this endpoint will accept login requests and share user profile information.
     /// </summary>
@@ -105,36 +97,29 @@ public partial interface IClientsClient
 
     /// <summary>
     /// Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified.
-    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
-    /// <list type="bullet">
-    ///   <item><description>
-    ///     The following properties can be retrieved with any of the scopes:
-    ///     <c>client_id</c>, <c>app_type</c>, <c>name</c>, and <c>description</c>.
-    ///   </description></item>
-    ///   <item><description>
-    ///     The following properties can only be retrieved with the <c>read:clients</c> or
-    ///     <c>read:client_keys</c> scopes:
-    ///     <c>callbacks</c>, <c>oidc_logout</c>, <c>allowed_origins</c>,
-    ///     <c>web_origins</c>, <c>tenant</c>, <c>global</c>, <c>config_route</c>,
-    ///     <c>callback_url_template</c>, <c>jwt_configuration</c>,
-    ///     <c>jwt_configuration.lifetime_in_seconds</c>, <c>jwt_configuration.secret_encoded</c>,
-    ///     <c>jwt_configuration.scopes</c>, <c>jwt_configuration.alg</c>, <c>api_type</c>,
-    ///     <c>logo_uri</c>, <c>allowed_clients</c>, <c>owners</c>, <c>custom_login_page</c>,
-    ///     <c>custom_login_page_off</c>, <c>sso</c>, <c>addons</c>, <c>form_template</c>,
-    ///     <c>custom_login_page_codeview</c>, <c>resource_servers</c>, <c>client_metadata</c>,
-    ///     <c>mobile</c>, <c>mobile.android</c>, <c>mobile.ios</c>, <c>allowed_logout_urls</c>,
-    ///     <c>token_endpoint_auth_method</c>, <c>is_first_party</c>, <c>oidc_conformant</c>,
-    ///     <c>is_token_endpoint_ip_header_trusted</c>, <c>initiate_login_uri</c>, <c>grant_types</c>,
-    ///     <c>refresh_token</c>, <c>refresh_token.rotation_type</c>, <c>refresh_token.expiration_type</c>,
-    ///     <c>refresh_token.leeway</c>, <c>refresh_token.token_lifetime</c>, <c>refresh_token.policies</c>, <c>organization_usage</c>,
-    ///     <c>organization_require_behavior</c>.
-    ///   </description></item>
-    ///   <item><description>
-    ///     The following properties can only be retrieved with the <c>read:client_keys</c> or <c>read:client_credentials</c> scopes:
-    ///     <c>encryption_key</c>, <c>encryption_key.pub</c>, <c>encryption_key.cert</c>,
-    ///     <c>client_secret</c>, <c>client_authentication_methods</c> and <c>signing_key</c>.
-    ///   </description></item>
-    /// </list>
+    /// For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
+    ///
+    /// - The following properties can be retrieved with any of the scopes:
+    ///     `client_id`, `app_type`, `name`, and `description`.
+    /// - The following properties can only be retrieved with the `read:clients` or
+    ///     `read:client_keys` scopes:
+    ///     `callbacks`, `oidc_logout`, `allowed_origins`,
+    ///     `web_origins`, `tenant`, `global`, `config_route`,
+    ///     `callback_url_template`, `jwt_configuration`,
+    ///     `jwt_configuration.lifetime_in_seconds`, `jwt_configuration.secret_encoded`,
+    ///     `jwt_configuration.scopes`, `jwt_configuration.alg`, `api_type`,
+    ///     `logo_uri`, `allowed_clients`, `owners`, `custom_login_page`,
+    ///     `custom_login_page_off`, `sso`, `addons`, `form_template`,
+    ///     `custom_login_page_codeview`, `resource_servers`, `client_metadata`,
+    ///     `mobile`, `mobile.android`, `mobile.ios`, `allowed_logout_urls`,
+    ///     `token_endpoint_auth_method`, `is_first_party`, `oidc_conformant`,
+    ///     `is_token_endpoint_ip_header_trusted`, `initiate_login_uri`, `grant_types`,
+    ///     `refresh_token`, `refresh_token.rotation_type`, `refresh_token.expiration_type`,
+    ///     `refresh_token.leeway`, `refresh_token.token_lifetime`, `refresh_token.policies`, `organization_usage`,
+    ///     `organization_require_behavior`.
+    /// - The following properties can only be retrieved with the `read:client_keys` or `read:client_credentials` scopes:
+    ///     `encryption_key`, `encryption_key.pub`, `encryption_key.cert`,
+    ///     `client_secret`, `client_authentication_methods` and `signing_key`.
     /// </summary>
     WithRawResponseTask<GetClientResponseContent> GetAsync(
         string id,
@@ -153,15 +138,15 @@ public partial interface IClientsClient
     );
 
     /// <summary>
-    /// Updates a client's settings. For more information, read <see href="https://www.auth0.com/docs/get-started/applications"> Applications in Auth0</see> and <see href="https://www.auth0.com/docs/authenticate/single-sign-on"> Single Sign-On</see>.
+    /// Updates a client's settings. For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
     ///
     /// Notes:
     /// - The `client_secret` and `signing_key` attributes can only be updated with the `update:client_keys` scope.
-    /// - The <c>client_authentication_methods</c> and <c>token_endpoint_auth_method</c> properties are mutually exclusive. Use <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method. Otherwise, use <c>token_endpoint_auth_method</c> to configure the client with client secret (basic or post) or with no authentication method (none).
-    /// - When using <c>client_authentication_methods</c> to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
-    /// - To configure <c>client_authentication_methods</c>, the <c>update:client_credentials</c> scope is required.
-    /// - To configure <c>client_authentication_methods</c>, the property <c>jwt_configuration.alg</c> must be set to RS256.
-    /// - To change a client's <c>is_first_party</c> property to <c>false</c>, the <c>organization_usage</c> and <c>organization_require_behavior</c> properties must be unset.
+    /// - The `client_authentication_methods` and `token_endpoint_auth_method` properties are mutually exclusive. Use `client_authentication_methods` to configure the client with Private Key JWT authentication method. Otherwise, use `token_endpoint_auth_method` to configure the client with client secret (basic or post) or with no authentication method (none).
+    /// - When using `client_authentication_methods` to configure the client with Private Key JWT authentication method, only specify the credential IDs that were generated when creating the credentials on the client.
+    /// - To configure `client_authentication_methods`, the `update:client_credentials` scope is required.
+    /// - To configure `client_authentication_methods`, the property `jwt_configuration.alg` must be set to RS256.
+    /// - To change a client's `is_first_party` property to `false`, the `organization_usage` and `organization_require_behavior` properties must be unset.
     /// </summary>
     WithRawResponseTask<UpdateClientResponseContent> UpdateAsync(
         string id,
@@ -175,7 +160,7 @@ public partial interface IClientsClient
     ///
     /// This endpoint cannot be used with clients configured with Private Key JWT authentication method (client_authentication_methods configured with private_key_jwt). The generated secret is NOT base64 encoded.
     ///
-    /// For more information, read <see href="https://www.auth0.com/docs/get-started/applications/rotate-client-secret">Rotate Client Secrets</see>.
+    /// For more information, read [Rotate Client Secrets](https://www.auth0.com/docs/get-started/applications/rotate-client-secret).
     /// </summary>
     WithRawResponseTask<RotateClientSecretResponseContent> RotateSecretAsync(
         string id,
