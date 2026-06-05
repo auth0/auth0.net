@@ -197,6 +197,93 @@ public class PushedAuthorizationRequestTests
     }
 
     [Fact]
+    public async void Should_Call_OAuth_Par_With_Structured_AuthorizationDetails()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var requestUri = new Uri("https://www.request.uri");
+        var response = new PushedAuthorizationRequestResponse() { RequestUri = requestUri, ExpiresIn = 500};
+        var domain = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+        var expectedParams = new Dictionary<string, string>
+        {
+            { "client_id", TestBaseUtils.GetVariable("AUTH0_CLIENT_ID") },
+            { "client_secret", TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET") },
+            { "authorization_details", "[{\"type\":\"payment_initiation\"}]" }
+        };
+
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.Is<HttpRequestMessage>(req => req.RequestUri.ToString() == $"https://{domain}/oauth/par" && ValidateRequestContent(req, expectedParams)),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+            });
+
+        var httpClient = new HttpClient(mockHandler.Object);
+        var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        var tokenReponse = await authenticationApiClient.PushedAuthorizationRequestAsync(new PushedAuthorizationRequest()
+        {
+            ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+            ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+            AuthorizationDetailsObjects = new List<AuthorizationDetail>
+            {
+                new AuthorizationDetail { Type = "payment_initiation" }
+            }
+        });
+
+        tokenReponse.Should().NotBeNull();
+        tokenReponse.RequestUri.Should().Equals(requestUri);
+    }
+
+    [Fact]
+    public async void Should_Prefer_Structured_AuthorizationDetails_Over_String()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var requestUri = new Uri("https://www.request.uri");
+        var response = new PushedAuthorizationRequestResponse() { RequestUri = requestUri, ExpiresIn = 500};
+        var domain = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+        var expectedParams = new Dictionary<string, string>
+        {
+            { "client_id", TestBaseUtils.GetVariable("AUTH0_CLIENT_ID") },
+            { "client_secret", TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET") },
+            { "authorization_details", "[{\"type\":\"payment_initiation\"}]" }
+        };
+
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.Is<HttpRequestMessage>(req => req.RequestUri.ToString() == $"https://{domain}/oauth/par" && ValidateRequestContent(req, expectedParams)),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+            });
+
+        var httpClient = new HttpClient(mockHandler.Object);
+        var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        var tokenReponse = await authenticationApiClient.PushedAuthorizationRequestAsync(new PushedAuthorizationRequest()
+        {
+            ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+            ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+            AuthorizationDetails = "THIS_RAW_STRING_SHOULD_BE_IGNORED",
+            AuthorizationDetailsObjects = new List<AuthorizationDetail>
+            {
+                new AuthorizationDetail { Type = "payment_initiation" }
+            }
+        });
+
+        tokenReponse.Should().NotBeNull();
+        tokenReponse.RequestUri.Should().Equals(requestUri);
+    }
+
+    [Fact]
     public async void Should_Call_OAuth_Par_With_AdditionalProperties()
     {
         var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);

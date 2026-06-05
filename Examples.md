@@ -14,6 +14,9 @@
   - [3.4. Challenge an already enrolled user](#34-challenge-an-already-enrolled-user)
   - [3.5. Get the list of Authenticators for a user](#35-get-the-list-of-authenticators-for-a-user)
   - [3.6. Delete an enrolled authenticator](#36-delete-an-enrolled-authenticator)
+- [4. Rich Authorization Requests (RAR)](#4-rich-authorization-requests-rar)
+  - [4.1. Pushed Authorization Request (PAR) with authorization details](#41-pushed-authorization-request-par-with-authorization-details)
+  - [4.2. Client Initiated Backchannel Authorization (CIBA) with authorization details](#42-client-initiated-backchannel-authorization-ciba-with-authorization-details)
 
 ## 1. Client Initialization
 
@@ -184,6 +187,73 @@ await authClient.DeleteMfaAuthenticatorAsync(
         AccessToken = "AccessToken",
         AuthenticatorId = "id-random"
     });
+```
+
+## 4. Rich Authorization Requests (RAR)
+
+Rich Authorization Requests (RAR) let you pass fine-grained, structured authorization data via the
+`authorization_details` parameter. Each entry is an `AuthorizationDetail` identified by its `Type`; any
+additional, type-specific fields are supplied through `AdditionalData`.
+
+### 4.1. Pushed Authorization Request (PAR) with authorization details
+
+Set `AuthorizationDetailsObjects` to pass structured authorization details. When set, it takes precedence
+over the raw `AuthorizationDetails` string.
+
+```csharp
+var response = await authClient.PushedAuthorizationRequestAsync(
+    new PushedAuthorizationRequest()
+    {
+        ClientId = _clientId,
+        ClientSecret = _clientSecret,
+        ResponseType = AuthorizationResponseType.Code,
+        RedirectUri = "https://www.myapp.com/callback",
+        AuthorizationDetailsObjects = new List<AuthorizationDetail>
+        {
+            new AuthorizationDetail
+            {
+                Type = "payment_initiation",
+                AdditionalData = new Dictionary<string, JsonElement>
+                {
+                    ["instructedAmount"] = JsonSerializer.SerializeToElement(new { currency = "EUR", amount = "123.50" })
+                }
+            }
+        }
+    });
+```
+
+### 4.2. Client Initiated Backchannel Authorization (CIBA) with authorization details
+
+Pass `AuthorizationDetailsObjects` on the request, and read the strongly-typed details back from the token response.
+
+```csharp
+var authorizationResponse = await authClient.ClientInitiatedBackchannelAuthorization(
+    new ClientInitiatedBackchannelAuthorizationRequest()
+    {
+        ClientId = _clientId,
+        ClientSecret = _clientSecret,
+        BindingMessage = "ABC-123",
+        Scope = "openid",
+        LoginHint = new LoginHint { Format = "iss_sub", Issuer = _issuer, Subject = _subject },
+        AuthorizationDetailsObjects = new List<AuthorizationDetail>
+        {
+            new AuthorizationDetail { Type = "payment_initiation" }
+        }
+    });
+
+var tokenResponse = await authClient.GetTokenAsync(
+    new ClientInitiatedBackchannelAuthorizationTokenRequest()
+    {
+        AuthRequestId = authorizationResponse.AuthRequestId,
+        ClientId = _clientId,
+        ClientSecret = _clientSecret
+    });
+
+// Strongly-typed authorization details returned by the token endpoint.
+foreach (var detail in tokenResponse.AuthorizationDetails)
+{
+    Console.WriteLine(detail.Type);
+}
 ```
 
 [Go to Top](#)

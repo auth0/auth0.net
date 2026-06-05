@@ -133,6 +133,37 @@ public class StringOrObjectAsStringConverterTests
     }
 
     [Fact]
+    public void ReadJson_WithArrayToken_ReturnsJsonArrayAsString()
+    {
+        var converter = new StringOrObjectAsStringConverter();
+        var json = "[{\"type\":\"payment_initiation\",\"amount\":\"100\"}]";
+        var reader = new JsonTextReader(new StringReader(json));
+        reader.Read();
+
+        var result = converter.ReadJson(reader, typeof(string), null, new JsonSerializer());
+
+        result.Should().NotBeNull();
+        result.ToString().Should().Contain("type");
+        result.ToString().Should().Contain("payment_initiation");
+        result.ToString().Should().Contain("amount");
+        result.ToString().Should().Contain("100");
+    }
+
+    [Fact]
+    public void ReadJson_WithEmptyArrayToken_ReturnsEmptyArrayString()
+    {
+        var converter = new StringOrObjectAsStringConverter();
+        var json = "[]";
+        var reader = new JsonTextReader(new StringReader(json));
+        reader.Read();
+
+        var result = converter.ReadJson(reader, typeof(string), null, new JsonSerializer());
+
+        result.Should().NotBeNull();
+        result.ToString().Should().Be("[]");
+    }
+
+    [Fact]
     public void CanConvert_WithAnyType_ReturnsTrue()
     {
         var converter = new StringOrObjectAsStringConverter();
