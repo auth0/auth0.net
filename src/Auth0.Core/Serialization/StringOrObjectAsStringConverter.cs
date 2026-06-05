@@ -25,10 +25,14 @@ internal class StringOrObjectAsStringConverter : JsonConverter
         if (reader.TokenType == JsonToken.String)
         {
             instance =  reader.Value?.ToString();
-        } 
+        }
         else if (reader.TokenType == JsonToken.StartObject)
         {
             instance = JObject.Load(reader).ToString();
+        }
+        else if (reader.TokenType == JsonToken.StartArray)
+        {
+            instance = JArray.Load(reader).ToString();
         }
 
         return instance;
