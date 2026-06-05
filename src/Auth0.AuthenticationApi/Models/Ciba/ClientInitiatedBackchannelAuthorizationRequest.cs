@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 using Microsoft.IdentityModel.Tokens;
 
+using Auth0.AuthenticationApi.Models;
+
 namespace Auth0.AuthenticationApi.Models.Ciba;
 
 /// <summary>
@@ -45,7 +47,14 @@ public class ClientInitiatedBackchannelAuthorizationRequest : IClientAuthenticat
     /// Used to configure a custom expiry time for this request.
     /// </summary>
     public int? RequestExpiry { get; set; }
-        
+
+    /// <summary>
+    /// Fine-grained authorization data to send as part of a Rich Authorization Requests (RAR) flow.
+    /// Serialized to the <c>authorization_details</c> parameter of the <c>/bc-authorize</c> request.
+    /// <see href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-rar">reference</see>
+    /// </summary>
+    public IList<AuthorizationDetail> AuthorizationDetailsObjects { get; set; }
+
     /// <summary>
     /// Any additional properties to use.
     /// </summary>
