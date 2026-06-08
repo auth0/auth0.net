@@ -3,7 +3,8 @@
     "files": {
         "Auth0.ManagementApi.csproj": [],
         "Auth0.ManagementApi.Custom.props": [],
-        ".version": []
+        ".version": [],
+        "Core/Public/Version.cs": []
     },
     "prFilters": [
         {
