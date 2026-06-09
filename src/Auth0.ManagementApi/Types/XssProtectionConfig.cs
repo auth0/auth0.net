@@ -5,29 +5,32 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Identifier input display settings.
+/// X-XSS-Protection header configuration (deprecated header, use CSP instead).
 /// </summary>
 [Serializable]
-public record BrandingIdentifiers : IJsonOnDeserialized
+public record XssProtectionConfig : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [Optional]
-    [JsonPropertyName("login_display")]
-    public BrandingLoginDisplayEnum? LoginDisplay { get; set; }
-
     /// <summary>
-    /// Whether OTP autocomplete (autocomplete="one-time-code") is enabled.
+    /// Whether X-XSS-Protection header is enabled.
     /// </summary>
     [Optional]
-    [JsonPropertyName("otp_autocomplete")]
-    public bool? OtpAutocomplete { get; set; }
+    [JsonPropertyName("enabled")]
+    public bool? Enabled { get; set; }
 
     [Optional]
-    [JsonPropertyName("phone_display")]
-    public BrandingPhoneDisplay? PhoneDisplay { get; set; }
+    [JsonPropertyName("mode")]
+    public XssProtectionMode? Mode { get; set; }
+
+    /// <summary>
+    /// HTTPS endpoint for X-XSS-Protection violation reports.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("report_uri")]
+    public string? ReportUri { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -5,22 +5,22 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Phone number display settings.
+/// Security headers configuration for tenant responses.
 /// </summary>
 [Serializable]
-public record BrandingPhoneDisplay : IJsonOnDeserialized
+public record TenantSettingsNullableSecurityHeaders : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [Optional]
-    [JsonPropertyName("masking")]
-    public BrandingPhoneMaskingEnum? Masking { get; set; }
+    [Nullable, Optional]
+    [JsonPropertyName("content_security_policy")]
+    public Optional<ContentSecurityPolicyConfig?> ContentSecurityPolicy { get; set; }
 
-    [Optional]
-    [JsonPropertyName("formatting")]
-    public BrandingPhoneFormattingEnum? Formatting { get; set; }
+    [Nullable, Optional]
+    [JsonPropertyName("x_xss_protection")]
+    public Optional<XssProtectionConfig?> XXssProtection { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -5,20 +5,21 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Phone number display settings.
+/// A single reporting endpoint.
 /// </summary>
 [Serializable]
-public record UpdateBrandingPhoneDisplay : IJsonOnDeserialized
+public record CspReportToEndpoint : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("masking")]
-    public required UpdateBrandingPhoneMaskingEnum Masking { get; set; }
-
-    [JsonPropertyName("formatting")]
-    public required UpdateBrandingPhoneFormattingEnum Formatting { get; set; }
+    /// <summary>
+    /// HTTPS URL for the reporting endpoint.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("url")]
+    public string? Url { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

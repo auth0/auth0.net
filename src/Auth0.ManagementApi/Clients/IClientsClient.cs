@@ -78,16 +78,14 @@ public partial interface IClientsClient
     /// Idempotent registration for Client ID Metadata Document (CIMD) clients.
     /// Uses external_client_id as the unique identifier for upsert operations.
     ///
-    /// <b>Create:</b> Returns 201 when a new client is created (requires <c>create:clients</c> scope).
-    /// <b>Update:</b> Returns 200 when an existing client is updated (requires <c>update:clients</c> scope).
+    /// **Create:** Returns 201 when a new client is created (requires `create:clients` scope).
+    /// **Update:** Returns 200 when an existing client is updated (requires `update:clients` scope).
     ///
     /// This endpoint automatically:
-    /// <list type="bullet">
-    ///   <item><description>Fetches and validates the metadata document</description></item>
-    ///   <item><description>Maps CIMD fields to Auth0 client configuration</description></item>
-    ///   <item><description>Creates/rotates credentials from the JWKS</description></item>
-    ///   <item><description>Enforces CIMD security policies (HTTPS-only, no shared secrets)</description></item>
-    /// </list>
+    /// - Fetches and validates the metadata document
+    /// - Maps CIMD fields to Auth0 client configuration
+    /// - Creates/rotates credentials from the JWKS
+    /// - Enforces CIMD security policies (HTTPS-only, no shared secrets)
     /// </summary>
     WithRawResponseTask<RegisterCimdClientResponseContent> RegisterCimdClientAsync(
         RegisterCimdClientRequestContent request,

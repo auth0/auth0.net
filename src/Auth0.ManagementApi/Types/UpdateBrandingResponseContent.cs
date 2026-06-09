@@ -29,10 +29,6 @@ public record UpdateBrandingResponseContent : IJsonOnDeserialized, IJsonOnSerial
     public string? LogoUrl { get; set; }
 
     [Optional]
-    [JsonPropertyName("identifiers")]
-    public BrandingIdentifiers? Identifiers { get; set; }
-
-    [Optional]
     [JsonPropertyName("font")]
     public BrandingFont? Font { get; set; }
 

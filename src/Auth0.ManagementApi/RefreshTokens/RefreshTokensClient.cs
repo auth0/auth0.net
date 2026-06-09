@@ -362,7 +362,7 @@ public partial class RefreshTokensClient : IRefreshTokensClient
     }
 
     /// <summary>
-    /// Revoke refresh tokens in bulk by ID list, user, user+client, or client.
+    /// Revoke refresh tokens in bulk by ID list, user, user+client, or user+client+audience.
     /// </summary>
     /// <example><code>
     /// await client.RefreshTokens.RevokeAsync(new RevokeRefreshTokensRequestContent());

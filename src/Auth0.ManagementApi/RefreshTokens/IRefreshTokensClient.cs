@@ -14,7 +14,7 @@ public partial interface IRefreshTokensClient
     );
 
     /// <summary>
-    /// Revoke refresh tokens in bulk by ID list, user, user+client, or client.
+    /// Revoke refresh tokens in bulk by ID list, user, user+client, or user+client+audience.
     /// </summary>
     Task RevokeAsync(
         RevokeRefreshTokensRequestContent request,

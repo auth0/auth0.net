@@ -60,6 +60,10 @@ public record ConnectionOptionsOkta : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("icon_url")]
     public string? IconUrl { get; set; }
 
+    [Optional]
+    [JsonPropertyName("id_token_session_expiry_supported")]
+    public bool? IdTokenSessionExpirySupported { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("id_token_signed_response_algs")]
     public Optional<IEnumerable<ConnectionIdTokenSignedResponseAlgEnum>?> IdTokenSignedResponseAlgs { get; set; }

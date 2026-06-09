@@ -56,6 +56,8 @@ public readonly record struct AculContextEnum : IStringEnum
         Values.TransactionCustomDomainDomain
     );
 
+    public static readonly AculContextEnum Experiment = new(Values.Experiment);
+
     public AculContextEnum(string value)
     {
         Value = value;
@@ -188,5 +190,7 @@ public readonly record struct AculContextEnum : IStringEnum
         public const string UserOrganizations = "user.organizations";
 
         public const string TransactionCustomDomainDomain = "transaction.custom_domain.domain";
+
+        public const string Experiment = "experiment";
     }
 }

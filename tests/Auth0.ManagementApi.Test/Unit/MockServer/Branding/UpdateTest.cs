@@ -24,14 +24,6 @@ public class UpdateTest : BaseMockServerTest
               },
               "favicon_url": "favicon_url",
               "logo_url": "logo_url",
-              "identifiers": {
-                "login_display": "unified",
-                "otp_autocomplete": true,
-                "phone_display": {
-                  "masking": "show_all",
-                  "formatting": "regional"
-                }
-              },
               "font": {
                 "url": "url"
               }

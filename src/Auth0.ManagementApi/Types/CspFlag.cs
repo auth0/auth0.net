@@ -4,15 +4,15 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(BrandingPhoneFormattingEnum.BrandingPhoneFormattingEnumSerializer))]
+[JsonConverter(typeof(CspFlag.CspFlagSerializer))]
 [Serializable]
-public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
+public readonly record struct CspFlag : IStringEnum
 {
-    public static readonly BrandingPhoneFormattingEnum Regional = new(Values.Regional);
+    public static readonly CspFlag UpgradeInsecureRequests = new(Values.UpgradeInsecureRequests);
 
-    public static readonly BrandingPhoneFormattingEnum International = new(Values.International);
+    public static readonly CspFlag BlockAllMixedContent = new(Values.BlockAllMixedContent);
 
-    public BrandingPhoneFormattingEnum(string value)
+    public CspFlag(string value)
     {
         Value = value;
     }
@@ -25,9 +25,9 @@ public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
     /// <summary>
     /// Create a string enum with the given value.
     /// </summary>
-    public static BrandingPhoneFormattingEnum FromCustom(string value)
+    public static CspFlag FromCustom(string value)
     {
-        return new BrandingPhoneFormattingEnum(value);
+        return new CspFlag(value);
     }
 
     public bool Equals(string? other)
@@ -43,20 +43,17 @@ public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
         return Value;
     }
 
-    public static bool operator ==(BrandingPhoneFormattingEnum value1, string value2) =>
-        value1.Value.Equals(value2);
+    public static bool operator ==(CspFlag value1, string value2) => value1.Value.Equals(value2);
 
-    public static bool operator !=(BrandingPhoneFormattingEnum value1, string value2) =>
-        !value1.Value.Equals(value2);
+    public static bool operator !=(CspFlag value1, string value2) => !value1.Value.Equals(value2);
 
-    public static explicit operator string(BrandingPhoneFormattingEnum value) => value.Value;
+    public static explicit operator string(CspFlag value) => value.Value;
 
-    public static explicit operator BrandingPhoneFormattingEnum(string value) => new(value);
+    public static explicit operator CspFlag(string value) => new(value);
 
-    internal class BrandingPhoneFormattingEnumSerializer
-        : JsonConverter<BrandingPhoneFormattingEnum>
+    internal class CspFlagSerializer : JsonConverter<CspFlag>
     {
-        public override BrandingPhoneFormattingEnum Read(
+        public override CspFlag Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -67,19 +64,19 @@ public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON value could not be read as a string."
                 );
-            return new BrandingPhoneFormattingEnum(stringValue);
+            return new CspFlag(stringValue);
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            BrandingPhoneFormattingEnum value,
+            CspFlag value,
             JsonSerializerOptions options
         )
         {
             writer.WriteStringValue(value.Value);
         }
 
-        public override BrandingPhoneFormattingEnum ReadAsPropertyName(
+        public override CspFlag ReadAsPropertyName(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -90,12 +87,12 @@ public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON property name could not be read as a string."
                 );
-            return new BrandingPhoneFormattingEnum(stringValue);
+            return new CspFlag(stringValue);
         }
 
         public override void WriteAsPropertyName(
             Utf8JsonWriter writer,
-            BrandingPhoneFormattingEnum value,
+            CspFlag value,
             JsonSerializerOptions options
         )
         {
@@ -109,8 +106,8 @@ public readonly record struct BrandingPhoneFormattingEnum : IStringEnum
     [Serializable]
     public static class Values
     {
-        public const string Regional = "regional";
+        public const string UpgradeInsecureRequests = "upgrade-insecure-requests";
 
-        public const string International = "international";
+        public const string BlockAllMixedContent = "block-all-mixed-content";
     }
 }

@@ -11,8 +11,9 @@ public record ResetPhoneTemplateResponseContent : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [Optional]
     [JsonPropertyName("id")]
-    public required string Id { get; set; }
+    public string? Id { get; set; }
 
     [Optional]
     [JsonPropertyName("channel")]

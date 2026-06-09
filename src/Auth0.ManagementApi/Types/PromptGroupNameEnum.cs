@@ -90,6 +90,8 @@ public readonly record struct PromptGroupNameEnum : IStringEnum
 
     public static readonly PromptGroupNameEnum AsyncApprovalFlow = new(Values.AsyncApprovalFlow);
 
+    public static readonly PromptGroupNameEnum Confirmation = new(Values.Confirmation);
+
     public PromptGroupNameEnum(string value)
     {
         Value = value;
@@ -257,5 +259,7 @@ public readonly record struct PromptGroupNameEnum : IStringEnum
         public const string BruteForceProtection = "brute-force-protection";
 
         public const string AsyncApprovalFlow = "async-approval-flow";
+
+        public const string Confirmation = "confirmation";
     }
 }

@@ -182,6 +182,10 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("token_endpoint_jwtca_aud_format")]
     public ConnectionTokenEndpointJwtcaAudFormatEnumOidc? TokenEndpointJwtcaAudFormat { get; set; }
 
+    [Optional]
+    [JsonPropertyName("id_token_session_expiry_supported")]
+    public bool? IdTokenSessionExpirySupported { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

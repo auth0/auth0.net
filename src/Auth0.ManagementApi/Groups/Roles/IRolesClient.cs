@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Groups;
 public partial interface IRolesClient
 {
     /// <summary>
-    /// Lists the <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> assigned to a group.
+    /// Lists the [roles](https://auth0.com/docs/manage-users/access-control/rbac) assigned to a group.
     /// </summary>
     Task<Pager<Role>> ListAsync(
         string id,
@@ -16,7 +16,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Assign one or more <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> to a specified group.
+    /// Assign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) to a specified group.
     /// </summary>
     Task CreateAsync(
         string id,
@@ -26,7 +26,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Unassign one or more <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> from a specified group.
+    /// Unassign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) from a specified group.
     /// </summary>
     Task DeleteAsync(
         string id,

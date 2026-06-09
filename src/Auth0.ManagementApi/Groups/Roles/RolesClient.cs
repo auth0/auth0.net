@@ -14,7 +14,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Lists the <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> assigned to a group.
+    /// Lists the [roles](https://auth0.com/docs/manage-users/access-control/rbac) assigned to a group.
     /// </summary>
     private WithRawResponseTask<ListGroupRolesResponseContent> ListInternalAsync(
         string id,
@@ -107,6 +107,8 @@ public partial class RolesClient : IRolesClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
@@ -124,7 +126,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Lists the <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> assigned to a group.
+    /// Lists the [roles](https://auth0.com/docs/manage-users/access-control/rbac) assigned to a group.
     /// </summary>
     /// <example><code>
     /// await client.Groups.Roles.ListAsync(
@@ -169,7 +171,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Assign one or more <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> to a specified group.
+    /// Assign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) to a specified group.
     /// </summary>
     /// <example><code>
     /// await client.Groups.Roles.CreateAsync(
@@ -244,7 +246,7 @@ public partial class RolesClient : IRolesClient
     }
 
     /// <summary>
-    /// Unassign one or more <see href="https://auth0.com/docs/manage-users/access-control/rbac">roles</see> from a specified group.
+    /// Unassign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) from a specified group.
     /// </summary>
     /// <example><code>
     /// await client.Groups.Roles.DeleteAsync(
@@ -300,6 +302,8 @@ public partial class RolesClient : IRolesClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
