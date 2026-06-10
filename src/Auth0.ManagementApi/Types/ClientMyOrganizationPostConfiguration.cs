@@ -38,6 +38,13 @@ public record ClientMyOrganizationPostConfiguration : IJsonOnDeserialized
     [JsonPropertyName("connection_deletion_behavior")]
     public required ClientMyOrganizationDeletionBehaviorEnum ConnectionDeletionBehavior { get; set; }
 
+    /// <summary>
+    /// The client ID this client uses while creating invitations through My Organization API.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("invitation_landing_client_id")]
+    public string? InvitationLandingClientId { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

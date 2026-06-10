@@ -280,6 +280,8 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
         Values.AsyncApprovalDenied
     );
 
+    public static readonly ScreenGroupNameEnum Confirmation = new(Values.Confirmation);
+
     public static readonly ScreenGroupNameEnum AsyncApprovalWrongUser = new(
         Values.AsyncApprovalWrongUser
     );
@@ -562,6 +564,8 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
         public const string AsyncApprovalAccepted = "async-approval-accepted";
 
         public const string AsyncApprovalDenied = "async-approval-denied";
+
+        public const string Confirmation = "confirmation";
 
         public const string AsyncApprovalWrongUser = "async-approval-wrong-user";
     }

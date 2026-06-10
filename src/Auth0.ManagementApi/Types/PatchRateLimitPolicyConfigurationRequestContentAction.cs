@@ -18,7 +18,7 @@ public record PatchRateLimitPolicyConfigurationRequestContentAction : IJsonOnDes
     public required PatchRateLimitPolicyConfigurationRequestContentActionAction Action { get; set; }
 
     /// <summary>
-    /// The maximum number of requests allowed in a single refresh window.
+    /// The maximum number of requests allowed per second.
     /// </summary>
     [JsonPropertyName("limit")]
     public required int Limit { get; set; }

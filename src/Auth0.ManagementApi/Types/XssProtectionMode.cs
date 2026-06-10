@@ -4,15 +4,13 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(UpdateBrandingLoginDisplayEnum.UpdateBrandingLoginDisplayEnumSerializer))]
+[JsonConverter(typeof(XssProtectionMode.XssProtectionModeSerializer))]
 [Serializable]
-public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
+public readonly record struct XssProtectionMode : IStringEnum
 {
-    public static readonly UpdateBrandingLoginDisplayEnum Unified = new(Values.Unified);
+    public static readonly XssProtectionMode Block = new(Values.Block);
 
-    public static readonly UpdateBrandingLoginDisplayEnum Separate = new(Values.Separate);
-
-    public UpdateBrandingLoginDisplayEnum(string value)
+    public XssProtectionMode(string value)
     {
         Value = value;
     }
@@ -25,9 +23,9 @@ public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
     /// <summary>
     /// Create a string enum with the given value.
     /// </summary>
-    public static UpdateBrandingLoginDisplayEnum FromCustom(string value)
+    public static XssProtectionMode FromCustom(string value)
     {
-        return new UpdateBrandingLoginDisplayEnum(value);
+        return new XssProtectionMode(value);
     }
 
     public bool Equals(string? other)
@@ -43,20 +41,19 @@ public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
         return Value;
     }
 
-    public static bool operator ==(UpdateBrandingLoginDisplayEnum value1, string value2) =>
+    public static bool operator ==(XssProtectionMode value1, string value2) =>
         value1.Value.Equals(value2);
 
-    public static bool operator !=(UpdateBrandingLoginDisplayEnum value1, string value2) =>
+    public static bool operator !=(XssProtectionMode value1, string value2) =>
         !value1.Value.Equals(value2);
 
-    public static explicit operator string(UpdateBrandingLoginDisplayEnum value) => value.Value;
+    public static explicit operator string(XssProtectionMode value) => value.Value;
 
-    public static explicit operator UpdateBrandingLoginDisplayEnum(string value) => new(value);
+    public static explicit operator XssProtectionMode(string value) => new(value);
 
-    internal class UpdateBrandingLoginDisplayEnumSerializer
-        : JsonConverter<UpdateBrandingLoginDisplayEnum>
+    internal class XssProtectionModeSerializer : JsonConverter<XssProtectionMode>
     {
-        public override UpdateBrandingLoginDisplayEnum Read(
+        public override XssProtectionMode Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -67,19 +64,19 @@ public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON value could not be read as a string."
                 );
-            return new UpdateBrandingLoginDisplayEnum(stringValue);
+            return new XssProtectionMode(stringValue);
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            UpdateBrandingLoginDisplayEnum value,
+            XssProtectionMode value,
             JsonSerializerOptions options
         )
         {
             writer.WriteStringValue(value.Value);
         }
 
-        public override UpdateBrandingLoginDisplayEnum ReadAsPropertyName(
+        public override XssProtectionMode ReadAsPropertyName(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -90,12 +87,12 @@ public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON property name could not be read as a string."
                 );
-            return new UpdateBrandingLoginDisplayEnum(stringValue);
+            return new XssProtectionMode(stringValue);
         }
 
         public override void WriteAsPropertyName(
             Utf8JsonWriter writer,
-            UpdateBrandingLoginDisplayEnum value,
+            XssProtectionMode value,
             JsonSerializerOptions options
         )
         {
@@ -109,8 +106,6 @@ public readonly record struct UpdateBrandingLoginDisplayEnum : IStringEnum
     [Serializable]
     public static class Values
     {
-        public const string Unified = "unified";
-
-        public const string Separate = "separate";
+        public const string Block = "block";
     }
 }

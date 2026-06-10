@@ -371,7 +371,8 @@ public class UpdateTest : BaseMockServerTest
                 "allowed_strategies": [
                   "pingfederate"
                 ],
-                "connection_deletion_behavior": "allow"
+                "connection_deletion_behavior": "allow",
+                "invitation_landing_client_id": "invitation_landing_client_id"
               },
               "third_party_security_mode": "strict",
               "redirection_policy": "allow_always",

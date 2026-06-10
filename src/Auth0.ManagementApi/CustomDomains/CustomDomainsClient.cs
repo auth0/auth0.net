@@ -882,6 +882,8 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 409:
+                        throw new ConflictError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }

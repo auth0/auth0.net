@@ -148,6 +148,10 @@ public record UpdateTenantSettingsResponseContent : IJsonOnDeserialized
     public IEnumerable<SupportedLocales>? EnabledLocales { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("security_headers")]
+    public Optional<TenantSettingsNullableSecurityHeaders?> SecurityHeaders { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("session_cookie")]
     public Optional<SessionCookieSchema?> SessionCookie { get; set; }
 
@@ -231,6 +235,13 @@ public record UpdateTenantSettingsResponseContent : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("enable_ai_guide")]
     public bool? EnableAiGuide { get; set; }
+
+    /// <summary>
+    /// Whether session metadata is included in specific tenant logs (slo, oidc_backchannel_logout_failed, oidc_backchannel_logout_succeeded).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("include_session_metadata_in_tenant_logs")]
+    public bool? IncludeSessionMetadataInTenantLogs { get; set; }
 
     [Optional]
     [JsonPropertyName("dynamic_client_registration_security_mode")]

@@ -532,6 +532,8 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
                     case 404:
                         throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 409:
+                        throw new ConflictError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }

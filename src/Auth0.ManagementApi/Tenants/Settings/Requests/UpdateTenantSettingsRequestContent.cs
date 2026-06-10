@@ -91,11 +91,25 @@ public record UpdateTenantSettingsRequestContent
     public int? SessionLifetime { get; set; }
 
     /// <summary>
+    /// Number of minutes a session will stay valid. Cannot be specified together with `session_lifetime`.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("session_lifetime_in_minutes")]
+    public int? SessionLifetimeInMinutes { get; set; }
+
+    /// <summary>
     /// Number of hours for which a session can be inactive before the user must log in again.
     /// </summary>
     [Optional]
     [JsonPropertyName("idle_session_lifetime")]
     public int? IdleSessionLifetime { get; set; }
+
+    /// <summary>
+    /// Number of minutes a session can be inactive before the user must log in again. Cannot be specified together with `idle_session_lifetime`.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("idle_session_lifetime_in_minutes")]
+    public int? IdleSessionLifetimeInMinutes { get; set; }
 
     /// <summary>
     /// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -110,6 +124,20 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("idle_ephemeral_session_lifetime")]
     public int? IdleEphemeralSessionLifetime { get; set; }
+
+    /// <summary>
+    /// Number of minutes an ephemeral (non-persistent) session will stay valid. Cannot be specified together with `ephemeral_session_lifetime`.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("ephemeral_session_lifetime_in_minutes")]
+    public int? EphemeralSessionLifetimeInMinutes { get; set; }
+
+    /// <summary>
+    /// Number of minutes an ephemeral (non-persistent) session can be inactive before the user must log in again. Cannot be specified together with `idle_ephemeral_session_lifetime`.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("idle_ephemeral_session_lifetime_in_minutes")]
+    public int? IdleEphemeralSessionLifetimeInMinutes { get; set; }
 
     /// <summary>
     /// Selected sandbox version for the extensibility environment
@@ -138,6 +166,10 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("enabled_locales")]
     public IEnumerable<TenantSettingsSupportedLocalesEnum>? EnabledLocales { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("security_headers")]
+    public Optional<TenantSettingsNullableSecurityHeaders?> SecurityHeaders { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("session_cookie")]
@@ -223,6 +255,13 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("phone_consolidated_experience")]
     public bool? PhoneConsolidatedExperience { get; set; }
+
+    /// <summary>
+    /// Whether session metadata is included in specific tenant logs (slo, oidc_backchannel_logout_failed, oidc_backchannel_logout_succeeded).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("include_session_metadata_in_tenant_logs")]
+    public bool? IncludeSessionMetadataInTenantLogs { get; set; }
 
     [Optional]
     [JsonPropertyName("dynamic_client_registration_security_mode")]

@@ -4,24 +4,29 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// Per-policy reporting configuration.
+/// </summary>
 [Serializable]
-public record RateLimitPolicyConfigurationOne : IJsonOnDeserialized
+public record CspPolicyReporting : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// Determines the action to take when the rate limit is exceeded.
+    /// HTTPS endpoint for CSP violation reports.
     /// </summary>
-    [JsonPropertyName("action")]
-    public required RateLimitPolicyConfigurationOneAction Action { get; set; }
+    [Optional]
+    [JsonPropertyName("report_uri")]
+    public string? ReportUri { get; set; }
 
     /// <summary>
-    /// The maximum number of requests allowed per second.
+    /// Report-To group name for modern reporting.
     /// </summary>
-    [JsonPropertyName("limit")]
-    public required int Limit { get; set; }
+    [Optional]
+    [JsonPropertyName("report_to_group")]
+    public string? ReportToGroup { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

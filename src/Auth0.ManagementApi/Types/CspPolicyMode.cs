@@ -4,19 +4,15 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(UpdateBrandingPhoneMaskingEnum.UpdateBrandingPhoneMaskingEnumSerializer))]
+[JsonConverter(typeof(CspPolicyMode.CspPolicyModeSerializer))]
 [Serializable]
-public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
+public readonly record struct CspPolicyMode : IStringEnum
 {
-    public static readonly UpdateBrandingPhoneMaskingEnum ShowAll = new(Values.ShowAll);
+    public static readonly CspPolicyMode Enforcing = new(Values.Enforcing);
 
-    public static readonly UpdateBrandingPhoneMaskingEnum HideCountryCode = new(
-        Values.HideCountryCode
-    );
+    public static readonly CspPolicyMode Reporting = new(Values.Reporting);
 
-    public static readonly UpdateBrandingPhoneMaskingEnum MaskDigits = new(Values.MaskDigits);
-
-    public UpdateBrandingPhoneMaskingEnum(string value)
+    public CspPolicyMode(string value)
     {
         Value = value;
     }
@@ -29,9 +25,9 @@ public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
     /// <summary>
     /// Create a string enum with the given value.
     /// </summary>
-    public static UpdateBrandingPhoneMaskingEnum FromCustom(string value)
+    public static CspPolicyMode FromCustom(string value)
     {
-        return new UpdateBrandingPhoneMaskingEnum(value);
+        return new CspPolicyMode(value);
     }
 
     public bool Equals(string? other)
@@ -47,20 +43,19 @@ public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
         return Value;
     }
 
-    public static bool operator ==(UpdateBrandingPhoneMaskingEnum value1, string value2) =>
+    public static bool operator ==(CspPolicyMode value1, string value2) =>
         value1.Value.Equals(value2);
 
-    public static bool operator !=(UpdateBrandingPhoneMaskingEnum value1, string value2) =>
+    public static bool operator !=(CspPolicyMode value1, string value2) =>
         !value1.Value.Equals(value2);
 
-    public static explicit operator string(UpdateBrandingPhoneMaskingEnum value) => value.Value;
+    public static explicit operator string(CspPolicyMode value) => value.Value;
 
-    public static explicit operator UpdateBrandingPhoneMaskingEnum(string value) => new(value);
+    public static explicit operator CspPolicyMode(string value) => new(value);
 
-    internal class UpdateBrandingPhoneMaskingEnumSerializer
-        : JsonConverter<UpdateBrandingPhoneMaskingEnum>
+    internal class CspPolicyModeSerializer : JsonConverter<CspPolicyMode>
     {
-        public override UpdateBrandingPhoneMaskingEnum Read(
+        public override CspPolicyMode Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -71,19 +66,19 @@ public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON value could not be read as a string."
                 );
-            return new UpdateBrandingPhoneMaskingEnum(stringValue);
+            return new CspPolicyMode(stringValue);
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            UpdateBrandingPhoneMaskingEnum value,
+            CspPolicyMode value,
             JsonSerializerOptions options
         )
         {
             writer.WriteStringValue(value.Value);
         }
 
-        public override UpdateBrandingPhoneMaskingEnum ReadAsPropertyName(
+        public override CspPolicyMode ReadAsPropertyName(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -94,12 +89,12 @@ public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
                 ?? throw new global::System.Exception(
                     "The JSON property name could not be read as a string."
                 );
-            return new UpdateBrandingPhoneMaskingEnum(stringValue);
+            return new CspPolicyMode(stringValue);
         }
 
         public override void WriteAsPropertyName(
             Utf8JsonWriter writer,
-            UpdateBrandingPhoneMaskingEnum value,
+            CspPolicyMode value,
             JsonSerializerOptions options
         )
         {
@@ -113,10 +108,8 @@ public readonly record struct UpdateBrandingPhoneMaskingEnum : IStringEnum
     [Serializable]
     public static class Values
     {
-        public const string ShowAll = "show_all";
+        public const string Enforcing = "enforcing";
 
-        public const string HideCountryCode = "hide_country_code";
-
-        public const string MaskDigits = "mask_digits";
+        public const string Reporting = "reporting";
     }
 }

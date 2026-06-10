@@ -21,7 +21,7 @@ public record RevokeRefreshTokensRequestContent
     public string? UserId { get; set; }
 
     /// <summary>
-    /// Revoke all refresh tokens for this client.
+    /// Revoke refresh tokens for this client. Must be paired with `user_id`; optionally narrowed further with `audience`.
     /// </summary>
     [Optional]
     [JsonPropertyName("client_id")]

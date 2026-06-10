@@ -4,24 +4,30 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// Content Security Policy configuration with multi-policy support.
+/// </summary>
 [Serializable]
-public record RateLimitPolicyConfigurationOne : IJsonOnDeserialized
+public record ContentSecurityPolicyConfig : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// Determines the action to take when the rate limit is exceeded.
+    /// Whether CSP is enabled.
     /// </summary>
-    [JsonPropertyName("action")]
-    public required RateLimitPolicyConfigurationOneAction Action { get; set; }
+    [Optional]
+    [JsonPropertyName("enabled")]
+    public bool? Enabled { get; set; }
 
-    /// <summary>
-    /// The maximum number of requests allowed per second.
-    /// </summary>
-    [JsonPropertyName("limit")]
-    public required int Limit { get; set; }
+    [Optional]
+    [JsonPropertyName("policies")]
+    public IEnumerable<CspPolicy>? Policies { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("reporting_infrastructure")]
+    public Optional<CspReportingInfrastructure?> ReportingInfrastructure { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
