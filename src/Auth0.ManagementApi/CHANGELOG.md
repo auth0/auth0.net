@@ -1,5 +1,26 @@
 # Change Log
 
+## [mgmt-8.5.0](https://github.com/auth0/auth0.net/tree/mgmt-8.5.0) (2026-06-10)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.4.0...mgmt-8.5.0)
+
+**Added**
+- Tenant Security Headers: Added `SecurityHeaders` (`TenantSettingsNullableSecurityHeaders`) property to `UpdateTenantSettingsRequestContent`, `GetTenantSettingsResponseContent`, and `UpdateTenantSettingsResponseContent` for configuring Content Security Policy and XSS protection at the tenant level [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Content Security Policy: Added `ContentSecurityPolicyConfig`, `CspPolicy`, `CspPolicyMode` (`enforcing`/`reporting`), `CspFlag` (`upgrade-insecure-requests`/`block-all-mixed-content`), `CspPolicyReporting`, `CspReportingInfrastructure`, `CspReportTo`, and `CspReportToEndpoint` types to model CSP directives, flags, and reporting endpoints [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- XSS Protection: Added `XssProtectionConfig` and `XssProtectionMode` (`block`) types to configure the `X-XSS-Protection` response header [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Tenant Settings: Added minute-granularity session lifetime fields `SessionLifetimeInMinutes`, `IdleSessionLifetimeInMinutes`, `EphemeralSessionLifetimeInMinutes`, and `IdleEphemeralSessionLifetimeInMinutes` on `UpdateTenantSettingsRequestContent` (each mutually exclusive with its hours-based counterpart) [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Tenant Settings: Added `IncludeSessionMetadataInTenantLogs` (`bool?`) on tenant settings request/response types to include session metadata in `slo` and OIDC back-channel logout tenant logs [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Connections: Added `IdTokenSessionExpirySupported` (`bool?`) property to `ConnectionOptionsCommonOidc`, `ConnectionOptionsOidc`, `ConnectionOptionsOkta`, `ConnectionPropertiesOptions`, and `UpdateConnectionOptions` [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Client My Organization: Added `InvitationLandingClientId` property to `ClientMyOrganizationPostConfiguration`, `ClientMyOrganizationPatchConfiguration`, and `ClientMyOrganizationResponseConfiguration` [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Enums: Added `Experiment` value to `AculContextEnum`, and `Confirmation` value to `PromptGroupNameEnum` and `ScreenGroupNameEnum` [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Removed**
+- Branding Identifiers: Removed the `Identifiers` property (and the `BrandingIdentifiers` / `UpdateBrandingIdentifiers` types) from `UpdateBrandingRequestContent`, `GetBrandingResponseContent`, and `UpdateBrandingResponseContent`. **Breaking change** [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Branding Phone Enums: Removed the `BrandingPhoneMaskingEnum`, `UpdateBrandingPhoneMaskingEnum`, and `UpdateBrandingPhoneFormattingEnum` types. **Breaking change** [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Changed**
+- Phone Templates: The `Id` property on `PhoneTemplate`, `GetPhoneTemplateResponseContent`, `CreatePhoneTemplateResponseContent`, `UpdatePhoneTemplateResponseContent`, and `ResetPhoneTemplateResponseContent` is now optional/nullable (`string?`) instead of `required`. **Breaking change** [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Refresh Tokens: Clarified `RevokeRefreshTokensRequestContent.ClientId` semantics — it must be paired with `UserId` and can be narrowed further with `Audience`, rather than revoking all of a client's tokens [\#1030](https://github.com/auth0/auth0.net/pull/1030) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-8.4.0](https://github.com/auth0/auth0.net/tree/mgmt-8.4.0) (2026-05-28)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.3.0...mgmt-8.4.0)
 
