@@ -100,5 +100,17 @@ public class PushedAuthorizationRequest : IClientAuthentication
     /// It can carry fine-grained authorization data in OAuth messages as part of Rich Authorization Requests (RAR)
     /// <see href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-rar">reference</see>
     /// </summary>
+    /// <remarks>
+    /// Prefer <see cref="AuthorizationDetailsObjects"/> for a strongly-typed alternative. When both are set,
+    /// <see cref="AuthorizationDetailsObjects"/> takes precedence.
+    /// </remarks>
     public string AuthorizationDetails { get; set; }
+
+    /// <summary>
+    /// Strongly-typed fine-grained authorization data to send as part of a Rich Authorization Requests (RAR) flow.
+    /// Serialized to the <c>authorization_details</c> parameter. When set, this takes precedence over
+    /// <see cref="AuthorizationDetails"/>.
+    /// <see href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-rar">reference</see>
+    /// </summary>
+    public IList<AuthorizationDetail> AuthorizationDetailsObjects { get; set; }
 }

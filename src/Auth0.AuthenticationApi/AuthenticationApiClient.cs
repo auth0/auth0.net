@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -470,8 +472,12 @@ public class AuthenticationApiClient : IAuthenticationApiClient
         body.AddIfNotEmpty("scope", request.Scope);
         body.AddIfNotEmpty("audience", request.Audience);
         body.AddIfNotEmpty("request", request.Request);
-        body.AddIfNotEmpty("authorization_details", request.AuthorizationDetails);
-            
+
+        if (request.AuthorizationDetailsObjects?.Count > 0)
+            body.AddIfNotEmpty("authorization_details", JsonSerializer.Serialize(request.AuthorizationDetailsObjects));
+        else
+            body.AddIfNotEmpty("authorization_details", request.AuthorizationDetails);
+
         body.AddAll(request.AdditionalProperties);
 
         ApplyClientAuthentication(request, body, true);
@@ -498,7 +504,11 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             
         body.AddIfNotEmpty("scope", request.Scope);
         body.AddIfNotEmpty("audience", request.Audience);
-            
+        body.AddIfNotEmpty("requested_expiry", request.RequestExpiry?.ToString(CultureInfo.InvariantCulture));
+
+        if (request.AuthorizationDetailsObjects?.Count > 0)
+            body.AddIfNotEmpty("authorization_details", JsonSerializer.Serialize(request.AuthorizationDetailsObjects));
+
         body.AddAll(request.AdditionalProperties);
 
         ApplyClientAuthentication(request, body, true);
