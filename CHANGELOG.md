@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.47.0](https://github.com/auth0/auth0.net/tree/7.47.0) (2026-06-26)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.46.0...7.47.0)
+
+**Added**
+- Adds RAR support [\#1026](https://github.com/auth0/auth0.net/pull/1026) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.46.0](https://github.com/auth0/auth0.net/tree/7.46.0) (2026-05-13)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.45.1...7.46.0)
 
