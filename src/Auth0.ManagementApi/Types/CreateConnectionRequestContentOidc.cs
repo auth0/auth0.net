@@ -26,6 +26,10 @@ public record CreateConnectionRequestContentOidc : IJsonOnDeserialized
     public ConnectionConnectedAccountsPurposeXaa? ConnectedAccounts { get; set; }
 
     [Optional]
+    [JsonPropertyName("cross_app_access_requesting_app")]
+    public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
+
+    [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsOidc? Options { get; set; }
 

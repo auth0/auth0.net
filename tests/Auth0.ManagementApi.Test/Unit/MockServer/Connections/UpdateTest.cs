@@ -42,6 +42,9 @@ public class UpdateTest : BaseMockServerTest
               "connected_accounts": {
                 "active": true,
                 "cross_app_access": true
+              },
+              "cross_app_access_requesting_app": {
+                "active": true
               }
             }
             """;

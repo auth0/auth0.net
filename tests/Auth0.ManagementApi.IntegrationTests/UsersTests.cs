@@ -394,7 +394,7 @@ public class UsersTests : IClassFixture<UsersTestsFixture>
 
         // Verify
         retrievedUser.Should().NotBeNull();
-        retrievedUser.Identities.First().UserId.Should().Be(userId);
+        retrievedUser.Identities.First().UserId.AsString().Should().Be(userId);
 
         await fixture.ApiClient.Users.DeleteAsync(user.UserId);
         fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);

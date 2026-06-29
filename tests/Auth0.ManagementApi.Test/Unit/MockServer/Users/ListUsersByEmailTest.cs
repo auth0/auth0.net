@@ -21,8 +21,8 @@ public class ListUsersByEmailTest : BaseMockServerTest
                 "username": "username",
                 "phone_number": "phone_number",
                 "phone_verified": true,
-                "created_at": "created_at",
-                "updated_at": "updated_at",
+                "created_at": "2024-01-15T09:30:00.000Z",
+                "updated_at": "2024-01-15T09:30:00.000Z",
                 "identities": [
                   {}
                 ],
@@ -38,10 +38,10 @@ public class ListUsersByEmailTest : BaseMockServerTest
                 "multifactor": [
                   "multifactor"
                 ],
-                "multifactor_last_modified": "multifactor_last_modified",
+                "multifactor_last_modified": "2024-01-15T09:30:00.000Z",
                 "last_ip": "last_ip",
-                "last_login": "last_login",
-                "last_password_reset": "last_password_reset",
+                "last_login": "2024-01-15T09:30:00.000Z",
+                "last_password_reset": "2024-01-15T09:30:00.000Z",
                 "logins_count": 1,
                 "blocked": true,
                 "given_name": "given_name",

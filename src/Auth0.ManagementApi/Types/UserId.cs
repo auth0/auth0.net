@@ -8,7 +8,7 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// user_id of the secondary user account being linked.
+/// Unique identifier of the user for this identity.
 /// </summary>
 [JsonConverter(typeof(UserId.JsonConverter))]
 [Serializable]

@@ -83,6 +83,13 @@ public class ListTest : BaseMockServerTest
                   ],
                   "require_pushed_authorization_requests": true,
                   "require_proof_of_possession": true,
+                  "token_vault_privileged_access": {
+                    "credentials": [
+                      {
+                        "id": "id"
+                      }
+                    ]
+                  },
                   "compliance_level": "none",
                   "skip_non_verifiable_callback_uri_confirmation_prompt": true,
                   "par_request_expiry": 1,

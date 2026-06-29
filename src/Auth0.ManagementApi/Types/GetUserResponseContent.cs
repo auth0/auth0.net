@@ -52,13 +52,19 @@ public record GetUserResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("phone_verified")]
     public bool? PhoneVerified { get; set; }
 
+    /// <summary>
+    /// Date and time when this user was created.
+    /// </summary>
     [Optional]
     [JsonPropertyName("created_at")]
-    public UserDateSchema? CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
+    /// <summary>
+    /// Date and time when this user was last updated/modified.
+    /// </summary>
     [Optional]
     [JsonPropertyName("updated_at")]
-    public UserDateSchema? UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 
     /// <summary>
     /// Array of user identity objects when accounts are linked.
@@ -103,9 +109,12 @@ public record GetUserResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("multifactor")]
     public IEnumerable<string>? Multifactor { get; set; }
 
+    /// <summary>
+    /// Last date and time this user's multi-factor authentication providers were updated.
+    /// </summary>
     [Optional]
     [JsonPropertyName("multifactor_last_modified")]
-    public UserDateSchema? MultifactorLastModified { get; set; }
+    public DateTime? MultifactorLastModified { get; set; }
 
     /// <summary>
     /// Last IP address from which this user logged in.
@@ -114,13 +123,19 @@ public record GetUserResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("last_ip")]
     public string? LastIp { get; set; }
 
+    /// <summary>
+    /// Last date and time this user logged in.
+    /// </summary>
     [Optional]
     [JsonPropertyName("last_login")]
-    public UserDateSchema? LastLogin { get; set; }
+    public DateTime? LastLogin { get; set; }
 
+    /// <summary>
+    /// Last date and time this user had their password reset.
+    /// </summary>
     [Optional]
     [JsonPropertyName("last_password_reset")]
-    public UserDateSchema? LastPasswordReset { get; set; }
+    public DateTime? LastPasswordReset { get; set; }
 
     /// <summary>
     /// Total number of logins this user has performed.

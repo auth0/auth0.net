@@ -270,6 +270,22 @@ public class GetTest : BaseMockServerTest
                 }
               },
               "initiate_login_uri": "initiate_login_uri",
+              "native_social_login": {
+                "apple": {
+                  "enabled": true
+                },
+                "facebook": {
+                  "enabled": true
+                },
+                "google": {
+                  "enabled": true
+                }
+              },
+              "fedcm_login": {
+                "google": {
+                  "is_enabled": true
+                }
+              },
               "refresh_token": {
                 "rotation_type": "rotating",
                 "expiration_type": "expiring",
@@ -329,6 +345,16 @@ public class GetTest : BaseMockServerTest
                   {
                     "id": "id"
                   }
+                ]
+              },
+              "token_vault_privileged_access": {
+                "credentials": [
+                  {
+                    "id": "id"
+                  }
+                ],
+                "ip_allowlist": [
+                  "ip_allowlist"
                 ]
               },
               "compliance_level": "none",

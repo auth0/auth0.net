@@ -21,7 +21,7 @@ public record DeleteUserIdentityResponseContentItem : IJsonOnDeserialized
     /// The unique identifier for the user for the identity.
     /// </summary>
     [JsonPropertyName("user_id")]
-    public required string UserId { get; set; }
+    public required UserId UserId { get; set; }
 
     /// <summary>
     /// The type of identity provider.

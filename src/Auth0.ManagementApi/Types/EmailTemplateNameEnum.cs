@@ -12,6 +12,8 @@ public readonly record struct EmailTemplateNameEnum : IStringEnum
 
     public static readonly EmailTemplateNameEnum VerifyEmailByCode = new(Values.VerifyEmailByCode);
 
+    public static readonly EmailTemplateNameEnum AuthEmailByCode = new(Values.AuthEmailByCode);
+
     public static readonly EmailTemplateNameEnum ResetEmail = new(Values.ResetEmail);
 
     public static readonly EmailTemplateNameEnum ResetEmailByCode = new(Values.ResetEmailByCode);
@@ -133,6 +135,8 @@ public readonly record struct EmailTemplateNameEnum : IStringEnum
         public const string VerifyEmail = "verify_email";
 
         public const string VerifyEmailByCode = "verify_email_by_code";
+
+        public const string AuthEmailByCode = "auth_email_by_code";
 
         public const string ResetEmail = "reset_email";
 
