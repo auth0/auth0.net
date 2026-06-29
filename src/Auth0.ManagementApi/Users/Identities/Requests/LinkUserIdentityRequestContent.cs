@@ -21,6 +21,9 @@ public record LinkUserIdentityRequestContent
     [JsonPropertyName("connection_id")]
     public string? ConnectionId { get; set; }
 
+    /// <summary>
+    /// user_id of the secondary user account being linked.
+    /// </summary>
     [Optional]
     [JsonPropertyName("user_id")]
     public UserId? UserId { get; set; }

@@ -114,6 +114,8 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
@@ -205,6 +207,8 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
@@ -293,6 +297,8 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
@@ -389,6 +395,8 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }
@@ -551,6 +559,8 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                         throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
                     case 403:
                         throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
                     case 429:
                         throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
                 }

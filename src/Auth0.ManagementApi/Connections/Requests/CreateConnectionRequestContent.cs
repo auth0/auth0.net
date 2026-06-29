@@ -66,6 +66,10 @@ public record CreateConnectionRequestContent
     [JsonPropertyName("connected_accounts")]
     public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
 
+    [Optional]
+    [JsonPropertyName("cross_app_access_requesting_app")]
+    public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

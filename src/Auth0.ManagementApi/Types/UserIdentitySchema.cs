@@ -18,12 +18,9 @@ public record UserIdentitySchema : IJsonOnDeserialized
     [JsonPropertyName("connection")]
     public string? Connection { get; set; }
 
-    /// <summary>
-    /// Unique identifier of the user user for this identity.
-    /// </summary>
     [Optional]
     [JsonPropertyName("user_id")]
-    public string? UserId { get; set; }
+    public UserId? UserId { get; set; }
 
     [Optional]
     [JsonPropertyName("provider")]

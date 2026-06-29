@@ -255,6 +255,10 @@ public record CreateClientRequestContent
     [JsonPropertyName("signed_request_object")]
     public ClientSignedRequestObjectWithPublicKey? SignedRequestObject { get; set; }
 
+    [Optional]
+    [JsonPropertyName("token_vault_privileged_access")]
+    public ClientTokenVaultPrivilegedAccessWithPublicKey? TokenVaultPrivilegedAccess { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("compliance_level")]
     public Optional<ClientComplianceLevelEnum?> ComplianceLevel { get; set; }

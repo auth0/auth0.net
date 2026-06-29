@@ -18,6 +18,10 @@ public record ConnectionResponseContentOkta : IJsonOnDeserialized
     public required ConnectionResponseContentOktaStrategy Strategy { get; set; }
 
     [Optional]
+    [JsonPropertyName("cross_app_access_requesting_app")]
+    public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
+
+    [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsOkta? Options { get; set; }
 

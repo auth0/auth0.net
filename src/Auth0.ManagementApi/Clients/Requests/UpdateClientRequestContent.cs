@@ -220,13 +220,13 @@ public record UpdateClientRequestContent
     [JsonPropertyName("initiate_login_uri")]
     public string? InitiateLoginUri { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("native_social_login")]
-    public NativeSocialLogin? NativeSocialLogin { get; set; }
+    public Optional<NativeSocialLoginPatch?> NativeSocialLogin { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("fedcm_login")]
-    public FedCmLogin? FedcmLogin { get; set; }
+    public Optional<FedCmLoginPatch?> FedcmLogin { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("refresh_token")]
@@ -272,6 +272,10 @@ public record UpdateClientRequestContent
     [Optional]
     [JsonPropertyName("signed_request_object")]
     public ClientSignedRequestObjectWithCredentialId? SignedRequestObject { get; set; }
+
+    [Optional]
+    [JsonPropertyName("token_vault_privileged_access")]
+    public ClientTokenVaultPrivilegedAccessWithCredentialId? TokenVaultPrivilegedAccess { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("compliance_level")]

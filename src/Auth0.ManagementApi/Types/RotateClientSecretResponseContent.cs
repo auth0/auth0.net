@@ -232,6 +232,14 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     [JsonPropertyName("initiate_login_uri")]
     public string? InitiateLoginUri { get; set; }
 
+    [Optional]
+    [JsonPropertyName("native_social_login")]
+    public NativeSocialLogin? NativeSocialLogin { get; set; }
+
+    [Optional]
+    [JsonPropertyName("fedcm_login")]
+    public FedCmLogin? FedcmLogin { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("refresh_token")]
     public Optional<ClientRefreshTokenConfiguration?> RefreshToken { get; set; }
@@ -276,6 +284,10 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     [Optional]
     [JsonPropertyName("signed_request_object")]
     public ClientSignedRequestObjectWithCredentialId? SignedRequestObject { get; set; }
+
+    [Optional]
+    [JsonPropertyName("token_vault_privileged_access")]
+    public ClientTokenVaultPrivilegedAccessWithCredentialId? TokenVaultPrivilegedAccess { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("compliance_level")]
