@@ -1,5 +1,20 @@
 # Change Log
 
+## [mgmt-8.6.0](https://github.com/auth0/auth0.net/tree/mgmt-8.6.0) (2026-06-29)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.5.0...mgmt-8.6.0)
+
+**Breaking Changes**
+- User date fields: `CreatedAt`, `UpdatedAt`, `MultifactorLastModified`, `LastLogin`, and `LastPasswordReset` on the user response types (`GetUserResponseContent`, `CreateUserResponseContent`, `UpdateUserResponseContent`, `UserResponseSchema`) are now plain `DateTime?` instead of the `UserDateSchema` union. The `UserDateSchema` type and its `UserDateSchemaExtensions` (`ToDateTime`) helpers have been removed — callers can drop `.ToDateTime()` and use the value directly [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- User identity IDs: The `UserId` property on `UserIdentitySchema` and `DeleteUserIdentityResponseContentItem` is now the `UserId` union type instead of `string`, allowing string or numeric user identifiers [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Native Social Login: `NativeSocialLogin` on `UpdateClientRequestContent` is now `Optional<NativeSocialLoginPatch?>` (with new `NativeSocialLoginPatch`, `NativeSocialLoginApplePatch`, `NativeSocialLoginFacebookPatch`, and `NativeSocialLoginGooglePatch` types) to support partial PATCH semantics [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- FedCM Login: `FedcmLogin` on `UpdateClientRequestContent` is now `Optional<FedCmLoginPatch?>` (with new `FedCmLoginPatch` and `FedCmLoginGooglePatch` types) to support partial PATCH semantics [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Added**
+- Phone Provider Protection: Added `AttackProtection.PhoneProviderProtection` sub-client with `GetAsync()` and `PatchAsync()` to read and update the tenant's phone provider protection configuration, plus `PatchPhoneProviderProtectionRequestContent`, `GetPhoneProviderProtectionResponseContent`, `PatchPhoneProviderProtectionResponseContent`, and the `PhoneProviderProtectionBackoffStrategyEnum` (`exponential`/`none`) type [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Cross-App Access: Added `CrossAppAccessRequestingApp` type (with `Active`) and a `CrossAppAccessRequestingApp` property to the OIDC and Okta connection request/response types (`CreateConnectionRequestContentOidc`, `CreateConnectionRequestContentOkta`, `UpdateConnectionRequestContentOidc`, `UpdateConnectionRequestContentOkta`, `ConnectionResponseContentOidc`, `ConnectionResponseContentOkta`, `ConnectionForList`, and the connection response types) [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Token Vault Privileged Access: Added `TokenVaultPrivilegedAccess` property to client types — `ClientTokenVaultPrivilegedAccessWithPublicKey` (with `Credentials` and `IpAllowlist`) on `CreateClientRequestContent`, and `ClientTokenVaultPrivilegedAccessWithCredentialId` on `UpdateClientRequestContent`, `Client`, and the client response types [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Email Templates: Added `auth_email_by_code` (`AuthEmailByCode`) value to `EmailTemplateNameEnum` [\#1037](https://github.com/auth0/auth0.net/pull/1037) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-8.5.0](https://github.com/auth0/auth0.net/tree/mgmt-8.5.0) (2026-06-10)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.4.0...mgmt-8.5.0)
 
