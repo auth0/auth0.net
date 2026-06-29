@@ -33,7 +33,6 @@ src/Auth0.ManagementApi/.shiprc
 src/Auth0.ManagementApi/.version
 src/Auth0.ManagementApi/ManagementApiClient.Internal.cs
 src/Auth0.ManagementApi/Core/Public/ClientOptions.Custom.cs
-src/Auth0.ManagementApi/Types/UserDateSchemaExtensions.cs
 src/Auth0.ManagementApi/Core/Public/Version.cs
 
 tests/Auth0.AuthenticationApi.IntegrationTests
@@ -41,7 +40,6 @@ tests/Auth0.Core.UnitTests
 tests/Auth0.IntegrationTests.Shared
 tests/Auth0.ManagementApi.IntegrationTests
 tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.Custom.props
-tests/Auth0.ManagementApi.Test/Unit/Extensions/
 tests/Auth0.ManagementApi.Test/Unit/MockServer/Auth0ClientHeaderTest.cs
 tests/Auth0.ManagementApi.Test/Wrapper
 
