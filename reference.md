@@ -3345,7 +3345,7 @@ await client.EventStreams.TestAsync(
     "id",
     new CreateEventStreamTestEventRequestContent
     {
-        EventType = EventStreamTestEventTypeEnum.GroupCreated,
+        EventType = EventStreamTestEventTypeEnum.ConnectionCreated,
     }
 );
 ```
@@ -3417,7 +3417,7 @@ client.Events.SubscribeAsync(
         FromTimestamp = "from_timestamp",
         EventType = new List<EventStreamSubscribeEventsEventTypeEnum?>()
         {
-            EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+            EventStreamSubscribeEventsEventTypeEnum.ConnectionCreated,
         },
     }
 );
@@ -21552,6 +21552,87 @@ await client.Organizations.Members.EffectiveRoles.Sources.Groups.ListAsync(
 <dd>
 
 **request:** `ListOrganizationMemberRoleSourceGroupsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Roles Members
+<details><summary><code>client.Organizations.Roles.Members.<a href="/src/Auth0.ManagementApi/Organizations/Roles/Members/MembersClient.cs">ListAsync</a>(id, roleId, ListOrganizationRoleMembersRequestParameters { ... }) -> Pager&lt;RoleMember&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List the organization members assigned a specific role within the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Roles.Members.ListAsync(
+    "id",
+    "role_id",
+    new ListOrganizationRoleMembersRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Fields = "fields",
+        IncludeFields = true,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**roleId:** `string` — ID of the role to retrieve the assigned members for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationRoleMembersRequestParameters` 
     
 </dd>
 </dl>

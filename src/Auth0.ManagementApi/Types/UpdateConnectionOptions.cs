@@ -186,6 +186,14 @@ public record UpdateConnectionOptions : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("id_token_session_expiry_supported")]
     public bool? IdTokenSessionExpirySupported { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("discovery_url")]
+    public Optional<string?> DiscoveryUrl { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("oidc_metadata")]
+    public Optional<ConnectionsOidcMetadata?> OidcMetadata { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

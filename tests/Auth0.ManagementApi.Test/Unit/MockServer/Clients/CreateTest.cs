@@ -361,6 +361,14 @@ public class CreateTest : BaseMockServerTest
                 ],
                 "ip_allowlist": [
                   "ip_allowlist"
+                ],
+                "grants": [
+                  {
+                    "connection": "connection",
+                    "scopes": [
+                      "scopes"
+                    ]
+                  }
                 ]
               },
               "compliance_level": "none",

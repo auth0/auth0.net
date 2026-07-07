@@ -16,7 +16,7 @@ public record EmailAttribute : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("identifier")]
-    public ConnectionAttributeIdentifier? Identifier { get; set; }
+    public EmailAttributeIdentifier? Identifier { get; set; }
 
     /// <summary>
     /// Determines if the attribute is unique in a given connection

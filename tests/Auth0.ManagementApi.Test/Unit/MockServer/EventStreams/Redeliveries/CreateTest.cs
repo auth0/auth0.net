@@ -24,7 +24,7 @@ public class CreateTest : BaseMockServerTest
                 "failed"
               ],
               "event_types": [
-                "group.created"
+                "connection.created"
               ]
             }
             """;

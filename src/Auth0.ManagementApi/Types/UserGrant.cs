@@ -46,6 +46,13 @@ public record UserGrant : IJsonOnDeserialized
     [JsonPropertyName("scope")]
     public IEnumerable<string>? Scope { get; set; }
 
+    /// <summary>
+    /// ID of the organization associated with the grant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("organization_id")]
+    public string? OrganizationId { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

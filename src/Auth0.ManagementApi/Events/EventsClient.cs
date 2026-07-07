@@ -24,7 +24,7 @@ public partial class EventsClient : IEventsClient
     ///         FromTimestamp = "from_timestamp",
     ///         EventType = new List&lt;EventStreamSubscribeEventsEventTypeEnum?&gt;()
     ///         {
-    ///             EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+    ///             EventStreamSubscribeEventsEventTypeEnum.ConnectionCreated,
     ///         },
     ///     }
     /// );

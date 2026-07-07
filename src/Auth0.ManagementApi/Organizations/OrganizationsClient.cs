@@ -18,6 +18,7 @@ public partial class OrganizationsClient : IOrganizationsClient
         Invitations = new InvitationsClient(_client);
         Members = new Auth0.ManagementApi.Organizations.MembersClient(_client);
         Groups = new Auth0.ManagementApi.Organizations.GroupsClient(_client);
+        Roles = new Auth0.ManagementApi.Organizations.Roles.RolesClient(_client);
     }
 
     public Auth0.ManagementApi.Organizations.IClientGrantsClient ClientGrants { get; }
@@ -33,6 +34,8 @@ public partial class OrganizationsClient : IOrganizationsClient
     public Auth0.ManagementApi.Organizations.IMembersClient Members { get; }
 
     public Auth0.ManagementApi.Organizations.IGroupsClient Groups { get; }
+
+    public Auth0.ManagementApi.Organizations.Roles.IRolesClient Roles { get; }
 
     /// <summary>
     /// Retrieve detailed list of all Organizations available in your tenant. For more information, see Auth0 Organizations.

@@ -24,7 +24,8 @@ public class ListTest : BaseMockServerTest
                   "audience": "audience",
                   "scope": [
                     "scope"
-                  ]
+                  ],
+                  "organization_id": "organization_id"
                 }
               ]
             }

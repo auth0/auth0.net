@@ -14,7 +14,7 @@ public readonly record struct PhoneProviderProtectionBackoffStrategyEnum : IStri
         Values.Exponential
     );
 
-    public static readonly PhoneProviderProtectionBackoffStrategyEnum None = new(Values.None);
+    public static readonly PhoneProviderProtectionBackoffStrategyEnum Default = new(Values.Default);
 
     public PhoneProviderProtectionBackoffStrategyEnum(string value)
     {
@@ -121,6 +121,6 @@ public readonly record struct PhoneProviderProtectionBackoffStrategyEnum : IStri
     {
         public const string Exponential = "exponential";
 
-        public const string None = "none";
+        public const string Default = "default";
     }
 }
