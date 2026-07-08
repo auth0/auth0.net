@@ -1,59 +1,63 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Auth0.Core.Exceptions;
 
 namespace Auth0.Core.Serialization;
 
-internal class ApiErrorConverter : JsonConverter
+internal class ApiErrorConverter : JsonConverter<ApiError>
 {
-    private readonly Dictionary<string, string> _propertyMappings = new()
+    private static readonly Dictionary<string, string> PropertyMappings = new(StringComparer.OrdinalIgnoreCase)
     {
-        {"code", "errorCode"},
-        {"name", "error"},
-        {"description", "message"},
-        {"error_description", "message"}
+        { "code", "errorCode" },
+        { "name", "error" },
+        { "description", "message" },
+        { "error_description", "message" },
     };
 
-    public override bool CanWrite => false;
-
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override ApiError Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        throw new NotImplementedException();
-    }
+        using var doc = JsonDocument.ParseValue(ref reader);
+        var error = new ApiError();
 
-    public override bool CanConvert(Type objectType)
-    {
-        return objectType.GetTypeInfo().IsClass;
-    }
-
-    public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
-    {
-        var instance = Activator.CreateInstance(objectType);
-        var props = objectType.GetTypeInfo().DeclaredProperties.Where(p => p.CanWrite).ToList();
-        var extraDataProp = props.FirstOrDefault(p => p.PropertyType == typeof(Dictionary<string, string>));
-
-        foreach (var jp in JObject.Load(reader).Properties())
+        foreach (var property in doc.RootElement.EnumerateObject())
         {
-            if (!_propertyMappings.TryGetValue(jp.Name, out var name))
-                name = jp.Name;
+            if (!PropertyMappings.TryGetValue(property.Name, out var name))
+                name = property.Name;
 
-            var prop = props.FirstOrDefault(pi => string.Equals(pi.Name, name, StringComparison.OrdinalIgnoreCase));
-
-            if (prop != null)
+            if (string.Equals(name, "errorCode", StringComparison.OrdinalIgnoreCase))
+                error.ErrorCode = ReadString(property.Value);
+            else if (string.Equals(name, "error", StringComparison.OrdinalIgnoreCase))
+                error.Error = ReadString(property.Value);
+            else if (string.Equals(name, "message", StringComparison.OrdinalIgnoreCase))
+                error.Message = ReadString(property.Value);
+            else if (string.Equals(name, "extraData", StringComparison.OrdinalIgnoreCase)
+                     && property.Value.ValueKind == JsonValueKind.Object)
             {
-                prop.SetValue(instance, jp.Value.ToObject(prop.PropertyType, serializer));
+                foreach (var inner in property.Value.EnumerateObject())
+                    error.ExtraData[inner.Name] = ReadString(inner.Value) ?? "";
             }
-            else if (extraDataProp != null && extraDataProp.PropertyType == typeof(Dictionary<string, string>))
+            else
             {
-                var extraData = (IDictionary<string, string>)extraDataProp.GetValue(instance) ?? new Dictionary<string, string>();
-                extraData[name] = jp.Value.ToString();
-                extraDataProp.SetValue(instance, extraData);
+                error.ExtraData[name] = ReadString(property.Value) ?? "";
             }
         }
 
-        return instance;
+        return error;
+    }
+
+    // Mirrors Newtonsoft's ToObject<string>/ToString coercion: JSON null → null,
+    // strings unwrapped, other scalars kept as their raw text (never throws on non-strings).
+    private static string? ReadString(JsonElement value) => value.ValueKind switch
+    {
+        JsonValueKind.Null => null,
+        JsonValueKind.String => value.GetString(),
+        _ => value.GetRawText(),
+    };
+
+    public override void Write(Utf8JsonWriter writer, ApiError value, JsonSerializerOptions options)
+    {
+        throw new NotImplementedException();
     }
 }

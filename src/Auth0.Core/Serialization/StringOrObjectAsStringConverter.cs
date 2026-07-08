@@ -1,40 +1,35 @@
 using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.Core.Serialization;
 
-internal class StringOrObjectAsStringConverter : JsonConverter
+internal class StringOrObjectAsStringConverter : JsonConverter<string?>
 {
-    public override bool CanWrite => false;
+    public override string? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType == JsonTokenType.String)
+            return reader.GetString();
 
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        if (reader.TokenType == JsonTokenType.StartObject || reader.TokenType == JsonTokenType.StartArray)
+        {
+            using var doc = JsonDocument.ParseValue(ref reader);
+            // Re-serialize to compact JSON using Utf8JsonWriter
+            using var stream = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = false }))
+            {
+                doc.RootElement.WriteTo(writer);
+            }
+            return Encoding.UTF8.GetString(stream.ToArray());
+        }
+
+        return "";
+    }
+
+    public override void Write(Utf8JsonWriter writer, string? value, JsonSerializerOptions options)
     {
         throw new NotImplementedException();
-    }
-
-    public override bool CanConvert(Type objectType)
-    {
-        return true;
-    }
-
-    public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
-    {
-        var instance = "";
-            
-        if (reader.TokenType == JsonToken.String)
-        {
-            instance =  reader.Value?.ToString();
-        }
-        else if (reader.TokenType == JsonToken.StartObject)
-        {
-            instance = JObject.Load(reader).ToString();
-        }
-        else if (reader.TokenType == JsonToken.StartArray)
-        {
-            instance = JArray.Load(reader).ToString();
-        }
-
-        return instance;
     }
 }

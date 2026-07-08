@@ -1,125 +1,54 @@
-using System;
-using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Auth0.Core.Serialization;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.Core.UnitTests;
 
 public class StringOrStringArrayJsonConverterTests
 {
-    internal class StringOrStringArrayJsonConverterData
+    private class Data
     {
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         [JsonConverter(typeof(StringOrStringArrayJsonConverter))]
-        public dynamic Value { get; set; }
+        public object Value { get; set; }
     }
-    
-    [Fact]
-    public void CanConvert_ShouldReturnTrue_ForAnyType()
-    {
-        // Act
-        var converter = new StringOrStringArrayJsonConverter();
-        var result = converter.CanConvert(typeof(object));
 
-        // Assert
-        Assert.True(result);
-    }
-    
+    private static Data Parse(string json) =>
+        JsonSerializer.Deserialize<Data>(json, Auth0JsonSerializerOptions.Default);
+
     [Fact]
-    public void CanWrite_ShouldReturnFalse_Always()
+    public void Deserializes_single_string()
     {
-        // Act
-        var converter = new StringOrStringArrayJsonConverter();
-        Assert.False(converter.CanWrite);
-    }
-    
-    [Fact]
-    public void WriteJson_ShouldThrow_ForAnyInputs()
-    {
-        // Act
-        var converter = new StringOrStringArrayJsonConverter();
-        Assert.Throws<NotImplementedException>( () => converter.WriteJson(null!, null, new JsonSerializer()));
+        Parse("""{ "value": "test" }""").Value.Should().Be("test");
     }
 
     [Fact]
-    public void ReadJson_ShouldDeserializeStringArray_WhenJsonIsArray()
+    public void Deserializes_array_as_string_array()
     {
-        // Arrange
-        var json = "[\"value1\", \"value2\"]";
-        var reader = new JsonTextReader(new StringReader(json));
-        reader.Read();
-        var converter = new StringOrStringArrayJsonConverter();
-
-        // Act
-        var result = converter.ReadJson(reader, typeof(string[]), null, new JsonSerializer());
-
-        // Assert
-        Assert.IsType<string[]>(result);
-        Assert.Equal(new[] { "value1", "value2" }, result);
+        var value = Parse("""{ "value": ["value1", "value2"] }""").Value;
+        value.Should().BeOfType<string[]>();
+        ((string[])value).Should().Equal("value1", "value2");
     }
 
     [Fact]
-    public void ReadJson_ShouldDeserializeString_WhenJsonIsString()
+    public void Returns_null_for_non_string_non_array()
     {
-        // Arrange
-        var json = "\"value\"";
-        var reader = new JsonTextReader(new StringReader(json));
-        reader.Read();
-        var converter = new StringOrStringArrayJsonConverter();
-
-        // Act
-        var result = converter.ReadJson(reader, typeof(string), null, new JsonSerializer());
-
-        // Assert
-        Assert.IsType<string>(result);
-        Assert.Equal("value", result);
+        Parse("""{ "value": 123 }""").Value.Should().BeNull();
     }
 
     [Fact]
-    public void ReadJson_ShouldReturnNull_WhenJsonIsNotStringOrArray()
+    public void Returns_null_when_omitted()
     {
-        // Arrange
-        var json = "123";
-        var reader = new JsonTextReader(new StringReader(json));
-        reader.Read();
-        var converter = new StringOrStringArrayJsonConverter();
-
-        // Act
-        var result = converter.ReadJson(reader, typeof(object), null, new JsonSerializer());
-
-        // Assert
-        Assert.Null(result);
+        Parse("{}").Value.Should().BeNull();
     }
-    
+
     [Fact]
-    public void Should_deserialize_string()
+    public void Preserves_null_elements_in_array()
     {
-        var content = "{ 'value': 'test' }";
-
-        var parsed = JsonConvert.DeserializeObject<StringOrStringArrayJsonConverterData>(content);
-
-        Assert.Equal("test", parsed.Value);
-    }
-        
-    [Fact]
-    public void Should_deserialize_object_as_string_array()
-    {
-        var content = "{ 'value': [\"value1\", \"value2\"] }";
-
-        var parsed = JsonConvert.DeserializeObject<StringOrStringArrayJsonConverterData>(content);
-
-        new[] { "value1", "value2" }.Should().BeEquivalentTo(parsed.Value);
-    }
-    
-    [Fact]
-    public void Should_deserialize_when_omitted()
-    {
-        var content = "{}";
-
-        var parsed = JsonConvert.DeserializeObject<StringOrStringArrayJsonConverterData>(content);
-
-        Assert.Null(parsed.Value);
+        var value = Parse("""{ "value": ["a", null, "b"] }""").Value;
+        value.Should().BeOfType<string[]>();
+        ((string[])value).Should().Equal("a", null, "b");
     }
 }

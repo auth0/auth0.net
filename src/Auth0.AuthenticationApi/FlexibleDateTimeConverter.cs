@@ -1,41 +1,36 @@
-﻿using System;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi;
 
 /// <summary>
-/// A JSON date converter that reads both ISO 8601 and epoch dates.
+/// A JSON date converter that reads both ISO 8601 and epoch (seconds) dates.
 /// </summary>
-internal class FlexibleDateTimeConverter : IsoDateTimeConverter
+internal class FlexibleDateTimeConverter : JsonConverter<DateTime?>
 {
     private static readonly DateTime Epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        switch (reader.TokenType)
+        {
+            case JsonTokenType.Null:
+                return null;
+            case JsonTokenType.Number:
+                return Add(Epoch, TimeSpan.FromSeconds(reader.GetInt64()));
+            case JsonTokenType.String:
+                return reader.GetDateTime();
+            default:
+                return null;
+        }
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
     {
         throw new NotImplementedException();
     }
 
-    public override bool CanWrite => false;
-
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-    {
-        if (reader.Value == null) return null;
-
-        return reader.TokenType == JsonToken.Integer
-            ? Add(Epoch, TimeSpan.FromSeconds((long)reader.Value))
-            : reader.Value;
-    }
-
-    /// <summary>
-    /// Add a DateTime and a TimeSpan.
-    /// The maximum time is DateTime.MaxTime.  It is not an error if time + timespan > MaxTime.
-    /// Just return MaxTime.
-    /// </summary>
-    /// <param name="time">Initial <see cref="DateTime"/> value.</param>
-    /// <param name="timespan"><see cref="TimeSpan"/> to add.</param>
-    /// <returns><see cref="DateTime"/> as the sum of time and timespan.</returns>
     private static DateTime Add(DateTime time, TimeSpan timespan)
     {
         if (timespan == TimeSpan.Zero)
@@ -50,22 +45,12 @@ internal class FlexibleDateTimeConverter : IsoDateTimeConverter
         return time + timespan;
     }
 
-    /// <summary>
-    /// Gets the Maximum value for a DateTime specifying kind.
-    /// </summary>
-    /// <param name="kind">DateTimeKind to use.</param>
-    /// <returns>DateTime of specified kind.</returns>
     private static DateTime GetMaxValue(DateTimeKind kind)
     {
         return new DateTime(DateTime.MaxValue.Ticks,
             kind == DateTimeKind.Unspecified ? DateTimeKind.Utc : kind);
     }
 
-    /// <summary>
-    /// Gets the Minimum value for a DateTime specifying kind.
-    /// </summary>
-    /// <param name="kind">DateTimeKind to use.</param>
-    /// <returns>DateTime of specified kind.</returns>
     private static DateTime GetMinValue(DateTimeKind kind)
     {
         return new DateTime(DateTime.MinValue.Ticks,

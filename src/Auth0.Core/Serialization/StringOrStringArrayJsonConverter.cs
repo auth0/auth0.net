@@ -1,38 +1,32 @@
 using System;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.Core.Serialization;
 
-internal class StringOrStringArrayJsonConverter : JsonConverter
+internal class StringOrStringArrayJsonConverter : JsonConverter<object?>
 {
-    public override bool CanWrite => false;
-    public override bool CanConvert(Type objectType)
+    public override object? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        return true;
+        switch (reader.TokenType)
+        {
+            case JsonTokenType.String:
+                return reader.GetString();
+            case JsonTokenType.StartArray:
+                var list = new List<string?>();
+                while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+                {
+                    list.Add(reader.GetString());
+                }
+                return list.ToArray();
+            default:
+                reader.Skip();
+                return null;
+        }
     }
 
-    public override object? ReadJson(
-        JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
-    {
-        if (reader.TokenType == JsonToken.StartArray)
-        {
-            // Deserialize as string array and return;
-            var array = JArray.Load(reader);
-            return array.ToObject<string[]>();
-        }
-
-        if (reader.TokenType == JsonToken.String)
-        {
-            // Deserialize as a single string
-            return reader.Value?.ToString();
-        }
-
-        return null;
-    }
-
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void Write(Utf8JsonWriter writer, object? value, JsonSerializerOptions options)
     {
         throw new NotImplementedException();
     }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models;
 
@@ -13,13 +13,13 @@ public class PasswordlessEmailRequest
     /// <summary>
     /// Client ID of the application.
     /// </summary>
-    [JsonProperty("client_id")]
+    [JsonPropertyName("client_id")]
     public string ClientId { get; set; }
 
     /// <summary>
     /// Client Secret of the application.
     /// </summary>
-    [JsonProperty("client_secret")]
+    [JsonPropertyName("client_secret")]
     public string ClientSecret { get; set; }
 
     /// <summary>
@@ -35,18 +35,18 @@ public class PasswordlessEmailRequest
     /// <summary>
     /// Email to which the link or code must be sent.
     /// </summary>
-    [JsonProperty("email")]
+    [JsonPropertyName("email")]
     public string Email { get; set; }
 
     /// <summary>
     /// <see cref="PasswordlessEmailRequestType"/> of the request.
     /// </summary>
-    [JsonProperty("send")]
+    [JsonPropertyName("send")]
     public PasswordlessEmailRequestType Type { get; set; }
 
     /// <summary>
     /// Additional authentication parameters.
     /// </summary>
-    [JsonProperty("authParams")]
+    [JsonPropertyName("authParams")]
     public IDictionary<string, object> AuthenticationParameters { get; set; } = new Dictionary<string, object>();
 }

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models.Mfa;
 
@@ -7,18 +7,18 @@ public class MfaOobTokenResponse : TokenBase
     /// <summary>
     /// The duration in seconds that the access token is valid.
     /// </summary>
-    [JsonProperty("expires_in")]
+    [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
 
     /// <summary>
     /// Error code returned in case of failure.
     /// </summary>
-    [JsonProperty("error")]
+    [JsonPropertyName("error")]
     public string Error { get; set; }
 
     /// <summary>
     /// Description of the error.
     /// </summary>
-    [JsonProperty("error_description")]
+    [JsonPropertyName("error_description")]
     public string ErrorDescription { get; set; }
 }

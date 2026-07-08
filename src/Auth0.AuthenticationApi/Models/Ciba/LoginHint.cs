@@ -1,4 +1,5 @@
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models.Ciba;
 
@@ -7,21 +8,21 @@ namespace Auth0.AuthenticationApi.Models.Ciba;
 /// </summary>
 public class LoginHint
 {
-    [JsonProperty("format")]
+    [JsonPropertyName("format")]
     public string Format { get; set; }
-        
+
     /// <summary>
-    /// Issuer of the ID Token. 
+    /// Issuer of the ID Token.
     /// This value should match the 'Issuer' value configured in the well-known configuration.
     /// </summary>
-    [JsonProperty("iss")]
+    [JsonPropertyName("iss")]
     public string Issuer { get; set; }
-        
-    [JsonProperty("sub")]
+
+    [JsonPropertyName("sub")]
     public string Subject { get; set; }
 
     public override string ToString()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonSerializer.Serialize(this, Auth0.Core.Serialization.Auth0JsonSerializerOptions.Default);
     }
 }
