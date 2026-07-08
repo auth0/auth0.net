@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Moq;
 using Moq.Protected;
-using Newtonsoft.Json;
 using FluentAssertions;
 using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Models.Ciba;
@@ -38,8 +38,8 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
         };
         var domain = GetVariable("AUTH0_AUTHENTICATION_API_URL");
         
-        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonConvert.SerializeObject(mockResponse));
-        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", JsonConvert.SerializeObject(mockTokenResponse));
+        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonSerializer.Serialize(mockResponse, mockResponse.GetType()));
+        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", JsonSerializer.Serialize(mockTokenResponse, mockTokenResponse.GetType()));
         
         var httpClient = new HttpClient(mockHandler.Object);
         var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
@@ -87,11 +87,11 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
 
         var mockTokenResponse =
             "{\"error\": \"authorization_pending\",\n\"error_description\": \"The end-user authorization is pending\"\n}";
-        
+
         var domain = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-        
-        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonConvert.SerializeObject(mockResponse));
-        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", JsonConvert.SerializeObject(mockTokenResponse), HttpStatusCode.BadRequest);
+
+        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonSerializer.Serialize(mockResponse, mockResponse.GetType()));
+        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", mockTokenResponse, HttpStatusCode.BadRequest);
         
         var httpClient = new HttpClient(mockHandler.Object);
         var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
@@ -138,11 +138,11 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
 
         var mockTokenResponse =
             "{\n\"error\": \"access_denied\",\n\"error_description\": \"The end-user denied the authorization request or it\nhas been expired\"\n}";
-        
+
         var domain = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-        
-        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonConvert.SerializeObject(mockResponse));
-        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", JsonConvert.SerializeObject(mockTokenResponse), HttpStatusCode.BadRequest);
+
+        SetupMockWith(mockHandler,$"https://{domain}/bc-authorize", JsonSerializer.Serialize(mockResponse, mockResponse.GetType()));
+        SetupMockWith(mockHandler,$"https://{domain}/oauth/token", mockTokenResponse, HttpStatusCode.BadRequest);
         
         var httpClient = new HttpClient(mockHandler.Object);
         var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
@@ -203,7 +203,7 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(mockResponse), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(mockResponse, mockResponse.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -250,7 +250,7 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
 
         var domain = GetVariable("AUTH0_AUTHENTICATION_API_URL");
 
-        SetupMockWith(mockHandler, $"https://{domain}/bc-authorize", JsonConvert.SerializeObject(mockResponse));
+        SetupMockWith(mockHandler, $"https://{domain}/bc-authorize", JsonSerializer.Serialize(mockResponse, mockResponse.GetType()));
         SetupMockWith(mockHandler, $"https://{domain}/oauth/token", mockTokenResponse);
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -304,7 +304,7 @@ public class ClientInitiatedBackchannelAuthorizationTests : TestBase
 
         var domain = GetVariable("AUTH0_AUTHENTICATION_API_URL");
 
-        SetupMockWith(mockHandler, $"https://{domain}/bc-authorize", JsonConvert.SerializeObject(mockResponse));
+        SetupMockWith(mockHandler, $"https://{domain}/bc-authorize", JsonSerializer.Serialize(mockResponse, mockResponse.GetType()));
         SetupMockWith(mockHandler, $"https://{domain}/oauth/token", mockTokenResponse);
 
         var httpClient = new HttpClient(mockHandler.Object);
