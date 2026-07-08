@@ -56,4 +56,10 @@ public class StringOrObjectAsStringConverterTests
     {
         Parse("{}").Value.Should().BeNull();
     }
+
+    [Fact]
+    public void Returns_empty_string_for_scalar_non_string()
+    {
+        Parse("""{ "value": 123 }""").Value.Should().Be("");
+    }
 }
