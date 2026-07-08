@@ -38,6 +38,10 @@ public record CreateOrganizationRequestContent
     [JsonPropertyName("token_quota")]
     public CreateTokenQuota? TokenQuota { get; set; }
 
+    [Optional]
+    [JsonPropertyName("third_party_client_access")]
+    public OrganizationThirdPartyClientAccessEnum? ThirdPartyClientAccess { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

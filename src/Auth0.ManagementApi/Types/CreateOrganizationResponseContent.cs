@@ -44,6 +44,10 @@ public record CreateOrganizationResponseContent : IJsonOnDeserialized, IJsonOnSe
     public TokenQuota? TokenQuota { get; set; }
 
     [Optional]
+    [JsonPropertyName("third_party_client_access")]
+    public OrganizationThirdPartyClientAccessEnum? ThirdPartyClientAccess { get; set; }
+
+    [Optional]
     [JsonPropertyName("enabled_connections")]
     public IEnumerable<OrganizationEnabledConnection>? EnabledConnections { get; set; }
 

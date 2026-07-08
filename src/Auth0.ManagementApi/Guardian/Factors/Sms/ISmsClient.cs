@@ -51,7 +51,7 @@ public partial interface ISmsClient
     ///
     ///     <b>Previous function</b>: Retrieve details of SMS enrollment and verification templates configured for your tenant.
     /// </summary>
-    WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent> GetTemplatesAsync(
+    WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent?> GetTemplatesAsync(
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

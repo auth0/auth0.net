@@ -37,7 +37,7 @@ public partial interface IClientGrantsClient
     /// <summary>
     /// Delete the [Client Credential Flow](https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) from your machine-to-machine application.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

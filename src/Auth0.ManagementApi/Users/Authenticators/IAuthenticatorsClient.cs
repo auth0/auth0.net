@@ -7,7 +7,7 @@ public partial interface IAuthenticatorsClient
     /// <summary>
     /// Remove all authenticators registered to a given user ID, such as OTP, email, phone, and push-notification. This action cannot be undone. For more information, review [Manage Authentication Methods with Management API](https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api).
     /// </summary>
-    Task DeleteAllAsync(
+    WithRawResponseTask DeleteAllAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

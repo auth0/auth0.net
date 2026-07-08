@@ -40,6 +40,7 @@ public class CreateTest : BaseMockServerTest
                   "per_hour": 1
                 }
               },
+              "third_party_client_access": "block",
               "enabled_connections": [
                 {
                   "connection_id": "connection_id",

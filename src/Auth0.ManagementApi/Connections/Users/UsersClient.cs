@@ -13,16 +13,7 @@ public partial class UsersClient : IUsersClient
         _client = client;
     }
 
-    /// <summary>
-    /// Deletes a specified connection user by its email (you cannot delete all users from specific connection). Currently, only Database Connections are supported.
-    /// </summary>
-    /// <example><code>
-    /// await client.Connections.Users.DeleteByEmailAsync(
-    ///     "id",
-    ///     new DeleteConnectionUsersByEmailQueryParameters { Email = "email" }
-    /// );
-    /// </code></example>
-    public async Task DeleteByEmailAsync(
+    private async Task<RawResponse> DeleteByEmailAsyncCore(
         string id,
         DeleteConnectionUsersByEmailQueryParameters request,
         RequestOptions? options = null,
@@ -57,7 +48,12 @@ public partial class UsersClient : IUsersClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            return;
+            return new Auth0.ManagementApi.RawResponse()
+            {
+                StatusCode = response.Raw.StatusCode,
+                Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+            };
         }
         {
             var responseBody = await response
@@ -68,15 +64,65 @@ public partial class UsersClient : IUsersClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 404:
-                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
-                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new TooManyRequestsError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -86,8 +132,35 @@ public partial class UsersClient : IUsersClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
+    }
+
+    /// <summary>
+    /// Deletes a specified connection user by its email (you cannot delete all users from specific connection). Currently, only Database Connections are supported.
+    /// </summary>
+    /// <example><code>
+    /// await client.Connections.Users.DeleteByEmailAsync(
+    ///     "id",
+    ///     new DeleteConnectionUsersByEmailQueryParameters { Email = "email" }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask DeleteByEmailAsync(
+        string id,
+        DeleteConnectionUsersByEmailQueryParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask(
+            DeleteByEmailAsyncCore(id, request, options, cancellationToken)
+        );
     }
 }

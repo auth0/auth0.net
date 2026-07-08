@@ -42,7 +42,7 @@ public partial interface IEnabledConnectionsClient
     ///
     /// **Note**: This action does not remove the connection from your tenant.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string connectionId,
         RequestOptions? options = null,

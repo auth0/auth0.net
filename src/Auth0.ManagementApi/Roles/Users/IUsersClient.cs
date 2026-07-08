@@ -36,7 +36,7 @@ public partial interface IUsersClient
     ///
     /// **Note**: New roles cannot be created through this action.
     /// </summary>
-    Task AssignAsync(
+    WithRawResponseTask AssignAsync(
         string id,
         AssignRoleUsersRequestContent request,
         RequestOptions? options = null,

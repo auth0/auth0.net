@@ -16,7 +16,7 @@ public partial interface IUserBlocksClient
     ///
     /// Note: This endpoint does not unblock users that were [blocked by a tenant administrator](https://auth0.com/docs/user-profile#block-and-unblock-a-user).
     /// </summary>
-    Task DeleteByIdentifierAsync(
+    WithRawResponseTask DeleteByIdentifierAsync(
         DeleteUserBlocksByIdentifierRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -37,7 +37,7 @@ public partial interface IUserBlocksClient
     ///
     /// Note: This endpoint does not unblock users that were [blocked by a tenant administrator](https://auth0.com/docs/user-profile#block-and-unblock-a-user).
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

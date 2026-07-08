@@ -35,7 +35,7 @@ public partial interface ITemplatesClient
     /// <summary>
     /// Delete a verifiable credential template.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

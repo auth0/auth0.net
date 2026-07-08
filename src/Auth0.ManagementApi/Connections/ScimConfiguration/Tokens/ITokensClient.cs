@@ -26,7 +26,7 @@ public partial interface ITokensClient
     /// <summary>
     /// Deletes a scim token by its connection `id` and `tokenId`.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string tokenId,
         RequestOptions? options = null,

@@ -7,7 +7,7 @@ public partial interface IRiskAssessmentsClient
     /// <summary>
     /// Clear risk assessment assessors for a specific user
     /// </summary>
-    Task ClearAsync(
+    WithRawResponseTask ClearAsync(
         string id,
         ClearAssessorsRequestContent request,
         RequestOptions? options = null,

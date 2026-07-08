@@ -12,6 +12,7 @@ public partial interface IOrganizationsClient
     public IInvitationsClient Invitations { get; }
     public Auth0.ManagementApi.Organizations.IMembersClient Members { get; }
     public Auth0.ManagementApi.Organizations.IGroupsClient Groups { get; }
+    public Auth0.ManagementApi.Organizations.Roles.IRolesClient Roles { get; }
 
     /// <summary>
     /// Retrieve detailed list of all Organizations available in your tenant. For more information, see Auth0 Organizations.
@@ -70,7 +71,7 @@ public partial interface IOrganizationsClient
     ///
     /// **Note**: Members are automatically disassociated from an Organization when it is deleted. However, this action does **not** delete these users from your tenant.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

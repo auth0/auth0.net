@@ -17,7 +17,7 @@ public partial interface ICustomTextClient
     /// <summary>
     /// Set custom text for a specific prompt. Existing texts will be overwritten.
     /// </summary>
-    Task SetAsync(
+    WithRawResponseTask SetAsync(
         PromptGroupNameEnum prompt,
         PromptLanguageEnum language,
         Dictionary<string, object?> request,

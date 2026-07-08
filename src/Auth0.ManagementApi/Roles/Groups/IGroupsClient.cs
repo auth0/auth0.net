@@ -18,7 +18,7 @@ public partial interface IGroupsClient
     /// <summary>
     /// Assign one or more groups to a specified role.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string id,
         AssignRoleGroupsRequestContent request,
         RequestOptions? options = null,
@@ -28,7 +28,7 @@ public partial interface IGroupsClient
     /// <summary>
     /// Unassign one or more groups from a specified role.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteRoleGroupsRequestContent request,
         RequestOptions? options = null,

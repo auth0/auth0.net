@@ -16,7 +16,7 @@ public record PhoneAttribute : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("identifier")]
-    public ConnectionAttributeIdentifier? Identifier { get; set; }
+    public PhoneAttributeIdentifier? Identifier { get; set; }
 
     /// <summary>
     /// Determines if property should be required for users

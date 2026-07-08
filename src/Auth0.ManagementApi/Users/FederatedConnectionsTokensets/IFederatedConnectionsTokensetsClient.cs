@@ -13,7 +13,7 @@ public partial interface IFederatedConnectionsTokensetsClient
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string tokensetId,
         RequestOptions? options = null,

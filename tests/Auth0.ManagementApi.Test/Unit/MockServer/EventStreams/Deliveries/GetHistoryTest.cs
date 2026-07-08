@@ -16,7 +16,7 @@ public class GetHistoryTest : BaseMockServerTest
               "id": "id",
               "event_stream_id": "event_stream_id",
               "status": "failed",
-              "event_type": "group.created",
+              "event_type": "connection.created",
               "attempts": [
                 {
                   "status": "failed",

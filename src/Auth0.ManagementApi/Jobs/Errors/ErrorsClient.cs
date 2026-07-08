@@ -13,12 +13,15 @@ public partial class ErrorsClient : IErrorsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<ErrorsGetResponse>> GetAsyncCore(
+    private async Task<WithRawResponse<ErrorsGetResponse?>> GetAsyncCore(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -31,6 +34,7 @@ public partial class ErrorsClient : IErrorsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format("jobs/{0}/errors", ValueConvert.ToPathParameterString(id)),
+                    QueryString = _queryString,
                     Headers = _headers,
                     Options = options,
                 },
@@ -44,11 +48,11 @@ public partial class ErrorsClient : IErrorsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<ErrorsGetResponse>(responseBody)!;
-                return new WithRawResponse<ErrorsGetResponse>()
+                var responseData = JsonUtils.Deserialize<ErrorsGetResponse?>(responseBody)!;
+                return new WithRawResponse<ErrorsGetResponse?>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -62,7 +66,13 @@ public partial class ErrorsClient : IErrorsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -75,15 +85,65 @@ public partial class ErrorsClient : IErrorsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 404:
-                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
-                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new TooManyRequestsError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -93,7 +153,13 @@ public partial class ErrorsClient : IErrorsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -104,13 +170,13 @@ public partial class ErrorsClient : IErrorsClient
     /// <example><code>
     /// await client.Jobs.Errors.GetAsync("id");
     /// </code></example>
-    public WithRawResponseTask<ErrorsGetResponse> GetAsync(
+    public WithRawResponseTask<ErrorsGetResponse?> GetAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<ErrorsGetResponse>(
+        return new WithRawResponseTask<ErrorsGetResponse?>(
             GetAsyncCore(id, options, cancellationToken)
         );
     }

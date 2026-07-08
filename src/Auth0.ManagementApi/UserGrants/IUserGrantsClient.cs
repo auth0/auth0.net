@@ -16,7 +16,7 @@ public partial interface IUserGrantsClient
     /// <summary>
     /// Delete a grant associated with your account.
     /// </summary>
-    Task DeleteByUserIdAsync(
+    WithRawResponseTask DeleteByUserIdAsync(
         DeleteUserGrantByUserIdRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -25,7 +25,7 @@ public partial interface IUserGrantsClient
     /// <summary>
     /// Delete a grant associated with your account.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

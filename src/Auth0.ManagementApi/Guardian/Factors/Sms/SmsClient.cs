@@ -20,6 +20,9 @@ public partial class SmsClient : ISmsClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -32,6 +35,7 @@ public partial class SmsClient : ISmsClient
                 {
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/providers/twilio",
+                    QueryString = _queryString,
                     Headers = _headers,
                     Options = options,
                 },
@@ -52,7 +56,7 @@ public partial class SmsClient : ISmsClient
                 return new WithRawResponse<GetGuardianFactorsProviderSmsTwilioResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -66,7 +70,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -79,11 +89,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -93,7 +133,13 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -106,6 +152,9 @@ public partial class SmsClient : ISmsClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -119,6 +168,7 @@ public partial class SmsClient : ISmsClient
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/providers/twilio",
                     Body = request,
+                    QueryString = _queryString,
                     Headers = _headers,
                     ContentType = "application/json",
                     Options = options,
@@ -140,7 +190,7 @@ public partial class SmsClient : ISmsClient
                 return new WithRawResponse<SetGuardianFactorsProviderSmsTwilioResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -154,7 +204,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -167,11 +223,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -181,7 +267,13 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -193,6 +285,9 @@ public partial class SmsClient : ISmsClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -205,6 +300,7 @@ public partial class SmsClient : ISmsClient
                 {
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/selected-provider",
+                    QueryString = _queryString,
                     Headers = _headers,
                     Options = options,
                 },
@@ -225,7 +321,7 @@ public partial class SmsClient : ISmsClient
                 return new WithRawResponse<GetGuardianFactorsProviderSmsResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -239,7 +335,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -252,11 +354,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -266,7 +398,13 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -279,6 +417,9 @@ public partial class SmsClient : ISmsClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -292,6 +433,7 @@ public partial class SmsClient : ISmsClient
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/selected-provider",
                     Body = request,
+                    QueryString = _queryString,
                     Headers = _headers,
                     ContentType = "application/json",
                     Options = options,
@@ -313,7 +455,7 @@ public partial class SmsClient : ISmsClient
                 return new WithRawResponse<SetGuardianFactorsProviderSmsResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -327,7 +469,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -340,11 +488,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -354,18 +532,27 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
 
     private async Task<
-        WithRawResponse<GetGuardianFactorSmsTemplatesResponseContent>
+        WithRawResponse<GetGuardianFactorSmsTemplatesResponseContent?>
     > GetTemplatesAsyncCore(
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -378,6 +565,7 @@ public partial class SmsClient : ISmsClient
                 {
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/templates",
+                    QueryString = _queryString,
                     Headers = _headers,
                     Options = options,
                 },
@@ -392,13 +580,13 @@ public partial class SmsClient : ISmsClient
             try
             {
                 var responseData =
-                    JsonUtils.Deserialize<GetGuardianFactorSmsTemplatesResponseContent>(
+                    JsonUtils.Deserialize<GetGuardianFactorSmsTemplatesResponseContent?>(
                         responseBody
                     )!;
-                return new WithRawResponse<GetGuardianFactorSmsTemplatesResponseContent>()
+                return new WithRawResponse<GetGuardianFactorSmsTemplatesResponseContent?>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -412,7 +600,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -425,11 +619,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -439,7 +663,13 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -452,6 +682,9 @@ public partial class SmsClient : ISmsClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -465,6 +698,7 @@ public partial class SmsClient : ISmsClient
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/templates",
                     Body = request,
+                    QueryString = _queryString,
                     Headers = _headers,
                     ContentType = "application/json",
                     Options = options,
@@ -486,7 +720,7 @@ public partial class SmsClient : ISmsClient
                 return new WithRawResponse<SetGuardianFactorSmsTemplatesResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -500,7 +734,13 @@ public partial class SmsClient : ISmsClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -513,11 +753,41 @@ public partial class SmsClient : ISmsClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -527,7 +797,13 @@ public partial class SmsClient : ISmsClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -621,12 +897,12 @@ public partial class SmsClient : ISmsClient
     /// <example><code>
     /// await client.Guardian.Factors.Sms.GetTemplatesAsync();
     /// </code></example>
-    public WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent> GetTemplatesAsync(
+    public WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent?> GetTemplatesAsync(
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent>(
+        return new WithRawResponseTask<GetGuardianFactorSmsTemplatesResponseContent?>(
             GetTemplatesAsyncCore(options, cancellationToken)
         );
     }

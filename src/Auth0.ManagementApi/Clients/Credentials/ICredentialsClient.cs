@@ -96,7 +96,7 @@ public partial interface ICredentialsClient
     /// <summary>
     /// Delete a client credential you previously created. May be enabled or disabled. For more information, read <see href="https://www.auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Client Credential Flow</see>.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string clientId,
         string credentialId,
         RequestOptions? options = null,

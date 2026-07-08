@@ -7,7 +7,7 @@ public partial interface IErrorsClient
     /// <summary>
     /// Retrieve error details of a failed job.
     /// </summary>
-    WithRawResponseTask<ErrorsGetResponse> GetAsync(
+    WithRawResponseTask<ErrorsGetResponse?> GetAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

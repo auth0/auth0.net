@@ -4,4 +4,5 @@ namespace Auth0.ManagementApi;
 /// This exception type will be thrown for any non-2XX API responses.
 /// </summary>
 [Serializable]
-public class ConflictError(object body) : ManagementApiException("ConflictError", 409, body);
+public class ConflictError(object body, Auth0.ManagementApi.RawResponse? rawResponse = null)
+    : ManagementApiException("ConflictError", 409, body, rawResponse: rawResponse);

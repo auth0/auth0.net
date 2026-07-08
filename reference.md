@@ -181,7 +181,7 @@ await client.Actions.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Actions.<a href="/src/Auth0.ManagementApi/Actions/ActionsClient.cs">DeleteAsync</a>(id, DeleteActionRequestParameters { ... })</code></summary>
+<details><summary><code>client.Actions.<a href="/src/Auth0.ManagementApi/Actions/ActionsClient.cs">DeleteAsync</a>(id, DeleteActionRequestParameters { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -698,7 +698,7 @@ await client.ClientGrants.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -1188,7 +1188,7 @@ await client.Clients.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -1630,7 +1630,7 @@ await client.ConnectionProfiles.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.ConnectionProfiles.<a href="/src/Auth0.ManagementApi/ConnectionProfiles/ConnectionProfilesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.ConnectionProfiles.<a href="/src/Auth0.ManagementApi/ConnectionProfiles/ConnectionProfilesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -1954,7 +1954,7 @@ await client.Connections.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.<a href="/src/Auth0.ManagementApi/Connections/ConnectionsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Connections.<a href="/src/Auth0.ManagementApi/Connections/ConnectionsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -2074,7 +2074,7 @@ await client.Connections.UpdateAsync("id", new UpdateConnectionRequestContent())
 </dl>
 </details>
 
-<details><summary><code>client.Connections.<a href="/src/Auth0.ManagementApi/Connections/ConnectionsClient.cs">CheckStatusAsync</a>(id)</code></summary>
+<details><summary><code>client.Connections.<a href="/src/Auth0.ManagementApi/Connections/ConnectionsClient.cs">CheckStatusAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -2412,7 +2412,7 @@ await client.CustomDomains.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -2805,7 +2805,7 @@ await client.DeviceCredentials.CreatePublicKeyAsync(
 </dl>
 </details>
 
-<details><summary><code>client.DeviceCredentials.<a href="/src/Auth0.ManagementApi/DeviceCredentials/DeviceCredentialsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.DeviceCredentials.<a href="/src/Auth0.ManagementApi/DeviceCredentials/DeviceCredentialsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -3240,7 +3240,7 @@ await client.EventStreams.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.EventStreams.<a href="/src/Auth0.ManagementApi/EventStreams/EventStreamsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.EventStreams.<a href="/src/Auth0.ManagementApi/EventStreams/EventStreamsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -3345,7 +3345,7 @@ await client.EventStreams.TestAsync(
     "id",
     new CreateEventStreamTestEventRequestContent
     {
-        EventType = EventStreamTestEventTypeEnum.GroupCreated,
+        EventType = EventStreamTestEventTypeEnum.ConnectionCreated,
     }
 );
 ```
@@ -3383,7 +3383,7 @@ await client.EventStreams.TestAsync(
 </details>
 
 ## Events
-<details><summary><code>client.Events.<a href="/src/Auth0.ManagementApi/Events/EventsClient.cs">SubscribeAsync</a>(SubscribeEventsRequestParameters { ... }) -> IAsyncEnumerable&lt;EventStreamSubscribeEventsResponseContent&gt;</code></summary>
+<details><summary><code>client.Events.<a href="/src/Auth0.ManagementApi/Events/EventsClient.cs">SubscribeAsync</a>(SubscribeEventsRequestParameters { ... }) -> WithRawResponseStream&lt;EventStreamSubscribeEventsResponseContent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3417,7 +3417,7 @@ client.Events.SubscribeAsync(
         FromTimestamp = "from_timestamp",
         EventType = new List<EventStreamSubscribeEventsEventTypeEnum?>()
         {
-            EventStreamSubscribeEventsEventTypeEnum.GroupCreated,
+            EventStreamSubscribeEventsEventTypeEnum.ConnectionCreated,
         },
     }
 );
@@ -3597,7 +3597,7 @@ await client.Flows.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Flows.<a href="/src/Auth0.ManagementApi/Flows/FlowsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Flows.<a href="/src/Auth0.ManagementApi/Flows/FlowsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -3834,7 +3834,7 @@ await client.Forms.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Forms.<a href="/src/Auth0.ManagementApi/Forms/FormsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Forms.<a href="/src/Auth0.ManagementApi/Forms/FormsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -3987,7 +3987,7 @@ await client.UserGrants.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.UserGrants.<a href="/src/Auth0.ManagementApi/UserGrants/UserGrantsClient.cs">DeleteByUserIdAsync</a>(DeleteUserGrantByUserIdRequestParameters { ... })</code></summary>
+<details><summary><code>client.UserGrants.<a href="/src/Auth0.ManagementApi/UserGrants/UserGrantsClient.cs">DeleteByUserIdAsync</a>(DeleteUserGrantByUserIdRequestParameters { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -4043,7 +4043,7 @@ await client.UserGrants.DeleteByUserIdAsync(
 </dl>
 </details>
 
-<details><summary><code>client.UserGrants.<a href="/src/Auth0.ManagementApi/UserGrants/UserGrantsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.UserGrants.<a href="/src/Auth0.ManagementApi/UserGrants/UserGrantsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -4218,7 +4218,7 @@ await client.Groups.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Groups.<a href="/src/Auth0.ManagementApi/Groups/GroupsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Groups.<a href="/src/Auth0.ManagementApi/Groups/GroupsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -4460,7 +4460,7 @@ await client.Hooks.GetAsync("id", new GetHookRequestParameters { Fields = "field
 </dl>
 </details>
 
-<details><summary><code>client.Hooks.<a href="/src/Auth0.ManagementApi/Hooks/HooksClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Hooks.<a href="/src/Auth0.ManagementApi/Hooks/HooksClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -5202,7 +5202,7 @@ await client.LogStreams.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.LogStreams.<a href="/src/Auth0.ManagementApi/LogStreams/LogStreamsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.LogStreams.<a href="/src/Auth0.ManagementApi/LogStreams/LogStreamsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -5598,7 +5598,7 @@ await client.NetworkAcls.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.NetworkAcls.<a href="/src/Auth0.ManagementApi/NetworkAcls/NetworkAclsClient.cs">CreateAsync</a>(CreateNetworkAclRequestContent { ... })</code></summary>
+<details><summary><code>client.NetworkAcls.<a href="/src/Auth0.ManagementApi/NetworkAcls/NetworkAclsClient.cs">CreateAsync</a>(CreateNetworkAclRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -5791,7 +5791,7 @@ await client.NetworkAcls.SetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.NetworkAcls.<a href="/src/Auth0.ManagementApi/NetworkAcls/NetworkAclsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.NetworkAcls.<a href="/src/Auth0.ManagementApi/NetworkAcls/NetworkAclsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -6147,7 +6147,7 @@ await client.Organizations.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Organizations.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -6500,7 +6500,7 @@ await client.RateLimitPolicies.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.RateLimitPolicies.<a href="/src/Auth0.ManagementApi/RateLimitPolicies/RateLimitPoliciesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.RateLimitPolicies.<a href="/src/Auth0.ManagementApi/RateLimitPolicies/RateLimitPoliciesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -6662,7 +6662,7 @@ await client.RefreshTokens.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">RevokeAsync</a>(RevokeRefreshTokensRequestContent { ... })</code></summary>
+<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">RevokeAsync</a>(RevokeRefreshTokensRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -6770,7 +6770,7 @@ await client.RefreshTokens.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -7071,7 +7071,7 @@ await client.ResourceServers.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.ResourceServers.<a href="/src/Auth0.ManagementApi/ResourceServers/ResourceServersClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.ResourceServers.<a href="/src/Auth0.ManagementApi/ResourceServers/ResourceServersClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -7362,7 +7362,7 @@ await client.Roles.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Roles.<a href="/src/Auth0.ManagementApi/Roles/RolesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Roles.<a href="/src/Auth0.ManagementApi/Roles/RolesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -7664,7 +7664,7 @@ await client.Rules.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Rules.<a href="/src/Auth0.ManagementApi/Rules/RulesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Rules.<a href="/src/Auth0.ManagementApi/Rules/RulesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -7884,7 +7884,7 @@ await client.RulesConfigs.SetAsync("key", new SetRulesConfigRequestContent { Val
 </dl>
 </details>
 
-<details><summary><code>client.RulesConfigs.<a href="/src/Auth0.ManagementApi/RulesConfigs/RulesConfigsClient.cs">DeleteAsync</a>(key)</code></summary>
+<details><summary><code>client.RulesConfigs.<a href="/src/Auth0.ManagementApi/RulesConfigs/RulesConfigsClient.cs">DeleteAsync</a>(key) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -8110,7 +8110,7 @@ await client.SelfServiceProfiles.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.SelfServiceProfiles.<a href="/src/Auth0.ManagementApi/SelfServiceProfiles/SelfServiceProfilesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.SelfServiceProfiles.<a href="/src/Auth0.ManagementApi/SelfServiceProfiles/SelfServiceProfilesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -8281,7 +8281,7 @@ await client.Sessions.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Sessions.<a href="/src/Auth0.ManagementApi/Sessions/SessionsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Sessions.<a href="/src/Auth0.ManagementApi/Sessions/SessionsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -8397,7 +8397,7 @@ await client.Sessions.UpdateAsync("id", new UpdateSessionRequestContent());
 </dl>
 </details>
 
-<details><summary><code>client.Sessions.<a href="/src/Auth0.ManagementApi/Sessions/SessionsClient.cs">RevokeAsync</a>(id)</code></summary>
+<details><summary><code>client.Sessions.<a href="/src/Auth0.ManagementApi/Sessions/SessionsClient.cs">RevokeAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -8938,7 +8938,7 @@ await client.TokenExchangeProfiles.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.TokenExchangeProfiles.<a href="/src/Auth0.ManagementApi/TokenExchangeProfiles/TokenExchangeProfilesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.TokenExchangeProfiles.<a href="/src/Auth0.ManagementApi/TokenExchangeProfiles/TokenExchangeProfilesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -8994,7 +8994,7 @@ await client.TokenExchangeProfiles.DeleteAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.TokenExchangeProfiles.<a href="/src/Auth0.ManagementApi/TokenExchangeProfiles/TokenExchangeProfilesClient.cs">UpdateAsync</a>(id, UpdateTokenExchangeProfileRequestContent { ... })</code></summary>
+<details><summary><code>client.TokenExchangeProfiles.<a href="/src/Auth0.ManagementApi/TokenExchangeProfiles/TokenExchangeProfilesClient.cs">UpdateAsync</a>(id, UpdateTokenExchangeProfileRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -9340,7 +9340,7 @@ await client.UserAttributeProfiles.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.UserAttributeProfiles.<a href="/src/Auth0.ManagementApi/UserAttributeProfiles/UserAttributeProfilesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.UserAttributeProfiles.<a href="/src/Auth0.ManagementApi/UserAttributeProfiles/UserAttributeProfilesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -9520,7 +9520,7 @@ await client.UserBlocks.ListByIdentifierAsync(
 </dl>
 </details>
 
-<details><summary><code>client.UserBlocks.<a href="/src/Auth0.ManagementApi/UserBlocks/UserBlocksClient.cs">DeleteByIdentifierAsync</a>(DeleteUserBlocksByIdentifierRequestParameters { ... })</code></summary>
+<details><summary><code>client.UserBlocks.<a href="/src/Auth0.ManagementApi/UserBlocks/UserBlocksClient.cs">DeleteByIdentifierAsync</a>(DeleteUserBlocksByIdentifierRequestParameters { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -9643,7 +9643,7 @@ await client.UserBlocks.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.UserBlocks.<a href="/src/Auth0.ManagementApi/UserBlocks/UserBlocksClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.UserBlocks.<a href="/src/Auth0.ManagementApi/UserBlocks/UserBlocksClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -9971,7 +9971,7 @@ await client.Users.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -10231,7 +10231,7 @@ await client.Users.RegenerateRecoveryCodeAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">RevokeAccessAsync</a>(id, RevokeUserAccessRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">RevokeAccessAsync</a>(id, RevokeUserAccessRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -10717,7 +10717,7 @@ await client.Actions.Modules.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -11317,7 +11317,7 @@ await client.Actions.Triggers.Bindings.UpdateManyAsync(
 </details>
 
 ## Anomaly Blocks
-<details><summary><code>client.Anomaly.Blocks.<a href="/src/Auth0.ManagementApi/Anomaly/Blocks/BlocksClient.cs">CheckIpAsync</a>(id)</code></summary>
+<details><summary><code>client.Anomaly.Blocks.<a href="/src/Auth0.ManagementApi/Anomaly/Blocks/BlocksClient.cs">CheckIpAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -11371,7 +11371,7 @@ await client.Anomaly.Blocks.CheckIpAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Anomaly.Blocks.<a href="/src/Auth0.ManagementApi/Anomaly/Blocks/BlocksClient.cs">UnblockIpAsync</a>(id)</code></summary>
+<details><summary><code>client.Anomaly.Blocks.<a href="/src/Auth0.ManagementApi/Anomaly/Blocks/BlocksClient.cs">UnblockIpAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -12030,7 +12030,7 @@ await client.Branding.Templates.GetUniversalLoginAsync();
 </dl>
 </details>
 
-<details><summary><code>client.Branding.Templates.<a href="/src/Auth0.ManagementApi/Branding/Templates/TemplatesClient.cs">UpdateUniversalLoginAsync</a>(UpdateUniversalLoginTemplateRequestContent { ... })</code></summary>
+<details><summary><code>client.Branding.Templates.<a href="/src/Auth0.ManagementApi/Branding/Templates/TemplatesClient.cs">UpdateUniversalLoginAsync</a>(UpdateUniversalLoginTemplateRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -12107,7 +12107,7 @@ await client.Branding.Templates.UpdateUniversalLoginAsync("string");
 </dl>
 </details>
 
-<details><summary><code>client.Branding.Templates.<a href="/src/Auth0.ManagementApi/Branding/Templates/TemplatesClient.cs">DeleteUniversalLoginAsync</a>()</code></summary>
+<details><summary><code>client.Branding.Templates.<a href="/src/Auth0.ManagementApi/Branding/Templates/TemplatesClient.cs">DeleteUniversalLoginAsync</a>() -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -12341,7 +12341,7 @@ await client.Branding.Themes.GetAsync("themeId");
 </dl>
 </details>
 
-<details><summary><code>client.Branding.Themes.<a href="/src/Auth0.ManagementApi/Branding/Themes/ThemesClient.cs">DeleteAsync</a>(themeId)</code></summary>
+<details><summary><code>client.Branding.Themes.<a href="/src/Auth0.ManagementApi/Branding/Themes/ThemesClient.cs">DeleteAsync</a>(themeId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -12691,7 +12691,7 @@ await client.Branding.Phone.Providers.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Branding.Phone.Providers.<a href="/src/Auth0.ManagementApi/Branding/Phone/Providers/ProvidersClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Branding.Phone.Providers.<a href="/src/Auth0.ManagementApi/Branding/Phone/Providers/ProvidersClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -12985,7 +12985,7 @@ await client.Branding.Phone.Templates.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Branding.Phone.Templates.<a href="/src/Auth0.ManagementApi/Branding/Phone/Templates/TemplatesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Branding.Phone.Templates.<a href="/src/Auth0.ManagementApi/Branding/Phone/Templates/TemplatesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -13469,7 +13469,7 @@ await client.Clients.Credentials.GetAsync("client_id", "credential_id");
 </dl>
 </details>
 
-<details><summary><code>client.Clients.Credentials.<a href="/src/Auth0.ManagementApi/Clients/Credentials/CredentialsClient.cs">DeleteAsync</a>(clientId, credentialId)</code></summary>
+<details><summary><code>client.Clients.Credentials.<a href="/src/Auth0.ManagementApi/Clients/Credentials/CredentialsClient.cs">DeleteAsync</a>(clientId, credentialId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -13857,7 +13857,7 @@ await client.Connections.DirectoryProvisioning.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -14095,7 +14095,7 @@ await client.Connections.DirectoryProvisioning.ListSynchronizedGroupsAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">SetAsync</a>(id, ReplaceSynchronizedGroupsRequestContent { ... })</code></summary>
+<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">SetAsync</a>(id, ReplaceSynchronizedGroupsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -14342,7 +14342,7 @@ await client.Connections.ScimConfiguration.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.ScimConfiguration.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/ScimConfigurationClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Connections.ScimConfiguration.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/ScimConfigurationClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -14587,7 +14587,7 @@ await client.Connections.Clients.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... })</code></summary>
+<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -14825,7 +14825,7 @@ await client.Connections.Keys.RotateAsync("id", new RotateConnectionKeysRequestC
 </details>
 
 ## Connections Users
-<details><summary><code>client.Connections.Users.<a href="/src/Auth0.ManagementApi/Connections/Users/UsersClient.cs">DeleteByEmailAsync</a>(id, DeleteConnectionUsersByEmailQueryParameters { ... })</code></summary>
+<details><summary><code>client.Connections.Users.<a href="/src/Auth0.ManagementApi/Connections/Users/UsersClient.cs">DeleteByEmailAsync</a>(id, DeleteConnectionUsersByEmailQueryParameters { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -15065,7 +15065,7 @@ await client.Connections.ScimConfiguration.Tokens.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.ScimConfiguration.Tokens.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/Tokens/TokensClient.cs">DeleteAsync</a>(id, tokenId)</code></summary>
+<details><summary><code>client.Connections.ScimConfiguration.Tokens.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/Tokens/TokensClient.cs">DeleteAsync</a>(id, tokenId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -15268,7 +15268,7 @@ await client.Emails.Provider.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Emails.Provider.<a href="/src/Auth0.ManagementApi/Emails/Provider/ProviderClient.cs">DeleteAsync</a>()</code></summary>
+<details><summary><code>client.Emails.Provider.<a href="/src/Auth0.ManagementApi/Emails/Provider/ProviderClient.cs">DeleteAsync</a>() -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -15546,7 +15546,7 @@ await client.EventStreams.Redeliveries.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.EventStreams.Redeliveries.<a href="/src/Auth0.ManagementApi/EventStreams/Redeliveries/RedeliveriesClient.cs">CreateByIdAsync</a>(id, eventId)</code></summary>
+<details><summary><code>client.EventStreams.Redeliveries.<a href="/src/Auth0.ManagementApi/EventStreams/Redeliveries/RedeliveriesClient.cs">CreateByIdAsync</a>(id, eventId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -15712,7 +15712,7 @@ await client.Flows.Executions.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">DeleteAsync</a>(flowId, executionId)</code></summary>
+<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">DeleteAsync</a>(flowId, executionId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -15900,7 +15900,7 @@ await client.Flows.Vault.Connections.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Flows.Vault.Connections.<a href="/src/Auth0.ManagementApi/Flows/Vault/Connections/ConnectionsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Flows.Vault.Connections.<a href="/src/Auth0.ManagementApi/Flows/Vault/Connections/ConnectionsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -16129,7 +16129,7 @@ await client.Groups.Roles.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Groups.Roles.<a href="/src/Auth0.ManagementApi/Groups/Roles/RolesClient.cs">CreateAsync</a>(id, CreateGroupRolesRequestParameters { ... })</code></summary>
+<details><summary><code>client.Groups.Roles.<a href="/src/Auth0.ManagementApi/Groups/Roles/RolesClient.cs">CreateAsync</a>(id, CreateGroupRolesRequestParameters { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -16194,7 +16194,7 @@ await client.Groups.Roles.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Groups.Roles.<a href="/src/Auth0.ManagementApi/Groups/Roles/RolesClient.cs">DeleteAsync</a>(id, DeleteGroupRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Groups.Roles.<a href="/src/Auth0.ManagementApi/Groups/Roles/RolesClient.cs">DeleteAsync</a>(id, DeleteGroupRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -16370,7 +16370,7 @@ await client.Guardian.Enrollments.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Guardian.Enrollments.<a href="/src/Auth0.ManagementApi/Guardian/Enrollments/EnrollmentsClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.Guardian.Enrollments.<a href="/src/Auth0.ManagementApi/Guardian/Enrollments/EnrollmentsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -17846,7 +17846,7 @@ await client.Guardian.Factors.Sms.SetProviderAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Guardian.Factors.Sms.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Sms/SmsClient.cs">GetTemplatesAsync</a>() -> WithRawResponseTask&lt;GetGuardianFactorSmsTemplatesResponseContent&gt;</code></summary>
+<details><summary><code>client.Guardian.Factors.Sms.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Sms/SmsClient.cs">GetTemplatesAsync</a>() -> WithRawResponseTask&lt;GetGuardianFactorSmsTemplatesResponseContent?&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18142,7 +18142,7 @@ await client.Hooks.Secrets.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">CreateAsync</a>(id, Dictionary&lt;string, string&gt; { ... })</code></summary>
+<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">CreateAsync</a>(id, Dictionary&lt;string, string&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -18207,7 +18207,7 @@ await client.Hooks.Secrets.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">DeleteAsync</a>(id, IEnumerable&lt;string&gt; { ... })</code></summary>
+<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">DeleteAsync</a>(id, IEnumerable&lt;string&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -18269,7 +18269,7 @@ await client.Hooks.Secrets.DeleteAsync("id", new List<string>() { "string" });
 </dl>
 </details>
 
-<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">UpdateAsync</a>(id, Dictionary&lt;string, string&gt; { ... })</code></summary>
+<details><summary><code>client.Hooks.Secrets.<a href="/src/Auth0.ManagementApi/Hooks/Secrets/SecretsClient.cs">UpdateAsync</a>(id, Dictionary&lt;string, string&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -18506,7 +18506,7 @@ await client.Jobs.VerificationEmail.CreateAsync(
 </details>
 
 ## Jobs Errors
-<details><summary><code>client.Jobs.Errors.<a href="/src/Auth0.ManagementApi/Jobs/Errors/ErrorsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;ErrorsGetResponse&gt;</code></summary>
+<details><summary><code>client.Jobs.Errors.<a href="/src/Auth0.ManagementApi/Jobs/Errors/ErrorsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;ErrorsGetResponse?&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18662,7 +18662,7 @@ await client.Keys.CustomSigning.SetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Keys.CustomSigning.<a href="/src/Auth0.ManagementApi/Keys/CustomSigning/CustomSigningClient.cs">DeleteAsync</a>()</code></summary>
+<details><summary><code>client.Keys.CustomSigning.<a href="/src/Auth0.ManagementApi/Keys/CustomSigning/CustomSigningClient.cs">DeleteAsync</a>() -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -18819,7 +18819,7 @@ await client.Keys.Encryption.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Keys.Encryption.<a href="/src/Auth0.ManagementApi/Keys/Encryption/EncryptionClient.cs">RekeyAsync</a>()</code></summary>
+<details><summary><code>client.Keys.Encryption.<a href="/src/Auth0.ManagementApi/Keys/Encryption/EncryptionClient.cs">RekeyAsync</a>() -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -18977,7 +18977,7 @@ await client.Keys.Encryption.ImportAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Keys.Encryption.<a href="/src/Auth0.ManagementApi/Keys/Encryption/EncryptionClient.cs">DeleteAsync</a>(kid)</code></summary>
+<details><summary><code>client.Keys.Encryption.<a href="/src/Auth0.ManagementApi/Keys/Encryption/EncryptionClient.cs">DeleteAsync</a>(kid) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -19383,7 +19383,7 @@ await client.Organizations.ClientGrants.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.ClientGrants.<a href="/src/Auth0.ManagementApi/Organizations/ClientGrants/ClientGrantsClient.cs">DeleteAsync</a>(id, grantId)</code></summary>
+<details><summary><code>client.Organizations.ClientGrants.<a href="/src/Auth0.ManagementApi/Organizations/ClientGrants/ClientGrantsClient.cs">DeleteAsync</a>(id, grantId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -19588,7 +19588,7 @@ await client.Organizations.Connections.GetAsync("id", "connection_id");
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">DeleteAsync</a>(id, connectionId)</code></summary>
+<details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">DeleteAsync</a>(id, connectionId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -19954,7 +19954,7 @@ await client.Organizations.DiscoveryDomains.GetAsync("id", "discovery_domain_id"
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.DiscoveryDomains.<a href="/src/Auth0.ManagementApi/Organizations/DiscoveryDomains/DiscoveryDomainsClient.cs">DeleteAsync</a>(id, discoveryDomainId)</code></summary>
+<details><summary><code>client.Organizations.DiscoveryDomains.<a href="/src/Auth0.ManagementApi/Organizations/DiscoveryDomains/DiscoveryDomainsClient.cs">DeleteAsync</a>(id, discoveryDomainId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -20290,7 +20290,7 @@ await client.Organizations.EnabledConnections.GetAsync("id", "connectionId");
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.EnabledConnections.<a href="/src/Auth0.ManagementApi/Organizations/EnabledConnections/EnabledConnectionsClient.cs">DeleteAsync</a>(id, connectionId)</code></summary>
+<details><summary><code>client.Organizations.EnabledConnections.<a href="/src/Auth0.ManagementApi/Organizations/EnabledConnections/EnabledConnectionsClient.cs">DeleteAsync</a>(id, connectionId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -20632,7 +20632,7 @@ await client.Organizations.Invitations.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Invitations.<a href="/src/Auth0.ManagementApi/Organizations/Invitations/InvitationsClient.cs">DeleteAsync</a>(id, invitationId)</code></summary>
+<details><summary><code>client.Organizations.Invitations.<a href="/src/Auth0.ManagementApi/Organizations/Invitations/InvitationsClient.cs">DeleteAsync</a>(id, invitationId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -20767,7 +20767,7 @@ await client.Organizations.Members.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Members.<a href="/src/Auth0.ManagementApi/Organizations/Members/MembersClient.cs">CreateAsync</a>(id, CreateOrganizationMemberRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Members.<a href="/src/Auth0.ManagementApi/Organizations/Members/MembersClient.cs">CreateAsync</a>(id, CreateOrganizationMemberRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -20834,7 +20834,7 @@ await client.Organizations.Members.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Members.<a href="/src/Auth0.ManagementApi/Organizations/Members/MembersClient.cs">DeleteAsync</a>(id, DeleteOrganizationMembersRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Members.<a href="/src/Auth0.ManagementApi/Organizations/Members/MembersClient.cs">DeleteAsync</a>(id, DeleteOrganizationMembersRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -21026,7 +21026,7 @@ await client.Organizations.Groups.Roles.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">CreateAsync</a>(organizationId, groupId, CreateOrganizationGroupRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">CreateAsync</a>(organizationId, groupId, CreateOrganizationGroupRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -21100,7 +21100,7 @@ await client.Organizations.Groups.Roles.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">DeleteAsync</a>(organizationId, groupId, DeleteOrganizationGroupRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Groups.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Groups/Roles/RolesClient.cs">DeleteAsync</a>(organizationId, groupId, DeleteOrganizationGroupRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -21331,7 +21331,7 @@ await client.Organizations.Members.Roles.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Members.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Members/Roles/RolesClient.cs">AssignAsync</a>(id, userId, AssignOrganizationMemberRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Members.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Members/Roles/RolesClient.cs">AssignAsync</a>(id, userId, AssignOrganizationMemberRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -21407,7 +21407,7 @@ await client.Organizations.Members.Roles.AssignAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Organizations.Members.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Members/Roles/RolesClient.cs">DeleteAsync</a>(id, userId, DeleteOrganizationMemberRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Organizations.Members.Roles.<a href="/src/Auth0.ManagementApi/Organizations/Members/Roles/RolesClient.cs">DeleteAsync</a>(id, userId, DeleteOrganizationMemberRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -21552,6 +21552,87 @@ await client.Organizations.Members.EffectiveRoles.Sources.Groups.ListAsync(
 <dd>
 
 **request:** `ListOrganizationMemberRoleSourceGroupsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Roles Members
+<details><summary><code>client.Organizations.Roles.Members.<a href="/src/Auth0.ManagementApi/Organizations/Roles/Members/MembersClient.cs">ListAsync</a>(id, roleId, ListOrganizationRoleMembersRequestParameters { ... }) -> Pager&lt;RoleMember&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List the organization members assigned a specific role within the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Roles.Members.ListAsync(
+    "id",
+    "role_id",
+    new ListOrganizationRoleMembersRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Fields = "fields",
+        IncludeFields = true,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**roleId:** `string` — ID of the role to retrieve the assigned members for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationRoleMembersRequestParameters` 
     
 </dd>
 </dl>
@@ -21895,7 +21976,7 @@ await client.Prompts.CustomText.GetAsync(PromptGroupNameEnum.Login, PromptLangua
 </dl>
 </details>
 
-<details><summary><code>client.Prompts.CustomText.<a href="/src/Auth0.ManagementApi/Prompts/CustomText/CustomTextClient.cs">SetAsync</a>(prompt, language, Dictionary&lt;string, object?&gt; { ... })</code></summary>
+<details><summary><code>client.Prompts.CustomText.<a href="/src/Auth0.ManagementApi/Prompts/CustomText/CustomTextClient.cs">SetAsync</a>(prompt, language, Dictionary&lt;string, object?&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22024,7 +22105,7 @@ await client.Prompts.Partials.GetAsync(PartialGroupsEnum.Login);
 </dl>
 </details>
 
-<details><summary><code>client.Prompts.Partials.<a href="/src/Auth0.ManagementApi/Prompts/Partials/PartialsClient.cs">SetAsync</a>(prompt, Dictionary&lt;string, object?&gt; { ... })</code></summary>
+<details><summary><code>client.Prompts.Partials.<a href="/src/Auth0.ManagementApi/Prompts/Partials/PartialsClient.cs">SetAsync</a>(prompt, Dictionary&lt;string, object?&gt; { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22344,7 +22425,7 @@ await client.Roles.Groups.GetAsync("id", new ListRoleGroupsParameters { From = "
 </dl>
 </details>
 
-<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">CreateAsync</a>(id, AssignRoleGroupsRequestContent { ... })</code></summary>
+<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">CreateAsync</a>(id, AssignRoleGroupsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22409,7 +22490,7 @@ await client.Roles.Groups.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">DeleteAsync</a>(id, DeleteRoleGroupsRequestContent { ... })</code></summary>
+<details><summary><code>client.Roles.Groups.<a href="/src/Auth0.ManagementApi/Roles/Groups/GroupsClient.cs">DeleteAsync</a>(id, DeleteRoleGroupsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22545,7 +22626,7 @@ await client.Roles.Permissions.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Roles.Permissions.<a href="/src/Auth0.ManagementApi/Roles/Permissions/PermissionsClient.cs">AddAsync</a>(id, AddRolePermissionsRequestContent { ... })</code></summary>
+<details><summary><code>client.Roles.Permissions.<a href="/src/Auth0.ManagementApi/Roles/Permissions/PermissionsClient.cs">AddAsync</a>(id, AddRolePermissionsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22620,7 +22701,7 @@ await client.Roles.Permissions.AddAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Roles.Permissions.<a href="/src/Auth0.ManagementApi/Roles/Permissions/PermissionsClient.cs">DeleteAsync</a>(id, DeleteRolePermissionsRequestContent { ... })</code></summary>
+<details><summary><code>client.Roles.Permissions.<a href="/src/Auth0.ManagementApi/Roles/Permissions/PermissionsClient.cs">DeleteAsync</a>(id, DeleteRolePermissionsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -22777,7 +22858,7 @@ await client.Roles.Users.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Roles.Users.<a href="/src/Auth0.ManagementApi/Roles/Users/UsersClient.cs">AssignAsync</a>(id, AssignRoleUsersRequestContent { ... })</code></summary>
+<details><summary><code>client.Roles.Users.<a href="/src/Auth0.ManagementApi/Roles/Users/UsersClient.cs">AssignAsync</a>(id, AssignRoleUsersRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -23068,7 +23149,7 @@ await client.SelfServiceProfiles.SsoTicket.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.SelfServiceProfiles.SsoTicket.<a href="/src/Auth0.ManagementApi/SelfServiceProfiles/SsoTicket/SsoTicketClient.cs">RevokeAsync</a>(profileId, id)</code></summary>
+<details><summary><code>client.SelfServiceProfiles.SsoTicket.<a href="/src/Auth0.ManagementApi/SelfServiceProfiles/SsoTicket/SsoTicketClient.cs">RevokeAsync</a>(profileId, id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -23451,7 +23532,7 @@ await client.Users.AuthenticationMethods.SetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.AuthenticationMethods.<a href="/src/Auth0.ManagementApi/Users/AuthenticationMethods/AuthenticationMethodsClient.cs">DeleteAllAsync</a>(id)</code></summary>
+<details><summary><code>client.Users.AuthenticationMethods.<a href="/src/Auth0.ManagementApi/Users/AuthenticationMethods/AuthenticationMethodsClient.cs">DeleteAllAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -23553,7 +23634,7 @@ await client.Users.AuthenticationMethods.GetAsync("id", "authentication_method_i
 </dl>
 </details>
 
-<details><summary><code>client.Users.AuthenticationMethods.<a href="/src/Auth0.ManagementApi/Users/AuthenticationMethods/AuthenticationMethodsClient.cs">DeleteAsync</a>(id, authenticationMethodId)</code></summary>
+<details><summary><code>client.Users.AuthenticationMethods.<a href="/src/Auth0.ManagementApi/Users/AuthenticationMethods/AuthenticationMethodsClient.cs">DeleteAsync</a>(id, authenticationMethodId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -23690,7 +23771,7 @@ await client.Users.AuthenticationMethods.UpdateAsync(
 </details>
 
 ## Users Authenticators
-<details><summary><code>client.Users.Authenticators.<a href="/src/Auth0.ManagementApi/Users/Authenticators/AuthenticatorsClient.cs">DeleteAllAsync</a>(id)</code></summary>
+<details><summary><code>client.Users.Authenticators.<a href="/src/Auth0.ManagementApi/Users/Authenticators/AuthenticatorsClient.cs">DeleteAllAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24057,7 +24138,7 @@ await client.Users.FederatedConnectionsTokensets.ListAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Users.FederatedConnectionsTokensets.<a href="/src/Auth0.ManagementApi/Users/FederatedConnectionsTokensets/FederatedConnectionsTokensetsClient.cs">DeleteAsync</a>(id, tokensetId)</code></summary>
+<details><summary><code>client.Users.FederatedConnectionsTokensets.<a href="/src/Auth0.ManagementApi/Users/FederatedConnectionsTokensets/FederatedConnectionsTokensetsClient.cs">DeleteAsync</a>(id, tokensetId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24419,7 +24500,7 @@ await client.Users.Logs.ListAsync(
 </details>
 
 ## Users Multifactor
-<details><summary><code>client.Users.Multifactor.<a href="/src/Auth0.ManagementApi/Users/Multifactor/MultifactorClient.cs">InvalidateRememberBrowserAsync</a>(id)</code></summary>
+<details><summary><code>client.Users.Multifactor.<a href="/src/Auth0.ManagementApi/Users/Multifactor/MultifactorClient.cs">InvalidateRememberBrowserAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24473,7 +24554,7 @@ await client.Users.Multifactor.InvalidateRememberBrowserAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.Users.Multifactor.<a href="/src/Auth0.ManagementApi/Users/Multifactor/MultifactorClient.cs">DeleteProviderAsync</a>(id, provider)</code></summary>
+<details><summary><code>client.Users.Multifactor.<a href="/src/Auth0.ManagementApi/Users/Multifactor/MultifactorClient.cs">DeleteProviderAsync</a>(id, provider) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24677,7 +24758,7 @@ await client.Users.Permissions.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.Permissions.<a href="/src/Auth0.ManagementApi/Users/Permissions/PermissionsClient.cs">CreateAsync</a>(id, CreateUserPermissionsRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.Permissions.<a href="/src/Auth0.ManagementApi/Users/Permissions/PermissionsClient.cs">CreateAsync</a>(id, CreateUserPermissionsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24752,7 +24833,7 @@ await client.Users.Permissions.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.Permissions.<a href="/src/Auth0.ManagementApi/Users/Permissions/PermissionsClient.cs">DeleteAsync</a>(id, DeleteUserPermissionsRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.Permissions.<a href="/src/Auth0.ManagementApi/Users/Permissions/PermissionsClient.cs">DeleteAsync</a>(id, DeleteUserPermissionsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24828,7 +24909,7 @@ await client.Users.Permissions.DeleteAsync(
 </details>
 
 ## Users RiskAssessments
-<details><summary><code>client.Users.RiskAssessments.<a href="/src/Auth0.ManagementApi/Users/RiskAssessments/RiskAssessmentsClient.cs">ClearAsync</a>(id, ClearAssessorsRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.RiskAssessments.<a href="/src/Auth0.ManagementApi/Users/RiskAssessments/RiskAssessmentsClient.cs">ClearAsync</a>(id, ClearAssessorsRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -24970,7 +25051,7 @@ await client.Users.Roles.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.Roles.<a href="/src/Auth0.ManagementApi/Users/Roles/RolesClient.cs">AssignAsync</a>(id, AssignUserRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.Roles.<a href="/src/Auth0.ManagementApi/Users/Roles/RolesClient.cs">AssignAsync</a>(id, AssignUserRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -25037,7 +25118,7 @@ await client.Users.Roles.AssignAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.Roles.<a href="/src/Auth0.ManagementApi/Users/Roles/RolesClient.cs">DeleteAsync</a>(id, DeleteUserRolesRequestContent { ... })</code></summary>
+<details><summary><code>client.Users.Roles.<a href="/src/Auth0.ManagementApi/Users/Roles/RolesClient.cs">DeleteAsync</a>(id, DeleteUserRolesRequestContent { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -25170,7 +25251,7 @@ await client.Users.RefreshToken.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.RefreshToken.<a href="/src/Auth0.ManagementApi/Users/RefreshToken/RefreshTokenClient.cs">DeleteAsync</a>(userId)</code></summary>
+<details><summary><code>client.Users.RefreshToken.<a href="/src/Auth0.ManagementApi/Users/RefreshToken/RefreshTokenClient.cs">DeleteAsync</a>(userId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -25290,7 +25371,7 @@ await client.Users.Sessions.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Users.Sessions.<a href="/src/Auth0.ManagementApi/Users/Sessions/SessionsClient.cs">DeleteAsync</a>(userId)</code></summary>
+<details><summary><code>client.Users.Sessions.<a href="/src/Auth0.ManagementApi/Users/Sessions/SessionsClient.cs">DeleteAsync</a>(userId) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -25667,7 +25748,7 @@ await client.VerifiableCredentials.Verification.Templates.GetAsync("id");
 </dl>
 </details>
 
-<details><summary><code>client.VerifiableCredentials.Verification.Templates.<a href="/src/Auth0.ManagementApi/VerifiableCredentials/Verification/Templates/TemplatesClient.cs">DeleteAsync</a>(id)</code></summary>
+<details><summary><code>client.VerifiableCredentials.Verification.Templates.<a href="/src/Auth0.ManagementApi/VerifiableCredentials/Verification/Templates/TemplatesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 

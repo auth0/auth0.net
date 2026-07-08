@@ -28,7 +28,7 @@ public partial interface IGroupsClient
     /// <summary>
     /// Delete a group by its ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

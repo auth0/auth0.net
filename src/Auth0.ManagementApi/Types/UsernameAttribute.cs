@@ -16,7 +16,7 @@ public record UsernameAttribute : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("identifier")]
-    public ConnectionAttributeIdentifier? Identifier { get; set; }
+    public UsernameAttributeIdentifier? Identifier { get; set; }
 
     /// <summary>
     /// Determines if property should be required for users

@@ -7,7 +7,7 @@ public partial interface IUsersClient
     /// <summary>
     /// Deletes a specified connection user by its email (you cannot delete all users from specific connection). Currently, only Database Connections are supported.
     /// </summary>
-    Task DeleteByEmailAsync(
+    WithRawResponseTask DeleteByEmailAsync(
         string id,
         DeleteConnectionUsersByEmailQueryParameters request,
         RequestOptions? options = null,

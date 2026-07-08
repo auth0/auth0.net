@@ -49,7 +49,7 @@ public partial interface ITokenExchangeProfilesClient
     ///
     /// By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -60,7 +60,7 @@ public partial interface ITokenExchangeProfilesClient
     ///
     /// By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details.
     /// </summary>
-    Task UpdateAsync(
+    WithRawResponseTask UpdateAsync(
         string id,
         UpdateTokenExchangeProfileRequestContent request,
         RequestOptions? options = null,

@@ -40,7 +40,7 @@ public partial interface IAuthenticationMethodsClient
     /// <summary>
     /// Remove all authentication methods (i.e., enrolled MFA factors) from the specified user account. This action cannot be undone.
     /// </summary>
-    Task DeleteAllAsync(
+    WithRawResponseTask DeleteAllAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -56,7 +56,7 @@ public partial interface IAuthenticationMethodsClient
     /// <summary>
     /// Remove the authentication method with the given ID from the specified user. For more information, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api">Manage Authentication Methods with Management API</see>.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string authenticationMethodId,
         RequestOptions? options = null,

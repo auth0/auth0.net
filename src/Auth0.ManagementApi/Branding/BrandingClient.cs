@@ -27,6 +27,9 @@ public partial class BrandingClient : IBrandingClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -39,6 +42,7 @@ public partial class BrandingClient : IBrandingClient
                 {
                     Method = HttpMethod.Get,
                     Path = "branding",
+                    QueryString = _queryString,
                     Headers = _headers,
                     Options = options,
                 },
@@ -56,7 +60,7 @@ public partial class BrandingClient : IBrandingClient
                 return new WithRawResponse<GetBrandingResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -70,7 +74,13 @@ public partial class BrandingClient : IBrandingClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -83,11 +93,41 @@ public partial class BrandingClient : IBrandingClient
                 switch (response.StatusCode)
                 {
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
-                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new TooManyRequestsError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -97,7 +137,13 @@ public partial class BrandingClient : IBrandingClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }
@@ -108,6 +154,9 @@ public partial class BrandingClient : IBrandingClient
         CancellationToken cancellationToken = default
     )
     {
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
@@ -121,6 +170,7 @@ public partial class BrandingClient : IBrandingClient
                     Method = HttpMethodExtensions.Patch,
                     Path = "branding",
                     Body = request,
+                    QueryString = _queryString,
                     Headers = _headers,
                     ContentType = "application/json",
                     Options = options,
@@ -141,7 +191,7 @@ public partial class BrandingClient : IBrandingClient
                 return new WithRawResponse<UpdateBrandingResponseContent>()
                 {
                     Data = responseData,
-                    RawResponse = new RawResponse()
+                    RawResponse = new Auth0.ManagementApi.RawResponse()
                     {
                         StatusCode = response.Raw.StatusCode,
                         Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
@@ -155,7 +205,13 @@ public partial class BrandingClient : IBrandingClient
                     "Failed to deserialize response",
                     response.StatusCode,
                     null,
-                    e
+                    e,
+                    rawResponse: new Auth0.ManagementApi.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
                 );
             }
         }
@@ -168,13 +224,53 @@ public partial class BrandingClient : IBrandingClient
                 switch (response.StatusCode)
                 {
                     case 400:
-                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 401:
-                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new UnauthorizedError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 403:
-                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 429:
-                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                        throw new TooManyRequestsError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new Auth0.ManagementApi.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                 }
             }
             catch (JsonException)
@@ -184,7 +280,13 @@ public partial class BrandingClient : IBrandingClient
             throw new ManagementApiException(
                 $"Error with status code {response.StatusCode}",
                 response.StatusCode,
-                responseBody
+                responseBody,
+                rawResponse: new Auth0.ManagementApi.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
             );
         }
     }

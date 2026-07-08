@@ -18,7 +18,7 @@ public partial interface IPermissionsClient
     /// <summary>
     /// Assign permissions to a user.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string id,
         CreateUserPermissionsRequestContent request,
         RequestOptions? options = null,
@@ -28,7 +28,7 @@ public partial interface IPermissionsClient
     /// <summary>
     /// Remove permissions from a user.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteUserPermissionsRequestContent request,
         RequestOptions? options = null,

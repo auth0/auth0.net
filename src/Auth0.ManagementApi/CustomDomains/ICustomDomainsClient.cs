@@ -61,7 +61,7 @@ public partial interface ICustomDomainsClient
     /// <summary>
     /// Delete a custom domain and stop serving requests for it.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

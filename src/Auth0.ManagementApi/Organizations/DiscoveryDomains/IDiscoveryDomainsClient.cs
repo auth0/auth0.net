@@ -51,7 +51,7 @@ public partial interface IDiscoveryDomainsClient
     /// <summary>
     /// Remove a discovery domain from an organization. This action cannot be undone.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string discoveryDomainId,
         RequestOptions? options = null,

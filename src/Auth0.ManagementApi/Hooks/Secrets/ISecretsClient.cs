@@ -16,7 +16,7 @@ public partial interface ISecretsClient
     /// <summary>
     /// Add one or more secrets to an existing hook. Accepts an object of key-value pairs, where the key is the name of the secret. A hook can have a maximum of 20 secrets.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string id,
         Dictionary<string, string> request,
         RequestOptions? options = null,
@@ -26,7 +26,7 @@ public partial interface ISecretsClient
     /// <summary>
     /// Delete one or more existing secrets for a given hook. Accepts an array of secret names to delete.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         IEnumerable<string> request,
         RequestOptions? options = null,
@@ -36,7 +36,7 @@ public partial interface ISecretsClient
     /// <summary>
     /// Update one or more existing secrets for an existing hook. Accepts an object of key-value pairs, where the key is the name of the existing secret.
     /// </summary>
-    Task UpdateAsync(
+    WithRawResponseTask UpdateAsync(
         string id,
         Dictionary<string, string> request,
         RequestOptions? options = null,
