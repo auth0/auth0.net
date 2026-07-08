@@ -29,7 +29,7 @@ jobs:
       - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
         run: exit 0 # Skip unnecessary test runs for dependabot and merge queues. Artifically flag as successful, as this is a required check for branch protection.
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha || github.ref }}
 
@@ -42,7 +42,7 @@ jobs:
         run: dotnet restore
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/dotnet@b98d498629f1c368650224d6d212bf7dfa89e4bf # pin@0.4.0
+        uses: snyk/actions/dotnet@9adf32b1121593767fc3c057af55b55db032dc04 # pin@1.0.0
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
