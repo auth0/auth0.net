@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models;
 
@@ -10,19 +10,19 @@ public class PasswordlessSmsRequest
     /// <summary>
     /// Client ID of the application.
     /// </summary>
-    [JsonProperty("client_id")]
+    [JsonPropertyName("client_id")]
     public string ClientId { get; set; }
 
     /// <summary>
     /// Client Secret of the application.
     /// </summary>
-    [JsonProperty("client_secret")]
+    [JsonPropertyName("client_secret")]
     public string ClientSecret { get; set; }
 
     /// <summary>
     /// Phone number to which the code must be sent.
     /// </summary>
-    [JsonProperty("phone_number")]
+    [JsonPropertyName("phone_number")]
     public string PhoneNumber { get; set; }
 
     /// <summary>

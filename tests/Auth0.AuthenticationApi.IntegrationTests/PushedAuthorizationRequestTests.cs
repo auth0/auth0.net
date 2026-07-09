@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,7 +15,6 @@ using FluentAssertions;
 using Microsoft.IdentityModel.Tokens;
 using Moq;
 using Moq.Protected;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests;
@@ -43,7 +43,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -81,7 +81,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -171,7 +171,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -219,7 +219,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -262,7 +262,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -306,7 +306,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -356,7 +356,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);
@@ -397,7 +397,7 @@ public class PushedAuthorizationRequestTests
             .ReturnsAsync(new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(response), Encoding.UTF8, "application/json"),
+                Content = new StringContent(JsonSerializer.Serialize(response, response.GetType()), Encoding.UTF8, "application/json"),
             });
 
         var httpClient = new HttpClient(mockHandler.Object);

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models;
 
@@ -10,18 +10,18 @@ public class PasswordlessEmailResponse
     /// <summary>
     /// Identifier of this request.
     /// </summary>
-    [JsonProperty("_id")]
+    [JsonPropertyName("_id")]
     public string Id { get; set; }
 
     /// <summary>
     /// Email to which the request was sent.
     /// </summary>
-    [JsonProperty("email")]
+    [JsonPropertyName("email")]
     public string Email { get; set; }
 
     /// <summary>
     /// Whether the email address has been verified (true) or has not been verified (false).
     /// </summary>
-    [JsonProperty("email_verified")]
+    [JsonPropertyName("email_verified")]
     public bool? EmailVerified { get; set; }
 }

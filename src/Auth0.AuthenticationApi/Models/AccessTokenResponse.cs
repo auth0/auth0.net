@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models;
 
@@ -11,19 +11,19 @@ public class AccessTokenResponse : TokenBase
     /// <summary>
     /// Identifier token.
     /// </summary>
-    [JsonProperty("id_token")]
+    [JsonPropertyName("id_token")]
     public string IdToken { get; set; }
 
     /// <summary>
     /// Expiration time in seconds.
     /// </summary>
-    [JsonProperty("expires_in")]
+    [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
 
     /// <summary>
     /// Refresh token.
     /// </summary>
-    [JsonProperty("refresh_token")]
+    [JsonPropertyName("refresh_token")]
     public string RefreshToken { get; set; }
         
     public IDictionary<string, IEnumerable<string>> Headers { get; set; }

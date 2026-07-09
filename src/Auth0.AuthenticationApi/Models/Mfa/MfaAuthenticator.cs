@@ -1,21 +1,21 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Auth0.AuthenticationApi.Models.Mfa;
 
 public class Authenticator
 {
-    [JsonProperty("id")]
+    [JsonPropertyName("id")]
     public string Id { get; set; }
 
-    [JsonProperty("authenticator_type")]
+    [JsonPropertyName("authenticator_type")]
     public string AuthenticatorType { get; set; }
 
-    [JsonProperty("oob_channel")]
+    [JsonPropertyName("oob_channel")]
     public string OobChannel { get; set; }
 
-    [JsonProperty("name")]
+    [JsonPropertyName("name")]
     public string Name { get; set; }
 
-    [JsonProperty("active")]
+    [JsonPropertyName("active")]
     public bool Active { get; set; }
 }

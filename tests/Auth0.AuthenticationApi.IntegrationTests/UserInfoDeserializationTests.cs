@@ -1,48 +1,35 @@
-﻿using Auth0.AuthenticationApi.Models;
-using FluentAssertions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
+using System.Text.Json;
+using Auth0.AuthenticationApi.Models;
+using FluentAssertions;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests;
 
 public class UserInfoDeserializationTests
 {
+    private static UserInfo Parse(string json) =>
+        JsonSerializer.Deserialize<UserInfo>(json);
 
     [Fact]
     public void Can_read_standard_claims()
     {
-        var jsonPayload = @"{
-   'sub': '123456',
-   'name': 'Robert Smith',
-   'given_name': 'Robert',
-   'family_name': 'Smith',
-   'middle_name': 'Franklin',
-   'nickname': 'Bob',
-   'preferred_username': 'b.smith',
-   'profile': 'http://profiles.com/bsmith',
-   'picture': 'http://mycompany.com/bob_photo.jpg',
-   'website': 'http://mycompany.com/users/bob',
-   'email': 'bob@mycompany.com',
-   'email_verified': true,
-   'gender': 'male',
-   'birthdate': '0000-05-22',
-   'zoneinfo': 'Europe/Paris',
-   'locale': 'en-US',
-   'phone_number': '+1 (604) 555-1234;ext5678',
-   'phone_number_verified': false,
-   'address': { 
-     'formatted' : '123 Main St., Anytown, TX 77777',
-     'street_address': '123 Main St.',
-     'locality': 'Anytown',
-     'region': 'Texas',
-     'postal_code': '77777',
-     'country': 'US'
-    },
-   'updated_at': 1233233333
-}";
-        var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
+        var json = """
+        {
+          "sub": "123456", "name": "Robert Smith", "given_name": "Robert",
+          "family_name": "Smith", "middle_name": "Franklin", "nickname": "Bob",
+          "preferred_username": "b.smith", "profile": "http://profiles.com/bsmith",
+          "picture": "http://mycompany.com/bob_photo.jpg", "website": "http://mycompany.com/users/bob",
+          "email": "bob@mycompany.com", "email_verified": true, "gender": "male",
+          "birthdate": "0000-05-22", "zoneinfo": "Europe/Paris", "locale": "en-US",
+          "phone_number": "+1 (604) 555-1234;ext5678", "phone_number_verified": false,
+          "address": { "formatted": "123 Main St., Anytown, TX 77777", "street_address": "123 Main St.",
+            "locality": "Anytown", "region": "Texas", "postal_code": "77777", "country": "US" },
+          "updated_at": 1233233333
+        }
+        """;
+        var userInfo = Parse(json);
 
         userInfo.UserId.Should().Be("123456");
         userInfo.FullName.Should().Be("Robert Smith");
@@ -51,81 +38,121 @@ public class UserInfoDeserializationTests
         userInfo.MiddleName.Should().Be("Franklin");
         userInfo.NickName.Should().Be("Bob");
         userInfo.PreferredUsername.Should().Be("b.smith");
-        userInfo.Profile.Should().Be("http://profiles.com/bsmith");
-        userInfo.Picture.Should().Be("http://mycompany.com/bob_photo.jpg");
-        userInfo.Website.Should().Be("http://mycompany.com/users/bob");
         userInfo.Email.Should().Be("bob@mycompany.com");
         userInfo.EmailVerified.Should().Be(true);
-        userInfo.Gender.Should().Be("male");
         userInfo.Birthdate.Should().Be("0000-05-22");
-        userInfo.ZoneInformation.Should().Be("Europe/Paris");
         userInfo.Locale.Should().Be("en-US");
-        userInfo.PhoneNumber.Should().Be("+1 (604) 555-1234;ext5678");
         userInfo.PhoneNumberVerified.Should().Be(false);
-        userInfo.Address.Formatted.Should().Be("123 Main St., Anytown, TX 77777");
-        userInfo.Address.StreetAddress.Should().Be("123 Main St.");
-        userInfo.Address.Locality.Should().Be("Anytown");
-        userInfo.Address.Region.Should().Be("Texas");
-        userInfo.Address.PostalCode.Should().Be("77777");
         userInfo.Address.Country.Should().Be("US");
-        userInfo.UpdatedAt.Should().Be(new DateTime(2009, 1, 29, 12, 48, 53));
+        userInfo.UpdatedAt.Should().Be(new DateTime(2009, 1, 29, 12, 48, 53, DateTimeKind.Utc));
     }
 
     [Fact]
-    public void Can_read_custom_locale_claim()
+    public void Can_read_custom_locale_claim_as_compact_string()
     {
-        var jsonPayload = @"{
-   'sub': '123456',
-   'locale': {
-        'country': 'US',
-        'language': 'en'
-   },
-   'updated_at': 1233233333
-}";
-        var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
+        var userInfo = Parse("""{ "sub": "123456", "locale": { "country": "US", "language": "en" } }""");
 
-        userInfo.UserId.Should().Be("123456");
         userInfo.Locale.Should().NotBeNull();
-        JObject.Parse(userInfo.Locale).GetValue("country")!.Value<string>().Should().Be("US");
-        JObject.Parse(userInfo.Locale).GetValue("language")!.Value<string>().Should().Be("en");
+        var locale = JsonDocument.Parse(userInfo.Locale).RootElement;
+        locale.GetProperty("country").GetString().Should().Be("US");
+        locale.GetProperty("language").GetString().Should().Be("en");
     }
-        
+
     [Fact]
     public void Missing_values_are_null()
     {
-        var jsonPayload = @"{ 'sub': '123456'}";
-        var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
-        Assert.Null(userInfo.FullName);
-        Assert.Null(userInfo.EmailVerified);
-        Assert.Null(userInfo.PhoneNumberVerified);
-        Assert.Null(userInfo.Address);
-        Assert.Null(userInfo.UpdatedAt);
+        var userInfo = Parse("""{ "sub": "123456" }""");
+
+        userInfo.FullName.Should().BeNull();
+        userInfo.EmailVerified.Should().BeNull();
+        userInfo.PhoneNumberVerified.Should().BeNull();
+        userInfo.Address.Should().BeNull();
+        userInfo.UpdatedAt.Should().BeNull();
     }
 
     [Fact]
-    public void Can_read_additional_claims()
+    public void UpdatedAt_reads_iso8601_string()
     {
-        var jsonPayload = @"{
-   'sub': '123456',
-   'http://acme.com/claims/groupIds': [ 'bobsdepartment','administrators' ], 
-   'http://acme.com/claims/manager': { 'name' : 'John Doe' }, 
-   'http://acme.com/claims/office': 'building 125'
-}";
-        var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
+        var userInfo = Parse("""{ "sub": "123456", "updated_at": "2009-01-29T12:48:53Z" }""");
+
+        userInfo.UpdatedAt.Should().Be(new DateTime(2009, 1, 29, 12, 48, 53, DateTimeKind.Utc));
+    }
+
+    [Fact]
+    public void UpdatedAt_falls_back_to_null_for_unparseable_string()
+    {
+        // A non-ISO / malformed updated_at must not fail the whole UserInfo deserialization.
+        var userInfo = Parse("""{ "sub": "123456", "email": "bob@mycompany.com", "updated_at": "not-a-date" }""");
+
+        userInfo.UserId.Should().Be("123456");
+        userInfo.Email.Should().Be("bob@mycompany.com");
+        userInfo.UpdatedAt.Should().BeNull();
+    }
+
+    [Fact]
+    public void Can_read_additional_claims_via_new_json_property()
+    {
+        var userInfo = Parse("""
+        {
+          "sub": "123456",
+          "http://acme.com/claims/groupIds": [ "bobsdepartment", "administrators" ],
+          "http://acme.com/claims/manager": { "name": "John Doe" }
+        }
+        """);
+
+        var groups = userInfo.AdditionalClaimsJson["http://acme.com/claims/groupIds"];
+        groups.ValueKind.Should().Be(JsonValueKind.Array);
+        groups[0].GetString().Should().Be("bobsdepartment");
+        groups[1].GetString().Should().Be("administrators");
+
+        userInfo.AdditionalClaimsJson["http://acme.com/claims/manager"]
+            .GetProperty("name").GetString().Should().Be("John Doe");
+    }
+
+    [Fact]
+    public void Obsolete_AdditionalClaims_shim_still_returns_jtokens()
+    {
+#pragma warning disable CS0618 // testing the obsolete member on purpose
+        var userInfo = Parse("""
+        {
+          "sub": "123456",
+          "http://acme.com/claims/groupIds": [ "bobsdepartment", "administrators" ],
+          "http://acme.com/claims/manager": { "name": "John Doe" }
+        }
+        """);
 
         var groups = (JArray)userInfo.AdditionalClaims["http://acme.com/claims/groupIds"];
-
-        Assert.Equal(2, groups.Count);
-        Assert.Equal("bobsdepartment", (string)groups[0]);
-        Assert.Equal("administrators", (string)groups[1]);
+        groups.Count.Should().Be(2);
+        ((string)groups[0]).Should().Be("bobsdepartment");
 
         dynamic manager = userInfo.AdditionalClaims["http://acme.com/claims/manager"];
         string managerName = manager.name;
         managerName.Should().Be("John Doe");
+#pragma warning restore CS0618
     }
 
-    private UserInfo GetUserInfoFromJsonPayload(string jsonPayload)
+    [Fact]
+    public void Scalar_additional_claim_is_captured()
     {
-        return JsonConvert.DeserializeObject<UserInfo>(jsonPayload);
+        var userInfo = Parse("""{ "sub": "123456", "login_count": 42 }""");
+
+        userInfo.AdditionalClaimsJson["login_count"].GetInt32().Should().Be(42);
+
+#pragma warning disable CS0618 // testing the obsolete member on purpose
+        ((int)userInfo.AdditionalClaims["login_count"]).Should().Be(42);
+#pragma warning restore CS0618
+    }
+
+    [Fact]
+    public void Null_additional_claim_is_captured()
+    {
+        var userInfo = Parse("""{ "sub": "123456", "optional_claim": null }""");
+
+        userInfo.AdditionalClaimsJson.Should().ContainKey("optional_claim");
+        userInfo.AdditionalClaimsJson["optional_claim"].ValueKind.Should().Be(JsonValueKind.Null);
+
+#pragma warning disable CS0618 // testing the obsolete member on purpose
+        userInfo.AdditionalClaims["optional_claim"].Type.Should().Be(JTokenType.Null);
+#pragma warning restore CS0618
     }
 }

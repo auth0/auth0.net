@@ -1,8 +1,9 @@
-﻿using Auth0.Core.Serialization;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Auth0.Core.Serialization;
 
 namespace Auth0.Core.Exceptions;
 
@@ -15,25 +16,25 @@ public class ApiError
     /// <summary>
     /// Description of the failing HTTP Status Code.
     /// </summary>
-    [JsonProperty("error")]
+    [JsonPropertyName("error")]
     public string? Error { get; set; }
 
     /// <summary>
     /// Error code returned by the API.
     /// </summary>
-    [JsonProperty("errorCode")]
+    [JsonPropertyName("errorCode")]
     public string? ErrorCode { get; set; }
 
     /// <summary>
     /// Description of the error.
     /// </summary>
-    [JsonProperty("message")]
+    [JsonPropertyName("message")]
     public string? Message { get; set; }
 
     /// <summary>
     /// Additional key/values that might be returned by the error such as `mfa_required`.
     /// </summary>
-    [JsonProperty("extraData")]
+    [JsonPropertyName("extraData")]
     public Dictionary<string, string> ExtraData { get; set; } = new();
 
     /// <summary>
@@ -54,16 +55,19 @@ public class ApiError
 
     internal static ApiError? Parse(string? content)
     {
-        if (content is null)
+        if (string.IsNullOrWhiteSpace(content))
         {
             return null;
         }
-        
+
         try
         {
-            return JsonConvert.DeserializeObject<ApiError>(content);
+            return JsonSerializer.Deserialize<ApiError>(content!, Auth0JsonSerializerOptions.Default);
         }
-        catch (JsonException)
+        // JsonException: malformed JSON. InvalidOperationException: valid JSON whose root is
+        // not an object (e.g. a bare string or array), which the converter cannot enumerate.
+        // Both fall back to surfacing the raw body.
+        catch (System.Exception ex) when (ex is JsonException or System.InvalidOperationException)
         {
             return new ApiError
             {

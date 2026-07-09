@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json;
+using System.Text.Json;
+using Auth0.Core.Serialization;
 
 using Auth0.Core.Exceptions;
 using Auth0.Core.Http;
@@ -20,8 +21,6 @@ namespace Auth0.AuthenticationApi;
 /// </summary>
 public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDisposable
 {
-    private static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
-
     private readonly HttpClient httpClient;
     private readonly string agentString;
     private bool ownHttpClient;
@@ -98,9 +97,13 @@ public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDi
 
     internal T DeserializeContent<T>(string content)
     {
-        return typeof(T) == typeof(string)
-            ? (T)(object)content
-            : JsonConvert.DeserializeObject<T>(content, jsonSerializerSettings);
+        if (typeof(T) == typeof(string))
+            return (T)(object)content;
+
+        if (string.IsNullOrWhiteSpace(content))
+            return default;
+
+        return JsonSerializer.Deserialize<T>(content, Auth0JsonSerializerOptions.Default);
     }
 
     private void ApplyHeaders(HttpRequestMessage request, IDictionary<string, string> headers)
@@ -125,7 +128,7 @@ public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDi
 
     private static HttpContent CreateJsonStringContent(object body)
     {
-        var json = JsonConvert.SerializeObject(body, jsonSerializerSettings);
+        var json = JsonSerializer.Serialize(body, body.GetType(), Auth0JsonSerializerOptions.Default);
         return new StringContent(json, Encoding.UTF8, "application/json");
     }
 
@@ -157,12 +160,12 @@ public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDi
 #endif
 
         var sdkVersion = typeof(HttpClientAuthenticationConnection).GetTypeInfo().Assembly.GetName().Version;
-        var agentJson = JsonConvert.SerializeObject(new
+        var agentJson = JsonSerializer.Serialize(new
         {
             name = "Auth0.Net",
             version = sdkVersion.Major + "." + sdkVersion.Minor + "." + sdkVersion.Revision,
             env = new { target }
-        }, Formatting.None);
+        });
         return Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
     }
 
