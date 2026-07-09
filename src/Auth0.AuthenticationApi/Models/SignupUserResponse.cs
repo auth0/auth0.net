@@ -1,12 +1,14 @@
 ﻿using System;
 
 using System.Text.Json.Serialization;
+using Auth0.AuthenticationApi.Serialization;
 
 namespace Auth0.AuthenticationApi.Models;
 
 /// <summary>
 /// Represents the response from signing up a new user.
 /// </summary>
+[JsonConverter(typeof(SignupUserResponseConverter))]
 public class SignupUserResponse
 {
     /// <summary>
@@ -30,25 +32,7 @@ public class SignupUserResponse
     /// For convenience we expose it here as just one.
     /// </remarks>
     [JsonIgnore]
-    public string Id
-    {
-        get { return _id ?? id ?? user_id; }
-        set { _id = value; }
-    }
-
-    [JsonInclude]
-    [JsonPropertyName("_id")]
-    private string _id;        // Standard connection
-
-#pragma warning disable 0649
-    [JsonInclude]
-    [JsonPropertyName("id")]
-    private string id;         // Custom connection
-
-    [JsonInclude]
-    [JsonPropertyName("user_id")]
-    private string user_id;    // Custom connection external
-#pragma warning restore 0649
+    public string Id { get; set; }
 
     /// <summary>
     /// Username of this user.
