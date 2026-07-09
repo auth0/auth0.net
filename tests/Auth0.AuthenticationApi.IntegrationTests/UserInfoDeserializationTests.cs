@@ -71,6 +71,25 @@ public class UserInfoDeserializationTests
     }
 
     [Fact]
+    public void UpdatedAt_reads_iso8601_string()
+    {
+        var userInfo = Parse("""{ "sub": "123456", "updated_at": "2009-01-29T12:48:53Z" }""");
+
+        userInfo.UpdatedAt.Should().Be(new DateTime(2009, 1, 29, 12, 48, 53, DateTimeKind.Utc));
+    }
+
+    [Fact]
+    public void UpdatedAt_falls_back_to_null_for_unparseable_string()
+    {
+        // A non-ISO / malformed updated_at must not fail the whole UserInfo deserialization.
+        var userInfo = Parse("""{ "sub": "123456", "email": "bob@mycompany.com", "updated_at": "not-a-date" }""");
+
+        userInfo.UserId.Should().Be("123456");
+        userInfo.Email.Should().Be("bob@mycompany.com");
+        userInfo.UpdatedAt.Should().BeNull();
+    }
+
+    [Fact]
     public void Can_read_additional_claims_via_new_json_property()
     {
         var userInfo = Parse("""

@@ -64,7 +64,10 @@ public class ApiError
         {
             return JsonSerializer.Deserialize<ApiError>(content!, Auth0JsonSerializerOptions.Default);
         }
-        catch (JsonException)
+        // JsonException: malformed JSON. InvalidOperationException: valid JSON whose root is
+        // not an object (e.g. a bare string or array), which the converter cannot enumerate.
+        // Both fall back to surfacing the raw body.
+        catch (System.Exception ex) when (ex is JsonException or System.InvalidOperationException)
         {
             return new ApiError
             {

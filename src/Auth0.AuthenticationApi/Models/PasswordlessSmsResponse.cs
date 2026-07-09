@@ -22,6 +22,11 @@ public class PasswordlessSmsResponse
     /// <summary>
     /// Language the message sent was written in.
     /// </summary>
+    /// <remarks>
+    /// On deserialization this is a <see cref="System.Text.Json.JsonElement"/> (previously a
+    /// Newtonsoft <c>JToken</c>). Read the value via the <c>JsonElement</c> API, e.g.
+    /// <c>((JsonElement)response.RequestLanguage).GetString()</c>.
+    /// </remarks>
     [JsonPropertyName("request_language")]
     public object RequestLanguage { get; set; }
 }

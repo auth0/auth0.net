@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -20,7 +21,13 @@ internal class FlexibleDateTimeConverter : JsonConverter<DateTime?>
             case JsonTokenType.Number:
                 return Add(Epoch, TimeSpan.FromSeconds(reader.GetInt64()));
             case JsonTokenType.String:
-                return reader.GetDateTime();
+                // Prefer STJ's ISO 8601 reader; fall back to a lenient parse for other
+                // formats. An unparseable value yields null rather than throwing and
+                // failing the entire enclosing object's deserialization.
+                if (reader.TryGetDateTime(out var iso))
+                    return iso;
+                return DateTime.TryParse(reader.GetString(), CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind, out var parsed) ? parsed : null;
             default:
                 return null;
         }

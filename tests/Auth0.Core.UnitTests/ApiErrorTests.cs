@@ -108,6 +108,20 @@ public class ApiErrorTests
         result.ExtraData.Should().BeEmpty();
     }
 
+    [Theory]
+    [InlineData(""" "Unauthorized" """)]  // bare JSON string
+    [InlineData("123")]                    // bare JSON number
+    [InlineData("[1,2,3]")]                // JSON array
+    public void ParseFromString_WithNonObjectJson_FallsBackToContent(string body)
+    {
+        var result = ApiError.Parse(body);
+
+        result.Should().NotBeNull();
+        result.Error.Should().Be(body);
+        result.Message.Should().Be(body);
+        result.ExtraData.Should().BeEmpty();
+    }
+
     [Fact]
     public void ParseFromString_WithEmptyString_ReturnsNull()
     {

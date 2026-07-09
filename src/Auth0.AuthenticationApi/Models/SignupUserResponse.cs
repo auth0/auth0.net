@@ -71,8 +71,13 @@ public class SignupUserResponse
     public Uri Picture { get; set; }
 
     /// <summary>
-    /// Metadata the user has read/write access to. 
+    /// Metadata the user has read/write access to.
     /// </summary>
+    /// <remarks>
+    /// On deserialization this is a <see cref="System.Text.Json.JsonElement"/> (previously a
+    /// Newtonsoft <c>JObject</c>). Read values via the <c>JsonElement</c> API, e.g.
+    /// <c>((JsonElement)response.UserMetadata).GetProperty("plan").GetString()</c>.
+    /// </remarks>
     [JsonPropertyName("user_metadata")]
     public dynamic UserMetadata { get; set; }
         
