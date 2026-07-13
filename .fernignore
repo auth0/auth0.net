@@ -54,6 +54,12 @@ tests/Auth0.ManagementApi.Test/Core/CustomDomainInterceptorTest.cs
 tests/Auth0.ManagementApi.Test/Unit/MockServer/CustomDomainHeaderTest.cs
 src/Auth0.ManagementApi/Core/BooleanStringConverter.cs
 tests/Auth0.ManagementApi.Test/Unit/BooleanStringConverterTest.cs
+src/Auth0.ManagementApi/Core/Public/ManagementApiException.cs
+src/Auth0.ManagementApi/Core/Public/ApiError.cs
+src/Auth0.ManagementApi/Core/Public/RateLimit.cs
+src/Auth0.ManagementApi/Core/Public/QuotaLimit.cs
+src/Auth0.ManagementApi/Exceptions/TooManyRequestsError.cs
+tests/Auth0.ManagementApi.Test/Unit/ExceptionEnrichmentTest.cs
 
 .fern/replay.lock
 .fern/replay.yml
