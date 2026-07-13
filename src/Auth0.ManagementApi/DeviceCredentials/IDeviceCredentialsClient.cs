@@ -27,7 +27,7 @@ public partial interface IDeviceCredentialsClient
     /// <summary>
     /// Permanently delete a device credential (such as a refresh token or public key) with the given ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

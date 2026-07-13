@@ -39,7 +39,7 @@ public partial interface IScimConfigurationClient
     /// <summary>
     /// Deletes a scim configuration by its `connectionId`.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

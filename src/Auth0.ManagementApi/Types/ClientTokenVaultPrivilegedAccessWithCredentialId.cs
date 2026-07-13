@@ -21,6 +21,10 @@ public record ClientTokenVaultPrivilegedAccessWithCredentialId : IJsonOnDeserial
     [JsonPropertyName("ip_allowlist")]
     public IEnumerable<string>? IpAllowlist { get; set; }
 
+    [Optional]
+    [JsonPropertyName("grants")]
+    public IEnumerable<TokenVaultPrivilegedAccessGrant>? Grants { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

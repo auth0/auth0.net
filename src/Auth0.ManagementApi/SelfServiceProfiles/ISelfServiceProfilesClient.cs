@@ -38,7 +38,7 @@ public partial interface ISelfServiceProfilesClient
     /// <summary>
     /// Deletes a self-service profile by Id.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

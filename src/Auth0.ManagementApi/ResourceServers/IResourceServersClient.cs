@@ -35,7 +35,7 @@ public partial interface IResourceServersClient
     /// <summary>
     /// Delete an existing API by ID. For more information, read <see href="https://www.auth0.com/docs/get-started/apis/api-settings">API Settings</see>.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

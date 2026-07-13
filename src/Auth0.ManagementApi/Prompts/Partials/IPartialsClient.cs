@@ -16,7 +16,7 @@ public partial interface IPartialsClient
     /// <summary>
     /// Set template partials for a prompt
     /// </summary>
-    Task SetAsync(
+    WithRawResponseTask SetAsync(
         PartialGroupsEnum prompt,
         Dictionary<string, object?> request,
         RequestOptions? options = null,

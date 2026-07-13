@@ -10,6 +10,18 @@ namespace Auth0.ManagementApi;
 [Serializable]
 public readonly record struct EventStreamSubscribeEventsEventTypeEnum : IStringEnum
 {
+    public static readonly EventStreamSubscribeEventsEventTypeEnum ConnectionCreated = new(
+        Values.ConnectionCreated
+    );
+
+    public static readonly EventStreamSubscribeEventsEventTypeEnum ConnectionDeleted = new(
+        Values.ConnectionDeleted
+    );
+
+    public static readonly EventStreamSubscribeEventsEventTypeEnum ConnectionUpdated = new(
+        Values.ConnectionUpdated
+    );
+
     public static readonly EventStreamSubscribeEventsEventTypeEnum GroupCreated = new(
         Values.GroupCreated
     );
@@ -190,6 +202,12 @@ public readonly record struct EventStreamSubscribeEventsEventTypeEnum : IStringE
     [Serializable]
     public static class Values
     {
+        public const string ConnectionCreated = "connection.created";
+
+        public const string ConnectionDeleted = "connection.deleted";
+
+        public const string ConnectionUpdated = "connection.updated";
+
         public const string GroupCreated = "group.created";
 
         public const string GroupDeleted = "group.deleted";

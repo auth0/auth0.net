@@ -51,7 +51,7 @@ public partial interface IConnectionProfilesClient
     /// <summary>
     /// Delete a single Connection Profile specified by ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

@@ -51,7 +51,7 @@ public partial interface IUserAttributeProfilesClient
     /// <summary>
     /// Delete a single User Attribute Profile specified by ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

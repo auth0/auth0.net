@@ -20,7 +20,7 @@ public partial interface IExecutionsClient
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string flowId,
         string executionId,
         RequestOptions? options = null,

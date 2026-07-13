@@ -16,7 +16,7 @@ public partial interface IRefreshTokensClient
     /// <summary>
     /// Revoke refresh tokens in bulk by ID list, user, user+client, or user+client+audience.
     /// </summary>
-    Task RevokeAsync(
+    WithRawResponseTask RevokeAsync(
         RevokeRefreshTokensRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -34,7 +34,7 @@ public partial interface IRefreshTokensClient
     /// <summary>
     /// Delete a refresh token by its ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

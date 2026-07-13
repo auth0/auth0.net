@@ -22,7 +22,7 @@ public partial interface IRolesClient
     ///
     /// **Note**: New roles cannot be created through this action. Additionally, this action is used to assign roles to a user in the context of your whole tenant. To assign roles in the context of a specific Organization, use the following endpoint: [Assign user roles to an Organization member](https://auth0.com/docs/api/management/v2/organizations/post-organization-member-roles).
     /// </summary>
-    Task AssignAsync(
+    WithRawResponseTask AssignAsync(
         string id,
         AssignUserRolesRequestContent request,
         RequestOptions? options = null,
@@ -34,7 +34,7 @@ public partial interface IRolesClient
     ///
     /// **Note**: This action removes a role from a user in the context of your whole tenant. If you want to unassign a role from a user in the context of a specific Organization, use the following endpoint: [Delete user roles from an Organization member](https://auth0.com/docs/api/management/v2/organizations/delete-organization-member-roles).
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteUserRolesRequestContent request,
         RequestOptions? options = null,

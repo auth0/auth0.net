@@ -25,7 +25,7 @@ public partial interface IRulesConfigsClient
     /// <summary>
     /// Delete a rules config variable identified by its key.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string key,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

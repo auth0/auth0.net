@@ -18,7 +18,7 @@ public partial interface IRolesClient
     /// <summary>
     /// Assign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) to a specified group.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string id,
         CreateGroupRolesRequestParameters request,
         RequestOptions? options = null,
@@ -28,7 +28,7 @@ public partial interface IRolesClient
     /// <summary>
     /// Unassign one or more [roles](https://auth0.com/docs/manage-users/access-control/rbac) from a specified group.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteGroupRolesRequestContent request,
         RequestOptions? options = null,

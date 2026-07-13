@@ -39,7 +39,7 @@ public partial interface IDirectoryProvisioningClient
     /// <summary>
     /// Delete the directory provisioning configuration of a connection.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -77,7 +77,7 @@ public partial interface IDirectoryProvisioningClient
     /// <summary>
     /// Create or replace the selected groups for a connection directory provisioning configuration.
     /// </summary>
-    Task SetAsync(
+    WithRawResponseTask SetAsync(
         string id,
         ReplaceSynchronizedGroupsRequestContent request,
         RequestOptions? options = null,

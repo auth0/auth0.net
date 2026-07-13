@@ -4,23 +4,15 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// Metadata associated with the connection in the form of an object with string values (max 255 chars).  Maximum of 10 metadata properties allowed.
+/// </summary>
 [Serializable]
-public record ConnectionAttributeIdentifier : IJsonOnDeserialized
+public record EventStreamCloudEventConnectionCreatedObject1Metadata : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
-
-    /// <summary>
-    /// Determines if the attribute is used for identification
-    /// </summary>
-    [Optional]
-    [JsonPropertyName("active")]
-    public bool? Active { get; set; }
-
-    [Optional]
-    [JsonPropertyName("default_method")]
-    public DefaultMethodEmailIdentifierEnum? DefaultMethod { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

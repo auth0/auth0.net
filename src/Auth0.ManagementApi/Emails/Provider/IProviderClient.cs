@@ -49,7 +49,10 @@ public partial interface IProviderClient
     /// <summary>
     /// Delete the email provider.
     /// </summary>
-    Task DeleteAsync(RequestOptions? options = null, CancellationToken cancellationToken = default);
+    WithRawResponseTask DeleteAsync(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     /// Update an [email provider](https://auth0.com/docs/email/providers). The `credentials` object

@@ -37,7 +37,7 @@ public partial interface IRulesClient
     /// <summary>
     /// Delete a rule.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

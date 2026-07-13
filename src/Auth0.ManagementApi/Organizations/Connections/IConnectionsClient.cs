@@ -26,7 +26,7 @@ public partial interface IConnectionsClient
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string connectionId,
         RequestOptions? options = null,

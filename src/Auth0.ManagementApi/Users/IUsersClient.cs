@@ -86,7 +86,7 @@ public partial interface IUsersClient
     /// <summary>
     /// Delete a user by user ID. This action cannot be undone. For Auth0 Dashboard instructions, see [Delete Users](https://auth0.com/docs/manage-users/user-accounts/delete-users).
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -204,7 +204,7 @@ public partial interface IUsersClient
     /// <summary>
     /// Revokes selected resources related to a user (sessions, refresh tokens, ...).
     /// </summary>
-    Task RevokeAccessAsync(
+    WithRawResponseTask RevokeAccessAsync(
         string id,
         RevokeUserAccessRequestContent request,
         RequestOptions? options = null,

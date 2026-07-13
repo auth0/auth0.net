@@ -17,7 +17,7 @@ public partial interface IClientsClient
         CancellationToken cancellationToken = default
     );
 
-    Task UpdateAsync(
+    WithRawResponseTask UpdateAsync(
         string id,
         IEnumerable<UpdateEnabledClientConnectionsRequestContentItem> request,
         RequestOptions? options = null,

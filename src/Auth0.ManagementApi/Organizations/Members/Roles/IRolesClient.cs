@@ -23,7 +23,7 @@ public partial interface IRolesClient
     ///
     /// Users can be members of multiple Organizations with unique roles assigned for each membership. This action assigns roles to a user only for the specified Organization. Roles cannot be assigned to a user across multiple Organizations in the same call.
     /// </summary>
-    Task AssignAsync(
+    WithRawResponseTask AssignAsync(
         string id,
         string userId,
         AssignOrganizationMemberRolesRequestContent request,
@@ -36,7 +36,7 @@ public partial interface IRolesClient
     ///
     /// Users can be members of multiple Organizations with unique roles assigned for each membership. This action removes roles from a user in relation to the specified Organization. Roles assigned to the user within a different Organization cannot be managed in the same call.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string userId,
         DeleteOrganizationMemberRolesRequestContent request,

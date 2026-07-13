@@ -18,7 +18,7 @@ public partial interface ISessionsClient
     /// <summary>
     /// Delete all sessions for a user.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string userId,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

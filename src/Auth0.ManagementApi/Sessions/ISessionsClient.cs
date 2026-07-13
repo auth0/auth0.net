@@ -14,7 +14,7 @@ public partial interface ISessionsClient
     /// <summary>
     /// Delete a session by ID.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -33,7 +33,7 @@ public partial interface ISessionsClient
     /// <summary>
     /// Revokes a session by ID and all associated refresh tokens.
     /// </summary>
-    Task RevokeAsync(
+    WithRawResponseTask RevokeAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

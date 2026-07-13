@@ -38,7 +38,7 @@ public partial interface IHooksClient
     /// <summary>
     /// Delete a hook.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

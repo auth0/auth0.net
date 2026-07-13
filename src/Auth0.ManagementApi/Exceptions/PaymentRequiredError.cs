@@ -4,5 +4,5 @@ namespace Auth0.ManagementApi;
 /// This exception type will be thrown for any non-2XX API responses.
 /// </summary>
 [Serializable]
-public class PaymentRequiredError(object body)
-    : ManagementApiException("PaymentRequiredError", 402, body);
+public class PaymentRequiredError(object body, Auth0.ManagementApi.RawResponse? rawResponse = null)
+    : ManagementApiException("PaymentRequiredError", 402, body, rawResponse: rawResponse);

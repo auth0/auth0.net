@@ -18,7 +18,7 @@ public partial interface IPermissionsClient
     /// <summary>
     /// Add one or more [permissions](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions) to a specified user role.
     /// </summary>
-    Task AddAsync(
+    WithRawResponseTask AddAsync(
         string id,
         AddRolePermissionsRequestContent request,
         RequestOptions? options = null,
@@ -28,7 +28,7 @@ public partial interface IPermissionsClient
     /// <summary>
     /// Remove one or more [permissions](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/manage-permissions) from a specified user role.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteRolePermissionsRequestContent request,
         RequestOptions? options = null,

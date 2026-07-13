@@ -38,14 +38,14 @@ public partial interface IMembersClient
     ///
     /// To add a user to an Organization through this action, the user must already exist in your tenant. If a user does not yet exist, you can [invite them to create an account](https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members), manually create them through the Auth0 Dashboard, or use the Management API.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string id,
         CreateOrganizationMemberRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteOrganizationMembersRequestContent request,
         RequestOptions? options = null,

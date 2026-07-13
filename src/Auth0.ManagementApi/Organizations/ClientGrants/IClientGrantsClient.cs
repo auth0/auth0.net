@@ -19,7 +19,7 @@ public partial interface IClientGrantsClient
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         string grantId,
         RequestOptions? options = null,

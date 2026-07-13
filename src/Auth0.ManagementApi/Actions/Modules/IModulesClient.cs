@@ -37,7 +37,7 @@ public partial interface IModulesClient
     /// <summary>
     /// Permanently delete an Actions Module. This will fail if the module is still in use by any actions.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

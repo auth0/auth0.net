@@ -448,7 +448,7 @@ public partial interface ILogStreamsClient
     /// <summary>
     /// Delete a log stream.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

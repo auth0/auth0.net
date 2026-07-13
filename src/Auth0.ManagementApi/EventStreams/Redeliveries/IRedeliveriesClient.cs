@@ -11,7 +11,7 @@ public partial interface IRedeliveriesClient
         CancellationToken cancellationToken = default
     );
 
-    Task CreateByIdAsync(
+    WithRawResponseTask CreateByIdAsync(
         string id,
         string eventId,
         RequestOptions? options = null,

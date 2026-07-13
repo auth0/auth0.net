@@ -40,7 +40,7 @@ public partial interface IActionsClient
     /// <summary>
     /// Deletes an action and all of its associated versions. An action must be unbound from all triggers before it can be deleted.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         DeleteActionRequestParameters request,
         RequestOptions? options = null,

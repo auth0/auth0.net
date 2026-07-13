@@ -16,7 +16,7 @@ public partial interface INetworkAclsClient
     /// <summary>
     /// Create a new access control list for your client.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         CreateNetworkAclRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -44,7 +44,7 @@ public partial interface INetworkAclsClient
     /// <summary>
     /// Delete existing access control list for your client.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

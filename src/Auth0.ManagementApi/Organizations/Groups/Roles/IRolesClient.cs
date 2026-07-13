@@ -19,7 +19,7 @@ public partial interface IRolesClient
     /// <summary>
     /// Assign one or more roles to a specified group in the context of an organization.
     /// </summary>
-    Task CreateAsync(
+    WithRawResponseTask CreateAsync(
         string organizationId,
         string groupId,
         CreateOrganizationGroupRolesRequestContent request,
@@ -30,7 +30,7 @@ public partial interface IRolesClient
     /// <summary>
     /// Unassign one or more roles from a specified group in the context of an organization.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string organizationId,
         string groupId,
         DeleteOrganizationGroupRolesRequestContent request,

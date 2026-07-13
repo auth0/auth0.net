@@ -18,7 +18,7 @@ public partial interface IRefreshTokenClient
     /// <summary>
     /// Delete all refresh tokens for a user.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string userId,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

@@ -24,5 +24,8 @@ public partial interface ICustomSigningClient
     /// <summary>
     /// Delete entire jwks representation of custom signing keys.
     /// </summary>
-    Task DeleteAsync(RequestOptions? options = null, CancellationToken cancellationToken = default);
+    WithRawResponseTask DeleteAsync(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

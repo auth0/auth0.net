@@ -129,7 +129,7 @@ public partial interface IClientsClient
     /// <summary>
     /// Delete a client and related configuration (rules, connections, etc).
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

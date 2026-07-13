@@ -26,7 +26,10 @@ public partial interface IEncryptionClient
     /// <summary>
     /// Perform rekeying operation on the key hierarchy.
     /// </summary>
-    Task RekeyAsync(RequestOptions? options = null, CancellationToken cancellationToken = default);
+    WithRawResponseTask RekeyAsync(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     /// Retrieve details of the encryption key with the given ID.
@@ -50,7 +53,7 @@ public partial interface IEncryptionClient
     /// <summary>
     /// Delete the custom provided encryption key with the given ID and move back to using native encryption key.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string kid,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

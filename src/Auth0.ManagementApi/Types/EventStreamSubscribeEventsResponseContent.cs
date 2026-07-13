@@ -22,6 +22,39 @@ public record EventStreamSubscribeEventsResponseContent
     }
 
     /// <summary>
+    /// Create an instance of EventStreamSubscribeEventsResponseContent with <see cref="EventStreamSubscribeEventsResponseContent.ConnectionCreated"/>.
+    /// </summary>
+    public EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionCreated value
+    )
+    {
+        Type = "connection.created";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of EventStreamSubscribeEventsResponseContent with <see cref="EventStreamSubscribeEventsResponseContent.ConnectionDeleted"/>.
+    /// </summary>
+    public EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionDeleted value
+    )
+    {
+        Type = "connection.deleted";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of EventStreamSubscribeEventsResponseContent with <see cref="EventStreamSubscribeEventsResponseContent.ConnectionUpdated"/>.
+    /// </summary>
+    public EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionUpdated value
+    )
+    {
+        Type = "connection.updated";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of EventStreamSubscribeEventsResponseContent with <see cref="EventStreamSubscribeEventsResponseContent.GroupCreated"/>.
     /// </summary>
     public EventStreamSubscribeEventsResponseContent(
@@ -297,6 +330,21 @@ public record EventStreamSubscribeEventsResponseContent
     public object? Value { get; internal set; }
 
     /// <summary>
+    /// Returns true if <see cref="Type"/> is "connection.created"
+    /// </summary>
+    public bool IsConnectionCreated => Type == "connection.created";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "connection.deleted"
+    /// </summary>
+    public bool IsConnectionDeleted => Type == "connection.deleted";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "connection.updated"
+    /// </summary>
+    public bool IsConnectionUpdated => Type == "connection.updated";
+
+    /// <summary>
     /// Returns true if <see cref="Type"/> is "group.created"
     /// </summary>
     public bool IsGroupCreated => Type == "group.created";
@@ -415,6 +463,39 @@ public record EventStreamSubscribeEventsResponseContent
     /// Returns true if <see cref="Type"/> is "offset-only"
     /// </summary>
     public bool IsOffsetOnly => Type == "offset-only";
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreated"/> if <see cref="Type"/> is 'connection.created', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'connection.created'.</exception>
+    public Auth0.ManagementApi.EventStreamCloudEventConnectionCreated AsConnectionCreated() =>
+        IsConnectionCreated
+            ? (Auth0.ManagementApi.EventStreamCloudEventConnectionCreated)Value!
+            : throw new global::System.Exception(
+                "EventStreamSubscribeEventsResponseContent.Type is not 'connection.created'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted"/> if <see cref="Type"/> is 'connection.deleted', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'connection.deleted'.</exception>
+    public Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted AsConnectionDeleted() =>
+        IsConnectionDeleted
+            ? (Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted)Value!
+            : throw new global::System.Exception(
+                "EventStreamSubscribeEventsResponseContent.Type is not 'connection.deleted'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated"/> if <see cref="Type"/> is 'connection.updated', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'connection.updated'.</exception>
+    public Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated AsConnectionUpdated() =>
+        IsConnectionUpdated
+            ? (Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated)Value!
+            : throw new global::System.Exception(
+                "EventStreamSubscribeEventsResponseContent.Type is not 'connection.updated'"
+            );
 
     /// <summary>
     /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupCreated"/> if <see cref="Type"/> is 'group.created', otherwise throws an exception.
@@ -681,6 +762,9 @@ public record EventStreamSubscribeEventsResponseContent
             );
 
     public T Match<T>(
+        Func<Auth0.ManagementApi.EventStreamCloudEventConnectionCreated, T> onConnectionCreated,
+        Func<Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted, T> onConnectionDeleted,
+        Func<Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated, T> onConnectionUpdated,
         Func<Auth0.ManagementApi.EventStreamCloudEventGroupCreated, T> onGroupCreated,
         Func<Auth0.ManagementApi.EventStreamCloudEventGroupDeleted, T> onGroupDeleted,
         Func<Auth0.ManagementApi.EventStreamCloudEventGroupMemberAdded, T> onGroupMemberAdded,
@@ -734,6 +818,9 @@ public record EventStreamSubscribeEventsResponseContent
     {
         return Type switch
         {
+            "connection.created" => onConnectionCreated(AsConnectionCreated()),
+            "connection.deleted" => onConnectionDeleted(AsConnectionDeleted()),
+            "connection.updated" => onConnectionUpdated(AsConnectionUpdated()),
             "group.created" => onGroupCreated(AsGroupCreated()),
             "group.deleted" => onGroupDeleted(AsGroupDeleted()),
             "group.member.added" => onGroupMemberAdded(AsGroupMemberAdded()),
@@ -779,6 +866,9 @@ public record EventStreamSubscribeEventsResponseContent
     }
 
     public void Visit(
+        global::System.Action<Auth0.ManagementApi.EventStreamCloudEventConnectionCreated> onConnectionCreated,
+        global::System.Action<Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted> onConnectionDeleted,
+        global::System.Action<Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated> onConnectionUpdated,
         global::System.Action<Auth0.ManagementApi.EventStreamCloudEventGroupCreated> onGroupCreated,
         global::System.Action<Auth0.ManagementApi.EventStreamCloudEventGroupDeleted> onGroupDeleted,
         global::System.Action<Auth0.ManagementApi.EventStreamCloudEventGroupMemberAdded> onGroupMemberAdded,
@@ -808,6 +898,15 @@ public record EventStreamSubscribeEventsResponseContent
     {
         switch (Type)
         {
+            case "connection.created":
+                onConnectionCreated(AsConnectionCreated());
+                break;
+            case "connection.deleted":
+                onConnectionDeleted(AsConnectionDeleted());
+                break;
+            case "connection.updated":
+                onConnectionUpdated(AsConnectionUpdated());
+                break;
             case "group.created":
                 onGroupCreated(AsGroupCreated());
                 break;
@@ -884,6 +983,54 @@ public record EventStreamSubscribeEventsResponseContent
                 onUnknown_(Type, Value);
                 break;
         }
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreated"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsConnectionCreated(
+        out Auth0.ManagementApi.EventStreamCloudEventConnectionCreated? value
+    )
+    {
+        if (Type == "connection.created")
+        {
+            value = (Auth0.ManagementApi.EventStreamCloudEventConnectionCreated)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsConnectionDeleted(
+        out Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted? value
+    )
+    {
+        if (Type == "connection.deleted")
+        {
+            value = (Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsConnectionUpdated(
+        out Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated? value
+    )
+    {
+        if (Type == "connection.updated")
+        {
+            value = (Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated)Value!;
+            return true;
+        }
+        value = null;
+        return false;
     }
 
     /// <summary>
@@ -1259,6 +1406,18 @@ public record EventStreamSubscribeEventsResponseContent
     public override string ToString() => JsonUtils.Serialize(this);
 
     public static implicit operator EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionCreated value
+    ) => new(value);
+
+    public static implicit operator EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionDeleted value
+    ) => new(value);
+
+    public static implicit operator EventStreamSubscribeEventsResponseContent(
+        EventStreamSubscribeEventsResponseContent.ConnectionUpdated value
+    ) => new(value);
+
+    public static implicit operator EventStreamSubscribeEventsResponseContent(
         EventStreamSubscribeEventsResponseContent.GroupCreated value
     ) => new(value);
 
@@ -1395,6 +1554,27 @@ public record EventStreamSubscribeEventsResponseContent
 
             var value = discriminator switch
             {
+                "connection.created" =>
+                    jsonWithoutDiscriminator.Deserialize<Auth0.ManagementApi.EventStreamCloudEventConnectionCreated?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize Auth0.ManagementApi.EventStreamCloudEventConnectionCreated"
+                        ),
+                "connection.deleted" =>
+                    jsonWithoutDiscriminator.Deserialize<Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted"
+                        ),
+                "connection.updated" =>
+                    jsonWithoutDiscriminator.Deserialize<Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated"
+                        ),
                 "group.created" =>
                     jsonWithoutDiscriminator.Deserialize<Auth0.ManagementApi.EventStreamCloudEventGroupCreated?>(
                         options
@@ -1577,6 +1757,9 @@ public record EventStreamSubscribeEventsResponseContent
             JsonNode json =
                 value.Type switch
                 {
+                    "connection.created" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "connection.deleted" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "connection.updated" => JsonSerializer.SerializeToNode(value.Value, options),
                     "group.created" => JsonSerializer.SerializeToNode(value.Value, options),
                     "group.deleted" => JsonSerializer.SerializeToNode(value.Value, options),
                     "group.member.added" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -1654,6 +1837,66 @@ public record EventStreamSubscribeEventsResponseContent
         {
             writer.WritePropertyName(value.Type);
         }
+    }
+
+    /// <summary>
+    /// Discriminated union type for connection.created
+    /// </summary>
+    [Serializable]
+    public struct ConnectionCreated
+    {
+        public ConnectionCreated(Auth0.ManagementApi.EventStreamCloudEventConnectionCreated value)
+        {
+            Value = value;
+        }
+
+        internal Auth0.ManagementApi.EventStreamCloudEventConnectionCreated Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator EventStreamSubscribeEventsResponseContent.ConnectionCreated(
+            Auth0.ManagementApi.EventStreamCloudEventConnectionCreated value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for connection.deleted
+    /// </summary>
+    [Serializable]
+    public struct ConnectionDeleted
+    {
+        public ConnectionDeleted(Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted value)
+        {
+            Value = value;
+        }
+
+        internal Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator EventStreamSubscribeEventsResponseContent.ConnectionDeleted(
+            Auth0.ManagementApi.EventStreamCloudEventConnectionDeleted value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for connection.updated
+    /// </summary>
+    [Serializable]
+    public struct ConnectionUpdated
+    {
+        public ConnectionUpdated(Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated value)
+        {
+            Value = value;
+        }
+
+        internal Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator EventStreamSubscribeEventsResponseContent.ConnectionUpdated(
+            Auth0.ManagementApi.EventStreamCloudEventConnectionUpdated value
+        ) => new(value);
     }
 
     /// <summary>

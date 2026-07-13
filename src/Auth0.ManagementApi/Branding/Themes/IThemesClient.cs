@@ -33,7 +33,7 @@ public partial interface IThemesClient
     /// <summary>
     /// Delete branding theme.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string themeId,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

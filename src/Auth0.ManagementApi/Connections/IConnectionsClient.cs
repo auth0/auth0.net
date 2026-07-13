@@ -62,7 +62,7 @@ public partial interface IConnectionsClient
     ///
     /// **Note:** If your connection has a large amount of users associated with it, please be aware that this operation can be long running after the response is returned and may impact concurrent [create connection](https://auth0.com/docs/api/management/v2/connections/post-connections) requests, if they use an identical connection name.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -83,7 +83,7 @@ public partial interface IConnectionsClient
     /// <summary>
     /// Retrieves the status of an ad/ldap connection referenced by its `ID`. `200 OK` http status code response is returned  when the connection is online, otherwise a `404` status code is returned along with an error message
     /// </summary>
-    Task CheckStatusAsync(
+    WithRawResponseTask CheckStatusAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

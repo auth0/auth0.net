@@ -11,17 +11,14 @@ public record ListRolesOffsetPaginatedResponseContent : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [Optional]
     [JsonPropertyName("start")]
-    public double? Start { get; set; }
+    public required double Start { get; set; }
 
-    [Optional]
     [JsonPropertyName("limit")]
-    public double? Limit { get; set; }
+    public required double Limit { get; set; }
 
-    [Optional]
     [JsonPropertyName("total")]
-    public double? Total { get; set; }
+    public required double Total { get; set; }
 
     [Optional]
     [JsonPropertyName("roles")]

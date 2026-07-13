@@ -14,11 +14,8 @@ public record EventStreamCloudEventGroupRoleAssignedCloudEvent : IJsonOnDeserial
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    /// <summary>
-    /// The version of the CloudEvents specification which the event uses.
-    /// </summary>
     [JsonPropertyName("specversion")]
-    public required string Specversion { get; set; }
+    public required EventStreamCloudEventSpecVersionEnum Specversion { get; set; }
 
     [JsonPropertyName("type")]
     public required EventStreamCloudEventGroupRoleAssignedCloudEventTypeEnum Type { get; set; }

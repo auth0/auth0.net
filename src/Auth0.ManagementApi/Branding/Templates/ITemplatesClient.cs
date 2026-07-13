@@ -35,13 +35,13 @@ public partial interface ITemplatesClient
     /// &lt;/html&gt;
     /// ```
     /// </summary>
-    Task UpdateUniversalLoginAsync(
+    WithRawResponseTask UpdateUniversalLoginAsync(
         UpdateUniversalLoginTemplateRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    Task DeleteUniversalLoginAsync(
+    WithRawResponseTask DeleteUniversalLoginAsync(
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

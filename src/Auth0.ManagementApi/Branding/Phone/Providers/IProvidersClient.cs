@@ -35,7 +35,7 @@ public partial interface IProvidersClient
     /// <summary>
     /// Delete the configured phone provider.
     /// </summary>
-    Task DeleteAsync(
+    WithRawResponseTask DeleteAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
