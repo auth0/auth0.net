@@ -160,7 +160,9 @@ public class TenantSettingsTests : IClassFixture<TenantSettingsTestsFixture>
                     {
                         ClientCredentials = new TokenQuotaClientCredentials
                         {
-                            Enforce = false
+                            Enforce = false,
+                            PerDay = 200,
+                            PerHour = 100
                         }
                     },
                     Organizations = new TokenQuotaConfiguration
