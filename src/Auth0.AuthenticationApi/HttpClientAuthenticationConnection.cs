@@ -141,7 +141,7 @@ public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDi
     {
         if (parsedResponse == null || httpResponse == null) return;
 
-        var headers = httpResponse.Headers?.ToDictionary(h => h.Key, h => h.Value);
+        var headers = httpResponse.Headers?.ToDictionary(h => h.Key, h => h.Value, StringComparer.OrdinalIgnoreCase);
         var headersProperty = typeof(T).GetProperty("Headers");
             
         if (headersProperty != null && headersProperty.PropertyType == typeof(IDictionary<string, IEnumerable<string>>))

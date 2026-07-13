@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Models.Ciba;
+using Auth0.Core;
 using FluentAssertions;
 using Xunit;
 
@@ -87,8 +88,29 @@ public class HttpClientAuthenticationConnectionTests : TestBase
     {
         // Arrange
         var parsedResponse = new ClientInitiatedBackchannelAuthorizationResponse();
-        
+
         // Act & Assert
         HttpClientAuthenticationConnection.AddResponseHeaders(parsedResponse, null);
+    }
+
+    [Fact]
+    public void AddResponseHeaders_Should_Build_Case_Insensitive_Header_Lookup()
+    {
+        // HTTP headers are case-insensitive; the server may return the quota
+        // header with different casing than the SDK looks it up with.
+        var parsedResponse = new AccessTokenResponse();
+        var httpResponse = new HttpResponseMessage
+        {
+            Headers = { { "auth0-client-quota-limit", ["b=per_hour;q=2;r=1;t=924"] } }
+        };
+
+        HttpClientAuthenticationConnection.AddResponseHeaders(parsedResponse, httpResponse);
+
+        var clientQuota = parsedResponse.Headers.GetClientQuotaLimit();
+
+        clientQuota.Should().NotBeNull();
+        clientQuota.PerHour.Quota.Should().Be(2);
+        clientQuota.PerHour.Remaining.Should().Be(1);
+        clientQuota.PerHour.ResetAfter.Should().Be(924);
     }
 }
