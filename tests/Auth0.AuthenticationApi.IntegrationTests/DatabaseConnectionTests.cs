@@ -161,7 +161,7 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
                 Email = new EmailAttribute()
                 {
                     ProfileRequired = false,
-                    Identifier = new ConnectionAttributeIdentifier()
+                    Identifier = new EmailAttributeIdentifier()
                     {
                         Active = true
                     },
@@ -177,7 +177,7 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
                 PhoneNumber = new PhoneAttribute()
                 {
                     ProfileRequired = true,
-                    Identifier = new ConnectionAttributeIdentifier()
+                    Identifier = new PhoneAttributeIdentifier()
                     {
                         Active = true
                     },
@@ -193,7 +193,7 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
                 Username = new UsernameAttribute()
                 {
                     ProfileRequired = true,
-                    Identifier = new ConnectionAttributeIdentifier()
+                    Identifier = new UsernameAttributeIdentifier()
                     {
                         Active = true
                     },
