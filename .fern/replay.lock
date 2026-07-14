@@ -30,14 +30,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.72.1
-current_generation: 25e621a6eb7584bd0761ac10041190771fa2b388
+  - commit_sha: 6d43cb21ef33ed0258702dd8e9c5259632963b9f
+    tree_hash: 506f81e47749d997ebbbc925a6f1e7431bc2b7bf
+    timestamp: 2026-07-14T04:33:07.399Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.72.1
+current_generation: 6d43cb21ef33ed0258702dd8e9c5259632963b9f
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 25e621a6eb7584bd0761ac10041190771fa2b388
+    base_generation: 6d43cb21ef33ed0258702dd8e9c5259632963b9f
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -245,7 +251,7 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: 25e621a6eb7584bd0761ac10041190771fa2b388
+    base_generation: 6d43cb21ef33ed0258702dd8e9c5259632963b9f
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
