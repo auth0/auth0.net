@@ -150,10 +150,6 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("gateway_authentication")]
     public Optional<ConnectionGatewayAuthentication?> GatewayAuthentication { get; set; }
 
-    [Nullable, Optional]
-    [JsonPropertyName("federated_connections_access_tokens")]
-    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
-
     [Optional]
     [JsonPropertyName("password_options")]
     public ConnectionPasswordOptions? PasswordOptions { get; set; }

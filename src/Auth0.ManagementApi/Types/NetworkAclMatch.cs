@@ -16,6 +16,10 @@ public record NetworkAclMatch : IJsonOnDeserialized
     public IEnumerable<int>? Asns { get; set; }
 
     [Optional]
+    [JsonPropertyName("auth0_managed")]
+    public IEnumerable<string>? Auth0Managed { get; set; }
+
+    [Optional]
     [JsonPropertyName("geo_country_codes")]
     public IEnumerable<string>? GeoCountryCodes { get; set; }
 

@@ -48,10 +48,6 @@ public record ConnectionOptionsOidc : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("dpop_signing_alg")]
     public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
 
-    [Nullable, Optional]
-    [JsonPropertyName("federated_connections_access_tokens")]
-    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
-
     [Optional]
     [JsonPropertyName("icon_url")]
     public string? IconUrl { get; set; }

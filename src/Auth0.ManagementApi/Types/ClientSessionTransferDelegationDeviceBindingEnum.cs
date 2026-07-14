@@ -12,8 +12,6 @@ public readonly record struct ClientSessionTransferDelegationDeviceBindingEnum :
 {
     public static readonly ClientSessionTransferDelegationDeviceBindingEnum Ip = new(Values.Ip);
 
-    public static readonly ClientSessionTransferDelegationDeviceBindingEnum Asn = new(Values.Asn);
-
     public ClientSessionTransferDelegationDeviceBindingEnum(string value)
     {
         Value = value;
@@ -120,7 +118,5 @@ public readonly record struct ClientSessionTransferDelegationDeviceBindingEnum :
     public static class Values
     {
         public const string Ip = "ip";
-
-        public const string Asn = "asn";
     }
 }

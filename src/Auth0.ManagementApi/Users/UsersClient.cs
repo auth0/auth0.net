@@ -17,7 +17,6 @@ public partial class UsersClient : IUsersClient
         EffectivePermissions = new EffectivePermissionsClient(_client);
         EffectiveRoles = new Auth0.ManagementApi.Users.EffectiveRolesClient(_client);
         Enrollments = new Auth0.ManagementApi.Users.EnrollmentsClient(_client);
-        FederatedConnectionsTokensets = new FederatedConnectionsTokensetsClient(_client);
         Groups = new Auth0.ManagementApi.Users.GroupsClient(_client);
         Identities = new IdentitiesClient(_client);
         Logs = new Auth0.ManagementApi.Users.LogsClient(_client);
@@ -41,8 +40,6 @@ public partial class UsersClient : IUsersClient
     public Auth0.ManagementApi.Users.IEffectiveRolesClient EffectiveRoles { get; }
 
     public Auth0.ManagementApi.Users.IEnrollmentsClient Enrollments { get; }
-
-    public IFederatedConnectionsTokensetsClient FederatedConnectionsTokensets { get; }
 
     public Auth0.ManagementApi.Users.IGroupsClient Groups { get; }
 
