@@ -29,6 +29,9 @@ public class GetTest : BaseMockServerTest
                   "asns": [
                     1
                   ],
+                  "auth0_managed": [
+                    "auth0_managed"
+                  ],
                   "geo_country_codes": [
                     "geo_country_codes"
                   ],
@@ -63,6 +66,9 @@ public class GetTest : BaseMockServerTest
                 "not_match": {
                   "asns": [
                     1
+                  ],
+                  "auth0_managed": [
+                    "auth0_managed"
                   ],
                   "geo_country_codes": [
                     "geo_country_codes"
