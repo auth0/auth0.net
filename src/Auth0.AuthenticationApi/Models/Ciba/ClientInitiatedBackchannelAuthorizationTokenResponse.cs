@@ -10,9 +10,6 @@ namespace Auth0.AuthenticationApi.Models.Ciba;
 
 public class ClientInitiatedBackchannelAuthorizationTokenResponse : AccessTokenResponse
 {
-    [JsonPropertyName("scope")]
-    public string Scope { get; set; }
-
     /// <summary>
     /// Raw <c>authorization_details</c> JSON returned by the token endpoint as part of a
     /// Rich Authorization Requests (RAR) flow. Use <see cref="AuthorizationDetails"/> for a strongly-typed view.
