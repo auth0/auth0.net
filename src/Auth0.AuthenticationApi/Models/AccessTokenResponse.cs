@@ -37,5 +37,17 @@ public class AccessTokenResponse : TokenBase
     [JsonPropertyName("scope")]
     public string Scope { get; set; }
 
+    /// <summary>
+    /// The type of the token issued, as a URN.
+    /// </summary>
+    /// <remarks>
+    /// Returned by the token-exchange grant to indicate which kind of token was issued —
+    /// for example <see cref="TokenType.AccessToken"/> for a normal access token, or
+    /// <see cref="TokenType.SessionTransferToken"/> for an Auth0 Session Transfer Token.
+    /// Null for flows that do not return this field.
+    /// </remarks>
+    [JsonPropertyName("issued_token_type")]
+    public string IssuedTokenType { get; set; }
+
     public IDictionary<string, IEnumerable<string>> Headers { get; set; }
 }

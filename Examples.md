@@ -18,6 +18,7 @@
   - [4.1. Pushed Authorization Request (PAR) with authorization details](#41-pushed-authorization-request-par-with-authorization-details)
   - [4.2. Client Initiated Backchannel Authorization (CIBA) with authorization details](#42-client-initiated-backchannel-authorization-ciba-with-authorization-details)
 - [5. Multi-Resource Refresh Token (MRRT)](#5-multi-resource-refresh-token-mrrt)
+- [6. Custom Token Exchange (CTE)](#6-custom-token-exchange-cte)
 
 ## 1. Client Initialization
 
@@ -299,6 +300,63 @@ if (missingScopes.Count > 0)
     Console.WriteLine($"Warning: not all requested scopes were granted. Missing: {string.Join(" ", missingScopes)}");
 }
 ```
+
+[Go to Top](#)
+
+## 6. Custom Token Exchange (CTE)
+
+Custom Token Exchange uses the OAuth 2.0 Token Exchange grant (RFC 8693) to exchange an
+existing token for a new Auth0-issued token. The same call supports two use cases,
+selected by the parameters you pass.
+
+### Phase 1 — exchange a subject token for an access token
+
+```csharp
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+
+var auth = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
+
+var tokenResponse = await auth.GetTokenAsync(new TokenExchangeTokenRequest
+{
+    ClientId = "YOUR_CLIENT_ID",
+    ClientSecret = "YOUR_CLIENT_SECRET",
+    SubjectToken = "THE_TOKEN_TO_EXCHANGE",
+    SubjectTokenType = TokenType.AccessToken,   // or a custom URN
+    Audience = "https://api.example.com",       // optional target API
+    Scope = "read:data"                          // optional
+});
+
+Console.WriteLine($"Access Token     : {tokenResponse.AccessToken}");
+Console.WriteLine($"Issued Token Type: {tokenResponse.IssuedTokenType}");
+```
+
+### Phase 2 — request a Session Transfer Token
+
+Set `Audience` to your tenant's session-transfer audience and supply an actor token. The
+response's `IssuedTokenType` will be `TokenType.SessionTransferToken`.
+
+```csharp
+var sttResponse = await auth.GetTokenAsync(new TokenExchangeTokenRequest
+{
+    ClientId = "YOUR_CLIENT_ID",
+    ClientSecret = "YOUR_CLIENT_SECRET",
+    SubjectToken = "THE_SUBJECT_TOKEN",
+    SubjectTokenType = TokenType.AccessToken,
+    ActorToken = "THE_ACTOR_TOKEN",
+    ActorTokenType = TokenType.AccessToken,
+    Audience = "urn:YOUR_AUTH0_DOMAIN:session_transfer",
+    Reason = "support-impersonation"             // optional audit string
+});
+
+if (sttResponse.IssuedTokenType == TokenType.SessionTransferToken)
+{
+    Console.WriteLine($"Session Transfer Token: {sttResponse.AccessToken}");
+}
+```
+
+> `ActorToken` and `ActorTokenType` are both-or-neither — supplying only one throws
+> `ArgumentException` before any network call.
 
 [Go to Top](#)
 

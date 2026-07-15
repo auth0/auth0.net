@@ -83,9 +83,20 @@ public interface IAuthenticationApiClient : IDisposable
     /// </summary>
     /// <param name="request"><see cref="RefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns><see cref="Task"/> representing the async operation containing 
+    /// <returns><see cref="Task"/> representing the async operation containing
     /// a <see cref="AccessTokenResponse" /> with the requested tokens.</returns>
     Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Exchanges a token using the OAuth 2.0 Token Exchange grant (RFC 8693), also known
+    /// as Custom Token Exchange.
+    /// </summary>
+    /// <param name="request"><see cref="TokenExchangeTokenRequest"/> containing the subject token and associated parameters.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns><see cref="Task"/> representing the async operation containing
+    /// a <see cref="AccessTokenResponse" /> with the requested tokens. Inspect
+    /// <see cref="AccessTokenResponse.IssuedTokenType"/> to determine the kind of token issued.</returns>
+    Task<AccessTokenResponse> GetTokenAsync(TokenExchangeTokenRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Performs authentication by providing user-supplied information in a <see cref="ResourceOwnerTokenRequest"/>.
