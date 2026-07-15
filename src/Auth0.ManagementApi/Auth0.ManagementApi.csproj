@@ -28,7 +28,7 @@
     <Using Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup Condition="'$(UsePortableDateOnly)' == 'true'">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(UsePortableDateOnly)' == 'false'">
     <Compile Remove="Core\DateOnlyConverter.cs" />
