@@ -11,7 +11,6 @@ public partial interface IUsersClient
     public IEffectivePermissionsClient EffectivePermissions { get; }
     public Auth0.ManagementApi.Users.IEffectiveRolesClient EffectiveRoles { get; }
     public Auth0.ManagementApi.Users.IEnrollmentsClient Enrollments { get; }
-    public IFederatedConnectionsTokensetsClient FederatedConnectionsTokensets { get; }
     public Auth0.ManagementApi.Users.IGroupsClient Groups { get; }
     public IIdentitiesClient Identities { get; }
     public Auth0.ManagementApi.Users.ILogsClient Logs { get; }

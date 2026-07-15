@@ -339,10 +339,6 @@ public record ConnectionOptionsAzureAd : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("ext_user_id")]
     public bool? ExtUserId { get; set; }
 
-    [Nullable, Optional]
-    [JsonPropertyName("federated_connections_access_tokens")]
-    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
-
     /// <summary>
     /// Indicates whether admin consent has been granted for the required Azure AD permissions. Read-only status field managed by Auth0 during the OAuth authorization flow.
     /// </summary>

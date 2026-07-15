@@ -85,10 +85,6 @@ public record ConnectionOptionsGoogleApps : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("ext_is_suspended")]
     public bool? ExtIsSuspended { get; set; }
 
-    [Nullable, Optional]
-    [JsonPropertyName("federated_connections_access_tokens")]
-    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
-
     [Optional]
     [JsonPropertyName("handle_login_from_social")]
     public bool? HandleLoginFromSocial { get; set; }
