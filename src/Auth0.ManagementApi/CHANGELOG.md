@@ -1,5 +1,42 @@
 # Change Log
 
+## [mgmt-9.0.0](https://github.com/auth0/auth0.net/tree/mgmt-9.0.0) (2026-07-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.6.0...mgmt-9.0.0)
+
+This is a **major release**. Please review the [v8 → v9 Migration Guide](https://github.com/auth0/auth0.net/blob/master/V9_MIGRATION_GUIDE.md) before upgrading. The breaking changes below require source-level updates for affected consumers.
+
+**⚠️ BREAKING CHANGES**
+
+_Removed API surface — [\#1053](https://github.com/auth0/auth0.net/pull/1053) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- **Federated Connections Tokensets removed:** The entire `client.Users.FederatedConnectionsTokensets` sub-client (`ListAsync`, `DeleteAsync`), the `FederatedConnectionsTokensetsClient` / `IFederatedConnectionsTokensetsClient` types, and the `FederatedConnectionTokenSet` response model have been removed. The backing endpoints were deleted upstream.
+- **`FederatedConnectionsAccessTokens` connection option removed:** The property and its backing `ConnectionFederatedConnectionsAccessTokens` model have been removed from `ConnectionOptionsAzureAd`, `ConnectionOptionsCommonOidc`, `ConnectionOptionsGoogleApps`, `ConnectionOptionsOidc`, `ConnectionOptionsOkta`, `ConnectionPropertiesOptions`, and `UpdateConnectionOptions`.
+- **OAuth scopes removed:** `OauthScope.ReadFederatedConnectionsTokens` (`read:federated_connections_tokens`) and `OauthScope.DeleteFederatedConnectionsTokens` (`delete:federated_connections_tokens`).
+- **Enum value removed:** `ClientSessionTransferDelegationDeviceBindingEnum.Asn` (`"asn"`); only `Ip` remains.
+
+_Return-type & model changes — [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- **`DeleteAsync` return type changed** across the API from `Task` to `WithRawResponseTask`. `await`-ing the call still works; explicit `Task`-typed assignments must be updated.
+- **`Events.SubscribeAsync` return type changed** from `IAsyncEnumerable<EventStreamSubscribeEventsResponseContent>` to `WithRawResponseStream<...>` (adds streaming + transparent reconnection support). Direct `await foreach` still works; code that stored the result in an `IAsyncEnumerable<...>` variable must be updated.
+- **`ConnectionAttributeIdentifier` removed** and split into `EmailAttributeIdentifier`, `PhoneAttributeIdentifier`, and `UsernameAttributeIdentifier`. Callers constructing `ConnectionAttributeIdentifier` must switch to the type-specific class.
+- **Retry-count semantics changed:** the retry loop now performs up to `MaxRetries + 1` total sends for retryable requests (previously initial send + `MaxRetries`). Review any code that depends on exact attempt counts.
+
+**Added**
+- **Organization Role Members:** Added `client.Organizations.Roles.Members.ListAsync(...)` to list organization members assigned a specific role, backed by new `RolesClient`, `MembersClient`, `RoleMember`, and `ListOrganizationRoleMembersRequestParameters` types [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Resumable SSE streaming:** Added `WithRawResponseStream<T>` (dual-mode wrapper supporting `await foreach` over parsed values or `.WithRawResponse()` for response metadata) and `SseReconnectHelper` for transparent mid-stream reconnection via the `Last-Event-ID` header. `RequestOptions` / `IRequestOptions` gain `MaxStreamReconnectAttempts` and `DisableStreamReconnection` (apply only to resumable SSE streams) [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Raw response on exceptions:** `ManagementApiException.RawResponse` exposes the status code, URL, and headers of a failed request; all typed error subclasses (`TooManyRequestsError`, `NotFoundError`, etc.) now forward `rawResponse` and expose typed error bodies (`TooManyRequestsErrorBody`, `NotFoundErrorBody`) [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Typed error and rate-limit details on exceptions:** `ManagementApiException` gains `ApiError`, `Description`, `ErrorCode`, and `RateLimit` properties (parsed lazily and cached). New public types `ApiError`, `RateLimit`, `QuotaLimit`, `ClientQuotaLimit`, and `OrganizationQuotaLimit` surface structured error bodies and the `x-ratelimit-*`, `retry-after`, `Auth0-Client-Quota-Limit`, and `Auth0-Organization-Quota-Limit` headers without manual parsing. Because `RateLimit` lives on the base exception, any error type (not just 429s) can surface rate-limit/quota data when present. Parsing is defensive — malformed headers/bodies yield `null` rather than throwing [\#1049](https://github.com/auth0/auth0.net/pull/1049) ([kailash-b](https://github.com/kailash-b))
+- **`NetworkAclMatch.Auth0Managed`:** new optional `auth0_managed` property (`IEnumerable<string>?`) [\#1053](https://github.com/auth0/auth0.net/pull/1053) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Changed**
+- **Retry engine reworked (`Core/RawClient.cs`):** each retry attempt now sends a fresh request clone (fixes `HttpClient` disposing `request.Content` under HTTP/2), `MaxRetries` is floored at 0, and `CloneRequestAsync` honors the `CancellationToken` on `NET5_0_OR_GREATER` [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Widespread SDK regeneration by Fern (`fernapi/fern-csharp-sdk` 2.72.1) across resource clients (Actions, Branding, Clients, Connections, CustomDomains, EventStreams, Flows, Forms, Organizations, and others), `reference.md`, and `Page`/`Pager` helpers, with customer customizations preserved [\#1043](https://github.com/auth0/auth0.net/pull/1043) ([fern-api[bot]](https://github.com/apps/fern-api))
+- Added a **v8 → v9 migration guidance doc** describing what changed, what breaks, and how to migrate [\#1050](https://github.com/auth0/auth0.net/pull/1050) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- Bumped `System.IdentityModel.Tokens.Jwt` and `Microsoft.IdentityModel.Protocols.OpenIdConnect` from `8.18.0` to `8.19.1`, `PolySharp` from `1.15.0` to `1.16.0`, and several GitHub Actions (`actions/cache` 5→6, `actions/checkout` 5→7, `codecov/codecov-action` 6.0.0→7.0.0, `snyk/actions/dotnet` 0.4.0→1.0.0) [\#1044](https://github.com/auth0/auth0.net/pull/1044) ([kailash-b](https://github.com/kailash-b))
+- Suppressed Snyk false positives via `.snyk` policy [\#1045](https://github.com/auth0/auth0.net/pull/1045) ([kailash-b](https://github.com/kailash-b))
+
+> **Note:** With the release of v9, the v8 line of `Auth0.ManagementApi` is now in maintenance mode and will receive **bug fixes and security patches only**. New features and API additions will land in v9 and later.
+
 ## [mgmt-8.6.0](https://github.com/auth0/auth0.net/tree/mgmt-8.6.0) (2026-06-29)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.5.0...mgmt-8.6.0)
 
