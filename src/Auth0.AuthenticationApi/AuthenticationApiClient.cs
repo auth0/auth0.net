@@ -220,7 +220,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
             cancellationToken: cancellationToken
         ).ConfigureAwait(false);
 
-        await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
+        await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
 
         return response;
     }

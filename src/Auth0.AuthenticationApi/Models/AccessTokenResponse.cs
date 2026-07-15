@@ -25,6 +25,17 @@ public class AccessTokenResponse : TokenBase
     /// </summary>
     [JsonPropertyName("refresh_token")]
     public string RefreshToken { get; set; }
-        
+
+    /// <summary>
+    /// The scopes that were actually granted for this token.
+    /// </summary>
+    /// <remarks>
+    /// The authorization server returns the granted scope, which
+    /// may be narrower than the scope that was requested. Compare this against the
+    /// requested scope to detect an insufficient-scope grant.
+    /// </remarks>
+    [JsonPropertyName("scope")]
+    public string Scope { get; set; }
+
     public IDictionary<string, IEnumerable<string>> Headers { get; set; }
 }

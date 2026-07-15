@@ -17,6 +17,7 @@
 - [4. Rich Authorization Requests (RAR)](#4-rich-authorization-requests-rar)
   - [4.1. Pushed Authorization Request (PAR) with authorization details](#41-pushed-authorization-request-par-with-authorization-details)
   - [4.2. Client Initiated Backchannel Authorization (CIBA) with authorization details](#42-client-initiated-backchannel-authorization-ciba-with-authorization-details)
+- [5. Multi-Resource Refresh Token (MRRT)](#5-multi-resource-refresh-token-mrrt)
 
 ## 1. Client Initialization
 
@@ -257,6 +258,45 @@ if (tokenResponse.AuthorizationDetails != null)
     {
         Console.WriteLine(detail.Type);
     }
+}
+```
+
+[Go to Top](#)
+
+## 5. Multi-Resource Refresh Token (MRRT)
+
+A Multi-Resource Refresh Token lets you exchange a single refresh token for access
+tokens targeting different APIs (`Audience`) and/or broader scopes, without a full
+re-authentication. At the protocol level this is a standard refresh-token grant with
+`Audience` and/or `Scope` set.
+
+The token endpoint returns the scopes that were **actually granted** in
+`AccessTokenResponse.Scope` (RFC 6749 §5.1), which may be narrower than what you
+requested. Compare the two to detect an insufficient-scope grant.
+
+```csharp
+var requestedScope = "read:data write:data";
+
+var tokenResponse = await authClient.GetTokenAsync(new RefreshTokenRequest
+{
+    ClientId = _clientId,
+    ClientSecret = _clientSecret,
+    RefreshToken = _refreshToken,
+    Audience = "https://my-api.example.com", // target a different API (optional)
+    Scope = requestedScope                    // request broader scopes (optional)
+});
+
+Console.WriteLine($"Access Token : {tokenResponse.AccessToken}");
+Console.WriteLine($"Granted Scope: {tokenResponse.Scope}");
+
+// The server may grant fewer scopes than requested, and returns them in no guaranteed
+// order — compare as sets rather than comparing the raw strings.
+var requested = requestedScope.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+var granted = (tokenResponse.Scope ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries);
+var missingScopes = requested.Except(granted).ToList();
+if (missingScopes.Count > 0)
+{
+    Console.WriteLine($"Warning: not all requested scopes were granted. Missing: {string.Join(" ", missingScopes)}");
 }
 ```
 

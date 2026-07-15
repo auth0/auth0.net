@@ -57,4 +57,15 @@ public class ClientInitiatedBackchannelAuthorizationTokenResponseTests
 
         first.Should().BeSameAs(second);
     }
+
+    [Fact]
+    public void Scope_deserializes_onto_inherited_base_property()
+    {
+        var json = "{\"access_token\":\"at\",\"token_type\":\"Bearer\",\"scope\":\"openid profile\"}";
+
+        var response = System.Text.Json.JsonSerializer
+            .Deserialize<ClientInitiatedBackchannelAuthorizationTokenResponse>(json);
+
+        response.Scope.Should().Be("openid profile");
+    }
 }
