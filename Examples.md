@@ -289,10 +289,14 @@ var tokenResponse = await authClient.GetTokenAsync(new RefreshTokenRequest
 Console.WriteLine($"Access Token : {tokenResponse.AccessToken}");
 Console.WriteLine($"Granted Scope: {tokenResponse.Scope}");
 
-// The server may grant fewer scopes than requested — check before relying on them.
-if (tokenResponse.Scope != requestedScope)
+// The server may grant fewer scopes than requested, and returns them in no guaranteed
+// order — compare as sets rather than comparing the raw strings.
+var requested = requestedScope.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+var granted = (tokenResponse.Scope ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries);
+var missingScopes = requested.Except(granted).ToList();
+if (missingScopes.Count > 0)
 {
-    Console.WriteLine("Warning: not all requested scopes were granted.");
+    Console.WriteLine($"Warning: not all requested scopes were granted. Missing: {string.Join(" ", missingScopes)}");
 }
 ```
 
