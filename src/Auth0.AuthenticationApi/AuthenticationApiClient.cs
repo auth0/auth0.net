@@ -271,6 +271,41 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     }
 
     /// <inheritdoc/>
+    public async Task<AccessTokenResponse> GetTokenAsync(FederatedConnectionAccessTokenRequest request, CancellationToken cancellationToken = default)
+    {
+        request.ThrowIfNull();
+
+        if (string.IsNullOrEmpty(request.Connection))
+            throw new ArgumentException(
+                "Connection is required for a federated connection access token exchange.",
+                nameof(request.Connection));
+
+        var body = new Dictionary<string, string> {
+            { "grant_type", "urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token" },
+            { "client_id", request.ClientId },
+            { "subject_token", request.SubjectToken },
+            { "subject_token_type", request.SubjectTokenType },
+            { "requested_token_type", TokenType.FederatedConnectionAccessToken },
+            { "connection", request.Connection }
+        };
+
+        ApplyClientAuthentication(request, body);
+
+        body.AddIfNotEmpty("login_hint", request.LoginHint);
+
+        var response = await connection.SendAsync<AccessTokenResponse>(
+            HttpMethod.Post,
+            tokenUri,
+            body,
+            cancellationToken: cancellationToken
+        ).ConfigureAwait(false);
+
+        await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, null, request.Nonce).ConfigureAwait(false);
+
+        return response;
+    }
+
+    /// <inheritdoc/>
     public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default)
     {
         request.ThrowIfNull();
