@@ -322,9 +322,9 @@ var tokenResponse = await auth.GetTokenAsync(new TokenExchangeTokenRequest
     ClientId = "YOUR_CLIENT_ID",
     ClientSecret = "YOUR_CLIENT_SECRET",
     SubjectToken = "THE_TOKEN_TO_EXCHANGE",
-    SubjectTokenType = TokenType.AccessToken,   // or a custom URN
-    Audience = "https://api.example.com",       // optional target API
-    Scope = "read:data"                          // optional
+    SubjectTokenType = "https://acme.com/cte-profile", // your Custom Token Exchange Profile identifier
+    Audience = "https://api.example.com",              // optional target API
+    Scope = "read:data"                                 // optional
 });
 
 Console.WriteLine($"Access Token     : {tokenResponse.AccessToken}");
@@ -342,11 +342,10 @@ var sttResponse = await auth.GetTokenAsync(new TokenExchangeTokenRequest
     ClientId = "YOUR_CLIENT_ID",
     ClientSecret = "YOUR_CLIENT_SECRET",
     SubjectToken = "THE_SUBJECT_TOKEN",
-    SubjectTokenType = TokenType.AccessToken,
-    ActorToken = "THE_ACTOR_TOKEN",
-    ActorTokenType = TokenType.AccessToken,
-    Audience = "urn:YOUR_AUTH0_DOMAIN:session_transfer",
-    Reason = "support-impersonation"             // optional audit string
+    SubjectTokenType = "https://acme.com/cte-profile", // your Custom Token Exchange Profile identifier
+    ActorToken = "THE_ACTOR_TOKEN",                    // the acting party's Auth0 ID token
+    ActorTokenType = TokenType.IdToken,
+    Audience = "urn:YOUR_AUTH0_DOMAIN:session_transfer"
 });
 
 if (sttResponse.IssuedTokenType == TokenType.SessionTransferToken)

@@ -27,6 +27,7 @@ public class CustomTokenExchangeTests
     private const string ClientId = "test-client-id";
     private const string ClientSecret = "test-client-secret";
     private const string SubjectToken = "test-subject-token";
+    private const string CteProfile = "https://acme.com/cte-profile";
 
     private static AuthenticationApiClient CreateClient(
         AccessTokenResponse response,
@@ -77,7 +78,7 @@ public class CustomTokenExchangeTests
         {
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken }
+            { "subject_token_type", CteProfile }
         };
 
         var client = CreateClient(response, expectedParams);
@@ -87,7 +88,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken
+            SubjectTokenType = CteProfile
         });
 
         result.Should().NotBeNull();
@@ -120,12 +121,12 @@ public class CustomTokenExchangeTests
         var request = new TokenExchangeTokenRequest
         {
             SubjectToken = "st",
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             ClientId = "cid"
         };
 
         request.Should().BeAssignableTo<IClientAuthentication>();
-        request.SubjectTokenType.Should().Be("urn:ietf:params:oauth:token-type:access_token");
+        request.SubjectTokenType.Should().Be(CteProfile);
     }
 
     [Fact]
@@ -142,7 +143,7 @@ public class CustomTokenExchangeTests
         {
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken },
+            { "subject_token_type", CteProfile },
             { "actor_token", "actor-token-value" },
             { "actor_token_type", TokenType.AccessToken }
         };
@@ -154,7 +155,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             ActorToken = "actor-token-value",
             ActorTokenType = TokenType.AccessToken
         });
@@ -177,7 +178,7 @@ public class CustomTokenExchangeTests
         {
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken },
+            { "subject_token_type", CteProfile },
             { "audience", "urn:test-tenant.auth0.com:session_transfer" }
         };
 
@@ -188,7 +189,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             Audience = "urn:test-tenant.auth0.com:session_transfer"
         });
 
@@ -198,7 +199,7 @@ public class CustomTokenExchangeTests
     }
 
     [Fact]
-    public async Task Sends_optional_reason_and_organization()
+    public async Task Sends_optional_organization()
     {
         var response = new AccessTokenResponse
         {
@@ -211,8 +212,7 @@ public class CustomTokenExchangeTests
         {
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken },
-            { "reason", "support-impersonation" },
+            { "subject_token_type", CteProfile },
             { "organization", "org_abc123" }
         };
 
@@ -223,8 +223,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
-            Reason = "support-impersonation",
+            SubjectTokenType = CteProfile,
             Organization = "org_abc123"
         });
 
@@ -246,7 +245,7 @@ public class CustomTokenExchangeTests
         {
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken },
+            { "subject_token_type", CteProfile },
             { "scope", "read:data write:data" }
         };
 
@@ -257,7 +256,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             Scope = "read:data write:data"
         });
 
@@ -281,7 +280,7 @@ public class CustomTokenExchangeTests
             { "client_id", ClientId },
             { "client_secret", ClientSecret },
             { "subject_token", SubjectToken },
-            { "subject_token_type", TokenType.AccessToken }
+            { "subject_token_type", CteProfile }
         };
 
         var client = CreateClient(response, expectedParams);
@@ -291,7 +290,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken
+            SubjectTokenType = CteProfile
         });
 
         result.Should().NotBeNull();
@@ -336,7 +335,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken
+            SubjectTokenType = CteProfile
         });
 
         capturedBody.Should().NotContain("actor_token");
@@ -344,6 +343,40 @@ public class CustomTokenExchangeTests
         capturedBody.Should().NotContain("scope");
         capturedBody.Should().NotContain("reason");
         capturedBody.Should().NotContain("organization");
+    }
+
+    [Fact]
+    public async Task Throws_when_subject_token_is_missing()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var httpClient = new HttpClient(mockHandler.Object);
+        var client = new TestAuthenticationApiClient(Domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        Func<Task> act = () => client.GetTokenAsync(new TokenExchangeTokenRequest
+        {
+            ClientId = ClientId,
+            ClientSecret = ClientSecret,
+            SubjectTokenType = CteProfile
+        });
+
+        await act.Should().ThrowAsync<ArgumentException>();
+    }
+
+    [Fact]
+    public async Task Throws_when_subject_token_type_is_missing()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var httpClient = new HttpClient(mockHandler.Object);
+        var client = new TestAuthenticationApiClient(Domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        Func<Task> act = () => client.GetTokenAsync(new TokenExchangeTokenRequest
+        {
+            ClientId = ClientId,
+            ClientSecret = ClientSecret,
+            SubjectToken = SubjectToken
+        });
+
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -358,7 +391,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             ActorToken = "actor-only"
         });
 
@@ -377,7 +410,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             ActorTokenType = TokenType.AccessToken
         });
 
@@ -412,7 +445,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = ClientSecret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken
+            SubjectTokenType = CteProfile
         });
 
         await act.Should().ThrowAsync<ErrorApiException>();
@@ -430,7 +463,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = secret,
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             SigningAlgorithm = JwtSignatureAlgorithm.HS256
         });
 
@@ -450,7 +483,7 @@ public class CustomTokenExchangeTests
             ClientId = ClientId,
             ClientSecret = Guid.NewGuid().ToString("N"),
             SubjectToken = SubjectToken,
-            SubjectTokenType = TokenType.AccessToken,
+            SubjectTokenType = CteProfile,
             SigningAlgorithm = JwtSignatureAlgorithm.HS256
         });
 

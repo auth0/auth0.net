@@ -230,6 +230,14 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     {
         request.ThrowIfNull();
 
+        if (string.IsNullOrEmpty(request.SubjectToken))
+            throw new ArgumentException(
+                "SubjectToken is required.", nameof(request.SubjectToken));
+
+        if (string.IsNullOrEmpty(request.SubjectTokenType))
+            throw new ArgumentException(
+                "SubjectTokenType is required.", nameof(request.SubjectTokenType));
+
         if (string.IsNullOrEmpty(request.ActorToken) != string.IsNullOrEmpty(request.ActorTokenType))
             throw new ArgumentException(
                 "ActorToken and ActorTokenType must both be provided together, or both omitted.",
@@ -248,7 +256,6 @@ public class AuthenticationApiClient : IAuthenticationApiClient
         body.AddIfNotEmpty("actor_token_type", request.ActorTokenType);
         body.AddIfNotEmpty("audience", request.Audience);
         body.AddIfNotEmpty("scope", request.Scope);
-        body.AddIfNotEmpty("reason", request.Reason);
         body.AddIfNotEmpty("organization", request.Organization);
 
         var response = await connection.SendAsync<AccessTokenResponse>(

@@ -20,8 +20,11 @@ public class TokenExchangeTokenRequest : IClientAuthentication
     public string SubjectToken { get; set; }
 
     /// <summary>
-    /// An identifier that indicates the type of <see cref="SubjectToken"/>, as a URN.
-    /// See <see cref="TokenType"/> for well-known values. Required.
+    /// Identifies the Custom Token Exchange Profile that validates the
+    /// <see cref="SubjectToken"/>. Must be a URI under your own ownership (for example
+    /// <c>https://acme.com/cte-profile</c> or <c>urn:acme:legacy-token</c>) and must
+    /// correspond to an existing profile. Reserved namespaces such as
+    /// <c>urn:ietf</c>, <c>urn:auth0</c>, and <c>http://auth0.com</c> are rejected. Required.
     /// </summary>
     public string SubjectTokenType { get; set; }
 
@@ -33,7 +36,9 @@ public class TokenExchangeTokenRequest : IClientAuthentication
 
     /// <summary>
     /// An identifier that indicates the type of <see cref="ActorToken"/>, as a URN.
-    /// Required if <see cref="ActorToken"/> is set; must be omitted otherwise.
+    /// For an Auth0 ID token use <see cref="TokenType.IdToken"/>. See
+    /// <see cref="TokenType"/> for well-known values. Required if
+    /// <see cref="ActorToken"/> is set; must be omitted otherwise.
     /// </summary>
     public string ActorTokenType { get; set; }
 
@@ -47,11 +52,6 @@ public class TokenExchangeTokenRequest : IClientAuthentication
     /// Optional space-delimited scopes for the requested token.
     /// </summary>
     public string Scope { get; set; }
-
-    /// <summary>
-    /// Optional human-readable reason for the exchange, recorded for audit/logging.
-    /// </summary>
-    public string Reason { get; set; }
 
     /// <summary>
     /// Optional organization. Can be an Organization Name or ID.
