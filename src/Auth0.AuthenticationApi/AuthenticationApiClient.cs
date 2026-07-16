@@ -226,6 +226,51 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     }
 
     /// <inheritdoc/>
+    public async Task<AccessTokenResponse> GetTokenAsync(TokenExchangeTokenRequest request, CancellationToken cancellationToken = default)
+    {
+        request.ThrowIfNull();
+
+        if (string.IsNullOrEmpty(request.SubjectToken))
+            throw new ArgumentException(
+                "SubjectToken is required.", nameof(request.SubjectToken));
+
+        if (string.IsNullOrEmpty(request.SubjectTokenType))
+            throw new ArgumentException(
+                "SubjectTokenType is required.", nameof(request.SubjectTokenType));
+
+        if (string.IsNullOrEmpty(request.ActorToken) != string.IsNullOrEmpty(request.ActorTokenType))
+            throw new ArgumentException(
+                "ActorToken and ActorTokenType must both be provided together, or both omitted.",
+                nameof(request.ActorToken));
+
+        var body = new Dictionary<string, string> {
+            { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
+            { "client_id", request.ClientId },
+            { "subject_token", request.SubjectToken },
+            { "subject_token_type", request.SubjectTokenType }
+        };
+
+        ApplyClientAuthentication(request, body);
+
+        body.AddIfNotEmpty("actor_token", request.ActorToken);
+        body.AddIfNotEmpty("actor_token_type", request.ActorTokenType);
+        body.AddIfNotEmpty("audience", request.Audience);
+        body.AddIfNotEmpty("scope", request.Scope);
+        body.AddIfNotEmpty("organization", request.Organization);
+
+        var response = await connection.SendAsync<AccessTokenResponse>(
+            HttpMethod.Post,
+            tokenUri,
+            body,
+            cancellationToken: cancellationToken
+        ).ConfigureAwait(false);
+
+        await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization, request.Nonce).ConfigureAwait(false);
+
+        return response;
+    }
+
+    /// <inheritdoc/>
     public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default)
     {
         request.ThrowIfNull();
