@@ -8,21 +8,20 @@ namespace Auth0.AuthenticationApi.Models;
 /// <c>urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token</c>.
 /// </summary>
 /// <remarks>
-/// The client must be a private client. Today the subject token must be an Auth0 refresh
-/// token (<see cref="TokenType.RefreshToken"/>); support for access-token subjects is
-/// planned by Auth0.
+/// The client must be a private client. The subject token may be an Auth0 access token
+/// (<see cref="TokenType.AccessToken"/>) or refresh token (<see cref="TokenType.RefreshToken"/>).
 /// </remarks>
 public class FederatedConnectionAccessTokenRequest : IClientAuthentication
 {
     /// <summary>
-    /// The Auth0 token being exchanged. Currently this must be a valid Auth0 refresh token.
+    /// The Auth0 token being exchanged. This may be a valid Auth0 access token or refresh token.
     /// Required.
     /// </summary>
     public string SubjectToken { get; set; }
 
     /// <summary>
     /// An identifier that indicates the type of <see cref="SubjectToken"/>, as a URN.
-    /// Currently only <see cref="TokenType.RefreshToken"/> is accepted. Required.
+    /// Either <see cref="TokenType.AccessToken"/> or <see cref="TokenType.RefreshToken"/>. Required.
     /// </summary>
     public string SubjectTokenType { get; set; }
 

@@ -123,6 +123,42 @@ public class TokenVaultTests
     }
 
     [Fact]
+    public async Task Can_exchange_refresh_token_for_federated_connection_access_token()
+    {
+        var response = new AccessTokenResponse
+        {
+            AccessToken = "federated-access-token",
+            TokenType = "Bearer",
+            ExpiresIn = 3600,
+            IssuedTokenType = TokenType.FederatedConnectionAccessToken
+        };
+        var expectedParams = new Dictionary<string, string>
+        {
+            { "grant_type", GrantType },
+            { "client_id", ClientId },
+            { "subject_token", "test-refresh-token" },
+            { "subject_token_type", TokenType.RefreshToken },
+            { "requested_token_type", TokenType.FederatedConnectionAccessToken },
+            { "connection", Connection }
+        };
+
+        var client = CreateClient(response, expectedParams);
+
+        var result = await client.GetTokenAsync(new FederatedConnectionAccessTokenRequest
+        {
+            ClientId = ClientId,
+            ClientSecret = ClientSecret,
+            SubjectToken = "test-refresh-token",
+            SubjectTokenType = TokenType.RefreshToken,
+            Connection = Connection
+        });
+
+        result.Should().NotBeNull();
+        result.AccessToken.Should().Be("federated-access-token");
+        result.IssuedTokenType.Should().Be(TokenType.FederatedConnectionAccessToken);
+    }
+
+    [Fact]
     public async Task Sends_login_hint_when_set()
     {
         var response = new AccessTokenResponse
@@ -265,6 +301,42 @@ public class TokenVaultTests
             ClientSecret = ClientSecret,
             SubjectToken = AccessToken,
             SubjectTokenType = TokenType.AccessToken
+        });
+
+        await act.Should().ThrowAsync<ArgumentException>();
+    }
+
+    [Fact]
+    public async Task Throws_when_subject_token_is_missing()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var httpClient = new HttpClient(mockHandler.Object);
+        var client = new TestAuthenticationApiClient(Domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        Func<Task> act = () => client.GetTokenAsync(new FederatedConnectionAccessTokenRequest
+        {
+            ClientId = ClientId,
+            ClientSecret = ClientSecret,
+            SubjectTokenType = TokenType.AccessToken,
+            Connection = Connection
+        });
+
+        await act.Should().ThrowAsync<ArgumentException>();
+    }
+
+    [Fact]
+    public async Task Throws_when_subject_token_type_is_missing()
+    {
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var httpClient = new HttpClient(mockHandler.Object);
+        var client = new TestAuthenticationApiClient(Domain, new TestHttpClientAuthenticationConnection(httpClient));
+
+        Func<Task> act = () => client.GetTokenAsync(new FederatedConnectionAccessTokenRequest
+        {
+            ClientId = ClientId,
+            ClientSecret = ClientSecret,
+            SubjectToken = AccessToken,
+            Connection = Connection
         });
 
         await act.Should().ThrowAsync<ArgumentException>();

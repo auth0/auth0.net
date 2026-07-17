@@ -275,6 +275,16 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     {
         request.ThrowIfNull();
 
+        if (string.IsNullOrEmpty(request.SubjectToken))
+            throw new ArgumentException(
+                "SubjectToken is required for a federated connection access token exchange.",
+                nameof(request.SubjectToken));
+
+        if (string.IsNullOrEmpty(request.SubjectTokenType))
+            throw new ArgumentException(
+                "SubjectTokenType is required for a federated connection access token exchange.",
+                nameof(request.SubjectTokenType));
+
         if (string.IsNullOrEmpty(request.Connection))
             throw new ArgumentException(
                 "Connection is required for a federated connection access token exchange.",
