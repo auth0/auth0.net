@@ -19,6 +19,7 @@
   - [4.2. Client Initiated Backchannel Authorization (CIBA) with authorization details](#42-client-initiated-backchannel-authorization-ciba-with-authorization-details)
 - [5. Multi-Resource Refresh Token (MRRT)](#5-multi-resource-refresh-token-mrrt)
 - [6. Custom Token Exchange (CTE)](#6-custom-token-exchange-cte)
+- [7. Token Vault (Federated Connection Access Token)](#7-token-vault-federated-connection-access-token)
 
 ## 1. Client Initialization
 
@@ -356,6 +357,36 @@ if (sttResponse.IssuedTokenType == TokenType.SessionTransferToken)
 
 > `ActorToken` and `ActorTokenType` are both-or-neither — supplying only one throws
 > `ArgumentException` before any network call.
+
+[Go to Top](#)
+
+## 7. Token Vault (Federated Connection Access Token)
+
+Token Vault lets you exchange an Auth0 Access Token / Refresh Token for an access token issued by one of
+your federated connections (Google, Facebook, etc.), so your app can call that provider's
+APIs on the user's behalf. The client must be a private client.
+
+```csharp
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+
+var auth = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
+
+var tokenResponse = await auth.GetTokenAsync(new FederatedConnectionAccessTokenRequest
+{
+    ClientId = "YOUR_CLIENT_ID",
+    ClientSecret = "YOUR_CLIENT_SECRET",
+    SubjectToken = "THE_AUTH0_ACCESS_TOKEN",
+    SubjectTokenType = TokenType.AccessToken,
+    Connection = "google-oauth2",
+    LoginHint = "THE_GOOGLE_USER_ID"          // optional
+});
+
+Console.WriteLine($"Federated Access Token: {tokenResponse.AccessToken}");
+```
+
+> `Connection` is required — omitting it throws `ArgumentException` before any network
+> call. `requested_token_type` is fixed to the federated-connection URN and set for you.
 
 [Go to Top](#)
 

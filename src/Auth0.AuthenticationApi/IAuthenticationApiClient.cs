@@ -99,6 +99,17 @@ public interface IAuthenticationApiClient : IDisposable
     Task<AccessTokenResponse> GetTokenAsync(TokenExchangeTokenRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Exchanges an Auth0 token for an access token issued by a federated connection
+    /// (Token Vault), using the Auth0 federated-connection-access-token grant.
+    /// </summary>
+    /// <param name="request"><see cref="FederatedConnectionAccessTokenRequest"/> containing the subject token, connection, and associated parameters.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns><see cref="Task"/> representing the async operation containing
+    /// a <see cref="AccessTokenResponse" />. The federated connection access token is
+    /// returned in <see cref="TokenBase.AccessToken"/>.</returns>
+    Task<AccessTokenResponse> GetTokenAsync(FederatedConnectionAccessTokenRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Performs authentication by providing user-supplied information in a <see cref="ResourceOwnerTokenRequest"/>.
     /// </summary>
     /// <param name="request"><see cref="ResourceOwnerTokenRequest"/> containing information regarding the username, password etc.</param>
