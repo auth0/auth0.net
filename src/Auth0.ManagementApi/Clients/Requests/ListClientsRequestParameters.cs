@@ -55,7 +55,7 @@ public record ListClientsRequestParameters
     public Optional<string?> AppType { get; set; }
 
     /// <summary>
-    /// Optional filter by the <see href="https://www.ietf.org/archive/id/draft-ietf-oauth-client-id-metadata-document-04.html">Client ID Metadata Document</see> URI for CIMD-registered clients.
+    /// Optional filter by the <see href="https://drafts.oauth.net/draft-ietf-oauth-client-id-metadata-document/draft-ietf-oauth-client-id-metadata-document.html">Client ID Metadata Document</see> URI for CIMD-registered clients.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> ExternalClientId { get; set; }

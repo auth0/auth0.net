@@ -408,6 +408,9 @@ public class UpdateTest : BaseMockServerTest
                 "connection_deletion_behavior": "allow",
                 "invitation_landing_client_id": "invitation_landing_client_id"
               },
+              "identity_assertion_authorization_grant": {
+                "active": true
+              },
               "third_party_security_mode": "strict",
               "redirection_policy": "allow_always",
               "resource_server_identifier": "resource_server_identifier",

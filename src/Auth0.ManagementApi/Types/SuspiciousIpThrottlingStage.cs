@@ -22,6 +22,10 @@ public record SuspiciousIpThrottlingStage : IJsonOnDeserialized
     [JsonPropertyName("pre-user-registration")]
     public SuspiciousIpThrottlingPreUserRegistrationStage? PreUserRegistration { get; set; }
 
+    [Optional]
+    [JsonPropertyName("pre-custom-token-exchange")]
+    public SuspiciousIpThrottlingPreCustomTokenExchangeStage? PreCustomTokenExchange { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

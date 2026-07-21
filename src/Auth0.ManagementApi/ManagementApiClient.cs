@@ -15,6 +15,11 @@ public partial class ManagementApiClient : IManagementApiClient
     public ManagementApiClient(string? token = null, ClientOptions? clientOptions = null)
     {
         clientOptions ??= new ClientOptions();
+        if ((clientOptions.TenantDomain != null) && !clientOptions.IsBaseUrlExplicitlySet)
+        {
+            var _tenantDomain = clientOptions.TenantDomain ?? "{TENANT}.auth0.com";
+            clientOptions.BaseUrl = $"https://{_tenantDomain}/api/v2";
+        }
         var platformHeaders = new Headers(new Dictionary<string, string>() { });
         foreach (var header in platformHeaders)
         {

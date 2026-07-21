@@ -29,6 +29,10 @@ public record ConnectionResponseContentOidc : IJsonOnDeserialized
     [JsonPropertyName("cross_app_access_requesting_app")]
     public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public Optional<ConnectionCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; set; }
+
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsOidc? Options { get; set; }

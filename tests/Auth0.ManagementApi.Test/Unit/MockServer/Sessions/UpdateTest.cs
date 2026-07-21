@@ -49,6 +49,9 @@ public class UpdateTest : BaseMockServerTest
               },
               "session_metadata": {
                 "key": "value"
+              },
+              "actor": {
+                "sub": "sub"
               }
             }
             """;

@@ -28,6 +28,9 @@ public class ListTest : BaseMockServerTest
                   ],
                   "session_metadata": {
                     "key": "value"
+                  },
+                  "actor": {
+                    "sub": "sub"
                   }
                 }
               ],

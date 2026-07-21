@@ -70,6 +70,10 @@ public record CreateConnectionRequestContent
     [JsonPropertyName("cross_app_access_requesting_app")]
     public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
 
+    [Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public CreateCrossAppAccessResourceApp? CrossAppAccessResourceApp { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

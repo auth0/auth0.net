@@ -33,6 +33,10 @@ public class UpdateTest : BaseMockServerTest
                 "pre-user-registration": {
                   "max_attempts": 1,
                   "rate": 1
+                },
+                "pre-custom-token-exchange": {
+                  "max_attempts": 1,
+                  "rate": 1
                 }
               }
             }

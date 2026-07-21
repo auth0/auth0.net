@@ -55,6 +55,10 @@ public record CreateSelfServiceProfileSsoTicketRequestContent
     public bool? UseForOrganizationDiscovery { get; set; }
 
     [Optional]
+    [JsonPropertyName("third_party_client_access_config")]
+    public ThirdPartyClientAccessConfig? ThirdPartyClientAccessConfig { get; set; }
+
+    [Optional]
     [JsonPropertyName("enabled_features")]
     public SelfServiceProfileSsoTicketEnabledFeatures? EnabledFeatures { get; set; }
 

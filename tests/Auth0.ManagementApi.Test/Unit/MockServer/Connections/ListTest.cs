@@ -36,6 +36,9 @@ public class ListTest : BaseMockServerTest
                   },
                   "cross_app_access_requesting_app": {
                     "active": true
+                  },
+                  "cross_app_access_resource_app": {
+                    "status": "enabled"
                   }
                 }
               ]

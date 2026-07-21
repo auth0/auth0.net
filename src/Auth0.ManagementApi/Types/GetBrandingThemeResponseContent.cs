@@ -26,6 +26,10 @@ public record GetBrandingThemeResponseContent : IJsonOnDeserialized
     [JsonPropertyName("fonts")]
     public required BrandingThemeFonts Fonts { get; set; }
 
+    [Optional]
+    [JsonPropertyName("identifiers")]
+    public BrandingThemeIdentifiers? Identifiers { get; set; }
+
     [JsonPropertyName("page_background")]
     public required BrandingThemePageBackground PageBackground { get; set; }
 

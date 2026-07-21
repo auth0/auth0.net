@@ -191,6 +191,10 @@ public record UpdateClientRequestContent
     [JsonPropertyName("token_quota")]
     public Optional<UpdateTokenQuota?> TokenQuota { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("identity_assertion_authorization_grant")]
+    public Optional<UpdateIdentityAssertionAuthorizationGrant?> IdentityAssertionAuthorizationGrant { get; set; }
+
     /// <summary>
     /// Form template for WS-Federation protocol
     /// </summary>

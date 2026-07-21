@@ -153,6 +153,14 @@ public class UpdateTest : BaseMockServerTest
                   "size": 1.1
                 }
               },
+              "identifiers": {
+                "login_display": "separate",
+                "otp_autocomplete": true,
+                "phone_display": {
+                  "formatting": "international",
+                  "masking": "hide_country_code"
+                }
+              },
               "page_background": {
                 "background_color": "background_color",
                 "background_image_url": "background_image_url",
