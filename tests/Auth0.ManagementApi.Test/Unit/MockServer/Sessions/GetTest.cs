@@ -44,6 +44,9 @@ public class GetTest : BaseMockServerTest
               },
               "session_metadata": {
                 "key": "value"
+              },
+              "actor": {
+                "sub": "sub"
               }
             }
             """;

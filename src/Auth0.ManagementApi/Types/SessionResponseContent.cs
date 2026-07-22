@@ -71,6 +71,10 @@ public record SessionResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("session_metadata")]
     public Optional<Dictionary<string, object?>?> SessionMetadata { get; set; }
 
+    [Optional]
+    [JsonPropertyName("actor")]
+    public SessionActorMetadata? Actor { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

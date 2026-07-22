@@ -87,6 +87,10 @@ public record GetConnectionResponseContent : IJsonOnDeserialized
     [JsonPropertyName("cross_app_access_requesting_app")]
     public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
 
+    [Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public CrossAppAccessResourceApp? CrossAppAccessResourceApp { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

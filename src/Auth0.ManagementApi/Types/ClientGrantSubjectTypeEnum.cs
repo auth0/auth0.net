@@ -12,6 +12,8 @@ public readonly record struct ClientGrantSubjectTypeEnum : IStringEnum
 
     public static readonly ClientGrantSubjectTypeEnum User = new(Values.User);
 
+    public static readonly ClientGrantSubjectTypeEnum AnonymousUser = new(Values.AnonymousUser);
+
     public ClientGrantSubjectTypeEnum(string value)
     {
         Value = value;
@@ -111,5 +113,7 @@ public readonly record struct ClientGrantSubjectTypeEnum : IStringEnum
         public const string Client = "client";
 
         public const string User = "user";
+
+        public const string AnonymousUser = "anonymous_user";
     }
 }

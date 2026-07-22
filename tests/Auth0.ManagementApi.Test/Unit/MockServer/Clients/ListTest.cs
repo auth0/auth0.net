@@ -111,6 +111,9 @@ public class ListTest : BaseMockServerTest
                     ],
                     "connection_deletion_behavior": "allow"
                   },
+                  "identity_assertion_authorization_grant": {
+                    "active": true
+                  },
                   "third_party_security_mode": "strict",
                   "redirection_policy": "allow_always",
                   "resource_server_identifier": "resource_server_identifier",

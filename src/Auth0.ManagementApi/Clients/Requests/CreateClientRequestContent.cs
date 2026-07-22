@@ -295,6 +295,10 @@ public record CreateClientRequestContent
     public string? ResourceServerIdentifier { get; set; }
 
     [Optional]
+    [JsonPropertyName("identity_assertion_authorization_grant")]
+    public CreateIdentityAssertionAuthorizationGrant? IdentityAssertionAuthorizationGrant { get; set; }
+
+    [Optional]
     [JsonPropertyName("third_party_security_mode")]
     public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
 

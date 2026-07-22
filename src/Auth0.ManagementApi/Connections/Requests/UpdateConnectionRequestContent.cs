@@ -61,6 +61,10 @@ public record UpdateConnectionRequestContent
     [JsonPropertyName("cross_app_access_requesting_app")]
     public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public Optional<UpdateCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {
