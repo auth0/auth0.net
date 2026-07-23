@@ -1,5 +1,18 @@
 # Change Log
 
+## [7.48.0](https://github.com/auth0/auth0.net/tree/7.48.0) (2026-07-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.47.0...7.48.0)
+
+**Added**
+- feat: Adds Token Vault support - exchange an Auth0 token for an access token issued by a federated connection (Google, Facebook, etc.) to call that provider's APIs on the user's behalf [\#1064](https://github.com/auth0/auth0.net/pull/1064) ([kailash-b](https://github.com/kailash-b))
+- feat: Adds Custom Token Exchange support - the OAuth 2.0 Token Exchange grant (RFC 8693), covering both access-token exchange and Session Transfer Token issuance [\#1057](https://github.com/auth0/auth0.net/pull/1057) ([kailash-b](https://github.com/kailash-b))
+- feat: Adds Multi-Resource Refresh Token (MRRT) support - exchange a single refresh token for access tokens targeting different APIs and/or broader scopes, with the granted scope surfaced on the response [\#1056](https://github.com/auth0/auth0.net/pull/1056) ([kailash-b](https://github.com/kailash-b))
+- feat: Phases out Newtonsoft.Json in favour of System.Text.Json across Auth0.Core and Auth0.AuthenticationApi (`UserInfo.AdditionalClaims` is now deprecated) [\#1046](https://github.com/auth0/auth0.net/pull/1046) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- deps: Bump Microsoft.IdentityModel.Protocols.OpenIdConnect and System.IdentityModel.Tokens.Jwt from 8.19.2 to 8.20.0 [\#1075](https://github.com/auth0/auth0.net/pull/1075) ([dependabot[bot]](https://github.com/apps/dependabot))
+- deps: Bump Microsoft.IdentityModel.Protocols.OpenIdConnect & System.IdentityModel.Tokens.Jwt from 8.19.1 to 8.19.2 [\#1070](https://github.com/auth0/auth0.net/pull/1070) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.47.0](https://github.com/auth0/auth0.net/tree/7.47.0) (2026-06-26)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.46.0...7.47.0)
 
