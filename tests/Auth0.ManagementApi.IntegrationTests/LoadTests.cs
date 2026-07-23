@@ -28,6 +28,7 @@ public class LoadTestsFixture : TestBaseFixture
 public class LoadTests : IClassFixture<LoadTestsFixture>
 {
     private LoadTestsFixture fixture;
+    private readonly string _randomPassword = Guid.NewGuid().ToString("N");
 
     public LoadTests(LoadTestsFixture fixture)
     {
@@ -56,7 +57,7 @@ public class LoadTests : IClassFixture<LoadTestsFixture>
                     connection: newConnection.Name,
                     email: $"test-user-{i}-{Guid.NewGuid():N}@example.com",
                     emailVerified: true,
-                    password: "Test123456!"
+                    password: _randomPassword
                 ));
                 fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
                 return user;

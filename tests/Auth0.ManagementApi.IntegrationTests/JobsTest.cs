@@ -31,6 +31,7 @@ public class JobsTestFixture : TestBaseFixture
 public class JobsTests : IClassFixture<JobsTestFixture>
 {
     private JobsTestFixture fixture;
+    private readonly string _randomPassword = Guid.NewGuid().ToString("N");
 
     public JobsTests(JobsTestFixture fixture)
     {
@@ -56,7 +57,7 @@ public class JobsTests : IClassFixture<JobsTestFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: false,
-            password: "Test123456!"
+            password: _randomPassword
         ));
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
 
@@ -102,7 +103,7 @@ public class JobsTests : IClassFixture<JobsTestFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: false,
-            password: "Test123456!"
+            password: _randomPassword
         ));
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
 
@@ -152,7 +153,7 @@ public class JobsTests : IClassFixture<JobsTestFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: false,
-            password: "Test123456!"
+            password: _randomPassword
         ));
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
 

@@ -27,6 +27,7 @@ public class ConnectionTestsFixture : TestBaseFixture
 public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
 {
     private ConnectionTestsFixture fixture;
+    private readonly string _randomPassword = Guid.NewGuid().ToString("N");
 
     public ConnectionTests(ConnectionTestsFixture fixture)
     {
@@ -212,7 +213,7 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: true,
-            password: "Test123456!"
+            password: _randomPassword
         ));
 
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
