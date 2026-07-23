@@ -31,6 +31,7 @@ public class OrganizationTestsFixture : TestBaseFixture
 public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
 {
     private OrganizationTestsFixture fixture;
+    private readonly string _randomPassword = Guid.NewGuid().ToString("N");
 
     public OrganizationTests(OrganizationTestsFixture fixture)
     {
@@ -207,7 +208,7 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: true,
-            password: "Test123456!"
+            password: _randomPassword
         ));
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
 
@@ -287,7 +288,7 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
             connection: newConnection.Name,
             email: userEmail,
             emailVerified: true,
-            password: "Test123456!"
+            password: _randomPassword
         ));
         fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
 
