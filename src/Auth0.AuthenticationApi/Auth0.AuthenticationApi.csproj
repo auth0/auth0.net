@@ -16,8 +16,8 @@
 
   <!-- Package Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.20.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.20.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.21.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.21.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.9" />
   </ItemGroup>
 
