@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 using NUnit.Framework;
@@ -14,6 +15,12 @@ public class Rfc3339SecondsDateTimeConverterTest
         public DateTime? Date { get; set; }
     }
 
+    private static string SerializedDate(TestModel model)
+    {
+        using var doc = JsonDocument.Parse(JsonUtils.Serialize(model));
+        return doc.RootElement.GetProperty("date").GetString()!;
+    }
+
     [Test]
     public void Serialize_WholeSecondUtc_EmitsTwentyCharValue()
     {
@@ -21,8 +28,9 @@ public class Rfc3339SecondsDateTimeConverterTest
         {
             Date = new DateTime(2026, 7, 1, 0, 0, 0, DateTimeKind.Utc),
         };
-        var json = JsonUtils.Serialize(model);
-        Assert.That(json, Does.Contain("\"date\":\"2026-07-01T00:00:00Z\""));
+        var value = SerializedDate(model);
+        Assert.That(value, Is.EqualTo("2026-07-01T00:00:00Z"));
+        Assert.That(value.Length, Is.EqualTo(20));
     }
 
     [Test]
@@ -32,8 +40,9 @@ public class Rfc3339SecondsDateTimeConverterTest
         {
             Date = new DateTime(2026, 7, 1, 0, 0, 0, 123, DateTimeKind.Utc),
         };
-        var json = JsonUtils.Serialize(model);
-        Assert.That(json, Does.Contain("\"date\":\"2026-07-01T00:00:00Z\""));
+        var value = SerializedDate(model);
+        Assert.That(value, Is.EqualTo("2026-07-01T00:00:00Z"));
+        Assert.That(value.Length, Is.EqualTo(20));
     }
 
     [Test]
@@ -50,9 +59,10 @@ public class Rfc3339SecondsDateTimeConverterTest
         ).DateTime;
         local = DateTime.SpecifyKind(local, DateTimeKind.Local);
         var model = new TestModel { Date = local };
-        var json = JsonUtils.Serialize(model);
-        Assert.That(json, Does.Contain("Z\""));
-        Assert.That(json, Does.Not.Contain("."));
+        var value = SerializedDate(model);
+        Assert.That(value, Does.EndWith("Z"));
+        Assert.That(value, Does.Not.Contain("."));
+        Assert.That(value.Length, Is.EqualTo(20));
     }
 
     [Test]
