@@ -12,6 +12,7 @@ public record CreateEventStreamRedeliveryRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("date_from")]
+    [JsonConverter(typeof(Rfc3339SecondsDateTimeConverter))]
     public DateTime? DateFrom { get; set; }
 
     /// <summary>
@@ -19,6 +20,7 @@ public record CreateEventStreamRedeliveryRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("date_to")]
+    [JsonConverter(typeof(Rfc3339SecondsDateTimeConverter))]
     public DateTime? DateTo { get; set; }
 
     /// <summary>
