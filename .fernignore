@@ -20,6 +20,8 @@ opslevel.yml
 README.md
 SECURITY-NOTICE.md
 V8_MIGRATION_GUIDE.md
+CLAUDE.md
+AGENTS.md
 .fern/
 
 Auth0.ManagementApi.slnx
