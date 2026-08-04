@@ -14,6 +14,17 @@ namespace Auth0.ManagementApi.Core;
 /// <c>maxLength: 20</c> and reject sub-second precision with an HTTP 400. Apply
 /// this converter to those fields to keep native <see cref="DateTime"/>
 /// ergonomics while emitting a spec-compliant 20-character value.
+///
+/// Timezone handling preserves the wall-clock value the caller provided:
+/// <list type="bullet">
+/// <item><description><see cref="DateTimeKind.Utc"/> — emitted as-is.</description></item>
+/// <item><description><see cref="DateTimeKind.Local"/> — converted to the
+/// equivalent UTC instant (the offset is applied).</description></item>
+/// <item><description><see cref="DateTimeKind.Unspecified"/> — treated as though
+/// it is already UTC (labeled <c>Z</c> without shifting the clock), so
+/// <c>new DateTime(2026, 7, 1)</c> serializes to "2026-07-01T00:00:00Z"
+/// regardless of the machine's local timezone.</description></item>
+/// </list>
 /// </summary>
 internal class Rfc3339SecondsDateTimeConverter : JsonConverter<DateTime>
 {
@@ -34,8 +45,15 @@ internal class Rfc3339SecondsDateTimeConverter : JsonConverter<DateTime>
 
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(
-            value.ToUniversalTime().ToString(Format, CultureInfo.InvariantCulture)
-        );
+        // Normalize to UTC before formatting. Unspecified values carry no zone,
+        // so treat them as UTC rather than let ToUniversalTime() assume local
+        // time and silently shift the instant.
+        var utc = value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Utc),
+        };
+        writer.WriteStringValue(utc.ToString(Format, CultureInfo.InvariantCulture));
     }
 }

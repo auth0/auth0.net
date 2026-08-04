@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
@@ -46,23 +47,37 @@ public class Rfc3339SecondsDateTimeConverterTest
     }
 
     [Test]
-    public void Serialize_LocalTime_ConvertsToUtcZ()
+    public void Serialize_UnspecifiedKind_LabeledUtcWithoutShifting()
     {
-        var local = new DateTimeOffset(
-            2026,
-            7,
-            1,
-            2,
-            0,
-            0,
-            TimeSpan.FromHours(2)
-        ).DateTime;
-        local = DateTime.SpecifyKind(local, DateTimeKind.Local);
+        // Kind == Unspecified is the default for `new DateTime(...)`. The wall
+        // clock must be preserved and simply labeled "Z" — never shifted by the
+        // host machine's UTC offset. This assertion is timezone-independent.
+        var model = new TestModel { Date = new DateTime(2026, 7, 1, 15, 30, 45) };
+        var value = SerializedDate(model);
+        Assert.That(value, Is.EqualTo("2026-07-01T15:30:45Z"));
+        Assert.That(value.Length, Is.EqualTo(20));
+    }
+
+    [Test]
+    public void Serialize_LocalTime_ConvertsToEquivalentUtcInstant()
+    {
+        // A Local-kind value must be shifted to its UTC equivalent before the
+        // "Z" is appended. Rather than hardcode an offset (which varies by host
+        // timezone), confirm the emitted value denotes the same instant.
+        var local = new DateTime(2026, 7, 1, 12, 30, 45, DateTimeKind.Local);
         var model = new TestModel { Date = local };
         var value = SerializedDate(model);
+
         Assert.That(value, Does.EndWith("Z"));
         Assert.That(value, Does.Not.Contain("."));
         Assert.That(value.Length, Is.EqualTo(20));
+
+        var parsed = DateTime.Parse(
+            value,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.RoundtripKind
+        );
+        Assert.That(parsed.ToUniversalTime(), Is.EqualTo(local.ToUniversalTime()));
     }
 
     [Test]
