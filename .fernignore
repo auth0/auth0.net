@@ -60,6 +60,7 @@ tests/Auth0.ManagementApi.Test/Unit/BooleanStringConverterTest.cs
 
 src/Auth0.ManagementApi/Core/Rfc3339SecondsDateTimeConverter.cs
 tests/Auth0.ManagementApi.Test/Unit/Rfc3339SecondsDateTimeConverterTest.cs
+tests/Auth0.ManagementApi.Test/Unit/MockServer/EventStreams/Redeliveries/RedeliveryDateSerializationTest.cs
 src/Auth0.ManagementApi/EventStreams/Redeliveries/Requests/CreateEventStreamRedeliveryRequestContent.cs
 src/Auth0.ManagementApi/Core/Public/ManagementApiException.cs
 src/Auth0.ManagementApi/Core/Public/ApiError.cs
