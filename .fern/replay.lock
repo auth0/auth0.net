@@ -42,14 +42,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.76.0
-current_generation: d16302e52b5435ed559e8681788087ea000e3393
+  - commit_sha: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    tree_hash: 900f02521c7567035b7e2459ac4df9d78d85e637
+    timestamp: 2026-08-04T06:24:21.543Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.76.0
+current_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: d16302e52b5435ed559e8681788087ea000e3393
+    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -257,7 +263,7 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: d16302e52b5435ed559e8681788087ea000e3393
+    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
@@ -667,7 +673,7 @@ patches:
     original_commit: a4ee94c4b6b4ad1f881465e6680286ef144d2b4f
     original_message: "mgmt: Removed unwanted files"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: d16302e52b5435ed559e8681788087ea000e3393
+    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -869,4 +875,470 @@ patches:
                 Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
             }
         }
+    user_owned: true
+  - id: patch-f2415ebd
+    content_hash: sha256:dd85b940760344ebedec26426bb6875019b9bfeebb7d915b4365c35385dd410b
+    original_commit: f2415ebd2fef2e96471b0d89fbcb35fadec37c0c
+    original_message: "chore: Adds CLAUDE.md and AGENTS.md"
+    original_author: Kailash B <kailash.b@okta.com>
+    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    files:
+      - references/code-style.md
+      - references/commands.md
+      - references/docs-update.md
+      - references/git-workflow.md
+      - references/pitfalls.md
+      - references/testing.md
+    patch_content: |
+      diff --git a/references/code-style.md b/references/code-style.md
+      new file mode 100644
+      index 00000000..c00ce804
+      --- /dev/null
+      +++ b/references/code-style.md
+      @@ -0,0 +1,51 @@
+      +# Code Style
+      +
+      +Enforced by `dotnet format` + `.editorconfig` (mostly ReSharper `hint`/`suggestion` severities; `dotnet_diagnostic.CS1591` is a suggestion). `Nullable` is enabled repo-wide, and `Auth0.Core` sets `WarningsAsErrors=nullable` — a nullability warning fails its build.
+      +
+      +## Naming
+      +
+      +- **PascalCase** — public types, methods, properties.
+      +- **`_camelCase`** — private instance fields.
+      +- **`camelCase`** — locals and parameters.
+      +- One API resource per directory under `src/Auth0.ManagementApi/` (`Users/`, `Connections/`, …); custom public types live under `Core/Public/`.
+      +
+      +## Optional<T> (ManagementApi PATCH semantics)
+      +
+      +Generated request models use `Optional<T>` to distinguish "not set" from "explicitly null":
+      +
+      +**✅ Good — only send what you mean:**
+      +
+      +```csharp
+      +var request = new UpdateUserRequestContent
+      +{
+      +    Name = "John Doe"                     // sent
+      +    // Email left as Optional<string?>.Undefined — not sent
+      +};
+      +var clear = new UpdateUserRequestContent
+      +{
+      +    Nickname = Optional<string?>.Of(null) // sent as null → clears the field
+      +};
+      +```
+      +
+      +**❌ Bad — defeats the tri-state and clobbers server data:**
+      +
+      +```csharp
+      +var request = new UpdateUserRequestContent
+      +{
+      +    Name = "John Doe",
+      +    Email = null,      // ambiguous intent; don't assign raw null to an Optional<T> field
+      +    Nickname = ""       // empty string is not "clear"
+      +};
+      +```
+      +
+      +## Custom vs generated code
+      +
+      +- Custom code that must survive Fern regeneration lives in files listed in `.fernignore` and typically uses the `.Custom.cs` suffix (e.g. `ClientOptions.Custom.cs`) or a partial class extending a generated type.
+      +- Multi-target conditionals use `#if NET462 / NETSTANDARD2_0 / NET8_0 …` (see `ClientOptions.Custom.cs`), and `init` vs `set` accessors are guarded by `#if NET5_0_OR_GREATER`. Note the shipped packages compile only `net462`/`netstandard2.0` (see [pitfalls.md](pitfalls.md)), so the newer-TFM branches (`NET8_0`, `NET5_0_OR_GREATER`) don't reach the shipped assembly — the `net462`/`netstandard2.0` branch is what ships.
+      +
+      +## Patterns
+      +
+      +- **Builder** — Authentication API URL builders (`AuthorizationUrlBuilder`, `LogoutUrlBuilder`, fluent `WithState(...)`).
+      +- **Provider/Strategy** — `ITokenProvider` with `ClientCredentialsTokenProvider` / `DelegateTokenProvider` implementations behind `ManagementClient`.
+      +- **Interface-per-client** — every client and sub-client has an interface for DI and mocking.
+      +- **Typed exceptions** — `ApiException` base with `ErrorApiException`/`RateLimitApiException` (Core) and per-status errors (ManagementApi).
+      diff --git a/references/commands.md b/references/commands.md
+      new file mode 100644
+      index 00000000..2c1f0144
+      --- /dev/null
+      +++ b/references/commands.md
+      @@ -0,0 +1,46 @@
+      +# Commands
+      +
+      +Exact commands from CI (`.github/workflows/build.yml`) and `CONTRIBUTING.md`. CI runs on .NET SDK `8.0.x`, Ubuntu.
+      +
+      +```bash
+      +# Restore dependencies
+      +dotnet restore
+      +
+      +# Build (CI builds without re-restoring)
+      +dotnet build --no-restore
+      +
+      +# Format check (fails if code is not formatted)
+      +dotnet format --verify-no-changes
+      +
+      +# Format / auto-fix
+      +dotnet format
+      +```
+      +
+      +## Tests
+      +
+      +The CI splits tests by project. Unit tiers need no credentials; integration tiers need a live tenant (see [testing.md](testing.md)).
+      +
+      +```bash
+      +# Core unit tests (xUnit) — no credentials
+      +dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+      +
+      +# ManagementApi unit/mock tests (NUnit + WireMock.Net) — no credentials
+      +dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
+      +
+      +# Run everything (will attempt the live integration tiers too — see Ask First)
+      +dotnet test
+      +```
+      +
+      +### With coverage (as CI runs it)
+      +
+      +```bash
+      +dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj \
+      +  --collect:"XPlat Code coverage" --results-directory ./TestResults/ \
+      +  /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+      +```
+      +
+      +Coverage is collected via Coverlet (`XPlat Code Coverage`, cobertura) and uploaded to Codecov. There is no enforced threshold gate in CI (`fail_ci_if_error: false`).
+      +
+      +## Release (reference only — do not run as an agent)
+      +
+      +Releases are cut by maintainers via the `release.yml` / `nuget-release.yml` workflows. Do not perform releases; only keep the version source files in sync (see Boundaries in `CLAUDE.md`).
+      diff --git a/references/docs-update.md b/references/docs-update.md
+      new file mode 100644
+      index 00000000..1324b3d9
+      --- /dev/null
+      +++ b/references/docs-update.md
+      @@ -0,0 +1,26 @@
+      +# Docs Update Rules
+      +
+      +Auth0.NET is a **library/SDK** — its public surface is exported types and methods. Keep these docs in lockstep with public-API changes, in the same PR.
+      +
+      +## Tracked docs
+      +
+      +| Doc | Covers | Exists |
+      +|-----|--------|--------|
+      +| `README.md` | Installation, requirements, quick-start for Management + Authentication clients, advanced usage (raw response, `Optional<T>`, DI/interfaces) | ✅ |
+      +| `Examples.md` | Runnable code samples — client init, client credentials, MFA/ROPG, RAR (PAR/CIBA), MRRT, Custom Token Exchange, Token Vault; Management: token quota, job errors, Network ACLs, custom-domain header | ✅ |
+      +
+      +`reference.md` is the generated API reference (Fern) — do not hand-edit. Migration guides (`V8_MIGRATION_GUIDE.md`, `V9_MIGRATION_GUIDE.md`) are version-specific and handled at breaking-change time, not tracked here. `CHANGELOG.md` is maintained by the release flow.
+      +
+      +## When you change code, update these docs
+      +
+      +| When this changes | Update these docs |
+      +|-------------------|-------------------|
+      +| Public API surface (a client/sub-client, exported type, or public method) | `README.md` (usage), `Examples.md` (affected samples) |
+      +| Configuration options (`ClientOptions`, `ManagementClientOptions`, token providers) | `README.md` (usage/configuration) |
+      +| Authentication / token-handling flow | `README.md` (quick-start), `Examples.md` (auth/token samples) |
+      +| Install, package name, or target-framework requirements | `README.md` (installation / requirements) |
+      +| A new public method or exported type added | `Examples.md` (add a usage sample) |
+      +| A public method or type removed or renamed | `README.md` + `Examples.md` (remove/update references) |
+      +| A new integration pattern supported | `Examples.md` (add integration example) |
+      +
+      +> When you touch code that maps to a doc above, update that doc **in the same PR** — do not defer. For Management API changes, remember most of that surface is Fern-generated: the doc update still ships in the PR that changes the definition/generation.
+      diff --git a/references/git-workflow.md b/references/git-workflow.md
+      new file mode 100644
+      index 00000000..cc8d45ff
+      --- /dev/null
+      +++ b/references/git-workflow.md
+      @@ -0,0 +1,21 @@
+      +# Git Workflow
+      +
+      +## Branches
+      +
+      +- Work on a feature/fix branch off `master`; open a PR against `master`.
+      +- Release prep uses `prepare-x.y.z` branches (see `DEVELOPMENT.md`).
+      +
+      +## Commits
+      +
+      +- History uses short type prefixes: `feat:`, `fix:`, `deps:`, plus `Bump …` for dependency updates. Keep the summary imperative and scoped.
+      +- **Signed commits are expected** (the README asks contributors to sign commits for verification).
+      +
+      +## Pull Requests
+      +
+      +- Fill out `.github/PULL_REQUEST_TEMPLATE.md`: describe what changed and why, list endpoints/classes/methods added/removed/changed, and complete the testing + checklist items (unit coverage, integration coverage, tested on latest platform).
+      +- Required CI: the **Build and Test** workflow (`build.yml`) — build, then Core / Authentication / Management test jobs in sequence. `claude-code-review.yml` also runs.
+      +- External PRs: maintainers run the live integration tests manually before merge (Auth0 doesn't share tenant keys).
+      +
+      +## Changelog
+      +
+      +`CHANGELOG.md` follows a grouped, versioned format and is maintained as part of the release flow — do not hand-edit it during a feature PR.
+      diff --git a/references/pitfalls.md b/references/pitfalls.md
+      new file mode 100644
+      index 00000000..a5bda2e9
+      --- /dev/null
+      +++ b/references/pitfalls.md
+      @@ -0,0 +1,15 @@
+      +# Common Pitfalls
+      +
+      +- **Generated vs custom code (biggest one).** `src/Auth0.ManagementApi/` is largely Fern-generated. Editing a generated file "fixes" nothing — the next `fern generate` overwrites it. Before touching a Management file, confirm it's in `.fernignore`; if not, change the API definition or the generator (`CONTRIBUTING.md` → "About Generated Code"), or add the file to `.fernignore` if it's genuinely new custom code.
+      +
+      +- **Two independent version sources.** `Auth0.Core` + `Auth0.AuthenticationApi` are versioned by `build/common.props` (`<Version>`) and the root `.version` (currently a 7.x line). `Auth0.ManagementApi` is versioned separately by `src/Auth0.ManagementApi/.version` and `Core/Public/Version.cs` (a 9.x line). Bump the correct pair — don't assume one version applies to all packages.
+      +
+      +- **Split JSON stacks.** `Auth0.Core`/`Auth0.AuthenticationApi` use both `Newtonsoft.Json` and `System.Text.Json`; generated `Auth0.ManagementApi` uses `System.Text.Json`. Use the serializer that matches the project you're in; don't add Newtonsoft to Management code.
+      +
+      +- **Custom props overrides the csproj's `TargetFrameworks` (biggest TFM gotcha).** `Auth0.ManagementApi.csproj` declares `net462;net8.0;net9.0;netstandard2.0`, but it imports `Auth0.ManagementApi.Custom.props` *last*, and that file unconditionally re-sets `<TargetFrameworks>net462;netstandard2.0</TargetFrameworks>`. Last-wins means the override takes effect: **all three shipped packages build only for `net462` + `netstandard2.0`.** Don't trust the `<TargetFrameworks>` line in the csproj — confirm with `dotnet msbuild <proj> -getProperty:TargetFrameworks`. (net8.0/net9.0/net10.0 only appear in *test* projects.)
+      +
+      +- **Multi-target framework conditionals.** Guard newer-runtime APIs with `#if` (e.g. `init` accessors behind `#if NET5_0_OR_GREATER`, `DateTimeOnly` via `Portable.System.DateTimeOnly` on older TFMs). A change that builds on one TFM can still break another. Note: because the shipped packages compile only `net462`/`netstandard2.0`, `#if NET8_0` / `NET5_0_OR_GREATER` branches in the Fern-generated ManagementApi source never make it into the shipped assembly — the `#else`/older-TFM branch is what ships.
+      +
+      +- **`WarningsAsErrors=nullable`.** A nullable-reference warning in `Auth0.Core` fails the build, not just the linter (`Nullable` is enabled repo-wide, but only Core promotes those warnings to errors). Annotate nullability correctly rather than suppressing.
+      +
+      +- **Mixed test frameworks.** `Auth0.ManagementApi.Test` is **NUnit** (`Assert.That` constraint model); the other test projects are **xUnit** (`Fact`/`Theory` + FluentAssertions). Match the framework of the project you're adding tests to.
+      diff --git a/references/testing.md b/references/testing.md
+      new file mode 100644
+      index 00000000..62ccbcbb
+      --- /dev/null
+      +++ b/references/testing.md
+      @@ -0,0 +1,45 @@
+      +# Testing
+      +
+      +Test framework varies by project — check the project before writing tests.
+      +
+      +| Project | Framework | Needs creds? | What it covers |
+      +|---------|-----------|--------------|----------------|
+      +| `tests/Auth0.Core.UnitTests` | xUnit 2.4 + FluentAssertions + Moq | No | Core HTTP, exceptions, JSON extensions, rate-limit parsing |
+      +| `tests/Auth0.ManagementApi.Test` | NUnit 4 + WireMock.Net | No | ManagementApi unit + mock-server behavior (headers, interceptors, converters) |
+      +| `tests/Auth0.AuthenticationApi.IntegrationTests` | xUnit + FluentAssertions + Moq | **Yes — live tenant** | Authentication API against a real Auth0 tenant |
+      +| `tests/Auth0.ManagementApi.IntegrationTests` | xUnit + FluentAssertions + Moq | **Yes — live tenant** | Management API against a real Auth0 tenant |
+      +| `tests/Auth0.IntegrationTests.Shared` | — | — | Shared fixtures + resource cleanup for integration tiers |
+      +
+      +## Safe (no-credentials) commands
+      +
+      +```bash
+      +dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+      +dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
+      +```
+      +
+      +The two projects above are the default unit tier — no credentials required.
+      +
+      +## Integration / Acceptance Tests
+      +
+      +> ⚠️ These hit a **live Auth0 tenant**, are slow, and can mutate real resources (they create/delete users, connections, etc. and rely on cleanup fixtures). **Ask before running them** (see Boundaries in `CLAUDE.md`). Auth0 does not publish keys for its integration tenants; maintainers run these manually for external PRs.
+      +
+      +```bash
+      +dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj
+      +dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj
+      +```
+      +
+      +Requires environment variables for a real tenant, e.g. `AUTH0_MANAGEMENT_API_URL`, `AUTH0_MANAGEMENT_API_CLIENT_ID`, `AUTH0_MANAGEMENT_API_CLIENT_SECRET`, `AUTH0_CLIENT_ID`, `AUTH0_CLIENT_SECRET`, plus HS256/passwordless/Brucke variants — see the `env:` block in `.github/workflows/build.yml`.
+      +
+      +## Run a single test
+      +
+      +```bash
+      +# xUnit / NUnit both support the VSTest filter
+      +dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj \
+      +  --filter "FullyQualifiedName~Auth0ClientHeaderTests"
+      +```
+      +
+      +## Conventions
+      +
+      +- **NUnit (`Auth0.ManagementApi.Test`):** `[TestFixture]`, `[Test]`, `Assert.That(actual, Is.EqualTo(...))` constraint model; `[Parallelizable(ParallelScope.All)]` on mock-server fixtures. WireMock.Net spins up an in-process HTTP server (`WireMockServer.Start`) to assert on outgoing requests (e.g. header presence).
+      +- **xUnit (`Auth0.Core.UnitTests`, integration tiers):** `[Fact]`/`[Theory]`, `FluentAssertions` (`result.Should().Be(...)`), `Moq` for mocking interfaces (`Mock<IUsersClient>`).
+      +- Prefer the sub-client interfaces (`IUsersClient`, `IConnectionsClient`, `IManagementApiClient`) for mocking rather than concrete clients.
+    theirs_snapshot:
+      references/code-style.md: |
+        # Code Style
+
+        Enforced by `dotnet format` + `.editorconfig` (mostly ReSharper `hint`/`suggestion` severities; `dotnet_diagnostic.CS1591` is a suggestion). `Nullable` is enabled repo-wide, and `Auth0.Core` sets `WarningsAsErrors=nullable` — a nullability warning fails its build.
+
+        ## Naming
+
+        - **PascalCase** — public types, methods, properties.
+        - **`_camelCase`** — private instance fields.
+        - **`camelCase`** — locals and parameters.
+        - One API resource per directory under `src/Auth0.ManagementApi/` (`Users/`, `Connections/`, …); custom public types live under `Core/Public/`.
+
+        ## Optional<T> (ManagementApi PATCH semantics)
+
+        Generated request models use `Optional<T>` to distinguish "not set" from "explicitly null":
+
+        **✅ Good — only send what you mean:**
+
+        ```csharp
+        var request = new UpdateUserRequestContent
+        {
+            Name = "John Doe"                     // sent
+            // Email left as Optional<string?>.Undefined — not sent
+        };
+        var clear = new UpdateUserRequestContent
+        {
+            Nickname = Optional<string?>.Of(null) // sent as null → clears the field
+        };
+        ```
+
+        **❌ Bad — defeats the tri-state and clobbers server data:**
+
+        ```csharp
+        var request = new UpdateUserRequestContent
+        {
+            Name = "John Doe",
+            Email = null,      // ambiguous intent; don't assign raw null to an Optional<T> field
+            Nickname = ""       // empty string is not "clear"
+        };
+        ```
+
+        ## Custom vs generated code
+
+        - Custom code that must survive Fern regeneration lives in files listed in `.fernignore` and typically uses the `.Custom.cs` suffix (e.g. `ClientOptions.Custom.cs`) or a partial class extending a generated type.
+        - Multi-target conditionals use `#if NET462 / NETSTANDARD2_0 / NET8_0 …` (see `ClientOptions.Custom.cs`), and `init` vs `set` accessors are guarded by `#if NET5_0_OR_GREATER`. Note the shipped packages compile only `net462`/`netstandard2.0` (see [pitfalls.md](pitfalls.md)), so the newer-TFM branches (`NET8_0`, `NET5_0_OR_GREATER`) don't reach the shipped assembly — the `net462`/`netstandard2.0` branch is what ships.
+
+        ## Patterns
+
+        - **Builder** — Authentication API URL builders (`AuthorizationUrlBuilder`, `LogoutUrlBuilder`, fluent `WithState(...)`).
+        - **Provider/Strategy** — `ITokenProvider` with `ClientCredentialsTokenProvider` / `DelegateTokenProvider` implementations behind `ManagementClient`.
+        - **Interface-per-client** — every client and sub-client has an interface for DI and mocking.
+        - **Typed exceptions** — `ApiException` base with `ErrorApiException`/`RateLimitApiException` (Core) and per-status errors (ManagementApi).
+      references/commands.md: |
+        # Commands
+
+        Exact commands from CI (`.github/workflows/build.yml`) and `CONTRIBUTING.md`. CI runs on .NET SDK `8.0.x`, Ubuntu.
+
+        ```bash
+        # Restore dependencies
+        dotnet restore
+
+        # Build (CI builds without re-restoring)
+        dotnet build --no-restore
+
+        # Format check (fails if code is not formatted)
+        dotnet format --verify-no-changes
+
+        # Format / auto-fix
+        dotnet format
+        ```
+
+        ## Tests
+
+        The CI splits tests by project. Unit tiers need no credentials; integration tiers need a live tenant (see [testing.md](testing.md)).
+
+        ```bash
+        # Core unit tests (xUnit) — no credentials
+        dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+
+        # ManagementApi unit/mock tests (NUnit + WireMock.Net) — no credentials
+        dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
+
+        # Run everything (will attempt the live integration tiers too — see Ask First)
+        dotnet test
+        ```
+
+        ### With coverage (as CI runs it)
+
+        ```bash
+        dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj \
+          --collect:"XPlat Code coverage" --results-directory ./TestResults/ \
+          /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+        ```
+
+        Coverage is collected via Coverlet (`XPlat Code Coverage`, cobertura) and uploaded to Codecov. There is no enforced threshold gate in CI (`fail_ci_if_error: false`).
+
+        ## Release (reference only — do not run as an agent)
+
+        Releases are cut by maintainers via the `release.yml` / `nuget-release.yml` workflows. Do not perform releases; only keep the version source files in sync (see Boundaries in `CLAUDE.md`).
+      references/docs-update.md: |
+        # Docs Update Rules
+
+        Auth0.NET is a **library/SDK** — its public surface is exported types and methods. Keep these docs in lockstep with public-API changes, in the same PR.
+
+        ## Tracked docs
+
+        | Doc | Covers | Exists |
+        |-----|--------|--------|
+        | `README.md` | Installation, requirements, quick-start for Management + Authentication clients, advanced usage (raw response, `Optional<T>`, DI/interfaces) | ✅ |
+        | `Examples.md` | Runnable code samples — client init, client credentials, MFA/ROPG, RAR (PAR/CIBA), MRRT, Custom Token Exchange, Token Vault; Management: token quota, job errors, Network ACLs, custom-domain header | ✅ |
+
+        `reference.md` is the generated API reference (Fern) — do not hand-edit. Migration guides (`V8_MIGRATION_GUIDE.md`, `V9_MIGRATION_GUIDE.md`) are version-specific and handled at breaking-change time, not tracked here. `CHANGELOG.md` is maintained by the release flow.
+
+        ## When you change code, update these docs
+
+        | When this changes | Update these docs |
+        |-------------------|-------------------|
+        | Public API surface (a client/sub-client, exported type, or public method) | `README.md` (usage), `Examples.md` (affected samples) |
+        | Configuration options (`ClientOptions`, `ManagementClientOptions`, token providers) | `README.md` (usage/configuration) |
+        | Authentication / token-handling flow | `README.md` (quick-start), `Examples.md` (auth/token samples) |
+        | Install, package name, or target-framework requirements | `README.md` (installation / requirements) |
+        | A new public method or exported type added | `Examples.md` (add a usage sample) |
+        | A public method or type removed or renamed | `README.md` + `Examples.md` (remove/update references) |
+        | A new integration pattern supported | `Examples.md` (add integration example) |
+
+        > When you touch code that maps to a doc above, update that doc **in the same PR** — do not defer. For Management API changes, remember most of that surface is Fern-generated: the doc update still ships in the PR that changes the definition/generation.
+      references/git-workflow.md: |
+        # Git Workflow
+
+        ## Branches
+
+        - Work on a feature/fix branch off `master`; open a PR against `master`.
+        - Release prep uses `prepare-x.y.z` branches (see `DEVELOPMENT.md`).
+
+        ## Commits
+
+        - History uses short type prefixes: `feat:`, `fix:`, `deps:`, plus `Bump …` for dependency updates. Keep the summary imperative and scoped.
+        - **Signed commits are expected** (the README asks contributors to sign commits for verification).
+
+        ## Pull Requests
+
+        - Fill out `.github/PULL_REQUEST_TEMPLATE.md`: describe what changed and why, list endpoints/classes/methods added/removed/changed, and complete the testing + checklist items (unit coverage, integration coverage, tested on latest platform).
+        - Required CI: the **Build and Test** workflow (`build.yml`) — build, then Core / Authentication / Management test jobs in sequence. `claude-code-review.yml` also runs.
+        - External PRs: maintainers run the live integration tests manually before merge (Auth0 doesn't share tenant keys).
+
+        ## Changelog
+
+        `CHANGELOG.md` follows a grouped, versioned format and is maintained as part of the release flow — do not hand-edit it during a feature PR.
+      references/pitfalls.md: |
+        # Common Pitfalls
+
+        - **Generated vs custom code (biggest one).** `src/Auth0.ManagementApi/` is largely Fern-generated. Editing a generated file "fixes" nothing — the next `fern generate` overwrites it. Before touching a Management file, confirm it's in `.fernignore`; if not, change the API definition or the generator (`CONTRIBUTING.md` → "About Generated Code"), or add the file to `.fernignore` if it's genuinely new custom code.
+
+        - **Two independent version sources.** `Auth0.Core` + `Auth0.AuthenticationApi` are versioned by `build/common.props` (`<Version>`) and the root `.version` (currently a 7.x line). `Auth0.ManagementApi` is versioned separately by `src/Auth0.ManagementApi/.version` and `Core/Public/Version.cs` (a 9.x line). Bump the correct pair — don't assume one version applies to all packages.
+
+        - **Split JSON stacks.** `Auth0.Core`/`Auth0.AuthenticationApi` use both `Newtonsoft.Json` and `System.Text.Json`; generated `Auth0.ManagementApi` uses `System.Text.Json`. Use the serializer that matches the project you're in; don't add Newtonsoft to Management code.
+
+        - **Custom props overrides the csproj's `TargetFrameworks` (biggest TFM gotcha).** `Auth0.ManagementApi.csproj` declares `net462;net8.0;net9.0;netstandard2.0`, but it imports `Auth0.ManagementApi.Custom.props` *last*, and that file unconditionally re-sets `<TargetFrameworks>net462;netstandard2.0</TargetFrameworks>`. Last-wins means the override takes effect: **all three shipped packages build only for `net462` + `netstandard2.0`.** Don't trust the `<TargetFrameworks>` line in the csproj — confirm with `dotnet msbuild <proj> -getProperty:TargetFrameworks`. (net8.0/net9.0/net10.0 only appear in *test* projects.)
+
+        - **Multi-target framework conditionals.** Guard newer-runtime APIs with `#if` (e.g. `init` accessors behind `#if NET5_0_OR_GREATER`, `DateTimeOnly` via `Portable.System.DateTimeOnly` on older TFMs). A change that builds on one TFM can still break another. Note: because the shipped packages compile only `net462`/`netstandard2.0`, `#if NET8_0` / `NET5_0_OR_GREATER` branches in the Fern-generated ManagementApi source never make it into the shipped assembly — the `#else`/older-TFM branch is what ships.
+
+        - **`WarningsAsErrors=nullable`.** A nullable-reference warning in `Auth0.Core` fails the build, not just the linter (`Nullable` is enabled repo-wide, but only Core promotes those warnings to errors). Annotate nullability correctly rather than suppressing.
+
+        - **Mixed test frameworks.** `Auth0.ManagementApi.Test` is **NUnit** (`Assert.That` constraint model); the other test projects are **xUnit** (`Fact`/`Theory` + FluentAssertions). Match the framework of the project you're adding tests to.
+      references/testing.md: |
+        # Testing
+
+        Test framework varies by project — check the project before writing tests.
+
+        | Project | Framework | Needs creds? | What it covers |
+        |---------|-----------|--------------|----------------|
+        | `tests/Auth0.Core.UnitTests` | xUnit 2.4 + FluentAssertions + Moq | No | Core HTTP, exceptions, JSON extensions, rate-limit parsing |
+        | `tests/Auth0.ManagementApi.Test` | NUnit 4 + WireMock.Net | No | ManagementApi unit + mock-server behavior (headers, interceptors, converters) |
+        | `tests/Auth0.AuthenticationApi.IntegrationTests` | xUnit + FluentAssertions + Moq | **Yes — live tenant** | Authentication API against a real Auth0 tenant |
+        | `tests/Auth0.ManagementApi.IntegrationTests` | xUnit + FluentAssertions + Moq | **Yes — live tenant** | Management API against a real Auth0 tenant |
+        | `tests/Auth0.IntegrationTests.Shared` | — | — | Shared fixtures + resource cleanup for integration tiers |
+
+        ## Safe (no-credentials) commands
+
+        ```bash
+        dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+        dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
+        ```
+
+        The two projects above are the default unit tier — no credentials required.
+
+        ## Integration / Acceptance Tests
+
+        > ⚠️ These hit a **live Auth0 tenant**, are slow, and can mutate real resources (they create/delete users, connections, etc. and rely on cleanup fixtures). **Ask before running them** (see Boundaries in `CLAUDE.md`). Auth0 does not publish keys for its integration tenants; maintainers run these manually for external PRs.
+
+        ```bash
+        dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj
+        dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj
+        ```
+
+        Requires environment variables for a real tenant, e.g. `AUTH0_MANAGEMENT_API_URL`, `AUTH0_MANAGEMENT_API_CLIENT_ID`, `AUTH0_MANAGEMENT_API_CLIENT_SECRET`, `AUTH0_CLIENT_ID`, `AUTH0_CLIENT_SECRET`, plus HS256/passwordless/Brucke variants — see the `env:` block in `.github/workflows/build.yml`.
+
+        ## Run a single test
+
+        ```bash
+        # xUnit / NUnit both support the VSTest filter
+        dotnet test tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj \
+          --filter "FullyQualifiedName~Auth0ClientHeaderTests"
+        ```
+
+        ## Conventions
+
+        - **NUnit (`Auth0.ManagementApi.Test`):** `[TestFixture]`, `[Test]`, `Assert.That(actual, Is.EqualTo(...))` constraint model; `[Parallelizable(ParallelScope.All)]` on mock-server fixtures. WireMock.Net spins up an in-process HTTP server (`WireMockServer.Start`) to assert on outgoing requests (e.g. header presence).
+        - **xUnit (`Auth0.Core.UnitTests`, integration tiers):** `[Fact]`/`[Theory]`, `FluentAssertions` (`result.Should().Be(...)`), `Moq` for mocking interfaces (`Mock<IUsersClient>`).
+        - Prefer the sub-client interfaces (`IUsersClient`, `IConnectionsClient`, `IManagementApiClient`) for mocking rather than concrete clients.
     user_owned: true
