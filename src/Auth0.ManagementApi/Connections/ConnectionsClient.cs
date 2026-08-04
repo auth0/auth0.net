@@ -66,7 +66,11 @@ public partial class ConnectionsClient : IConnectionsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 6)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 7)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("strategy", request.Strategy)
@@ -957,6 +961,7 @@ public partial class ConnectionsClient : IConnectionsClient
     /// await client.Connections.ListAsync(
     ///     new ListConnectionsQueryParameters
     ///     {
+    ///         IncludeTotals = true,
     ///         From = "from",
     ///         Take = 1,
     ///         Strategy = new List&lt;ConnectionStrategyEnum?&gt;() { ConnectionStrategyEnum.Ad },

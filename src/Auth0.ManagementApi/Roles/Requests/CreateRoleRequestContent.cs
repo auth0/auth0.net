@@ -19,6 +19,20 @@ public record CreateRoleRequestContent
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
+    /// <summary>
+    /// The type of the role. Defaults to tenant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("type")]
+    public RoleTypeEnum? Type { get; set; }
+
+    /// <summary>
+    /// The ID of the organization that owns this role. Required when type is "organization".
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("owner_id")]
+    public string? OwnerId { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

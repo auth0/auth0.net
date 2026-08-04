@@ -29,6 +29,26 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteActions = new(Values.DeleteActions);
 
     /// <summary>
+    /// Create Agents
+    /// </summary>
+    public static readonly OauthScope CreateAgents = new(Values.CreateAgents);
+
+    /// <summary>
+    /// Read Agents
+    /// </summary>
+    public static readonly OauthScope ReadAgents = new(Values.ReadAgents);
+
+    /// <summary>
+    /// Update Agents
+    /// </summary>
+    public static readonly OauthScope UpdateAgents = new(Values.UpdateAgents);
+
+    /// <summary>
+    /// Delete Agents
+    /// </summary>
+    public static readonly OauthScope DeleteAgents = new(Values.DeleteAgents);
+
+    /// <summary>
     /// Read Anomaly Blocks
     /// </summary>
     public static readonly OauthScope ReadAnomalyBlocks = new(Values.ReadAnomalyBlocks);
@@ -1314,6 +1334,32 @@ public readonly record struct OauthScope : IStringEnum
     /// </summary>
     public static readonly OauthScope DeleteVdcsTemplates = new(Values.DeleteVdcsTemplates);
 
+    /// <summary>
+    /// Create Organization Client Associations
+    /// </summary>
+    public static readonly OauthScope CreateOrganizationClients = new(
+        Values.CreateOrganizationClients
+    );
+
+    /// <summary>
+    /// Read Organization Client Associations
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationClients = new(Values.ReadOrganizationClients);
+
+    /// <summary>
+    /// Update Organization Client Associations
+    /// </summary>
+    public static readonly OauthScope UpdateOrganizationClients = new(
+        Values.UpdateOrganizationClients
+    );
+
+    /// <summary>
+    /// Delete Organization Client Associations
+    /// </summary>
+    public static readonly OauthScope DeleteOrganizationClients = new(
+        Values.DeleteOrganizationClients
+    );
+
     public OauthScope(string value)
     {
         Value = value;
@@ -1428,6 +1474,26 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Actions
         /// </summary>
         public const string DeleteActions = "delete:actions";
+
+        /// <summary>
+        /// Create Agents
+        /// </summary>
+        public const string CreateAgents = "create:agents";
+
+        /// <summary>
+        /// Read Agents
+        /// </summary>
+        public const string ReadAgents = "read:agents";
+
+        /// <summary>
+        /// Update Agents
+        /// </summary>
+        public const string UpdateAgents = "update:agents";
+
+        /// <summary>
+        /// Delete Agents
+        /// </summary>
+        public const string DeleteAgents = "delete:agents";
 
         /// <summary>
         /// Read Anomaly Blocks
@@ -2599,5 +2665,25 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Vdcs Templates
         /// </summary>
         public const string DeleteVdcsTemplates = "delete:vdcs_templates";
+
+        /// <summary>
+        /// Create Organization Client Associations
+        /// </summary>
+        public const string CreateOrganizationClients = "create:organization_clients";
+
+        /// <summary>
+        /// Read Organization Client Associations
+        /// </summary>
+        public const string ReadOrganizationClients = "read:organization_clients";
+
+        /// <summary>
+        /// Update Organization Client Associations
+        /// </summary>
+        public const string UpdateOrganizationClients = "update:organization_clients";
+
+        /// <summary>
+        /// Delete Organization Client Associations
+        /// </summary>
+        public const string DeleteOrganizationClients = "delete:organization_clients";
     }
 }

@@ -7,6 +7,12 @@ namespace Auth0.ManagementApi.Users;
 public record ListUserSessionsRequestParameters
 {
     /// <summary>
+    /// Return results inside an object that contains the total result count (true) or as a direct array of results (false, default).
+    /// </summary>
+    [JsonIgnore]
+    public Optional<bool?> IncludeTotals { get; set; } = true;
+
+    /// <summary>
     /// An optional cursor from which to start the selection (exclusive).
     /// </summary>
     [JsonIgnore]

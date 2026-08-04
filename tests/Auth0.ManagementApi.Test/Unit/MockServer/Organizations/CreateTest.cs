@@ -41,6 +41,10 @@ public class CreateTest : BaseMockServerTest
                 }
               },
               "third_party_client_access": "block",
+              "is_app_entitlement_active": true,
+              "client": {
+                "use_for_member_access": true
+              },
               "enabled_connections": [
                 {
                   "connection_id": "connection_id",

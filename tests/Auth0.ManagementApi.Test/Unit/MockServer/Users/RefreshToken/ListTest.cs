@@ -54,7 +54,12 @@ public class ListTest : BaseMockServerTest
 
         var items = await Client.Users.RefreshToken.ListAsync(
             "user_id",
-            new ListRefreshTokensRequestParameters { From = "from", Take = 1 }
+            new ListRefreshTokensRequestParameters
+            {
+                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+            }
         );
         await foreach (var item in items)
         {

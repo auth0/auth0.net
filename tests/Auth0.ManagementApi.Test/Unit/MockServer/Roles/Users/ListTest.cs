@@ -43,7 +43,12 @@ public class ListTest : BaseMockServerTest
 
         var items = await Client.Roles.Users.ListAsync(
             "id",
-            new ListRoleUsersRequestParameters { From = "from", Take = 1 }
+            new ListRoleUsersRequestParameters
+            {
+                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+            }
         );
         await foreach (var item in items)
         {

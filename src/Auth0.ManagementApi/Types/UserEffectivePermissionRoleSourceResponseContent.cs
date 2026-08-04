@@ -32,6 +32,17 @@ public record UserEffectivePermissionRoleSourceResponseContent : IJsonOnDeserial
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
+    [Optional]
+    [JsonPropertyName("type")]
+    public RoleTypeEnum? Type { get; set; }
+
+    /// <summary>
+    /// The id of the entity that owns this role, such as an organization id.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("owner_id")]
+    public string? OwnerId { get; set; }
+
     /// <summary>
     /// List of sources where this role is coming from.
     /// </summary>

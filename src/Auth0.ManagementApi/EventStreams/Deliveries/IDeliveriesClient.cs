@@ -1,10 +1,11 @@
 using Auth0.ManagementApi;
+using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi.EventStreams;
 
 public partial interface IDeliveriesClient
 {
-    WithRawResponseTask<IEnumerable<EventStreamDelivery>> ListAsync(
+    Task<Pager<EventStreamDelivery>> ListAsync(
         string id,
         ListEventStreamDeliveriesRequestParameters request,
         RequestOptions? options = null,

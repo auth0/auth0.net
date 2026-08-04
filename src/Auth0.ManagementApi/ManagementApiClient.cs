@@ -38,6 +38,7 @@ public partial class ManagementApiClient : IManagementApiClient
         }
         _client = new RawClient(clientOptionsWithAuth);
         Actions = new ActionsClient(_client);
+        Agents = new AgentsClient(_client);
         Branding = new BrandingClient(_client);
         ClientGrants = new ClientGrantsClient(_client);
         Clients = new ClientsClient(_client);
@@ -85,6 +86,8 @@ public partial class ManagementApiClient : IManagementApiClient
     }
 
     public IActionsClient Actions { get; }
+
+    public IAgentsClient Agents { get; }
 
     public IBrandingClient Branding { get; }
 

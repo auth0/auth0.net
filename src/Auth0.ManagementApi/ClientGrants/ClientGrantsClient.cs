@@ -37,7 +37,11 @@ public partial class ClientGrantsClient : IClientGrantsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 7)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 8)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("audience", request.Audience.IsDefined ? request.Audience.Value : null)
@@ -763,6 +767,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
     /// await client.ClientGrants.ListAsync(
     ///     new ListClientGrantsRequestParameters
     ///     {
+    ///         IncludeTotals = true,
     ///         From = "from",
     ///         Take = 1,
     ///         Audience = "audience",

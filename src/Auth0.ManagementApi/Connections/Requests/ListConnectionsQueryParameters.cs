@@ -7,6 +7,12 @@ namespace Auth0.ManagementApi;
 public record ListConnectionsQueryParameters
 {
     /// <summary>
+    /// true if a query summary must be included in the result, false otherwise. Not returned when using checkpoint pagination. Default <c>false</c>.
+    /// </summary>
+    [JsonIgnore]
+    public Optional<bool?> IncludeTotals { get; set; } = true;
+
+    /// <summary>
     /// Optional Id from which to start selection.
     /// </summary>
     [JsonIgnore]

@@ -13,7 +13,21 @@ public partial class DeliveriesClient : IDeliveriesClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<IEnumerable<EventStreamDelivery>>> ListAsyncCore(
+    private WithRawResponseTask<ListEventStreamDeliveriesResponseContent> ListInternalAsync(
+        string id,
+        ListEventStreamDeliveriesRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<ListEventStreamDeliveriesResponseContent>(
+            ListInternalAsyncCore(id, request, options, cancellationToken)
+        );
+    }
+
+    private async Task<
+        WithRawResponse<ListEventStreamDeliveriesResponseContent>
+    > ListInternalAsyncCore(
         string id,
         ListEventStreamDeliveriesRequestParameters request,
         RequestOptions? options = null,
@@ -58,10 +72,10 @@ public partial class DeliveriesClient : IDeliveriesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<IEnumerable<EventStreamDelivery>>(
+                var responseData = JsonUtils.Deserialize<ListEventStreamDeliveriesResponseContent>(
                     responseBody
                 )!;
-                return new WithRawResponse<IEnumerable<EventStreamDelivery>>()
+                return new WithRawResponse<ListEventStreamDeliveriesResponseContent>()
                 {
                     Data = responseData,
                     RawResponse = new Auth0.ManagementApi.RawResponse()
@@ -339,16 +353,40 @@ public partial class DeliveriesClient : IDeliveriesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<IEnumerable<EventStreamDelivery>> ListAsync(
+    public async Task<Pager<EventStreamDelivery>> ListAsync(
         string id,
         ListEventStreamDeliveriesRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<IEnumerable<EventStreamDelivery>>(
-            ListAsyncCore(id, request, options, cancellationToken)
-        );
+        if (request is not null)
+        {
+            request = request with { };
+        }
+        var pager = await CursorPager<
+            ListEventStreamDeliveriesRequestParameters,
+            RequestOptions?,
+            ListEventStreamDeliveriesResponseContent,
+            string?,
+            EventStreamDelivery
+        >
+            .CreateInstanceAsync(
+                request,
+                options,
+                async (request, options, cancellationToken) =>
+                    await ListInternalAsync(id, request, options, cancellationToken)
+                        .WithRawResponse(),
+                (request, cursor) =>
+                {
+                    request.From = cursor;
+                },
+                response => response.Next,
+                response => response.Deliveries?.ToList(),
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        return pager;
     }
 
     /// <example><code>

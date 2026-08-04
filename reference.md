@@ -427,6 +427,285 @@ await client.Actions.TestAsync(
 </dl>
 </details>
 
+## Agents
+<details><summary><code>client.Agents.<a href="/src/Auth0.ManagementApi/Agents/AgentsClient.cs">ListAsync</a>(ListAgentsRequestParameters { ... }) -> Pager&lt;AgentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get agents
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Agents.ListAsync(new ListAgentsRequestParameters { From = "from", Take = 1 });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListAgentsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Agents.<a href="/src/Auth0.ManagementApi/Agents/AgentsClient.cs">CreateAsync</a>(CreateAgentRequestContent { ... }) -> WithRawResponseTask&lt;AgentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create an agent
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Agents.CreateAsync(new CreateAgentRequestContent { Name = "name" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateAgentRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Agents.<a href="/src/Auth0.ManagementApi/Agents/AgentsClient.cs">ReadAsync</a>(id) -> WithRawResponseTask&lt;AgentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get an agent
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Agents.ReadAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The agent ID
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Agents.<a href="/src/Auth0.ManagementApi/Agents/AgentsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an agent
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Agents.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The agent ID
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Agents.<a href="/src/Auth0.ManagementApi/Agents/AgentsClient.cs">UpdateAsync</a>(id, PatchAgentRequestParameters { ... }) -> WithRawResponseTask&lt;AgentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an agent
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Agents.UpdateAsync("id", new PatchAgentRequestParameters());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The agent ID
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `PatchAgentRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Branding
 <details><summary><code>client.Branding.<a href="/src/Auth0.ManagementApi/Branding/BrandingClient.cs">GetAsync</a>() -> WithRawResponseTask&lt;GetBrandingResponseContent&gt;</code></summary>
 <dl>
@@ -552,6 +831,7 @@ Retrieve a list of [client grants](https://auth0.com/docs/get-started/applicatio
 await client.ClientGrants.ListAsync(
     new ListClientGrantsRequestParameters
     {
+        IncludeTotals = true,
         From = "from",
         Take = 1,
         Audience = "audience",
@@ -1793,6 +2073,7 @@ To search by checkpoint, use the following parameters:
 await client.Connections.ListAsync(
     new ListConnectionsQueryParameters
     {
+        IncludeTotals = true,
         From = "from",
         Take = 1,
         Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },
@@ -4134,6 +4415,7 @@ await client.Groups.ListAsync(
         Search = "search",
         Fields = "fields",
         IncludeFields = true,
+        IncludeTotals = true,
         From = "from",
         Take = 1,
     }
@@ -5954,9 +6236,11 @@ To search by checkpoint, use the following parameters:
 await client.Organizations.ListAsync(
     new ListOrganizationsRequestParameters
     {
+        IncludeTotals = true,
         From = "from",
         Take = 1,
         Sort = "sort",
+        IncludeClientAssociationFor = "include_client_association_for",
     }
 );
 ```
@@ -7224,6 +7508,8 @@ await client.Roles.ListAsync(
         Page = 1,
         IncludeTotals = true,
         NameFilter = "name_filter",
+        Type = RoleTypeEnum.Tenant,
+        OwnerId = "owner_id",
     }
 );
 ```
@@ -13191,7 +13477,12 @@ await client.Branding.Phone.Templates.TestAsync(
 ```csharp
 await client.ClientGrants.Organizations.ListAsync(
     "id",
-    new ListClientGrantOrganizationsRequestParameters { From = "from", Take = 1 }
+    new ListClientGrantOrganizationsRequestParameters
+    {
+        IncludeTotals = true,
+        From = "from",
+        Take = 1,
+    }
 );
 ```
 </dd>
@@ -14059,7 +14350,12 @@ Retrieve the configured synchronized groups for a connection directory provision
 ```csharp
 await client.Connections.DirectoryProvisioning.ListSynchronizedGroupsAsync(
     "id",
-    new ListSynchronizedGroupsRequestParameters { From = "from", Take = 1 }
+    new ListSynchronizedGroupsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Q = "q",
+    }
 );
 ```
 </dd>
@@ -14084,6 +14380,77 @@ await client.Connections.DirectoryProvisioning.ListSynchronizedGroupsAsync(
 <dd>
 
 **request:** `ListSynchronizedGroupsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">AddSynchronizedGroupSelectionsAsync</a>(id, AddSynchronizedGroupsRequestContent { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add synchronized group selections to a directory provisioning configuration.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.DirectoryProvisioning.AddSynchronizedGroupSelectionsAsync(
+    "id",
+    new AddSynchronizedGroupsRequestContent
+    {
+        Groups = new List<SynchronizedGroupPayload>()
+        {
+            new SynchronizedGroupPayload { Id = "id" },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection to add synchronized groups to
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `AddSynchronizedGroupsRequestContent` 
     
 </dd>
 </dl>
@@ -14155,6 +14522,77 @@ await client.Connections.DirectoryProvisioning.SetAsync(
 <dd>
 
 **request:** `ReplaceSynchronizedGroupsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">DeleteSynchronizedGroupSelectionsAsync</a>(id, DeleteSynchronizedGroupsRequestContent { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete synchronized group selections for a directory provisioning configuration
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.DirectoryProvisioning.DeleteSynchronizedGroupSelectionsAsync(
+    "id",
+    new DeleteSynchronizedGroupsRequestContent
+    {
+        Groups = new List<SynchronizedGroupSelectionId>()
+        {
+            new SynchronizedGroupSelectionId { Id = "id" },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection to delete synchronized group selections for
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `DeleteSynchronizedGroupsRequestContent` 
     
 </dd>
 </dl>
@@ -15387,7 +15825,7 @@ await client.Emails.Provider.UpdateAsync(new UpdateEmailProviderRequestContent()
 </details>
 
 ## EventStreams Deliveries
-<details><summary><code>client.EventStreams.Deliveries.<a href="/src/Auth0.ManagementApi/EventStreams/Deliveries/DeliveriesClient.cs">ListAsync</a>(id, ListEventStreamDeliveriesRequestParameters { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;EventStreamDelivery&gt;&gt;</code></summary>
+<details><summary><code>client.EventStreams.Deliveries.<a href="/src/Auth0.ManagementApi/EventStreams/Deliveries/DeliveriesClient.cs">ListAsync</a>(id, ListEventStreamDeliveriesRequestParameters { ... }) -> Pager&lt;EventStreamDelivery&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15610,7 +16048,12 @@ await client.EventStreams.Redeliveries.CreateByIdAsync("id", "event_id");
 ```csharp
 await client.Flows.Executions.ListAsync(
     "flow_id",
-    new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
+    new ListFlowExecutionsRequestParameters
+    {
+        IncludeTotals = true,
+        From = "from",
+        Take = 1,
+    }
 );
 ```
 </dd>
@@ -19431,6 +19874,353 @@ await client.Organizations.ClientGrants.DeleteAsync("id", "grant_id");
 </dl>
 </details>
 
+## Organizations Clients
+<details><summary><code>client.Organizations.Clients.<a href="/src/Auth0.ManagementApi/Organizations/Clients/ClientsClient.cs">ListAsync</a>(id, ListOrganizationClientsRequestParameters { ... }) -> Pager&lt;OrganizationClient&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all clients associated with an organization, using checkpoint pagination.
+<ul>
+  <li>
+    <b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
+  </li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Clients.ListAsync(
+    "id",
+    new ListOrganizationClientsRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationClientsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Clients.<a href="/src/Auth0.ManagementApi/Organizations/Clients/ClientsClient.cs">CreateAsync</a>(id, CreateOrganizationClientsRequestContent { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;OrganizationClient&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Associate one or more clients with an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Clients.CreateAsync(
+    "id",
+    new CreateOrganizationClientsRequestContent
+    {
+        Clients = new List<CreateOrganizationClientRequestItem>()
+        {
+            new CreateOrganizationClientRequestItem
+            {
+                ClientId = "client_id",
+                UseForMemberAccess = true,
+            },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CreateOrganizationClientsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Clients.<a href="/src/Auth0.ManagementApi/Organizations/Clients/ClientsClient.cs">DeleteAsync</a>(id, DeleteOrganizationClientsRequestContent { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove one or more client associations from an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Clients.DeleteAsync(
+    "id",
+    new DeleteOrganizationClientsRequestContent { Clients = new List<string>() { "clients" } }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `DeleteOrganizationClientsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Clients.<a href="/src/Auth0.ManagementApi/Organizations/Clients/ClientsClient.cs">GetAsync</a>(id, clientId) -> WithRawResponseTask&lt;GetOrganizationClientResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a specific client association for an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Clients.GetAsync("id", "client_id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**clientId:** `string` — ID of the client association to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.Clients.<a href="/src/Auth0.ManagementApi/Organizations/Clients/ClientsClient.cs">UpdateAsync</a>(id, clientId, UpdateOrganizationClientRequestContent { ... }) -> WithRawResponseTask&lt;UpdateOrganizationClientResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an organization client association.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Clients.UpdateAsync(
+    "id",
+    "client_id",
+    new UpdateOrganizationClientRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**clientId:** `string` — ID of the client association to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateOrganizationClientRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Organizations Connections
 <details><summary><code>client.Organizations.Connections.<a href="/src/Auth0.ManagementApi/Organizations/Connections/ConnectionsClient.cs">ListAsync</a>(id, ListOrganizationAllConnectionsRequestParameters { ... }) -> Pager&lt;OrganizationAllConnectionPost&gt;</code></summary>
 <dl>
@@ -20697,7 +21487,7 @@ List organization members.
 This endpoint is subject to eventual consistency. New users may not be immediately included in the response and deleted users may not be immediately removed from it.
 
 - Use the `fields` parameter to optionally define the specific member details retrieved. If `fields` is left blank, all fields (except roles) are returned.
-- Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token.
+- Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token. Only directly assigned roles are returned. To also include group-based role assignments, use `GET /api/v2/organizations/{id}/members/{user_id}/effective-roles`.
 
 This endpoint supports two types of pagination:
 
@@ -20727,6 +21517,7 @@ await client.Organizations.Members.ListAsync(
     "id",
     new ListOrganizationMembersRequestParameters
     {
+        IncludeTotals = true,
         From = "from",
         Take = 1,
         Fields = "fields",
@@ -21265,6 +22056,8 @@ await client.Organizations.Members.EffectiveRoles.ListAsync(
 Retrieve detailed list of roles assigned to a given user within the context of a specific Organization. 
 
 Users can be members of multiple Organizations with unique roles assigned for each membership. This action only returns the roles associated with the specified Organization; any roles assigned to the user within other Organizations are not included.
+
+**Note**: Returns only direct role assignments for this member. To also include group-based role assignments, use `GET /api/v2/organizations/{id}/members/{user_id}/effective-roles`.
 </dd>
 </dl>
 </dd>
@@ -21577,6 +22370,11 @@ await client.Organizations.Members.EffectiveRoles.Sources.Groups.ListAsync(
 <dd>
 
 List the organization members assigned a specific role within the context of an organization.
+<ul>
+  <li>
+    <b>Note</b>: Returns only members with direct role assignments. For groups assigned to this role within the organization, use <code>GET /api/v2/organizations/{organization_id}/roles/{role_id}/groups</code>.
+  </li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -21633,6 +22431,81 @@ await client.Organizations.Roles.Members.ListAsync(
 <dd>
 
 **request:** `ListOrganizationRoleMembersRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations Roles Groups
+<details><summary><code>client.Organizations.Roles.Groups.<a href="/src/Auth0.ManagementApi/Organizations/Roles/Groups/GroupsClient.cs">ListAsync</a>(organizationId, roleId, ListOrganizationRoleGroupsRequestParameters { ... }) -> Pager&lt;RoleGroup&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of groups assigned to a role in the context of an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.Roles.Groups.ListAsync(
+    "organization_id",
+    "role_id",
+    new ListOrganizationRoleGroupsRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationId:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**roleId:** `string` — ID of the role.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationRoleGroupsRequestParameters` 
     
 </dd>
 </dl>
@@ -22791,6 +23664,8 @@ await client.Roles.Permissions.DeleteAsync(
 
 Retrieve list of users associated with a specific role. For Dashboard instructions, review [View Users Assigned to Roles](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/roles/view-users-assigned-to-roles).
 
+**Note**: Returns only users with direct role assignments. For groups assigned to this role, use `GET /api/v2/roles/{id}/groups`.
+
 This endpoint supports two types of pagination:
 
 - Offset pagination
@@ -22822,7 +23697,12 @@ To search by checkpoint, use the following parameters:
 ```csharp
 await client.Roles.Users.ListAsync(
     "id",
-    new ListRoleUsersRequestParameters { From = "from", Take = 1 }
+    new ListRoleUsersRequestParameters
+    {
+        IncludeTotals = true,
+        From = "from",
+        Take = 1,
+    }
 );
 ```
 </dd>
@@ -24117,6 +24997,7 @@ await client.Users.Groups.GetAsync(
     {
         Fields = "fields",
         IncludeFields = true,
+        IncludeTotals = true,
         From = "from",
         Take = 1,
     }
@@ -24598,6 +25479,8 @@ await client.Users.Organizations.ListAsync(
 <dd>
 
 Retrieve all permissions associated with the user.
+
+**Note**: Returns only permissions from direct assignments and directly assigned roles. For permissions a user has via group-based role assignments, use `GET /api/v2/users/{id}/effective-permissions`.
 </dd>
 </dl>
 </dd>
@@ -24891,6 +25774,8 @@ await client.Users.RiskAssessments.ClearAsync(
 Retrieve detailed list of all user roles currently assigned to a user.
 
 **Note**: This action retrieves all roles assigned to a user in the context of your whole tenant. To retrieve Organization-specific roles, use the following endpoint: [Get user roles assigned to an Organization member](https://auth0.com/docs/api/management/v2/organizations/get-organization-member-roles).
+
+**Note**: Returns only direct role assignments. To also include group-based role assignments, use `GET /api/v2/users/{id}/effective-roles`.
 </dd>
 </dl>
 </dd>
@@ -25112,7 +25997,12 @@ Retrieve details for a user's refresh tokens.
 ```csharp
 await client.Users.RefreshToken.ListAsync(
     "user_id",
-    new ListRefreshTokensRequestParameters { From = "from", Take = 1 }
+    new ListRefreshTokensRequestParameters
+    {
+        IncludeTotals = true,
+        From = "from",
+        Take = 1,
+    }
 );
 ```
 </dd>
@@ -25232,7 +26122,12 @@ Retrieve details for a user's sessions.
 ```csharp
 await client.Users.Sessions.ListAsync(
     "user_id",
-    new ListUserSessionsRequestParameters { From = "from", Take = 1 }
+    new ListUserSessionsRequestParameters
+    {
+        IncludeTotals = true,
+        From = "from",
+        Take = 1,
+    }
 );
 ```
 </dd>

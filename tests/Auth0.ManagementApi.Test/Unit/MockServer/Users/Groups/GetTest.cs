@@ -55,6 +55,7 @@ public class GetTest : BaseMockServerTest
             {
                 Fields = "fields",
                 IncludeFields = true,
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
             }

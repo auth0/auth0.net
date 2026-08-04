@@ -33,7 +33,11 @@ public class GetTest : BaseMockServerTest
                   "per_hour": 1
                 }
               },
-              "third_party_client_access": "block"
+              "third_party_client_access": "block",
+              "is_app_entitlement_active": true,
+              "client": {
+                "use_for_member_access": true
+              }
             }
             """;
 

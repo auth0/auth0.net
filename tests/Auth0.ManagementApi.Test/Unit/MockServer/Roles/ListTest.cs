@@ -20,7 +20,9 @@ public class ListTest : BaseMockServerTest
                 {
                   "id": "id",
                   "name": "name",
-                  "description": "description"
+                  "description": "description",
+                  "type": "tenant",
+                  "owner_id": "owner_id"
                 }
               ]
             }
@@ -34,6 +36,8 @@ public class ListTest : BaseMockServerTest
                     .WithParam("per_page", "1")
                     .WithParam("page", "1")
                     .WithParam("name_filter", "name_filter")
+                    .WithParam("type", "tenant")
+                    .WithParam("owner_id", "owner_id")
                     .UsingGet()
             )
             .RespondWith(
@@ -50,6 +54,8 @@ public class ListTest : BaseMockServerTest
                 Page = 1,
                 IncludeTotals = true,
                 NameFilter = "name_filter",
+                Type = RoleTypeEnum.Tenant,
+                OwnerId = "owner_id",
             }
         );
         await foreach (var item in items)

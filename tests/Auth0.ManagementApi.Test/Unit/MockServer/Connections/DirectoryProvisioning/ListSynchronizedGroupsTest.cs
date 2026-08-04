@@ -15,7 +15,10 @@ public class ListSynchronizedGroupsTest : BaseMockServerTest
             {
               "groups": [
                 {
-                  "id": "id"
+                  "id": "id",
+                  "name": "name",
+                  "email": "email",
+                  "direct_members_count": 1
                 }
               ],
               "next": "next"
@@ -29,6 +32,7 @@ public class ListSynchronizedGroupsTest : BaseMockServerTest
                     .WithPath("/connections/id/directory-provisioning/synchronized-groups")
                     .WithParam("from", "from")
                     .WithParam("take", "1")
+                    .WithParam("q", "q")
                     .UsingGet()
             )
             .RespondWith(
@@ -40,7 +44,12 @@ public class ListSynchronizedGroupsTest : BaseMockServerTest
 
         var items = await Client.Connections.DirectoryProvisioning.ListSynchronizedGroupsAsync(
             "id",
-            new ListSynchronizedGroupsRequestParameters { From = "from", Take = 1 }
+            new ListSynchronizedGroupsRequestParameters
+            {
+                From = "from",
+                Take = 1,
+                Q = "q",
+            }
         );
         await foreach (var item in items)
         {

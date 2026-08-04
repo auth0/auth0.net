@@ -32,6 +32,17 @@ public record GetRoleResponseContent : IJsonOnDeserialized
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
+    [Optional]
+    [JsonPropertyName("type")]
+    public RoleTypeEnum? Type { get; set; }
+
+    /// <summary>
+    /// The id of the entity that owns this role, such as an organization id.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("owner_id")]
+    public string? OwnerId { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

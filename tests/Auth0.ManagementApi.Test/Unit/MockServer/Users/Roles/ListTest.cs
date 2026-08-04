@@ -20,7 +20,9 @@ public class ListTest : BaseMockServerTest
                 {
                   "id": "id",
                   "name": "name",
-                  "description": "description"
+                  "description": "description",
+                  "type": "tenant",
+                  "owner_id": "owner_id"
                 }
               ]
             }

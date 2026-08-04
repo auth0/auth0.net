@@ -47,6 +47,17 @@ public record CreateOrganizationResponseContent : IJsonOnDeserialized, IJsonOnSe
     [JsonPropertyName("third_party_client_access")]
     public OrganizationThirdPartyClientAccessEnum? ThirdPartyClientAccess { get; set; }
 
+    /// <summary>
+    /// Whether app entitlement is active for this organization.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("is_app_entitlement_active")]
+    public bool? IsAppEntitlementActive { get; set; }
+
+    [Optional]
+    [JsonPropertyName("client")]
+    public OrganizationClientAssociation? Client { get; set; }
+
     [Optional]
     [JsonPropertyName("enabled_connections")]
     public IEnumerable<OrganizationEnabledConnection>? EnabledConnections { get; set; }

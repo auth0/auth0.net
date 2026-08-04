@@ -56,7 +56,12 @@ public class ListTest : BaseMockServerTest
 
         var items = await Client.Users.Sessions.ListAsync(
             "user_id",
-            new ListUserSessionsRequestParameters { From = "from", Take = 1 }
+            new ListUserSessionsRequestParameters
+            {
+                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+            }
         );
         await foreach (var item in items)
         {

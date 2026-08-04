@@ -7,6 +7,8 @@ public partial interface IPermissionsClient
 {
     /// <summary>
     /// Retrieve all permissions associated with the user.
+    ///
+    /// **Note**: Returns only permissions from direct assignments and directly assigned roles. For permissions a user has via group-based role assignments, use `GET /api/v2/users/{id}/effective-permissions`.
     /// </summary>
     Task<Pager<UserPermissionSchema>> ListAsync(
         string id,

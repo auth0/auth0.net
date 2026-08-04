@@ -26,7 +26,7 @@ public partial class MembersClient : IMembersClient
     /// This endpoint is subject to eventual consistency. New users may not be immediately included in the response and deleted users may not be immediately removed from it.
     ///
     /// - Use the `fields` parameter to optionally define the specific member details retrieved. If `fields` is left blank, all fields (except roles) are returned.
-    /// - Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token.
+    /// - Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token. Only directly assigned roles are returned. To also include group-based role assignments, use `GET /api/v2/organizations/{id}/members/{user_id}/effective-roles`.
     ///
     /// This endpoint supports two types of pagination:
     ///
@@ -60,7 +60,11 @@ public partial class MembersClient : IMembersClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 4)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 5)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("fields", request.Fields.IsDefined ? request.Fields.Value : null)
@@ -461,7 +465,7 @@ public partial class MembersClient : IMembersClient
     /// This endpoint is subject to eventual consistency. New users may not be immediately included in the response and deleted users may not be immediately removed from it.
     ///
     /// - Use the `fields` parameter to optionally define the specific member details retrieved. If `fields` is left blank, all fields (except roles) are returned.
-    /// - Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token.
+    /// - Member roles are not sent by default. Use `fields=roles` to retrieve the roles assigned to each listed member. To use this parameter, you must include the `read:organization_member_roles` scope in the token. Only directly assigned roles are returned. To also include group-based role assignments, use `GET /api/v2/organizations/{id}/members/{user_id}/effective-roles`.
     ///
     /// This endpoint supports two types of pagination:
     ///
@@ -479,6 +483,7 @@ public partial class MembersClient : IMembersClient
     ///     "id",
     ///     new ListOrganizationMembersRequestParameters
     ///     {
+    ///         IncludeTotals = true,
     ///         From = "from",
     ///         Take = 1,
     ///         Fields = "fields",

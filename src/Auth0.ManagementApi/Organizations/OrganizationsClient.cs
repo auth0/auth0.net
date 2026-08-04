@@ -12,6 +12,7 @@ public partial class OrganizationsClient : IOrganizationsClient
     {
         _client = client;
         ClientGrants = new Auth0.ManagementApi.Organizations.ClientGrantsClient(_client);
+        Clients = new Auth0.ManagementApi.Organizations.ClientsClient(_client);
         Connections = new Auth0.ManagementApi.Organizations.ConnectionsClient(_client);
         DiscoveryDomains = new DiscoveryDomainsClient(_client);
         EnabledConnections = new EnabledConnectionsClient(_client);
@@ -22,6 +23,8 @@ public partial class OrganizationsClient : IOrganizationsClient
     }
 
     public Auth0.ManagementApi.Organizations.IClientGrantsClient ClientGrants { get; }
+
+    public Auth0.ManagementApi.Organizations.IClientsClient Clients { get; }
 
     public Auth0.ManagementApi.Organizations.IConnectionsClient Connections { get; }
 
@@ -75,10 +78,20 @@ public partial class OrganizationsClient : IOrganizationsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 3)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 5)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("sort", request.Sort.IsDefined ? request.Sort.Value : null)
+            .Add(
+                "include_client_association_for",
+                request.IncludeClientAssociationFor.IsDefined
+                    ? request.IncludeClientAssociationFor.Value
+                    : null
+            )
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
@@ -978,9 +991,11 @@ public partial class OrganizationsClient : IOrganizationsClient
     /// await client.Organizations.ListAsync(
     ///     new ListOrganizationsRequestParameters
     ///     {
+    ///         IncludeTotals = true,
     ///         From = "from",
     ///         Take = 1,
     ///         Sort = "sort",
+    ///         IncludeClientAssociationFor = "include_client_association_for",
     ///     }
     /// );
     /// </code></example>

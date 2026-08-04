@@ -49,6 +49,7 @@ public class ListTest : BaseMockServerTest
             "id",
             new ListOrganizationMembersRequestParameters
             {
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
                 Fields = "fields",

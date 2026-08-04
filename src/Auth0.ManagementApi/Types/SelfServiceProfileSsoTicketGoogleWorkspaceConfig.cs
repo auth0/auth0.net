@@ -20,6 +20,13 @@ public record SelfServiceProfileSsoTicketGoogleWorkspaceConfig : IJsonOnDeserial
     [JsonPropertyName("sync_users")]
     public required bool SyncUsers { get; set; }
 
+    /// <summary>
+    /// Whether to enable Google Workspace Directory Sync for groups during the self-service flow.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("sync_groups")]
+    public bool? SyncGroups { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

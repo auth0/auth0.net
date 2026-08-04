@@ -75,11 +75,31 @@ public partial interface IDirectoryProvisioningClient
     );
 
     /// <summary>
+    /// Add synchronized group selections to a directory provisioning configuration.
+    /// </summary>
+    WithRawResponseTask AddSynchronizedGroupSelectionsAsync(
+        string id,
+        AddSynchronizedGroupsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Create or replace the selected groups for a connection directory provisioning configuration.
     /// </summary>
     WithRawResponseTask SetAsync(
         string id,
         ReplaceSynchronizedGroupsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Delete synchronized group selections for a directory provisioning configuration
+    /// </summary>
+    WithRawResponseTask DeleteSynchronizedGroupSelectionsAsync(
+        string id,
+        DeleteSynchronizedGroupsRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

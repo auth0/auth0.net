@@ -22,7 +22,8 @@ public class ListTest : BaseMockServerTest
                   "token_quota": {
                     "client_credentials": {}
                   },
-                  "third_party_client_access": "block"
+                  "third_party_client_access": "block",
+                  "is_app_entitlement_active": true
                 }
               ]
             }
@@ -46,7 +47,12 @@ public class ListTest : BaseMockServerTest
 
         var items = await Client.ClientGrants.Organizations.ListAsync(
             "id",
-            new ListClientGrantOrganizationsRequestParameters { From = "from", Take = 1 }
+            new ListClientGrantOrganizationsRequestParameters
+            {
+                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+            }
         );
         await foreach (var item in items)
         {

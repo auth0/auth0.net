@@ -14,6 +14,8 @@ public readonly record struct AculContextEnum : IStringEnum
         Values.BrandingThemesDefault
     );
 
+    public static readonly AculContextEnum CountryCodes = new(Values.CountryCodes);
+
     public static readonly AculContextEnum ClientLogoUri = new(Values.ClientLogoUri);
 
     public static readonly AculContextEnum ClientDescription = new(Values.ClientDescription);
@@ -157,6 +159,8 @@ public readonly record struct AculContextEnum : IStringEnum
         public const string BrandingSettings = "branding.settings";
 
         public const string BrandingThemesDefault = "branding.themes.default";
+
+        public const string CountryCodes = "country_codes";
 
         public const string ClientLogoUri = "client.logo_uri";
 

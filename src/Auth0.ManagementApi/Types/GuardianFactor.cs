@@ -28,6 +28,10 @@ public record GuardianFactor : IJsonOnDeserialized
     [JsonPropertyName("name")]
     public GuardianFactorNameEnum? Name { get; set; }
 
+    [Optional]
+    [JsonPropertyName("settings")]
+    public GuardianFactorSettings? Settings { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

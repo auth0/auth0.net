@@ -47,7 +47,12 @@ public class ListTest : BaseMockServerTest
 
         var items = await Client.Flows.Executions.ListAsync(
             "flow_id",
-            new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
+            new ListFlowExecutionsRequestParameters
+            {
+                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+            }
         );
         await foreach (var item in items)
         {
