@@ -7,8 +7,6 @@ public partial class ClientOptions
 {
     private string _baseUrl = ManagementApiClientEnvironment.Default;
 
-    public ClientOptions() { }
-
     internal ClientOptions(ClientOptions other)
     {
         BaseUrl = other.BaseUrl;
