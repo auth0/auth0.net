@@ -38,7 +38,7 @@ public partial class GroupsClient : IGroupsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 8)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 9)
             .Add(
                 "connection_id",
                 request.ConnectionId.IsDefined ? request.ConnectionId.Value : null
@@ -50,6 +50,10 @@ public partial class GroupsClient : IGroupsClient
             .Add(
                 "include_fields",
                 request.IncludeFields.IsDefined ? request.IncludeFields.Value : null
+            )
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
             )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
@@ -464,6 +468,7 @@ public partial class GroupsClient : IGroupsClient
     ///         Search = "search",
     ///         Fields = "fields",
     ///         IncludeFields = true,
+    ///         IncludeTotals = true,
     ///         From = "from",
     ///         Take = 1,
     ///     }

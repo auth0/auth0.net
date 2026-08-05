@@ -21,6 +21,13 @@ public record ConnectionConnectedAccountsPurpose : IJsonOnDeserialized
     [JsonPropertyName("cross_app_access")]
     public bool? CrossAppAccess { get; set; }
 
+    /// <summary>
+    /// When true, allows storing a connected account without an upstream identity provider user id. At most one such connected account is allowed per user per connection. Default false preserves the strict behaviour (an upstream user id is required).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("allow_missing_user_id")]
+    public bool? AllowMissingUserId { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

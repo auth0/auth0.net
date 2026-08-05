@@ -22,7 +22,8 @@ public class ListTest : BaseMockServerTest
                   "token_quota": {
                     "client_credentials": {}
                   },
-                  "third_party_client_access": "block"
+                  "third_party_client_access": "block",
+                  "is_app_entitlement_active": true
                 }
               ]
             }
@@ -36,6 +37,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("from", "from")
                     .WithParam("take", "1")
                     .WithParam("sort", "sort")
+                    .WithParam("include_client_association_for", "include_client_association_for")
                     .UsingGet()
             )
             .RespondWith(
@@ -48,9 +50,11 @@ public class ListTest : BaseMockServerTest
         var items = await Client.Organizations.ListAsync(
             new ListOrganizationsRequestParameters
             {
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
                 Sort = "sort",
+                IncludeClientAssociationFor = "include_client_association_for",
             }
         );
         await foreach (var item in items)

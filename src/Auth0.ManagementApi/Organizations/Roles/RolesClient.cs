@@ -10,7 +10,10 @@ public partial class RolesClient : IRolesClient
     {
         _client = client;
         Members = new MembersClient(_client);
+        Groups = new GroupsClient(_client);
     }
 
     public IMembersClient Members { get; }
+
+    public IGroupsClient Groups { get; }
 }

@@ -15,6 +15,8 @@ public partial class PermissionsClient : IPermissionsClient
 
     /// <summary>
     /// Retrieve all permissions associated with the user.
+    ///
+    /// **Note**: Returns only permissions from direct assignments and directly assigned roles. For permissions a user has via group-based role assignments, use `GET /api/v2/users/{id}/effective-permissions`.
     /// </summary>
     private WithRawResponseTask<ListUserPermissionsOffsetPaginatedResponseContent> ListInternalAsync(
         string id,
@@ -458,6 +460,8 @@ public partial class PermissionsClient : IPermissionsClient
 
     /// <summary>
     /// Retrieve all permissions associated with the user.
+    ///
+    /// **Note**: Returns only permissions from direct assignments and directly assigned roles. For permissions a user has via group-based role assignments, use `GET /api/v2/users/{id}/effective-permissions`.
     /// </summary>
     /// <example><code>
     /// await client.Users.Permissions.ListAsync(

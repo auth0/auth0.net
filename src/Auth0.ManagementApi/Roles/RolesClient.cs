@@ -45,7 +45,7 @@ public partial class RolesClient : IRolesClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 4)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 6)
             .Add("per_page", request.PerPage.IsDefined ? request.PerPage.Value : null)
             .Add("page", request.Page.IsDefined ? request.Page.Value : null)
             .Add(
@@ -53,6 +53,8 @@ public partial class RolesClient : IRolesClient
                 request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
             )
             .Add("name_filter", request.NameFilter.IsDefined ? request.NameFilter.Value : null)
+            .Add("type", request.Type.IsDefined ? request.Type.Value : null)
+            .Add("owner_id", request.OwnerId.IsDefined ? request.OwnerId.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
@@ -771,6 +773,8 @@ public partial class RolesClient : IRolesClient
     ///         Page = 1,
     ///         IncludeTotals = true,
     ///         NameFilter = "name_filter",
+    ///         Type = RoleTypeEnum.Tenant,
+    ///         OwnerId = "owner_id",
     ///     }
     /// );
     /// </code></example>

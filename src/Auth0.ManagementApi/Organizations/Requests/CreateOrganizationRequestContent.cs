@@ -42,6 +42,13 @@ public record CreateOrganizationRequestContent
     [JsonPropertyName("third_party_client_access")]
     public OrganizationThirdPartyClientAccessEnum? ThirdPartyClientAccess { get; set; }
 
+    /// <summary>
+    /// Whether app entitlement is active for this organization.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("is_app_entitlement_active")]
+    public bool? IsAppEntitlementActive { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

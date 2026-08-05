@@ -16,7 +16,11 @@ public class ListTest : BaseMockServerTest
               {
                 "enabled": true,
                 "trial_expired": true,
-                "name": "push-notification"
+                "name": "push-notification",
+                "settings": {
+                  "otp_length": 1,
+                  "otp_expiration_time": 1
+                }
               }
             ]
             """;

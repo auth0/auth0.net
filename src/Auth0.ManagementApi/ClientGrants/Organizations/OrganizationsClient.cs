@@ -34,7 +34,11 @@ public partial class OrganizationsClient : IOrganizationsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 2)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 3)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
@@ -190,7 +194,12 @@ public partial class OrganizationsClient : IOrganizationsClient
     /// <example><code>
     /// await client.ClientGrants.Organizations.ListAsync(
     ///     "id",
-    ///     new ListClientGrantOrganizationsRequestParameters { From = "from", Take = 1 }
+    ///     new ListClientGrantOrganizationsRequestParameters
+    ///     {
+    ///         IncludeTotals = true,
+    ///         From = "from",
+    ///         Take = 1,
+    ///     }
     /// );
     /// </code></example>
     public async Task<Pager<Organization>> ListAsync(

@@ -34,7 +34,11 @@ public partial class ExecutionsClient : IExecutionsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 2)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 3)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
@@ -444,7 +448,12 @@ public partial class ExecutionsClient : IExecutionsClient
     /// <example><code>
     /// await client.Flows.Executions.ListAsync(
     ///     "flow_id",
-    ///     new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
+    ///     new ListFlowExecutionsRequestParameters
+    ///     {
+    ///         IncludeTotals = true,
+    ///         From = "from",
+    ///         Take = 1,
+    ///     }
     /// );
     /// </code></example>
     public async Task<Pager<FlowExecutionSummary>> ListAsync(

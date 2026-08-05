@@ -28,7 +28,8 @@ public class TestTest : BaseMockServerTest
                 {
                   "status": "failed",
                   "timestamp": "2024-01-15T09:30:00.000Z",
-                  "error_message": "error_message"
+                  "error_message": "error_message",
+                  "duration": 1.1
                 }
               ],
               "event": {
@@ -37,7 +38,9 @@ public class TestTest : BaseMockServerTest
                 "specversion": "specversion",
                 "type": "type",
                 "time": "2024-01-15T09:30:00.000Z",
-                "data": "data"
+                "data": {
+                  "key": "value"
+                }
               }
             }
             """;

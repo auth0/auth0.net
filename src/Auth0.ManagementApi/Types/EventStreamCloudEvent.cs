@@ -49,12 +49,9 @@ public record EventStreamCloudEvent : IJsonOnDeserialized
     [JsonPropertyName("time")]
     public DateTime? Time { get; set; }
 
-    /// <summary>
-    /// Event contents encoded as a string.
-    /// </summary>
     [Optional]
     [JsonPropertyName("data")]
-    public string? Data { get; set; }
+    public Dictionary<string, object?>? Data { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

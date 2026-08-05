@@ -7,6 +7,12 @@ namespace Auth0.ManagementApi;
 public record ListOrganizationsRequestParameters
 {
     /// <summary>
+    /// Return results inside an object that contains the total result count (true) or as a direct array of results (false, default).
+    /// </summary>
+    [JsonIgnore]
+    public Optional<bool?> IncludeTotals { get; set; } = true;
+
+    /// <summary>
     /// Optional Id from which to start selection.
     /// </summary>
     [JsonIgnore]
@@ -23,6 +29,12 @@ public record ListOrganizationsRequestParameters
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Sort { get; set; }
+
+    /// <summary>
+    /// Client ID. When set, each returned organization that has an association with this client gains a <c>client</c> object describing it; organizations without one omit the field.
+    /// </summary>
+    [JsonIgnore]
+    public Optional<string?> IncludeClientAssociationFor { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

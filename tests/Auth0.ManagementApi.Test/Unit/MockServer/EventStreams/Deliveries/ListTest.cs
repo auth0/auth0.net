@@ -1,6 +1,5 @@
 using Auth0.ManagementApi.EventStreams;
 using Auth0.ManagementApi.Test.Unit.MockServer;
-using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.EventStreams.Deliveries;
@@ -13,28 +12,23 @@ public class ListTest : BaseMockServerTest
     public async Task MockServerTest()
     {
         const string mockResponse = """
-            [
-              {
-                "id": "id",
-                "event_stream_id": "event_stream_id",
-                "status": "failed",
-                "event_type": "connection.created",
-                "attempts": [
-                  {
-                    "status": "failed",
-                    "timestamp": "2024-01-15T09:30:00.000Z"
-                  }
-                ],
-                "event": {
+            {
+              "deliveries": [
+                {
                   "id": "id",
-                  "source": "source",
-                  "specversion": "specversion",
-                  "type": "type",
-                  "time": "2024-01-15T09:30:00.000Z",
-                  "data": "data"
+                  "event_stream_id": "event_stream_id",
+                  "status": "failed",
+                  "event_type": "connection.created",
+                  "attempts": [
+                    {
+                      "status": "failed",
+                      "timestamp": "2024-01-15T09:30:00.000Z"
+                    }
+                  ]
                 }
-              }
-            ]
+              ],
+              "next": "next"
+            }
             """;
 
         Server
@@ -57,7 +51,7 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.EventStreams.Deliveries.ListAsync(
+        var items = await Client.EventStreams.Deliveries.ListAsync(
             "id",
             new ListEventStreamDeliveriesRequestParameters
             {
@@ -69,6 +63,10 @@ public class ListTest : BaseMockServerTest
                 Take = 1,
             }
         );
-        JsonAssert.AreEqual(response, mockResponse);
+        await foreach (var item in items)
+        {
+            Assert.That(item, Is.Not.Null);
+            break; // Only check the first item
+        }
     }
 }

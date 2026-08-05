@@ -10,6 +10,7 @@ namespace Auth0.ManagementApi;
 public partial interface IManagementApiClient
 {
     public IActionsClient Actions { get; }
+    public IAgentsClient Agents { get; }
     public IBrandingClient Branding { get; }
     public IClientGrantsClient ClientGrants { get; }
     public IClientsClient Clients { get; }

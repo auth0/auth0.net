@@ -24,7 +24,8 @@ public class ListTest : BaseMockServerTest
                   "token_quota": {
                     "client_credentials": {}
                   },
-                  "third_party_client_access": "block"
+                  "third_party_client_access": "block",
+                  "is_app_entitlement_active": true
                 }
               ]
             }

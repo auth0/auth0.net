@@ -16,6 +16,8 @@ public partial class UsersClient : IUsersClient
     /// <summary>
     /// Retrieve list of users associated with a specific role. For Dashboard instructions, review [View Users Assigned to Roles](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/roles/view-users-assigned-to-roles).
     ///
+    /// **Note**: Returns only users with direct role assignments. For groups assigned to this role, use `GET /api/v2/roles/{id}/groups`.
+    ///
     /// This endpoint supports two types of pagination:
     ///
     /// - Offset pagination
@@ -53,7 +55,11 @@ public partial class UsersClient : IUsersClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 2)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 3)
+            .Add(
+                "include_totals",
+                request.IncludeTotals.IsDefined ? request.IncludeTotals.Value : null
+            )
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
@@ -333,6 +339,8 @@ public partial class UsersClient : IUsersClient
     /// <summary>
     /// Retrieve list of users associated with a specific role. For Dashboard instructions, review [View Users Assigned to Roles](https://auth0.com/docs/manage-users/access-control/configure-core-rbac/roles/view-users-assigned-to-roles).
     ///
+    /// **Note**: Returns only users with direct role assignments. For groups assigned to this role, use `GET /api/v2/roles/{id}/groups`.
+    ///
     /// This endpoint supports two types of pagination:
     ///
     /// - Offset pagination
@@ -352,7 +360,12 @@ public partial class UsersClient : IUsersClient
     /// <example><code>
     /// await client.Roles.Users.ListAsync(
     ///     "id",
-    ///     new ListRoleUsersRequestParameters { From = "from", Take = 1 }
+    ///     new ListRoleUsersRequestParameters
+    ///     {
+    ///         IncludeTotals = true,
+    ///         From = "from",
+    ///         Take = 1,
+    ///     }
     /// );
     /// </code></example>
     public async Task<Pager<RoleUser>> ListAsync(

@@ -30,6 +30,18 @@ public record ListRolesRequestParameters
     [JsonIgnore]
     public Optional<string?> NameFilter { get; set; }
 
+    /// <summary>
+    /// Optional filter on the type of the role
+    /// </summary>
+    [JsonIgnore]
+    public Optional<RoleTypeEnum?> Type { get; set; }
+
+    /// <summary>
+    /// Filter organization-level roles by owner ID. Required when type is "organization".
+    /// </summary>
+    [JsonIgnore]
+    public Optional<string?> OwnerId { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

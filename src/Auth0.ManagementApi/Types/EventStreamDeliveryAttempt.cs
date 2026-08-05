@@ -27,6 +27,13 @@ public record EventStreamDeliveryAttempt : IJsonOnDeserialized
     [JsonPropertyName("error_message")]
     public string? ErrorMessage { get; set; }
 
+    /// <summary>
+    /// Duration of the delivery attempt in milliseconds
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("duration")]
+    public double? Duration { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -66,6 +66,7 @@ public class ListTest : BaseMockServerTest
         var items = await Client.Connections.ListAsync(
             new ListConnectionsQueryParameters
             {
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
                 Strategy = new List<ConnectionStrategyEnum?>() { ConnectionStrategyEnum.Ad },

@@ -59,6 +59,7 @@ public class ListTest : BaseMockServerTest
         var items = await Client.ClientGrants.ListAsync(
             new ListClientGrantsRequestParameters
             {
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
                 Audience = "audience",

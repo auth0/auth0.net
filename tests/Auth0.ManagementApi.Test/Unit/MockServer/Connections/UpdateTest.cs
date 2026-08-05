@@ -41,7 +41,8 @@ public class UpdateTest : BaseMockServerTest
               },
               "connected_accounts": {
                 "active": true,
-                "cross_app_access": true
+                "cross_app_access": true,
+                "allow_missing_user_id": true
               },
               "cross_app_access_requesting_app": {
                 "active": true

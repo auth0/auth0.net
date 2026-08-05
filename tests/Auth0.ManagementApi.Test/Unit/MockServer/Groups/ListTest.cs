@@ -61,6 +61,7 @@ public class ListTest : BaseMockServerTest
                 Search = "search",
                 Fields = "fields",
                 IncludeFields = true,
+                IncludeTotals = true,
                 From = "from",
                 Take = 1,
             }
