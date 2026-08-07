@@ -1,5 +1,7 @@
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
+using global::System.Globalization;
+using global::System.Text.Json;
 using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi.EventStreams;
@@ -12,6 +14,7 @@ public record CreateEventStreamRedeliveryRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("date_from")]
+    [JsonConverter(typeof(RedeliveryDateTimeSerializer))]
     public DateTime? DateFrom { get; set; }
 
     /// <summary>
@@ -19,6 +22,7 @@ public record CreateEventStreamRedeliveryRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("date_to")]
+    [JsonConverter(typeof(RedeliveryDateTimeSerializer))]
     public DateTime? DateTo { get; set; }
 
     /// <summary>
@@ -39,5 +43,22 @@ public record CreateEventStreamRedeliveryRequestContent
     public override string ToString()
     {
         return JsonUtils.Serialize(this);
+    }
+
+    private class RedeliveryDateTimeSerializer : JsonConverter<DateTime>
+    {
+        public override DateTime Read(
+            ref Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            return DateTime.Parse(reader.GetString()!, null, DateTimeStyles.RoundtripKind);
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ssK"));
+        }
     }
 }

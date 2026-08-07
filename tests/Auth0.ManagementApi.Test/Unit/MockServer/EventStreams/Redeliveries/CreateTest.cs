@@ -13,7 +13,10 @@ public class CreateTest : BaseMockServerTest
     public async Task MockServerTest()
     {
         const string requestJson = """
-            {}
+            {
+              "date_from": "2024-01-15T09:30:00Z",
+              "date_to": "2024-01-15T10:30:00Z"
+            }
             """;
 
         const string mockResponse = """
@@ -47,7 +50,11 @@ public class CreateTest : BaseMockServerTest
 
         var response = await Client.EventStreams.Redeliveries.CreateAsync(
             "id",
-            new CreateEventStreamRedeliveryRequestContent()
+            new CreateEventStreamRedeliveryRequestContent
+            {
+                DateFrom = new DateTime(2024, 1, 15, 9, 30, 0, 123, DateTimeKind.Utc),
+                DateTo = new DateTime(2024, 1, 15, 10, 30, 0, 456, DateTimeKind.Utc),
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
