@@ -20,6 +20,7 @@
 - [5. Multi-Resource Refresh Token (MRRT)](#5-multi-resource-refresh-token-mrrt)
 - [6. Custom Token Exchange (CTE)](#6-custom-token-exchange-cte)
 - [7. Token Vault (Federated Connection Access Token)](#7-token-vault-federated-connection-access-token)
+- [8. On-Behalf-Of Token Exchange (OBO)](#8-on-behalf-of-token-exchange-obo)
 
 ## 1. Client Initialization
 
@@ -292,7 +293,7 @@ Console.WriteLine($"Access Token : {tokenResponse.AccessToken}");
 Console.WriteLine($"Granted Scope: {tokenResponse.Scope}");
 
 // The server may grant fewer scopes than requested, and returns them in no guaranteed
-// order — compare as sets rather than comparing the raw strings.
+// order - compare as sets rather than comparing the raw strings.
 var requested = requestedScope.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 var granted = (tokenResponse.Scope ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries);
 var missingScopes = requested.Except(granted).ToList();
@@ -310,7 +311,7 @@ Custom Token Exchange uses the OAuth 2.0 Token Exchange grant (RFC 8693) to exch
 existing token for a new Auth0-issued token. The same call supports two use cases,
 selected by the parameters you pass.
 
-### Phase 1 — exchange a subject token for an access token
+### Phase 1 - exchange a subject token for an access token
 
 ```csharp
 using Auth0.AuthenticationApi;
@@ -332,7 +333,7 @@ Console.WriteLine($"Access Token     : {tokenResponse.AccessToken}");
 Console.WriteLine($"Issued Token Type: {tokenResponse.IssuedTokenType}");
 ```
 
-### Phase 2 — request a Session Transfer Token
+### Phase 2 - request a Session Transfer Token
 
 Set `Audience` to your tenant's session-transfer audience and supply an actor token. The
 response's `IssuedTokenType` will be `TokenType.SessionTransferToken`.
@@ -355,7 +356,7 @@ if (sttResponse.IssuedTokenType == TokenType.SessionTransferToken)
 }
 ```
 
-> `ActorToken` and `ActorTokenType` are both-or-neither — supplying only one throws
+> `ActorToken` and `ActorTokenType` are both-or-neither - supplying only one throws
 > `ArgumentException` before any network call.
 
 [Go to Top](#)
@@ -385,8 +386,46 @@ var tokenResponse = await auth.GetTokenAsync(new FederatedConnectionAccessTokenR
 Console.WriteLine($"Federated Access Token: {tokenResponse.AccessToken}");
 ```
 
-> `Connection` is required — omitting it throws `ArgumentException` before any network
+> `Connection` is required - omitting it throws `ArgumentException` before any network
 > call. `requested_token_type` is fixed to the federated-connection URN and set for you.
+
+[Go to Top](#)
+
+## 8. On-Behalf-Of Token Exchange (OBO)
+
+Exchange an incoming user access token for a short-lived token scoped to a downstream API,
+then inspect the actor for audit logging. The current actor (`GetCurrentActor()`) is the
+only value to use for authorization decisions; the delegation chain is
+for audit/logging only. The exchanged token is **not** validated by this SDK - the
+downstream resource server must validate it.
+
+```csharp
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+
+var auth = new AuthenticationApiClient(new Uri("https://YOUR_DOMAIN"));
+
+var response = await auth.GetTokenOnBehalfOfAsync(new OnBehalfOfTokenRequest
+{
+    ClientId = "YOUR_CLIENT_ID",
+    ClientSecret = "YOUR_CLIENT_SECRET",
+    SubjectToken = incomingUserAccessToken,
+    Audience = "https://calendar-api.acme.com",
+    Scope = "calendar:read calendar:write"
+});
+
+string downstreamToken = response.AccessToken;   // short-lived, non-refreshable
+
+// Authorization: use ONLY the current actor.
+string? currentActor = response.GetCurrentActor(); // e.g. "mcp_server_client_id"
+if (currentActor is null)
+{
+    throw new UnauthorizedAccessException("Exchanged token has no actor claim.");
+}
+
+// Audit/logging only - do NOT use nested prior actors for access control.
+Actor? chain = response.GetDelegationChain();
+```
 
 [Go to Top](#)
 
@@ -413,7 +452,7 @@ Console.WriteLine($"Federated Access Token: {tokenResponse.AccessToken}");
 
 The recommended way to initialize the Management API client is using the `ManagementClient` wrapper, which abstracts token management via an `ITokenProvider`.
 
-**Client credentials** (recommended — tokens are acquired and refreshed automatically):
+**Client credentials** (recommended - tokens are acquired and refreshed automatically):
 
 ```csharp
 using Auth0.ManagementApi;
@@ -909,7 +948,7 @@ public async Task UseCustomDomainWithManagementApiClient()
 ```
 
 > **Note:** If you supply your own `HttpClient` alongside `CustomDomain`, the
-> `CustomDomainInterceptor` is **not** injected automatically — you must add it yourself
+> `CustomDomainInterceptor` is **not** injected automatically - you must add it yourself
 > as shown above. Without it the header is still sent, but it will be present on every
 > request rather than only whitelisted ones.
 

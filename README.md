@@ -37,7 +37,7 @@ The recommended way to use the Management API is with the `ManagementClient` wra
 
 The `ManagementClient` wrapper abstracts token management through an `ITokenProvider`. Choose the built-in provider that fits your scenario, or implement the interface for full control.
 
-**Client credentials** (recommended for server-to-server — tokens are acquired and refreshed automatically):
+**Client credentials** (recommended for server-to-server - tokens are acquired and refreshed automatically):
 
 ```csharp
 var client = new ManagementClient(new ManagementClientOptions
@@ -54,7 +54,7 @@ var client = new ManagementClient(new ManagementClientOptions
 var users = await client.Users.GetAllAsync();
 ```
 
-> **Note:** The domain is specified twice — once in `ManagementClientOptions` (to build the base API URL `https://{domain}/api/v2`) and once in `ClientCredentialsTokenProvider` (to build the token endpoint URL `https://{domain}/oauth/token`). Both must match your Auth0 tenant domain.
+> **Note:** The domain is specified twice - once in `ManagementClientOptions` (to build the base API URL `https://{domain}/api/v2`) and once in `ClientCredentialsTokenProvider` (to build the token endpoint URL `https://{domain}/oauth/token`). Both must match your Auth0 tenant domain.
 
 > **Already have a token?** Use `ManagementApiClient` directly:
 > ```csharp
@@ -137,6 +137,8 @@ var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 This library contains [URL Builders](https://auth0.github.io/auth0.net/#using-url-builders) which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the [Quickstart tutorials](https://auth0.com/docs/quickstarts) for guidance on how to implement authentication for your specific platform.
 
 **Important note on state validation**: If you choose to use the [AuthorizationUrlBuilder](https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html) to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using [WithState](https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_)) and validate it in your callback URL before exchanging the authorization code for the tokens.
+
+**On-Behalf-Of Token Exchange (RFC 8693)**: Use `AuthenticationApiClient.GetTokenOnBehalfOfAsync` to exchange an incoming user access token for a short-lived token scoped to a downstream API. See [On-Behalf-Of Token Exchange](Examples.md#8-on-behalf-of-token-exchange-obo).
 
 See [more examples](Examples.md#authentication-api).
 
