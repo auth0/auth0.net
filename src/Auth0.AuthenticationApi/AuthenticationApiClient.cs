@@ -271,6 +271,44 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     }
 
     /// <inheritdoc/>
+    public async Task<OnBehalfOfTokenResponse> GetTokenOnBehalfOfAsync(OnBehalfOfTokenRequest request, CancellationToken cancellationToken = default)
+    {
+        request.ThrowIfNull();
+
+        if (string.IsNullOrEmpty(request.SubjectToken))
+            throw new ArgumentException(
+                "SubjectToken is required.", nameof(request.SubjectToken));
+
+        if (string.IsNullOrEmpty(request.Audience))
+            throw new ArgumentException(
+                "Audience is required.", nameof(request.Audience));
+
+        var tokenExchangeRequest = new TokenExchangeTokenRequest
+        {
+            SubjectToken = request.SubjectToken,
+            SubjectTokenType = TokenType.AccessToken,
+            Audience = request.Audience,
+            Scope = request.Scope,
+            Organization = request.Organization,
+            ClientId = request.ClientId,
+            ClientSecret = request.ClientSecret,
+            ClientAssertionSecurityKey = request.ClientAssertionSecurityKey,
+            ClientAssertionSecurityKeyAlgorithm = request.ClientAssertionSecurityKeyAlgorithm
+        };
+
+        var response = await GetTokenAsync(tokenExchangeRequest, cancellationToken).ConfigureAwait(false);
+
+        return new OnBehalfOfTokenResponse
+        {
+            AccessToken = response.AccessToken,
+            TokenType = response.TokenType,
+            ExpiresIn = response.ExpiresIn,
+            Scope = response.Scope,
+            IssuedTokenType = response.IssuedTokenType
+        };
+    }
+
+    /// <inheritdoc/>
     public async Task<AccessTokenResponse> GetTokenAsync(FederatedConnectionAccessTokenRequest request, CancellationToken cancellationToken = default)
     {
         request.ThrowIfNull();
