@@ -99,6 +99,24 @@ public interface IAuthenticationApiClient : IDisposable
     Task<AccessTokenResponse> GetTokenAsync(TokenExchangeTokenRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Performs an On-Behalf-Of (OBO) token exchange: exchanges an incoming
+    /// user access token for a short-lived, audience-scoped access token that preserves
+    /// user identity and actor attribution. The subject-token type is set to an access
+    /// token internally.
+    /// </summary>
+    /// <param name="request"><see cref="OnBehalfOfTokenRequest"/> containing the subject token, audience, and associated parameters.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns><see cref="Task"/> representing the async operation containing an
+    /// <see cref="OnBehalfOfTokenResponse" />. Use
+    /// <see cref="OnBehalfOfTokenResponse.GetCurrentActor"/> for authorization and
+    /// <see cref="OnBehalfOfTokenResponse.GetDelegationChain"/> for audit logging.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="request"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException">Thrown when <see cref="OnBehalfOfTokenRequest.SubjectToken"/> or <see cref="OnBehalfOfTokenRequest.Audience"/> is missing.</exception>
+    /// <exception cref="Auth0.Core.Exceptions.ApiException">Thrown when the token endpoint returns an unsuccessful response - for example
+    /// <see cref="Auth0.Core.Exceptions.ErrorApiException"/> for an OAuth error, or <see cref="Auth0.Core.Exceptions.RateLimitApiException"/> when rate limited.</exception>
+    Task<OnBehalfOfTokenResponse> GetTokenOnBehalfOfAsync(OnBehalfOfTokenRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Exchanges an Auth0 token for an access token issued by a federated connection
     /// (Token Vault), using the Auth0 federated-connection-access-token grant.
     /// </summary>
