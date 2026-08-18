@@ -116,6 +116,10 @@ public record ConnectionOptionsOidc : IJsonOnDeserialized, IJsonOnSerializing
     public string? UserinfoEndpoint { get; set; }
 
     [Optional]
+    [JsonPropertyName("useOauthSpecScope")]
+    public bool? UseOauthSpecScope { get; set; }
+
+    [Optional]
     [JsonPropertyName("non_persistent_attrs")]
     public IEnumerable<string>? NonPersistentAttrs { get; set; }
 

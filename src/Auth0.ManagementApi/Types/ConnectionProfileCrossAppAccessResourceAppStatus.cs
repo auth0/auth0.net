@@ -4,23 +4,22 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// The Cross App Access resource app status configuration.
+/// </summary>
 [Serializable]
-public record FlowActionFlowMapValueParams : IJsonOnDeserialized
+public record ConnectionProfileCrossAppAccessResourceAppStatus : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("input")]
-    public required FlowActionFlowMapValueParamsInput Input { get; set; }
+    [JsonPropertyName("default_value")]
+    public required ConnectionProfileCrossAppAccessResourceAppStatusDefaultValueEnum DefaultValue { get; set; }
 
     [Optional]
-    [JsonPropertyName("cases")]
-    public Dictionary<string, object?>? Cases { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("fallback")]
-    public Optional<FlowActionFlowMapValueParamsFallback?> Fallback { get; set; }
+    [JsonPropertyName("allowed_values")]
+    public IEnumerable<ConnectionProfileCrossAppAccessResourceAppStatusValueEnum>? AllowedValues { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

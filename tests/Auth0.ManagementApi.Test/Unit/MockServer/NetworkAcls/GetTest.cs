@@ -101,6 +101,7 @@ public class GetTest : BaseMockServerTest
                     "connecting_ipv6_cidrs"
                   ]
                 },
+                "match_all": true,
                 "scope": "management"
               },
               "created_at": "created_at",

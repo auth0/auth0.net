@@ -39,6 +39,10 @@ public record UpdateConnectionProfileResponseContent : IJsonOnDeserialized
     [JsonPropertyName("strategy_overrides")]
     public ConnectionProfileStrategyOverrides? StrategyOverrides { get; set; }
 
+    [Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public ConnectionProfileCrossAppAccessResourceApp? CrossAppAccessResourceApp { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

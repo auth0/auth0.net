@@ -11,12 +11,15 @@ public partial class KeysClient : IKeysClient
         _client = client;
         CustomSigning = new CustomSigningClient(_client);
         Encryption = new EncryptionClient(_client);
+        NetworkAcls = new NetworkAclsClient(_client);
         Signing = new SigningClient(_client);
     }
 
     public ICustomSigningClient CustomSigning { get; }
 
     public IEncryptionClient Encryption { get; }
+
+    public INetworkAclsClient NetworkAcls { get; }
 
     public ISigningClient Signing { get; }
 }

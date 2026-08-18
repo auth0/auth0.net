@@ -22,6 +22,10 @@ public record NetworkAclRule : IJsonOnDeserialized
     [JsonPropertyName("not_match")]
     public NetworkAclMatch? NotMatch { get; set; }
 
+    [Optional]
+    [JsonPropertyName("match_all")]
+    public bool? MatchAll { get; set; }
+
     [JsonPropertyName("scope")]
     public required NetworkAclRuleScopeEnum Scope { get; set; }
 

@@ -405,6 +405,12 @@ public class UpdateTest : BaseMockServerTest
                 "allowed_strategies": [
                   "pingfederate"
                 ],
+                "third_party_client_access": {
+                  "default_value": "block",
+                  "allowed_values": [
+                    "allow"
+                  ]
+                },
                 "connection_deletion_behavior": "allow",
                 "invitation_landing_client_id": "invitation_landing_client_id"
               },

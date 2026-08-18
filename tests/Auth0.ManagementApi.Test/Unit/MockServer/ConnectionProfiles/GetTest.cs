@@ -64,6 +64,14 @@ public class GetTest : BaseMockServerTest
                     "scim"
                   ]
                 }
+              },
+              "cross_app_access_resource_app": {
+                "status": {
+                  "default_value": "enabled",
+                  "allowed_values": [
+                    "enabled"
+                  ]
+                }
               }
             }
             """;
