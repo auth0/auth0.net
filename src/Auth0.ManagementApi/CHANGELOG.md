@@ -1,5 +1,35 @@
 # Change Log
 
+## [mgmt-10.0.0](https://github.com/auth0/auth0.net/tree/mgmt-10.0.0) (2026-08-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-9.2.0...mgmt-10.0.0)
+
+This is a **major release**. Please review the [v9 → v10 Migration Guide](https://github.com/auth0/auth0.net/blob/master/V10_MIGRATION_GUIDE.md) before upgrading. The breaking change below requires source-level updates only for consumers that *read* date-valued properties on session and refresh-token responses; everything else in this release is additive. Client initialization, request/response type naming, pagination (`Pager<T>`), and the sub-client organization are unchanged from v9.
+
+**⚠️ BREAKING CHANGES**
+
+_Response date fields now wrapped in `Optional<T>` - [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- Several date-valued properties on session and refresh-token response types - plus two nested fields - changed from a plain nullable type (`T?`) to `Optional<T?>`. This makes them consistent with how the SDK represents "field may be absent" everywhere else and lets you distinguish a field the API **omitted** from one it returned as **`null`**. Because `Optional<T>` defines no implicit conversion *to* its underlying type, any code that **reads** one of these properties as its old type will no longer compile.
+  - **Refresh-token responses** (`GetRefreshTokenResponseContent`, `RefreshTokenResponseContent`, `UpdateRefreshTokenResponseContent`) - `CreatedAt`, `IdleExpiresAt`, `ExpiresAt`, `LastExchangedAt`: `RefreshTokenDate?` → `Optional<RefreshTokenDate?>`.
+  - **Session responses** (`GetSessionResponseContent`, `SessionResponseContent`, `UpdateSessionResponseContent`) - `CreatedAt`, `UpdatedAt`, `AuthenticatedAt`, `IdleExpiresAt`, `ExpiresAt`, `LastInteractedAt`: `SessionDate?` → `Optional<SessionDate?>`.
+  - **Nested types** - `SessionAuthenticationSignal.Timestamp` (`SessionDate?` → `Optional<SessionDate?>`) and `FlowActionFlowMapValueParams.Fallback` (`FlowActionFlowMapValueParamsFallback?` → `Optional<FlowActionFlowMapValueParamsFallback?>`).
+  - **Migration:** read with `.GetValueOrDefault()` for the old nullable semantics, or `.IsDefined` / `.TryGetValue(out ...)` to tell an omitted field apart from a `null` one. Only reads are affected - constructing these types still works, since `Optional<T>` defines an implicit conversion *from* `T`. See the [migration guide](https://github.com/auth0/auth0.net/blob/master/V10_MIGRATION_GUIDE.md#response-date-fields-now-wrapped-in-optionalt).
+
+**Added**
+- **Network ACL Keys:** new `client.Keys.NetworkAcls` sub-client (`CreateAsync`, `ListAsync`, `GetAsync`) for managing the keys used to verify HTTP Message Signatures on Network ACL rules, backed by the `NetworkAclKey` type [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Cross-App Access on connection profiles:** `ConnectionProfile` gains an optional `CrossAppAccessResourceApp` property (JSON `cross_app_access_resource_app`), typed `ConnectionProfileCrossAppAccessResourceApp?` [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Third-party client access on `ClientMyOrganization`:** `ClientMyOrganizationPostConfiguration`, `ClientMyOrganizationPatchConfiguration`, and `ClientMyOrganizationResponseConfiguration` gain an optional `ThirdPartyClientAccess` property (JSON `third_party_client_access`) [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Network ACL rule `match_all`:** `NetworkAclRule` gains an optional `MatchAll` property (`bool?`, JSON `match_all`) [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **New OAuth scopes:** `OauthScope.CreateNetworkAclKeys` (`create:network_acl_keys`) and `OauthScope.ReadNetworkAclKeys` (`read:network_acl_keys`) for the Network ACL Keys endpoints [\#1096](https://github.com/auth0/auth0.net/pull/1096) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Changed**
+- Widespread SDK regeneration by Fern after upgrading the C# generator version, with customer customizations preserved [\#1097](https://github.com/auth0/auth0.net/pull/1097) ([kailash-b](https://github.com/kailash-b))
+- Added a v9 → v10 migration guide (`V10_MIGRATION_GUIDE.md`) describing the breaking change and the additive features [\#1098](https://github.com/auth0/auth0.net/pull/1098) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- **Event-stream redelivery date precision:** `Redeliveries.CreateAsync` (`POST /event-streams/{id}/redeliver`) serialized `date_from` / `date_to` with millisecond precision (24 chars), which the API rejects with **HTTP 400**, making the call unusable. A per-property `Rfc3339SecondsDateTimeConverter` now emits seconds-only RFC 3339 (20 chars) for `CreateEventStreamRedeliveryRequestContent.DateFrom` / `.DateTo`, preserving the caller's wall-clock value ([\#1067](https://github.com/auth0/auth0.net/issues/1067)) [\#1087](https://github.com/auth0/auth0.net/pull/1087) ([willkendall01](https://github.com/willkendall01))
+
+> **Note:** With the release of v10, the v9 line of `Auth0.ManagementApi` is now in maintenance mode and will receive **bug fixes and security patches only**. New features and API additions will land in v10 and later.
+
 ## [mgmt-9.2.0](https://github.com/auth0/auth0.net/tree/mgmt-9.2.0) (2026-08-05)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-9.1.0...mgmt-9.2.0)
 
