@@ -1,5 +1,15 @@
 # Change Log
 
+## [7.49.0](https://github.com/auth0/auth0.net/tree/7.49.0) (2026-08-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.48.0...7.49.0)
+
+**Added**
+- feat: Adds On-Behalf-Of (OBO) Token Exchange support - exchange an incoming user access token for a short-lived, audience-scoped token for a downstream API (OAuth 2.0 Token Exchange, RFC 8693), preserving user identity and actor attribution; `GetCurrentActor()` and `GetDelegationChain()` expose the `act` claim for authorization and audit [\#1094](https://github.com/auth0/auth0.net/pull/1094) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- deps: Bump `Microsoft.IdentityModel.Protocols.OpenIdConnect` and `System.IdentityModel.Tokens.Jwt` from 8.21.0 to 8.22.0 [\#1083](https://github.com/auth0/auth0.net/pull/1083) ([dependabot[bot]](https://github.com/apps/dependabot))
+- deps: Bump `Microsoft.IdentityModel.Protocols.OpenIdConnect` and `System.IdentityModel.Tokens.Jwt` from 8.20.0 to 8.21.0 [\#1079](https://github.com/auth0/auth0.net/pull/1079) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [7.48.0](https://github.com/auth0/auth0.net/tree/7.48.0) (2026-07-23)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.47.0...7.48.0)
 
