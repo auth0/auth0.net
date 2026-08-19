@@ -35,6 +35,10 @@ public record ClientMyOrganizationPatchConfiguration : IJsonOnDeserialized
     public IEnumerable<ClientMyOrganizationConfigurationAllowedStrategiesEnum> AllowedStrategies { get; set; } =
         new List<ClientMyOrganizationConfigurationAllowedStrategiesEnum>();
 
+    [Optional]
+    [JsonPropertyName("third_party_client_access")]
+    public ClientMyOrganizationThirdPartyClientAccessConfiguration? ThirdPartyClientAccess { get; set; }
+
     [JsonPropertyName("connection_deletion_behavior")]
     public required ClientMyOrganizationDeletionBehaviorEnum ConnectionDeletionBehavior { get; set; }
 

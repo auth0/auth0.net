@@ -1360,6 +1360,16 @@ public readonly record struct OauthScope : IStringEnum
         Values.DeleteOrganizationClients
     );
 
+    /// <summary>
+    /// Create Network ACL Keys
+    /// </summary>
+    public static readonly OauthScope CreateNetworkAclKeys = new(Values.CreateNetworkAclKeys);
+
+    /// <summary>
+    /// Read Network ACL Keys
+    /// </summary>
+    public static readonly OauthScope ReadNetworkAclKeys = new(Values.ReadNetworkAclKeys);
+
     public OauthScope(string value)
     {
         Value = value;
@@ -2685,5 +2695,15 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Organization Client Associations
         /// </summary>
         public const string DeleteOrganizationClients = "delete:organization_clients";
+
+        /// <summary>
+        /// Create Network ACL Keys
+        /// </summary>
+        public const string CreateNetworkAclKeys = "create:network_acl_keys";
+
+        /// <summary>
+        /// Read Network ACL Keys
+        /// </summary>
+        public const string ReadNetworkAclKeys = "read:network_acl_keys";
     }
 }

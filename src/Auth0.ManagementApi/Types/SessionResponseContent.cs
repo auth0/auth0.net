@@ -24,29 +24,29 @@ public record SessionResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("user_id")]
     public string? UserId { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("created_at")]
-    public SessionDate? CreatedAt { get; set; }
+    public Optional<SessionDate?> CreatedAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("updated_at")]
-    public SessionDate? UpdatedAt { get; set; }
+    public Optional<SessionDate?> UpdatedAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("authenticated_at")]
-    public SessionDate? AuthenticatedAt { get; set; }
+    public Optional<SessionDate?> AuthenticatedAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("idle_expires_at")]
-    public SessionDate? IdleExpiresAt { get; set; }
+    public Optional<SessionDate?> IdleExpiresAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("expires_at")]
-    public SessionDate? ExpiresAt { get; set; }
+    public Optional<SessionDate?> ExpiresAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("last_interacted_at")]
-    public SessionDate? LastInteractedAt { get; set; }
+    public Optional<SessionDate?> LastInteractedAt { get; set; }
 
     [Optional]
     [JsonPropertyName("device")]

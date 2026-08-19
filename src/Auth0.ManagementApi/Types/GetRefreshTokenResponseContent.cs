@@ -24,17 +24,17 @@ public record GetRefreshTokenResponseContent : IJsonOnDeserialized, IJsonOnSeria
     [JsonPropertyName("user_id")]
     public string? UserId { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("created_at")]
-    public RefreshTokenDate? CreatedAt { get; set; }
+    public Optional<RefreshTokenDate?> CreatedAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("idle_expires_at")]
-    public RefreshTokenDate? IdleExpiresAt { get; set; }
+    public Optional<RefreshTokenDate?> IdleExpiresAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("expires_at")]
-    public RefreshTokenDate? ExpiresAt { get; set; }
+    public Optional<RefreshTokenDate?> ExpiresAt { get; set; }
 
     [Optional]
     [JsonPropertyName("device")]
@@ -69,9 +69,9 @@ public record GetRefreshTokenResponseContent : IJsonOnDeserialized, IJsonOnSeria
     [JsonPropertyName("refresh_token_metadata")]
     public Optional<Dictionary<string, object?>?> RefreshTokenMetadata { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("last_exchanged_at")]
-    public RefreshTokenDate? LastExchangedAt { get; set; }
+    public Optional<RefreshTokenDate?> LastExchangedAt { get; set; }
 
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();

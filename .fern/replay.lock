@@ -48,14 +48,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.76.0
-current_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+  - commit_sha: 45d4f8347fdceab919b114122f5ab1415289d743
+    tree_hash: 9e6ac32605fa5adda958ca77dd8ac6ceaf670b83
+    timestamp: 2026-08-18T10:41:29.111Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.76.0
+current_generation: 45d4f8347fdceab919b114122f5ab1415289d743
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    base_generation: 45d4f8347fdceab919b114122f5ab1415289d743
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -263,7 +269,7 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    base_generation: 45d4f8347fdceab919b114122f5ab1415289d743
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
@@ -673,7 +679,7 @@ patches:
     original_commit: a4ee94c4b6b4ad1f881465e6680286ef144d2b4f
     original_message: "mgmt: Removed unwanted files"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    base_generation: 45d4f8347fdceab919b114122f5ab1415289d743
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -881,7 +887,7 @@ patches:
     original_commit: f2415ebd2fef2e96471b0d89fbcb35fadec37c0c
     original_message: "chore: Adds CLAUDE.md and AGENTS.md"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: a63f4996ada925885a140aa47aa5ee52b8c1a2e8
+    base_generation: 45d4f8347fdceab919b114122f5ab1415289d743
     files:
       - references/code-style.md
       - references/commands.md
@@ -1342,3 +1348,321 @@ patches:
         - **xUnit (`Auth0.Core.UnitTests`, integration tiers):** `[Fact]`/`[Theory]`, `FluentAssertions` (`result.Should().Be(...)`), `Moq` for mocking interfaces (`Mock<IUsersClient>`).
         - Prefer the sub-client interfaces (`IUsersClient`, `IConnectionsClient`, `IManagementApiClient`) for mocking rather than concrete clients.
     user_owned: true
+  - id: patch-c551b36c
+    content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
+    original_commit: c551b36c72ddde8c84bff167b318fcf6d15a9e31
+    original_message: "build: Build fix"
+    original_author: Kailash B <kailash.b@okta.com>
+    base_generation: 45d4f8347fdceab919b114122f5ab1415289d743
+    files:
+      - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
+      - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+    patch_content: |
+      diff --git a/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs b/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+      new file mode 100644
+      index 00000000..7d867ca6
+      --- /dev/null
+      +++ b/tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
+      @@ -0,0 +1,95 @@
+      +using NUnit.Framework;
+      +
+      +namespace Auth0.ManagementApi.Test.Unit.Extensions;
+      +
+      +[TestFixture]
+      +public class UserDateSchemaExtensionsTest
+      +{
+      +    [Test]
+      +    public void ToDateTime_WithValidIso8601String_ReturnsUtcDateTime()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value, Is.EqualTo(new DateTime(2024, 3, 15, 10, 30, 0, DateTimeKind.Utc)));
+      +        Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithNull_ReturnsNull()
+      +    {
+      +        UserDateSchema? schema = null;
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMapType_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromMapOfStringToUnknown(new Dictionary<string, object?>
+      +        {
+      +            { "some_key", "some_value" }
+      +        });
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMalformedString_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromString("not-a-date");
+      +
+      +        var result = schema.ToDateTime();
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithOffsetString_PreservesLocalKind()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+      +
+      +        var result = schema.ToDateTime();
+      +        var expectedLocal = new DateTimeOffset(2024, 6, 20, 14, 0, 0, TimeSpan.FromMinutes(330)).LocalDateTime;
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value, Is.EqualTo(expectedLocal));
+      +        Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Local));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithDateTimeOffset_ReturnsUtcConverted()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+      +
+      +        var result = schema.ToDateTime(TimeZoneInfo.Utc);
+      +
+      +        Assert.That(result, Is.Not.Null);
+      +        Assert.That(result!.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+      +        Assert.That(result.Value, Is.EqualTo(new DateTime(2024, 6, 20, 8, 30, 0, DateTimeKind.Utc)));
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithMalformedStringAndTargetTimeZone_ReturnsNull()
+      +    {
+      +        var schema = UserDateSchema.FromString("not-a-date");
+      +
+      +        var result = schema.ToDateTime(TimeZoneInfo.Utc);
+      +
+      +        Assert.That(result, Is.Null);
+      +    }
+      +
+      +    [Test]
+      +    public void ToDateTime_WithNullTargetTimeZone_ThrowsArgumentNullException()
+      +    {
+      +        var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+      +
+      +        Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
+      +    }
+      +}
+    theirs_snapshot:
+      src/Auth0.ManagementApi/Core/Public/ClientOptions.cs: |
+        using Auth0.ManagementApi.Core;
+
+        namespace Auth0.ManagementApi;
+
+        [Serializable]
+        public partial class ClientOptions
+        {
+            private string _baseUrl = ManagementApiClientEnvironment.Default;
+
+            public ClientOptions() { }
+
+            internal ClientOptions(ClientOptions other)
+            {
+                BaseUrl = other.BaseUrl;
+                IsBaseUrlExplicitlySet = other.IsBaseUrlExplicitlySet;
+                TenantDomain = other.TenantDomain;
+                HttpClient = other.HttpClient;
+                MaxRetries = other.MaxRetries;
+                Timeout = other.Timeout;
+                Headers = new Headers(new Dictionary<string, HeaderValue>(other.Headers));
+                AdditionalHeaders = other.AdditionalHeaders;
+            }
+
+            internal bool IsBaseUrlExplicitlySet { get; private set; } = false;
+
+            /// <summary>
+            /// The http headers sent with the request.
+            /// </summary>
+            internal Headers Headers { get; init; } = new();
+
+            /// <summary>
+            /// The Base URL for the API.
+            /// </summary>
+            public string BaseUrl
+            {
+                get => _baseUrl;
+                set => SetBaseUrl(value);
+            }
+
+            /// <summary>
+            /// Defaults to "{TENANT}.auth0.com".
+            /// </summary>
+            public string? TenantDomain { get;
+        #if NET5_0_OR_GREATER
+                init;
+        #else
+                set;
+        #endif
+            }
+
+            /// <summary>
+            /// The http client used to make requests.
+            /// </summary>
+            public HttpClient HttpClient { get;
+        #if NET5_0_OR_GREATER
+                init;
+        #else
+                set;
+        #endif
+            } = DefaultHttpClientFactory.Create();
+
+            /// <summary>
+            /// Additional headers to be sent with HTTP requests.
+            /// Headers with matching keys will be overwritten by headers set on the request.
+            /// </summary>
+            public IEnumerable<KeyValuePair<string, string?>> AdditionalHeaders { get;
+        #if NET5_0_OR_GREATER
+                init;
+        #else
+                set;
+        #endif
+            } = [];
+
+            /// <summary>
+            /// The max number of retries to attempt.
+            /// </summary>
+            public int MaxRetries { get;
+        #if NET5_0_OR_GREATER
+                init;
+        #else
+                set;
+        #endif
+            } = 2;
+
+            /// <summary>
+            /// The timeout for the request.
+            /// </summary>
+            public TimeSpan Timeout { get;
+        #if NET5_0_OR_GREATER
+                init;
+        #else
+                set;
+        #endif
+            } = TimeSpan.FromMilliseconds(30000);
+
+            private void SetBaseUrl(string value)
+            {
+                _baseUrl = value;
+                IsBaseUrlExplicitlySet = true;
+            }
+
+            /// <summary>
+            /// Clones this and returns a new instance
+            /// </summary>
+            internal ClientOptions Clone()
+            {
+                return new ClientOptions(this);
+            }
+        }
+      tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs: |
+        using NUnit.Framework;
+
+        namespace Auth0.ManagementApi.Test.Unit.Extensions;
+
+        [TestFixture]
+        public class UserDateSchemaExtensionsTest
+        {
+            [Test]
+            public void ToDateTime_WithValidIso8601String_ReturnsUtcDateTime()
+            {
+                var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value, Is.EqualTo(new DateTime(2024, 3, 15, 10, 30, 0, DateTimeKind.Utc)));
+                Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+            }
+
+            [Test]
+            public void ToDateTime_WithNull_ReturnsNull()
+            {
+                UserDateSchema? schema = null;
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithMapType_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromMapOfStringToUnknown(new Dictionary<string, object?>
+                {
+                    { "some_key", "some_value" }
+                });
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithMalformedString_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromString("not-a-date");
+
+                var result = schema.ToDateTime();
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithOffsetString_PreservesLocalKind()
+            {
+                var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+
+                var result = schema.ToDateTime();
+                var expectedLocal = new DateTimeOffset(2024, 6, 20, 14, 0, 0, TimeSpan.FromMinutes(330)).LocalDateTime;
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value, Is.EqualTo(expectedLocal));
+                Assert.That(result.Value.Kind, Is.EqualTo(DateTimeKind.Local));
+            }
+
+            [Test]
+            public void ToDateTime_WithDateTimeOffset_ReturnsUtcConverted()
+            {
+                var schema = UserDateSchema.FromString("2024-06-20T14:00:00.000+05:30");
+
+                var result = schema.ToDateTime(TimeZoneInfo.Utc);
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result!.Value.Kind, Is.EqualTo(DateTimeKind.Utc));
+                Assert.That(result.Value, Is.EqualTo(new DateTime(2024, 6, 20, 8, 30, 0, DateTimeKind.Utc)));
+            }
+
+            [Test]
+            public void ToDateTime_WithMalformedStringAndTargetTimeZone_ReturnsNull()
+            {
+                var schema = UserDateSchema.FromString("not-a-date");
+
+                var result = schema.ToDateTime(TimeZoneInfo.Utc);
+
+                Assert.That(result, Is.Null);
+            }
+
+            [Test]
+            public void ToDateTime_WithNullTargetTimeZone_ThrowsArgumentNullException()
+            {
+                var schema = UserDateSchema.FromString("2024-03-15T10:30:00.000Z");
+
+                Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
+            }
+        }

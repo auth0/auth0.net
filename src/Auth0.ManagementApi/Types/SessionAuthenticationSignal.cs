@@ -20,9 +20,9 @@ public record SessionAuthenticationSignal : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("timestamp")]
-    public SessionDate? Timestamp { get; set; }
+    public Optional<SessionDate?> Timestamp { get; set; }
 
     /// <summary>
     /// A specific MFA factor. Only present when "name" is set to "mfa"

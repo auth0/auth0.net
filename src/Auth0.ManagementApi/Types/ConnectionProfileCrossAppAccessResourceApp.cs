@@ -4,23 +4,18 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// Controls whether organization admins may enable Cross App Access (XAA) on their Identity Providers.
+/// </summary>
 [Serializable]
-public record FlowActionFlowMapValueParams : IJsonOnDeserialized
+public record ConnectionProfileCrossAppAccessResourceApp : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("input")]
-    public required FlowActionFlowMapValueParamsInput Input { get; set; }
-
-    [Optional]
-    [JsonPropertyName("cases")]
-    public Dictionary<string, object?>? Cases { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("fallback")]
-    public Optional<FlowActionFlowMapValueParamsFallback?> Fallback { get; set; }
+    [JsonPropertyName("status")]
+    public required ConnectionProfileCrossAppAccessResourceAppStatus Status { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

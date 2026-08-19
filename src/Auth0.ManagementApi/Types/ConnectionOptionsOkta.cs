@@ -119,6 +119,10 @@ public record ConnectionOptionsOkta : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("userinfo_endpoint")]
     public string? UserinfoEndpoint { get; set; }
 
+    [Optional]
+    [JsonPropertyName("useOauthSpecScope")]
+    public bool? UseOauthSpecScope { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 
