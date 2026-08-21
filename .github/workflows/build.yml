@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master]
 
+
+permissions:
+  contents: read
 env:
   AUTH0_AUTHENTICATION_API_URL: '${{ vars.AUTH0_AUTHENTICATION_API_URL }}'
   AUTH0_CLIENT_ID: '${{ vars.AUTH0_CLIENT_ID }}'
