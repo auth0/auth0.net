@@ -22,6 +22,10 @@ public record ConnectionProfileStrategyOverride : IJsonOnDeserialized
     [JsonPropertyName("connection_config")]
     public ConnectionProfileStrategyOverridesConnectionConfig? ConnectionConfig { get; set; }
 
+    [Optional]
+    [JsonPropertyName("provisioning")]
+    public ConnectionProfileStrategyOverridesProvisioning? Provisioning { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

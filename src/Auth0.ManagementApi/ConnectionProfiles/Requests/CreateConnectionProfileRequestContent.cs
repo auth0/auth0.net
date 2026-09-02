@@ -30,6 +30,10 @@ public record CreateConnectionProfileRequestContent
     public ConnectionProfileStrategyOverrides? StrategyOverrides { get; set; }
 
     [Optional]
+    [JsonPropertyName("provisioning")]
+    public ConnectionProfileProvisioning? Provisioning { get; set; }
+
+    [Optional]
     [JsonPropertyName("cross_app_access_resource_app")]
     public ConnectionProfileCrossAppAccessResourceApp? CrossAppAccessResourceApp { get; set; }
 

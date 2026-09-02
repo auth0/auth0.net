@@ -78,6 +78,10 @@ public record ConnectionOptionsOidcMetadata : IJsonOnDeserialized, IJsonOnSerial
     public string? OpTosUri { get; set; }
 
     [Optional]
+    [JsonPropertyName("pushed_authorization_request_endpoint")]
+    public string? PushedAuthorizationRequestEndpoint { get; set; }
+
+    [Optional]
     [JsonPropertyName("registration_endpoint")]
     public string? RegistrationEndpoint { get; set; }
 
@@ -100,6 +104,10 @@ public record ConnectionOptionsOidcMetadata : IJsonOnDeserialized, IJsonOnSerial
     [Optional]
     [JsonPropertyName("request_uri_parameter_supported")]
     public bool? RequestUriParameterSupported { get; set; }
+
+    [Optional]
+    [JsonPropertyName("require_pushed_authorization_requests")]
+    public bool? RequirePushedAuthorizationRequests { get; set; }
 
     [Optional]
     [JsonPropertyName("require_request_uri_registration")]

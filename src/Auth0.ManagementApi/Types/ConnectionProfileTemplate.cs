@@ -38,6 +38,10 @@ public record ConnectionProfileTemplate : IJsonOnDeserialized
     [JsonPropertyName("strategy_overrides")]
     public ConnectionProfileStrategyOverrides? StrategyOverrides { get; set; }
 
+    [Optional]
+    [JsonPropertyName("provisioning")]
+    public ConnectionProfileProvisioning? Provisioning { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

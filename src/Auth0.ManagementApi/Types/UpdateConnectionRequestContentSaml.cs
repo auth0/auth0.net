@@ -18,6 +18,10 @@ public record UpdateConnectionRequestContentSaml : IJsonOnDeserialized
     [JsonPropertyName("options")]
     public ConnectionOptionsSaml? Options { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("cross_app_access_resource_app")]
+    public Optional<ConnectionCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; set; }
+
     [Optional]
     [JsonPropertyName("show_as_button")]
     public bool? ShowAsButton { get; set; }

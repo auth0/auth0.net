@@ -37,6 +37,10 @@ public record ConnectionOptionsCommonOidc : IJsonOnDeserialized, IJsonOnSerializ
     public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
 
     [Optional]
+    [JsonPropertyName("enable_pushed_authorization_requests")]
+    public bool? EnablePushedAuthorizationRequests { get; set; }
+
+    [Optional]
     [JsonPropertyName("icon_url")]
     public string? IconUrl { get; set; }
 
@@ -59,6 +63,10 @@ public record ConnectionOptionsCommonOidc : IJsonOnDeserialized, IJsonOnSerializ
     [Optional]
     [JsonPropertyName("oidc_metadata")]
     public ConnectionOptionsOidcMetadata? OidcMetadata { get; set; }
+
+    [Optional]
+    [JsonPropertyName("pushed_authorization_request_endpoint")]
+    public string? PushedAuthorizationRequestEndpoint { get; set; }
 
     [Optional]
     [JsonPropertyName("scope")]

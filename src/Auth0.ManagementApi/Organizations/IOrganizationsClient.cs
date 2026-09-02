@@ -12,6 +12,7 @@ public partial interface IOrganizationsClient
     public IEnabledConnectionsClient EnabledConnections { get; }
     public IInvitationsClient Invitations { get; }
     public Auth0.ManagementApi.Organizations.IMembersClient Members { get; }
+    public IOrganizationTemplateClient OrganizationTemplate { get; }
     public Auth0.ManagementApi.Organizations.IGroupsClient Groups { get; }
     public Auth0.ManagementApi.Organizations.Roles.IRolesClient Roles { get; }
 

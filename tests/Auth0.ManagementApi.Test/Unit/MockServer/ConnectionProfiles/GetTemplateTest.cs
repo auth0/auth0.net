@@ -24,7 +24,16 @@ public class GetTemplateTest : BaseMockServerTest
                 "connection_name_prefix_template": "connection_name_prefix_template",
                 "enabled_features": [
                   "scim"
-                ]
+                ],
+                "provisioning": {
+                  "scim": {
+                    "tokens": {
+                      "scopes": [
+                        "get:users"
+                      ]
+                    }
+                  }
+                }
               }
             }
             """;

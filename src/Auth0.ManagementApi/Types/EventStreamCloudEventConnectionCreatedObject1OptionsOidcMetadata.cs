@@ -56,6 +56,13 @@ public record EventStreamCloudEventConnectionCreatedObject1OptionsOidcMetadata :
     public IEnumerable<string>? ClaimsSupported { get; set; }
 
     /// <summary>
+    /// JSON array containing a list of Proof Key for Code Exchange (PKCE) code challenge methods supported by this OP (e.g., S256, plain), as defined in RFC 7636.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("code_challenge_methods_supported")]
+    public IEnumerable<string>? CodeChallengeMethodsSupported { get; set; }
+
+    /// <summary>
     /// JSON array containing a list of the JWS signing algorithms (alg values) supported by the Token Endpoint for the signature on the JWT [JWT] used to authenticate the Client at the Token Endpoint for the private_key_jwt and client_secret_jwt authentication methods. Servers SHOULD support RS256. The value none MUST NOT be used.
     /// </summary>
     [Optional]

@@ -58,6 +58,10 @@ public readonly record struct ActionTriggerTypeEnum : IStringEnum
         Values.SignupPostIdentifier
     );
 
+    public static readonly ActionTriggerTypeEnum PostCredentialValidation = new(
+        Values.PostCredentialValidation
+    );
+
     public ActionTriggerTypeEnum(string value)
     {
         Value = value;
@@ -181,5 +185,7 @@ public readonly record struct ActionTriggerTypeEnum : IStringEnum
         public const string LoginPostIdentifier = "login-post-identifier";
 
         public const string SignupPostIdentifier = "signup-post-identifier";
+
+        public const string PostCredentialValidation = "post-credential-validation";
     }
 }

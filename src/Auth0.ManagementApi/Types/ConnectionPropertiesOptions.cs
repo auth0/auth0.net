@@ -166,6 +166,14 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("dpop_signing_alg")]
     public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
 
+    [Optional]
+    [JsonPropertyName("enable_pushed_authorization_requests")]
+    public bool? EnablePushedAuthorizationRequests { get; set; }
+
+    [Optional]
+    [JsonPropertyName("pushed_authorization_request_endpoint")]
+    public string? PushedAuthorizationRequestEndpoint { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("token_endpoint_auth_method")]
     public Optional<ConnectionTokenEndpointAuthMethodEnum?> TokenEndpointAuthMethod { get; set; }

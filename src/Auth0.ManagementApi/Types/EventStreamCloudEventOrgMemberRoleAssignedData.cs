@@ -18,6 +18,10 @@ public record EventStreamCloudEventOrgMemberRoleAssignedData : IJsonOnDeserializ
     public required EventStreamCloudEventOrgMemberRoleAssignedObject Object { get; set; }
 
     [Optional]
+    [JsonPropertyName("previous_object")]
+    public EventStreamCloudEventOrgMemberRoleAssignedPreviousObject? PreviousObject { get; set; }
+
+    [Optional]
     [JsonPropertyName("context")]
     public EventStreamCloudEventContext? Context { get; set; }
 

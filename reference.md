@@ -6189,6 +6189,309 @@ await client.NetworkAcls.UpdateAsync("id", new UpdateNetworkAclRequestContent())
 </dl>
 </details>
 
+## OrganizationTemplates
+<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">ListAsync</a>(ListOrganizationTemplatesRequestParameters { ... }) -> Pager&lt;OrganizationTemplate&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a list of Organization Templates. This endpoint supports Checkpoint pagination. Results are returned in a stable order, sorted by their identifier (`id`) in ascending order.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.OrganizationTemplates.ListAsync(
+    new ListOrganizationTemplatesRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListOrganizationTemplatesRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">CreateAsync</a>(CreateOrganizationTemplateRequestContent { ... }) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create an Organization Template.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.OrganizationTemplates.CreateAsync(
+    new CreateOrganizationTemplateRequestContent
+    {
+        Name = "name",
+        OrganizationDeletionBehavior = OrganizationDeletionBehaviorEnum.Allow,
+        EnforcePermissionCeiling = true,
+        EnforceSelfAssignmentRestriction = true,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateOrganizationTemplateRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve details about a single Organization Template specified by ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.OrganizationTemplates.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization Template identifier.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">UpdateAsync</a>(id, UpdateOrganizationTemplateRequestContent { ... }) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the details of a specific Organization Template.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.OrganizationTemplates.UpdateAsync(
+    "id",
+    new UpdateOrganizationTemplateRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Organization Template identifier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateOrganizationTemplateRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">ListOrganizationsAsync</a>(id, ListTemplateOrganizationsRequestParameters { ... }) -> Pager&lt;OrganizationTemplateAssignedOrganization&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a list of organizations assigned to an Organization Template. This endpoint supports Checkpoint pagination. Results are returned in a stable order, sorted by their identifier (`id`) in ascending order.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.OrganizationTemplates.ListOrganizationsAsync(
+    "id",
+    new ListTemplateOrganizationsRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the organization template.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ListTemplateOrganizationsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Organizations
 <details><summary><code>client.Organizations.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationsClient.cs">ListAsync</a>(ListOrganizationsRequestParameters { ... }) -> Pager&lt;Organization&gt;</code></summary>
 <dl>
@@ -19683,6 +19986,60 @@ await client.Keys.NetworkAcls.GetAsync("id");
 </dl>
 </details>
 
+<details><summary><code>client.Keys.NetworkAcls.<a href="/src/Auth0.ManagementApi/Keys/NetworkAcls/NetworkAclsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a key used to verify HTTP Message Signatures on Network ACL rules
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Keys.NetworkAcls.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the Network ACL Key to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Keys Signing
 <details><summary><code>client.Keys.Signing.<a href="/src/Auth0.ManagementApi/Keys/Signing/SigningClient.cs">ListAsync</a>() -> WithRawResponseTask&lt;IEnumerable&lt;SigningKeys&gt;&gt;</code></summary>
 <dl>
@@ -21820,6 +22177,191 @@ await client.Organizations.Members.DeleteAsync(
 <dd>
 
 **request:** `DeleteOrganizationMembersRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Organizations OrganizationTemplate
+<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the organization template assigned to a specific organization. Returns the template object if one is explicitly assigned, or a 404 if no template is assigned.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.OrganizationTemplate.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">AssignOrganizationTemplateAsync</a>(id, templateId) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Assign an Organization Template to an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.OrganizationTemplate.AssignOrganizationTemplateAsync(
+    "id",
+    "template_id"
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**templateId:** `string` — The ID of the organization template to assign.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">UnassignOrganizationTemplateAsync</a>(id, templateId) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove an Organization Template assignment from an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.OrganizationTemplate.UnassignOrganizationTemplateAsync(
+    "id",
+    "template_id"
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**templateId:** `string` — The ID of the organization template to unassign.
     
 </dd>
 </dl>
@@ -25563,6 +26105,22 @@ await client.Users.Multifactor.DeleteProviderAsync("id", UserMultifactorProvider
 <dd>
 
 Retrieve list of the specified user's current Organization memberships. User must be specified by user ID. For more information, review [Auth0 Organizations](https://auth0.com/docs/manage-users/organizations).
+
+This endpoint supports two types of pagination:
+
+- Offset pagination
+- Checkpoint pagination
+
+Checkpoint pagination must be used if you need to retrieve more than 1000 organizations.
+
+**Checkpoint Pagination**
+
+To search by checkpoint, use the following parameters:
+
+- `from`: Optional id from which to start selection.
+- `take`: The total number of entries to retrieve when using the `from` parameter. Defaults to 50.
+
+**Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining.
 </dd>
 </dl>
 </dd>

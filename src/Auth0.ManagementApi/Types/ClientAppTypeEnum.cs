@@ -22,8 +22,6 @@ public readonly record struct ClientAppTypeEnum : IStringEnum
         Values.ExpressConfiguration
     );
 
-    public static readonly ClientAppTypeEnum B2BIntegration = new(Values.B2BIntegration);
-
     public static readonly ClientAppTypeEnum Rms = new(Values.Rms);
 
     public static readonly ClientAppTypeEnum Box = new(Values.Box);
@@ -169,8 +167,6 @@ public readonly record struct ClientAppTypeEnum : IStringEnum
         public const string ResourceServer = "resource_server";
 
         public const string ExpressConfiguration = "express_configuration";
-
-        public const string B2BIntegration = "b2b_integration";
 
         public const string Rms = "rms";
 

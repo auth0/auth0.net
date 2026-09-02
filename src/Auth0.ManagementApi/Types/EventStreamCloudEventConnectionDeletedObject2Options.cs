@@ -152,15 +152,36 @@ public record EventStreamCloudEventConnectionDeletedObject2Options : IJsonOnDese
     public string? DestinationUrl { get; set; }
 
     /// <summary>
+    /// When true, disables the automatic correction of the fieldsMap configuration to ensure proper mapping of SAML attributes to user profile fields. Defaults to false (fieldsMap fix enabled).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("disableFieldsMapFix")]
+    public bool? DisableFieldsMapFix { get; set; }
+
+    /// <summary>
     /// When true, disables sending SAML logout requests (SingleLogoutService) to the identity provider during user sign-out. The user will be logged out of Auth0 but will remain logged into the identity provider. Defaults to false (federated logout enabled).
     /// </summary>
     [Optional]
     [JsonPropertyName("disableSignout")]
     public bool? DisableSignout { get; set; }
 
+    /// <summary>
+    /// URL of the identity provider's OIDC Discovery endpoint (/.well-known/openid-configuration). When provided and oidc_metadata is empty, Auth0 automatically retrieves the provider's configuration including endpoints and supported features. Used with Cross App Access.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("discovery_url")]
+    public string? DiscoveryUrl { get; set; }
+
     [Optional]
     [JsonPropertyName("fieldsMap")]
     public Dictionary<string, object?>? FieldsMap { get; set; }
+
+    /// <summary>
+    /// Raw JSON string representation of the fieldsMap configuration. Used internally for storage and retrieval of the fieldsMap object.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("fieldsMapJsonRaw")]
+    public string? FieldsMapJsonRaw { get; set; }
 
     /// <summary>
     /// Expected 'iss' (Issuer) claim value for JWT tokens in Global Token Revocation requests from the identity provider. When configured, Auth0 validates the JWT issuer matches this value before processing token revocation. Must be used together with global_token_revocation_jwt_sub.
@@ -182,6 +203,10 @@ public record EventStreamCloudEventConnectionDeletedObject2Options : IJsonOnDese
     [Optional]
     [JsonPropertyName("metadataUrl")]
     public string? MetadataUrl { get; set; }
+
+    [Optional]
+    [JsonPropertyName("oidc_metadata")]
+    public EventStreamCloudEventConnectionDeletedObject2OptionsOidcMetadata? OidcMetadata { get; set; }
 
     /// <summary>
     /// The URL where Auth0 will send SAML authentication requests (the Identity Provider's SSO URL). Must be a valid HTTPS URL.

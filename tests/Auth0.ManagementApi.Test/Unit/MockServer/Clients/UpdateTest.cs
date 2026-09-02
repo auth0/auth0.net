@@ -399,6 +399,12 @@ public class UpdateTest : BaseMockServerTest
                 "admin_login_domain": "admin_login_domain",
                 "oin_submission_id": "oin_submission_id"
               },
+              "b2b_integration_configuration": {
+                "sso_profiles": [
+                  "sso_profiles"
+                ],
+                "integration_type": "custom_auth_server"
+              },
               "my_organization_configuration": {
                 "connection_profile_id": "connection_profile_id",
                 "user_attribute_profile_id": "user_attribute_profile_id",

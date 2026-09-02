@@ -18,6 +18,7 @@ public partial class OrganizationsClient : IOrganizationsClient
         EnabledConnections = new EnabledConnectionsClient(_client);
         Invitations = new InvitationsClient(_client);
         Members = new Auth0.ManagementApi.Organizations.MembersClient(_client);
+        OrganizationTemplate = new OrganizationTemplateClient(_client);
         Groups = new Auth0.ManagementApi.Organizations.GroupsClient(_client);
         Roles = new Auth0.ManagementApi.Organizations.Roles.RolesClient(_client);
     }
@@ -35,6 +36,8 @@ public partial class OrganizationsClient : IOrganizationsClient
     public IInvitationsClient Invitations { get; }
 
     public Auth0.ManagementApi.Organizations.IMembersClient Members { get; }
+
+    public IOrganizationTemplateClient OrganizationTemplate { get; }
 
     public Auth0.ManagementApi.Organizations.IGroupsClient Groups { get; }
 
