@@ -99,6 +99,13 @@ public record EventStreamCloudEventConnectionUpdatedObject5Options : IJsonOnDese
     public bool? Kerberos { get; set; }
 
     /// <summary>
+    /// When true, restricts the connection to Kerberos-only authentication, disallowing username/password fallback.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("kerberos_only")]
+    public bool? KerberosOnly { get; set; }
+
+    /// <summary>
     /// An array of user fields that should not be stored in the Auth0 database (https://auth0.com/docs/security/data-security/denylist)
     /// </summary>
     [Optional]

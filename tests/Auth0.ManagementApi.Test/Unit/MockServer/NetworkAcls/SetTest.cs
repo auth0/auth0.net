@@ -73,7 +73,14 @@ public class SetTest : BaseMockServerTest
                   ],
                   "connecting_ipv6_cidrs": [
                     "connecting_ipv6_cidrs"
-                  ]
+                  ],
+                  "http_message_signature": {
+                    "keys": [
+                      {
+                        "id": "id"
+                      }
+                    ]
+                  }
                 },
                 "not_match": {
                   "asns": [
@@ -111,7 +118,14 @@ public class SetTest : BaseMockServerTest
                   ],
                   "connecting_ipv6_cidrs": [
                     "connecting_ipv6_cidrs"
-                  ]
+                  ],
+                  "http_message_signature": {
+                    "keys": [
+                      {
+                        "id": "id"
+                      }
+                    ]
+                  }
                 },
                 "match_all": true,
                 "scope": "management"

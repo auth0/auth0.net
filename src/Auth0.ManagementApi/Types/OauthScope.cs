@@ -1361,6 +1361,27 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Create Organization Templates
+    /// </summary>
+    public static readonly OauthScope CreateOrganizationTemplates = new(
+        Values.CreateOrganizationTemplates
+    );
+
+    /// <summary>
+    /// Read Organization Templates
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationTemplates = new(
+        Values.ReadOrganizationTemplates
+    );
+
+    /// <summary>
+    /// Update Organization Templates
+    /// </summary>
+    public static readonly OauthScope UpdateOrganizationTemplates = new(
+        Values.UpdateOrganizationTemplates
+    );
+
+    /// <summary>
     /// Create Network ACL Keys
     /// </summary>
     public static readonly OauthScope CreateNetworkAclKeys = new(Values.CreateNetworkAclKeys);
@@ -1369,6 +1390,11 @@ public readonly record struct OauthScope : IStringEnum
     /// Read Network ACL Keys
     /// </summary>
     public static readonly OauthScope ReadNetworkAclKeys = new(Values.ReadNetworkAclKeys);
+
+    /// <summary>
+    /// Delete Network ACL Keys
+    /// </summary>
+    public static readonly OauthScope DeleteNetworkAclKeys = new(Values.DeleteNetworkAclKeys);
 
     public OauthScope(string value)
     {
@@ -2697,6 +2723,21 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteOrganizationClients = "delete:organization_clients";
 
         /// <summary>
+        /// Create Organization Templates
+        /// </summary>
+        public const string CreateOrganizationTemplates = "create:organization_templates";
+
+        /// <summary>
+        /// Read Organization Templates
+        /// </summary>
+        public const string ReadOrganizationTemplates = "read:organization_templates";
+
+        /// <summary>
+        /// Update Organization Templates
+        /// </summary>
+        public const string UpdateOrganizationTemplates = "update:organization_templates";
+
+        /// <summary>
         /// Create Network ACL Keys
         /// </summary>
         public const string CreateNetworkAclKeys = "create:network_acl_keys";
@@ -2705,5 +2746,10 @@ public readonly record struct OauthScope : IStringEnum
         /// Read Network ACL Keys
         /// </summary>
         public const string ReadNetworkAclKeys = "read:network_acl_keys";
+
+        /// <summary>
+        /// Delete Network ACL Keys
+        /// </summary>
+        public const string DeleteNetworkAclKeys = "delete:network_acl_keys";
     }
 }

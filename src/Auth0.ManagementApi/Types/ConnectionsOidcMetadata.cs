@@ -266,6 +266,20 @@ public record ConnectionsOidcMetadata : IJsonOnDeserialized, IJsonOnSerializing
     public string? EndSessionEndpoint { get; set; }
 
     /// <summary>
+    /// URL of the identity provider's Pushed Authorization Request (PAR) endpoint, as per https://datatracker.ietf.org/doc/html/rfc9126. Must use HTTPS scheme.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("pushed_authorization_request_endpoint")]
+    public string? PushedAuthorizationRequestEndpoint { get; set; }
+
+    /// <summary>
+    /// Boolean parameter indicating whether the identity provider requires Pushed Authorization Requests (PAR), as per https://datatracker.ietf.org/doc/html/rfc9126. Discovered from the identity provider's metadata; not used to decide whether the server performs PAR.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("require_pushed_authorization_requests")]
+    public bool? RequirePushedAuthorizationRequests { get; set; }
+
+    /// <summary>
     /// JSON array containing a list of the JWS signing algorithms (alg values) supported for DPoP proof JWT signing.
     /// </summary>
     [Optional]

@@ -29,4 +29,13 @@ public partial interface INetworkAclsClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Delete a key used to verify HTTP Message Signatures on Network ACL rules
+    /// </summary>
+    WithRawResponseTask DeleteAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

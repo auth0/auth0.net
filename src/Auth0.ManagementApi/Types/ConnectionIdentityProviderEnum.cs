@@ -128,6 +128,42 @@ public readonly record struct ConnectionIdentityProviderEnum : IStringEnum
 
     public static readonly ConnectionIdentityProviderEnum Yandex = new(Values.Yandex);
 
+    public static readonly ConnectionIdentityProviderEnum NotionMcp = new(Values.NotionMcp);
+
+    public static readonly ConnectionIdentityProviderEnum AsanaMcp = new(Values.AsanaMcp);
+
+    public static readonly ConnectionIdentityProviderEnum AtlassianMcp = new(Values.AtlassianMcp);
+
+    public static readonly ConnectionIdentityProviderEnum CloudflareMcp = new(Values.CloudflareMcp);
+
+    public static readonly ConnectionIdentityProviderEnum DocusignMcp = new(Values.DocusignMcp);
+
+    public static readonly ConnectionIdentityProviderEnum FigmaMcp = new(Values.FigmaMcp);
+
+    public static readonly ConnectionIdentityProviderEnum GitlabMcp = new(Values.GitlabMcp);
+
+    public static readonly ConnectionIdentityProviderEnum GustoMcp = new(Values.GustoMcp);
+
+    public static readonly ConnectionIdentityProviderEnum HerokuMcp = new(Values.HerokuMcp);
+
+    public static readonly ConnectionIdentityProviderEnum HubspotMcp = new(Values.HubspotMcp);
+
+    public static readonly ConnectionIdentityProviderEnum IntercomMcp = new(Values.IntercomMcp);
+
+    public static readonly ConnectionIdentityProviderEnum LinearMcp = new(Values.LinearMcp);
+
+    public static readonly ConnectionIdentityProviderEnum PagerdutyMcp = new(Values.PagerdutyMcp);
+
+    public static readonly ConnectionIdentityProviderEnum SentryMcp = new(Values.SentryMcp);
+
+    public static readonly ConnectionIdentityProviderEnum SlackMcp = new(Values.SlackMcp);
+
+    public static readonly ConnectionIdentityProviderEnum SupabaseMcp = new(Values.SupabaseMcp);
+
+    public static readonly ConnectionIdentityProviderEnum VercelMcp = new(Values.VercelMcp);
+
+    public static readonly ConnectionIdentityProviderEnum XeroMcp = new(Values.XeroMcp);
+
     public ConnectionIdentityProviderEnum(string value)
     {
         Value = value;
@@ -334,5 +370,41 @@ public readonly record struct ConnectionIdentityProviderEnum : IStringEnum
         public const string Yahoo = "yahoo";
 
         public const string Yandex = "yandex";
+
+        public const string NotionMcp = "notion-mcp";
+
+        public const string AsanaMcp = "asana-mcp";
+
+        public const string AtlassianMcp = "atlassian-mcp";
+
+        public const string CloudflareMcp = "cloudflare-mcp";
+
+        public const string DocusignMcp = "docusign-mcp";
+
+        public const string FigmaMcp = "figma-mcp";
+
+        public const string GitlabMcp = "gitlab-mcp";
+
+        public const string GustoMcp = "gusto-mcp";
+
+        public const string HerokuMcp = "heroku-mcp";
+
+        public const string HubspotMcp = "hubspot-mcp";
+
+        public const string IntercomMcp = "intercom-mcp";
+
+        public const string LinearMcp = "linear-mcp";
+
+        public const string PagerdutyMcp = "pagerduty-mcp";
+
+        public const string SentryMcp = "sentry-mcp";
+
+        public const string SlackMcp = "slack-mcp";
+
+        public const string SupabaseMcp = "supabase-mcp";
+
+        public const string VercelMcp = "vercel-mcp";
+
+        public const string XeroMcp = "xero-mcp";
     }
 }

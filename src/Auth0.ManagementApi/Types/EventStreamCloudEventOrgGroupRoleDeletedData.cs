@@ -18,6 +18,10 @@ public record EventStreamCloudEventOrgGroupRoleDeletedData : IJsonOnDeserialized
     public required EventStreamCloudEventOrgGroupRoleDeletedObject Object { get; set; }
 
     [Optional]
+    [JsonPropertyName("previous_object")]
+    public EventStreamCloudEventOrgGroupRoleDeletedPreviousObject? PreviousObject { get; set; }
+
+    [Optional]
     [JsonPropertyName("context")]
     public EventStreamCloudEventContext? Context { get; set; }
 

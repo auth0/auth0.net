@@ -309,6 +309,10 @@ public record UpdateClientRequestContent
     [JsonPropertyName("express_configuration")]
     public Optional<ExpressConfigurationOrNull?> ExpressConfiguration { get; set; }
 
+    [Optional]
+    [JsonPropertyName("b2b_integration_configuration")]
+    public B2BIntegrationConfiguration? B2BIntegrationConfiguration { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("my_organization_configuration")]
     public Optional<ClientMyOrganizationPatchConfiguration?> MyOrganizationConfiguration { get; set; }

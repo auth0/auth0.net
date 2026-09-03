@@ -33,6 +33,10 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
     public bool? DisableSignout { get; set; }
 
     [Optional]
+    [JsonPropertyName("discovery_url")]
+    public string? DiscoveryUrl { get; set; }
+
+    [Optional]
     [JsonPropertyName("fieldsMap")]
     public Dictionary<string, ConnectionFieldsMapSamlValue>? FieldsMap { get; set; }
 
@@ -51,6 +55,10 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
     [Optional]
     [JsonPropertyName("metadataXml")]
     public string? MetadataXml { get; set; }
+
+    [Optional]
+    [JsonPropertyName("oidc_metadata")]
+    public ConnectionOptionsOidcMetadata? OidcMetadata { get; set; }
 
     [Optional]
     [JsonPropertyName("recipientUrl")]

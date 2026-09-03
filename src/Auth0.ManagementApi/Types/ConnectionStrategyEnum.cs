@@ -122,6 +122,42 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
     public static readonly ConnectionStrategyEnum Yandex = new(Values.Yandex);
 
+    public static readonly ConnectionStrategyEnum NotionMcp = new(Values.NotionMcp);
+
+    public static readonly ConnectionStrategyEnum AsanaMcp = new(Values.AsanaMcp);
+
+    public static readonly ConnectionStrategyEnum AtlassianMcp = new(Values.AtlassianMcp);
+
+    public static readonly ConnectionStrategyEnum CloudflareMcp = new(Values.CloudflareMcp);
+
+    public static readonly ConnectionStrategyEnum DocusignMcp = new(Values.DocusignMcp);
+
+    public static readonly ConnectionStrategyEnum FigmaMcp = new(Values.FigmaMcp);
+
+    public static readonly ConnectionStrategyEnum GitlabMcp = new(Values.GitlabMcp);
+
+    public static readonly ConnectionStrategyEnum GustoMcp = new(Values.GustoMcp);
+
+    public static readonly ConnectionStrategyEnum HerokuMcp = new(Values.HerokuMcp);
+
+    public static readonly ConnectionStrategyEnum HubspotMcp = new(Values.HubspotMcp);
+
+    public static readonly ConnectionStrategyEnum IntercomMcp = new(Values.IntercomMcp);
+
+    public static readonly ConnectionStrategyEnum LinearMcp = new(Values.LinearMcp);
+
+    public static readonly ConnectionStrategyEnum PagerdutyMcp = new(Values.PagerdutyMcp);
+
+    public static readonly ConnectionStrategyEnum SentryMcp = new(Values.SentryMcp);
+
+    public static readonly ConnectionStrategyEnum SlackMcp = new(Values.SlackMcp);
+
+    public static readonly ConnectionStrategyEnum SupabaseMcp = new(Values.SupabaseMcp);
+
+    public static readonly ConnectionStrategyEnum VercelMcp = new(Values.VercelMcp);
+
+    public static readonly ConnectionStrategyEnum XeroMcp = new(Values.XeroMcp);
+
     public static readonly ConnectionStrategyEnum Auth0Adldap = new(Values.Auth0Adldap);
 
     public ConnectionStrategyEnum(string value)
@@ -329,6 +365,42 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
         public const string Yahoo = "yahoo";
 
         public const string Yandex = "yandex";
+
+        public const string NotionMcp = "notion-mcp";
+
+        public const string AsanaMcp = "asana-mcp";
+
+        public const string AtlassianMcp = "atlassian-mcp";
+
+        public const string CloudflareMcp = "cloudflare-mcp";
+
+        public const string DocusignMcp = "docusign-mcp";
+
+        public const string FigmaMcp = "figma-mcp";
+
+        public const string GitlabMcp = "gitlab-mcp";
+
+        public const string GustoMcp = "gusto-mcp";
+
+        public const string HerokuMcp = "heroku-mcp";
+
+        public const string HubspotMcp = "hubspot-mcp";
+
+        public const string IntercomMcp = "intercom-mcp";
+
+        public const string LinearMcp = "linear-mcp";
+
+        public const string PagerdutyMcp = "pagerduty-mcp";
+
+        public const string SentryMcp = "sentry-mcp";
+
+        public const string SlackMcp = "slack-mcp";
+
+        public const string SupabaseMcp = "supabase-mcp";
+
+        public const string VercelMcp = "vercel-mcp";
+
+        public const string XeroMcp = "xero-mcp";
 
         public const string Auth0Adldap = "auth0-adldap";
     }

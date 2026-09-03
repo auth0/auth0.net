@@ -70,6 +70,15 @@ public class UpdateTest : BaseMockServerTest
                   ]
                 }
               },
+              "provisioning": {
+                "scim": {
+                  "tokens": {
+                    "scopes": [
+                      "get:users"
+                    ]
+                  }
+                }
+              },
               "cross_app_access_resource_app": {
                 "status": {
                   "default_value": "enabled",

@@ -14,6 +14,10 @@ public record FormWidgetGMapsAddressConfig : IJsonOnDeserialized
     [JsonPropertyName("api_key")]
     public required string ApiKey { get; set; }
 
+    [Optional]
+    [JsonPropertyName("server_key")]
+    public string? ServerKey { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

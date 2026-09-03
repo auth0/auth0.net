@@ -65,6 +65,7 @@ public partial class ManagementApiClient : IManagementApiClient
         LogStreams = new LogStreamsClient(_client);
         Logs = new LogsClient(_client);
         NetworkAcls = new NetworkAclsClient(_client);
+        OrganizationTemplates = new OrganizationTemplatesClient(_client);
         Organizations = new OrganizationsClient(_client);
         Prompts = new PromptsClient(_client);
         RateLimitPolicies = new RateLimitPoliciesClient(_client);
@@ -133,6 +134,8 @@ public partial class ManagementApiClient : IManagementApiClient
     public ILogsClient Logs { get; }
 
     public INetworkAclsClient NetworkAcls { get; }
+
+    public IOrganizationTemplatesClient OrganizationTemplates { get; }
 
     public IOrganizationsClient Organizations { get; }
 

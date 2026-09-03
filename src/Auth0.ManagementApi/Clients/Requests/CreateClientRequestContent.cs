@@ -311,6 +311,10 @@ public record CreateClientRequestContent
     public ExpressConfiguration? ExpressConfiguration { get; set; }
 
     [Optional]
+    [JsonPropertyName("b2b_integration_configuration")]
+    public B2BIntegrationConfiguration? B2BIntegrationConfiguration { get; set; }
+
+    [Optional]
     [JsonPropertyName("my_organization_configuration")]
     public ClientMyOrganizationPostConfiguration? MyOrganizationConfiguration { get; set; }
 

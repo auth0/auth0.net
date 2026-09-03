@@ -18,6 +18,10 @@ public record EventStreamCloudEventUserUpdatedData : IJsonOnDeserialized
     public required EventStreamCloudEventUserUpdatedObject Object { get; set; }
 
     [Optional]
+    [JsonPropertyName("previous_object")]
+    public EventStreamCloudEventUserUpdatedPreviousObject? PreviousObject { get; set; }
+
+    [Optional]
     [JsonPropertyName("context")]
     public EventStreamCloudEventContext? Context { get; set; }
 

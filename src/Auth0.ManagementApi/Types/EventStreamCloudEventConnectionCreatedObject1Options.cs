@@ -145,6 +145,13 @@ public record EventStreamCloudEventConnectionCreatedObject1Options : IJsonOnDese
     public Dictionary<string, object?>? UpstreamParams { get; set; }
 
     /// <summary>
+    /// When true, uses space-delimited scopes (per OAuth 2.0 spec) instead of comma-delimited when calling the identity provider's authorization endpoint. Only relevant when using the connection_scope parameter. See https://auth0.com/docs/authenticate/identity-providers/adding-scopes-for-an-external-idp#pass-scopes-to-authorize-endpoint
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("useOauthSpecScope")]
+    public bool? UseOauthSpecScope { get; set; }
+
+    /// <summary>
     /// Optional URL of the identity provider's UserInfo endpoint. When configured with attribute mapping, Auth0 calls this endpoint to retrieve additional user profile claims using the access token.
     /// </summary>
     [Optional]

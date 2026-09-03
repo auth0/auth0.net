@@ -15,10 +15,10 @@ public record EventStreamCloudEventContextTenant : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// Machine-generated unique tenant identifier.
+    /// User-provided tenant identifier.
     /// </summary>
-    [JsonPropertyName("tenant_id")]
-    public required string TenantId { get; set; }
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -59,6 +59,10 @@ public record NetworkAclMatch : IJsonOnDeserialized
     [JsonPropertyName("connecting_ipv6_cidrs")]
     public IEnumerable<string>? ConnectingIpv6Cidrs { get; set; }
 
+    [Optional]
+    [JsonPropertyName("http_message_signature")]
+    public NetworkAclHttpMessageSignature? HttpMessageSignature { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

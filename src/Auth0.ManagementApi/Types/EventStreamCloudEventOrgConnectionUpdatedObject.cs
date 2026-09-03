@@ -45,6 +45,17 @@ public record EventStreamCloudEventOrgConnectionUpdatedObject : IJsonOnDeseriali
     [JsonPropertyName("is_signup_enabled")]
     public bool? IsSignupEnabled { get; set; }
 
+    /// <summary>
+    /// Determines whether the connection is enabled for the organization.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("is_enabled")]
+    public bool? IsEnabled { get; set; }
+
+    [Optional]
+    [JsonPropertyName("organization_access_level")]
+    public EventStreamCloudEventOrgConnectionUpdatedObjectOrganizationAccessLevel? OrganizationAccessLevel { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

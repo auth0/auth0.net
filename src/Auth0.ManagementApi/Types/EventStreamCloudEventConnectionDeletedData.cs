@@ -18,6 +18,10 @@ public record EventStreamCloudEventConnectionDeletedData : IJsonOnDeserialized
     public required EventStreamCloudEventConnectionDeletedObject Object { get; set; }
 
     [Optional]
+    [JsonPropertyName("previous_object")]
+    public EventStreamCloudEventConnectionDeletedPreviousObject? PreviousObject { get; set; }
+
+    [Optional]
     [JsonPropertyName("context")]
     public EventStreamCloudEventContext? Context { get; set; }
 
