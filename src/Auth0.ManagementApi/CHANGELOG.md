@@ -1,5 +1,31 @@
 # Change Log
 
+## [mgmt-10.1.0](https://github.com/auth0/auth0.net/tree/mgmt-10.1.0) (2026-09-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.0.0...mgmt-10.1.0)
+
+**⚠️ BREAKING CHANGES**
+
+_`ClientAppTypeEnum.B2BIntegration` removed - [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The `b2b_integration` value has been removed from the client app type enum as part of the Enterprise Connect general availability promotion. Any code that references this value will fail to compile. B2B integration clients are now configured via the new `B2BIntegrationConfiguration` property instead.
+
+_`EventStreamCloudEventContextTenant.TenantId` renamed to `Id` - [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The `TenantId` property on the tenant context of event stream cloud events has been renamed to `Id`, and the underlying JSON field has changed from `tenant_id` to `id`. The semantics have also shifted — it now represents the user-provided tenant identifier rather than a machine-generated one. Code reading this field must be updated.
+
+**Added**
+- **Organization Templates:** Introduces reusable organization templates — blueprints that define a standard configuration (display settings, branding, metadata, and more) that can be applied to one or many organizations. Manage templates via the new `client.OrganizationTemplates` sub-client (`ListAsync`, `CreateAsync`, `GetAsync`, `UpdateAsync`, and `ListOrganizationsAsync` using checkpoint pagination). A matching `client.Organizations.OrganizationTemplate` sub-client lets you retrieve, assign, or remove a template from an individual organization [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **B2B Integration Configuration on clients:** Application clients now support a `B2BIntegrationConfiguration` property, which links one or more SSO profiles to the client and declares its integration type (`custom_auth_server`, `third_party`, or `application`). The setting is available when creating, updating, or reading a client [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Network ACL signature key deletion:** Completes the Network ACL key-management lifecycle with `client.Keys.NetworkAcls.DeleteAsync(id)`. Keys used to verify HTTP Message Signatures on Network ACL rules can now be created, listed, retrieved, and deleted. Note: deleting a key that is still referenced by an ACL rule raises a conflict error [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **HTTP Message Signature matching on Network ACL rules:** Network ACL rule match criteria now support an `HttpMessageSignature` signal alongside the existing IP, ASN, and geo signals, enabling rules to be evaluated against request signatures [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **SCIM provisioning on connection profiles:** Connection profile create and update requests now accept a `Provisioning` block, allowing SCIM token scopes and related provisioning settings to be configured directly on a connection profile [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Connection deletion behavior control in templates:** Organization templates now expose a deletion-behavior setting that controls whether a connection included in the template may be deleted freely (`allow`) or only when it has no member associations (`allow_if_empty`) [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Post-credential-validation action trigger:** A `post-credential-validation` trigger type is now available for Actions, enabling custom logic to run immediately after a user's credentials are validated [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Pushed Authorization Request (PAR) support on OIDC connections:** OIDC and common OIDC connection options now surface whether PAR is enabled and the PAR endpoint URL, enabling discovery and enforcement of the Pushed Authorization Request flow when configuring enterprise OIDC connections [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **OIDC metadata and discovery URL on SAML connections:** SAML connections now accept a `DiscoveryUrl` and an `OidcMetadata` block, expanding the OIDC configuration surface available when setting up SAML-backed connections [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Typed EventStream cloud event payloads:** Added strongly typed payloads for `connection.created`, `connection.updated`, `connection.deleted`, `group.created`, and `user.updated` event stream cloud events, including full `previous_object` shapes for each connection strategy variant [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Fixed**
+- **Typed errors for HTTP 422 and 409 responses:** Connection create and update operations now raise a specific unprocessable-entity error on HTTP 422 responses (previously surfaced as a generic error), and SCIM configuration operations now raise a typed conflict error on HTTP 409 responses, making validation and conflict failures easier to catch and handle programmatically [\#1101](https://github.com/auth0/auth0.net/pull/1101) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-10.0.0](https://github.com/auth0/auth0.net/tree/mgmt-10.0.0) (2026-08-19)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-9.2.0...mgmt-10.0.0)
 

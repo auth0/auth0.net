@@ -29,8 +29,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
-    <Version>10.0.0</Version>
-    <AssemblyVersionNumber>10.0.0</AssemblyVersionNumber>
+    <Version>10.1.0</Version>
+    <AssemblyVersionNumber>10.1.0</AssemblyVersionNumber>
     <AssemblyVersion>$(AssemblyVersionNumber)</AssemblyVersion>
     <AssemblyFileVersion>$(AssemblyVersionNumber)</AssemblyFileVersion>  
     <InformationalVersion>$(Version)</InformationalVersion>
