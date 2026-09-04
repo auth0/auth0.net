@@ -24,7 +24,6 @@ V9_MIGRATION_GUIDE.md
 V10_MIGRATION_GUIDE.md
 CLAUDE.md
 AGENTS.md
-.fern/
 
 Auth0.ManagementApi.slnx
 Auth0.Net.slnx
@@ -69,6 +68,3 @@ src/Auth0.ManagementApi/Core/Public/RateLimit.cs
 src/Auth0.ManagementApi/Core/Public/QuotaLimit.cs
 src/Auth0.ManagementApi/Exceptions/TooManyRequestsError.cs
 tests/Auth0.ManagementApi.Test/Unit/ExceptionEnrichmentTest.cs
-
-.fern/replay.lock
-.fern/replay.yml
