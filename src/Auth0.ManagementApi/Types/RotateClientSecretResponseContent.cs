@@ -18,6 +18,20 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     public string? ClientId { get; set; }
 
     /// <summary>
+    /// The ISO 8601 timestamp of when this client was created.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("created_at")]
+    public DateTime? CreatedAt { get; set; }
+
+    /// <summary>
+    /// The ISO 8601 timestamp of when this client was last updated.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("updated_at")]
+    public DateTime? UpdatedAt { get; set; }
+
+    /// <summary>
     /// Name of the tenant this client belongs to.
     /// </summary>
     [Optional]
@@ -332,6 +346,10 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     [Optional]
     [JsonPropertyName("identity_assertion_authorization_grant")]
     public IdentityAssertionAuthorizationGrant? IdentityAssertionAuthorizationGrant { get; set; }
+
+    [Optional]
+    [JsonPropertyName("anonymous_sessions")]
+    public AnonymousSessions? AnonymousSessions { get; set; }
 
     [Optional]
     [JsonPropertyName("third_party_security_mode")]

@@ -4554,6 +4554,108 @@ await client.Groups.DeleteAsync("id");
 </dl>
 </details>
 
+## Guardian
+<details><summary><code>client.Guardian.<a href="/src/Auth0.ManagementApi/Guardian/GuardianClient.cs">GetAsync</a>() -> WithRawResponseTask&lt;GetGuardianSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+TODO: Link this endpoint to relevant documentation when available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.GetAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Guardian.<a href="/src/Auth0.ManagementApi/Guardian/GuardianClient.cs">SetAsync</a>(SetGuardianSettingsRequestContent { ... }) -> WithRawResponseTask&lt;SetGuardianSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update a tenant's guardian settings such as Remember Me 
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.SetAsync(
+    new SetGuardianSettingsRequestContent
+    {
+        DisplayRememberMeCheckbox = true,
+        RememberMeDefaultValue = true,
+        MfaSessionInactivityTimeout = 1,
+        MfaSessionOverallTimeout = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SetGuardianSettingsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Hooks
 <details><summary><code>client.Hooks.<a href="/src/Auth0.ManagementApi/Hooks/HooksClient.cs">ListAsync</a>(ListHooksRequestParameters { ... }) -> Pager&lt;Hook&gt;</code></summary>
 <dl>
@@ -6189,309 +6291,6 @@ await client.NetworkAcls.UpdateAsync("id", new UpdateNetworkAclRequestContent())
 </dl>
 </details>
 
-## OrganizationTemplates
-<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">ListAsync</a>(ListOrganizationTemplatesRequestParameters { ... }) -> Pager&lt;OrganizationTemplate&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve a list of Organization Templates. This endpoint supports Checkpoint pagination. Results are returned in a stable order, sorted by their identifier (`id`) in ascending order.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.OrganizationTemplates.ListAsync(
-    new ListOrganizationTemplatesRequestParameters { From = "from", Take = 1 }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `ListOrganizationTemplatesRequestParameters` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">CreateAsync</a>(CreateOrganizationTemplateRequestContent { ... }) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Create an Organization Template.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.OrganizationTemplates.CreateAsync(
-    new CreateOrganizationTemplateRequestContent
-    {
-        Name = "name",
-        OrganizationDeletionBehavior = OrganizationDeletionBehaviorEnum.Allow,
-        EnforcePermissionCeiling = true,
-        EnforceSelfAssignmentRestriction = true,
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CreateOrganizationTemplateRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve details about a single Organization Template specified by ID.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.OrganizationTemplates.GetAsync("id");
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Organization Template identifier.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">UpdateAsync</a>(id, UpdateOrganizationTemplateRequestContent { ... }) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Update the details of a specific Organization Template.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.OrganizationTemplates.UpdateAsync(
-    "id",
-    new UpdateOrganizationTemplateRequestContent()
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Organization Template identifier.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `UpdateOrganizationTemplateRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.OrganizationTemplates.<a href="/src/Auth0.ManagementApi/OrganizationTemplates/OrganizationTemplatesClient.cs">ListOrganizationsAsync</a>(id, ListTemplateOrganizationsRequestParameters { ... }) -> Pager&lt;OrganizationTemplateAssignedOrganization&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve a list of organizations assigned to an Organization Template. This endpoint supports Checkpoint pagination. Results are returned in a stable order, sorted by their identifier (`id`) in ascending order.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.OrganizationTemplates.ListOrganizationsAsync(
-    "id",
-    new ListTemplateOrganizationsRequestParameters { From = "from", Take = 1 }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the organization template.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ListTemplateOrganizationsRequestParameters` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Organizations
 <details><summary><code>client.Organizations.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationsClient.cs">ListAsync</a>(ListOrganizationsRequestParameters { ... }) -> Pager&lt;Organization&gt;</code></summary>
 <dl>
@@ -6669,6 +6468,83 @@ await client.Organizations.GetByNameAsync("name");
 <dd>
 
 **name:** `string` — name of the organization to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationsClient.cs">SearchAsync</a>(SearchOrganizationsRequestParameters { ... }) -> Pager&lt;SearchOrganization&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve details of organizations matching a search criteria. It is possible to:
+
+- Specify a search criteria for organizations
+- Search via `name`
+- Search via `display_name`
+- Substring matching (`contains` and `ends-with`) requires at least 3 characters
+- Use wildcards
+
+The `q` query parameter can be used to get organizations that match the specified criteria on `name` OR `display_name`.
+
+This endpoint supports SCIM or Lucene filter syntax with low-latency, cursor-based pagination. Use the `parser` parameter to specify "scim" or "lucene" syntax (default: "lucene").
+
+Results are eventually consistent and may not reflect recent updates immediately.
+
+**Sortable fields:** `name`, `display_name`, `created_at` (ascending only). Defaults to insertion order (oldest first).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.SearchAsync(
+    new SearchOrganizationsRequestParameters
+    {
+        Q = "q",
+        Parser = SearchParserEnum.Scim,
+        Take = 1,
+        From = "from",
+        Sort = OrganizationSortFieldEnum.Name,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SearchOrganizationsRequestParameters` 
     
 </dd>
 </dl>
@@ -7582,6 +7458,74 @@ await client.ResourceServers.CreateAsync(
 <dd>
 
 **request:** `CreateResourceServerRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ResourceServers.<a href="/src/Auth0.ManagementApi/ResourceServers/ResourceServersClient.cs">SearchAsync</a>(SearchResourceServersRequestParameters { ... }) -> Pager&lt;ResourceServerSearchResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search resource servers using SCIM or Lucene filter syntax with low-latency, eventually consistent results. Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene"). This endpoint provides an alternative to the standard GET /resource-servers endpoint with better performance for complex queries.
+Results may not reflect recent updates immediately.
+
+The `signing_secret` field is not supported by this endpoint.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ResourceServers.SearchAsync(
+    new SearchResourceServersRequestParameters
+    {
+        Q = "q",
+        Parser = SearchParserEnum.Scim,
+        Fields = "fields",
+        IncludeFields = true,
+        Take = 1,
+        From = "from",
+        Sort = ResourceServerSortFieldEnum.Identifier,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SearchResourceServersRequestParameters` 
     
 </dd>
 </dl>
@@ -16335,6 +16279,72 @@ await client.EventStreams.Redeliveries.CreateByIdAsync("id", "event_id");
 </dl>
 </details>
 
+## Experimentation Experiments
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">AdvanceRampAsync</a>(id, AdvanceRampRequestContent { ... }) -> WithRawResponseTask&lt;AdvanceRampResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Increments the current ramp index to the requested target level. Up-only: the target must be the immediate next level in the schedule. Idempotent: calling with the current level returns success without writing anything.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.AdvanceRampAsync(
+    "id",
+    new AdvanceRampRequestContent { TargetLevel = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to advance.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `AdvanceRampRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Flows Executions
 <details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">ListAsync</a>(flowId, ListFlowExecutionsRequestParameters { ... }) -> Pager&lt;FlowExecutionSummary&gt;</code></summary>
 <dl>
@@ -17385,6 +17395,102 @@ await client.Guardian.Policies.SetAsync(
 </dl>
 </details>
 
+## Guardian Factors Email
+<details><summary><code>client.Guardian.Factors.Email.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Email/EmailClient.cs">GetAsync</a>() -> WithRawResponseTask&lt;GetEmailFactorSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+TODO: Link this endpoint to relevant documentation when available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.Email.GetAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Guardian.Factors.Email.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Email/EmailClient.cs">SetAsync</a>(SetEmailFactorSettingsRequestContent { ... }) -> WithRawResponseTask&lt;SetEmailFactorSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+TODO: Link this endpoint to relevant documentation when available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.Email.SetAsync(
+    new SetEmailFactorSettingsRequestContent { OtpLength = 1, OtpExpirationTime = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SetEmailFactorSettingsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Guardian Factors Phone
 <details><summary><code>client.Guardian.Factors.Phone.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Phone/PhoneClient.cs">GetMessageTypesAsync</a>() -> WithRawResponseTask&lt;GetGuardianFactorPhoneMessageTypesResponseContent&gt;</code></summary>
 <dl>
@@ -17655,6 +17761,101 @@ await client.Guardian.Factors.Phone.SetProviderAsync(
 <dd>
 
 **request:** `SetGuardianFactorsProviderPhoneRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Guardian.Factors.Phone.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Phone/PhoneClient.cs">GetAsync</a>() -> WithRawResponseTask&lt;GetPhoneFactorSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+TODO: Link this endpoint to relevant documentation when available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.Phone.GetAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Guardian.Factors.Phone.<a href="/src/Auth0.ManagementApi/Guardian/Factors/Phone/PhoneClient.cs">SetAsync</a>(SetPhoneFactorSettingsRequestContent { ... }) -> WithRawResponseTask&lt;SetPhoneFactorSettingsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+TODO: Link this endpoint to relevant documentation when available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.Phone.SetAsync(
+    new SetPhoneFactorSettingsRequestContent { OtpLength = 1, OtpExpirationTime = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SetPhoneFactorSettingsRequestContent` 
     
 </dd>
 </dl>

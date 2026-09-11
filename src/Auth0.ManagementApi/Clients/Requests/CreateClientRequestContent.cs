@@ -299,6 +299,10 @@ public record CreateClientRequestContent
     public CreateIdentityAssertionAuthorizationGrant? IdentityAssertionAuthorizationGrant { get; set; }
 
     [Optional]
+    [JsonPropertyName("anonymous_sessions")]
+    public CreateAnonymousSessions? AnonymousSessions { get; set; }
+
+    [Optional]
     [JsonPropertyName("third_party_security_mode")]
     public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
 

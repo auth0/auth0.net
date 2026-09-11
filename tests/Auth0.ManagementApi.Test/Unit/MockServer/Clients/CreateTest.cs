@@ -21,6 +21,8 @@ public class CreateTest : BaseMockServerTest
         const string mockResponse = """
             {
               "client_id": "client_id",
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z",
               "tenant": "tenant",
               "name": "name",
               "description": "description",
@@ -423,6 +425,9 @@ public class CreateTest : BaseMockServerTest
                 "invitation_landing_client_id": "invitation_landing_client_id"
               },
               "identity_assertion_authorization_grant": {
+                "active": true
+              },
+              "anonymous_sessions": {
                 "active": true
               },
               "third_party_security_mode": "strict",

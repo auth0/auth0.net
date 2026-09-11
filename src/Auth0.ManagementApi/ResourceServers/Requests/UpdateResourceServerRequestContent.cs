@@ -66,6 +66,13 @@ public record UpdateResourceServerRequestContent
     [JsonPropertyName("token_lifetime")]
     public int? TokenLifetime { get; set; }
 
+    /// <summary>
+    /// Expiration value (in seconds) for anonymous-session access tokens issued for this API.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("token_lifetime_for_anonymous_access_tokens")]
+    public Optional<int?> TokenLifetimeForAnonymousAccessTokens { get; set; }
+
     [Optional]
     [JsonPropertyName("token_dialect")]
     public ResourceServerTokenDialectSchemaEnum? TokenDialect { get; set; }

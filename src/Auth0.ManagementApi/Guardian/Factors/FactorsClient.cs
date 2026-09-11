@@ -13,11 +13,14 @@ public partial class FactorsClient : IFactorsClient
     internal FactorsClient(RawClient client)
     {
         _client = client;
+        Email = new EmailClient(_client);
         Phone = new Auth0.ManagementApi.Guardian.Factors.PhoneClient(_client);
         PushNotification = new PushNotificationClient(_client);
         Sms = new SmsClient(_client);
         Duo = new DuoClient(_client);
     }
+
+    public IEmailClient Email { get; }
 
     public Auth0.ManagementApi.Guardian.Factors.IPhoneClient Phone { get; }
 
