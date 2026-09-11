@@ -114,7 +114,11 @@ public class UpdateTest : BaseMockServerTest
                 "mode": "persistent"
               },
               "sessions": {
-                "oidc_logout_prompt_enabled": true
+                "oidc_logout_prompt_enabled": true,
+                "anonymous": {
+                  "lifetime_in_minutes": 1,
+                  "activate_cookie": true
+                }
               },
               "oidc_logout": {
                 "rp_logout_end_session_endpoint_discovery": true

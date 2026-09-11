@@ -21,6 +21,10 @@ public record TenantSettingsSessions : IJsonOnDeserialized
     [JsonPropertyName("oidc_logout_prompt_enabled")]
     public bool? OidcLogoutPromptEnabled { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("anonymous")]
+    public Optional<TenantSettingsSessionsAnonymous?> Anonymous { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

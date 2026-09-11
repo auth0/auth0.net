@@ -49,7 +49,7 @@ public record ListDeviceCredentialsRequestParameters
     public Optional<string?> ClientId { get; set; }
 
     /// <summary>
-    /// Type of credentials to retrieve. Must be `public_key`, `refresh_token` or `rotating_refresh_token`. The property will default to `refresh_token` when paging is requested
+    /// Type of credentials to retrieve. Must be `public_key`, `refresh_token` or `rotating_refresh_token`. If none is provided a combined list of `refresh_tokens` and `public_keys` will be returned (and no `rotating_refresh_token`), in this case `page`, `per_page` and `include_totals` will be ignored.
     /// </summary>
     [JsonIgnore]
     public Optional<DeviceCredentialTypeEnum?> Type { get; set; }

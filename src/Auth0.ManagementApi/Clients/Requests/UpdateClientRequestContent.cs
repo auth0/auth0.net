@@ -195,6 +195,10 @@ public record UpdateClientRequestContent
     [JsonPropertyName("identity_assertion_authorization_grant")]
     public Optional<UpdateIdentityAssertionAuthorizationGrant?> IdentityAssertionAuthorizationGrant { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("anonymous_sessions")]
+    public Optional<UpdateAnonymousSessions?> AnonymousSessions { get; set; }
+
     /// <summary>
     /// Form template for WS-Federation protocol
     /// </summary>

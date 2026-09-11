@@ -1,7 +1,7 @@
 using Auth0.ManagementApi.Anomaly;
 using Auth0.ManagementApi.AttackProtection;
 using Auth0.ManagementApi.Emails;
-using Auth0.ManagementApi.Guardian;
+using Auth0.ManagementApi.Experimentation;
 using Auth0.ManagementApi.Tenants;
 using Auth0.ManagementApi.VerifiableCredentials;
 
@@ -25,12 +25,12 @@ public partial interface IManagementApiClient
     public IFormsClient Forms { get; }
     public IUserGrantsClient UserGrants { get; }
     public IGroupsClient Groups { get; }
+    public IGuardianClient Guardian { get; }
     public IHooksClient Hooks { get; }
     public IJobsClient Jobs { get; }
     public ILogStreamsClient LogStreams { get; }
     public ILogsClient Logs { get; }
     public INetworkAclsClient NetworkAcls { get; }
-    public IOrganizationTemplatesClient OrganizationTemplates { get; }
     public IOrganizationsClient Organizations { get; }
     public IPromptsClient Prompts { get; }
     public IRateLimitPoliciesClient RateLimitPolicies { get; }
@@ -51,7 +51,7 @@ public partial interface IManagementApiClient
     public IAnomalyClient Anomaly { get; }
     public IAttackProtectionClient AttackProtection { get; }
     public IEmailsClient Emails { get; }
-    public IGuardianClient Guardian { get; }
+    public IExperimentationClient Experimentation { get; }
     public Auth0.ManagementApi.Keys.IKeysClient Keys { get; }
     public Auth0.ManagementApi.RiskAssessments.IRiskAssessmentsClient RiskAssessments { get; }
     public ITenantsClient Tenants { get; }

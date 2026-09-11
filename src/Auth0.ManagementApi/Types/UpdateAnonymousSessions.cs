@@ -4,23 +4,21 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
+/// <summary>
+/// Anonymous sessions configuration for this client.
+/// </summary>
 [Serializable]
-public record ListOrganizationTemplatesPaginatedResponseContent : IJsonOnDeserialized
+public record UpdateAnonymousSessions : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// A cursor to be used as the "from" query parameter for the next page of results.
+    /// If set to true, this client is allowed to create anonymous sessions.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("next")]
-    public string? Next { get; set; }
-
-    [Optional]
-    [JsonPropertyName("organization_templates")]
-    public IEnumerable<OrganizationTemplate>? OrganizationTemplates { get; set; }
+    [JsonPropertyName("active")]
+    public required bool Active { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

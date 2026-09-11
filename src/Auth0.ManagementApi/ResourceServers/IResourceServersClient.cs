@@ -23,6 +23,18 @@ public partial interface IResourceServersClient
     );
 
     /// <summary>
+    /// Search resource servers using SCIM or Lucene filter syntax with low-latency, eventually consistent results. Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene"). This endpoint provides an alternative to the standard GET /resource-servers endpoint with better performance for complex queries.
+    /// Results may not reflect recent updates immediately.
+    ///
+    /// The `signing_secret` field is not supported by this endpoint.
+    /// </summary>
+    Task<Pager<ResourceServerSearchResponse>> SearchAsync(
+        SearchResourceServersRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve <see href="https://auth0.com/docs/apis">API</see> details with the given ID.
     /// </summary>
     WithRawResponseTask<GetResourceServerResponseContent> GetAsync(

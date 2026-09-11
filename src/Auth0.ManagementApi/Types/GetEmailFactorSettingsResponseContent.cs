@@ -5,25 +5,23 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 [Serializable]
-public record ListTemplateOrganizationsPaginatedResponseContent : IJsonOnDeserialized
+public record GetEmailFactorSettingsResponseContent : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// A cursor to be used as the "from" query parameter for the next page of results.
+    /// The length of the OTP code.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("next")]
-    public string? Next { get; set; }
+    [JsonPropertyName("otp_length")]
+    public required int OtpLength { get; set; }
 
     /// <summary>
-    /// The list of organizations assigned to this template.
+    /// The OTP expiration time in seconds.
     /// </summary>
-    [JsonPropertyName("organizations")]
-    public IEnumerable<OrganizationTemplateAssignedOrganization> Organizations { get; set; } =
-        new List<OrganizationTemplateAssignedOrganization>();
+    [JsonPropertyName("otp_expiration_time")]
+    public required int OtpExpirationTime { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

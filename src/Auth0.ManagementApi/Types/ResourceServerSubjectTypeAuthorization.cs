@@ -22,6 +22,10 @@ public record ResourceServerSubjectTypeAuthorization : IJsonOnDeserialized
     [JsonPropertyName("client")]
     public ResourceServerSubjectTypeAuthorizationClient? Client { get; set; }
 
+    [Optional]
+    [JsonPropertyName("anonymous_user")]
+    public ResourceServerSubjectTypeAuthorizationAnonymousUser? AnonymousUser { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

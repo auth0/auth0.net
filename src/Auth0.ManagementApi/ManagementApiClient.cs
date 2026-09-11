@@ -2,7 +2,7 @@ using Auth0.ManagementApi.Anomaly;
 using Auth0.ManagementApi.AttackProtection;
 using Auth0.ManagementApi.Core;
 using Auth0.ManagementApi.Emails;
-using Auth0.ManagementApi.Guardian;
+using Auth0.ManagementApi.Experimentation;
 using Auth0.ManagementApi.Tenants;
 using Auth0.ManagementApi.VerifiableCredentials;
 
@@ -60,12 +60,12 @@ public partial class ManagementApiClient : IManagementApiClient
         Forms = new FormsClient(_client);
         UserGrants = new UserGrantsClient(_client);
         Groups = new GroupsClient(_client);
+        Guardian = new GuardianClient(_client);
         Hooks = new HooksClient(_client);
         Jobs = new JobsClient(_client);
         LogStreams = new LogStreamsClient(_client);
         Logs = new LogsClient(_client);
         NetworkAcls = new NetworkAclsClient(_client);
-        OrganizationTemplates = new OrganizationTemplatesClient(_client);
         Organizations = new OrganizationsClient(_client);
         Prompts = new PromptsClient(_client);
         RateLimitPolicies = new RateLimitPoliciesClient(_client);
@@ -86,7 +86,7 @@ public partial class ManagementApiClient : IManagementApiClient
         Anomaly = new AnomalyClient(_client);
         AttackProtection = new AttackProtectionClient(_client);
         Emails = new EmailsClient(_client);
-        Guardian = new GuardianClient(_client);
+        Experimentation = new ExperimentationClient(_client);
         Keys = new Auth0.ManagementApi.Keys.KeysClient(_client);
         RiskAssessments = new Auth0.ManagementApi.RiskAssessments.RiskAssessmentsClient(_client);
         Tenants = new TenantsClient(_client);
@@ -125,6 +125,8 @@ public partial class ManagementApiClient : IManagementApiClient
 
     public IGroupsClient Groups { get; }
 
+    public IGuardianClient Guardian { get; }
+
     public IHooksClient Hooks { get; }
 
     public IJobsClient Jobs { get; }
@@ -134,8 +136,6 @@ public partial class ManagementApiClient : IManagementApiClient
     public ILogsClient Logs { get; }
 
     public INetworkAclsClient NetworkAcls { get; }
-
-    public IOrganizationTemplatesClient OrganizationTemplates { get; }
 
     public IOrganizationsClient Organizations { get; }
 
@@ -177,7 +177,7 @@ public partial class ManagementApiClient : IManagementApiClient
 
     public IEmailsClient Emails { get; }
 
-    public IGuardianClient Guardian { get; }
+    public IExperimentationClient Experimentation { get; }
 
     public Auth0.ManagementApi.Keys.IKeysClient Keys { get; }
 

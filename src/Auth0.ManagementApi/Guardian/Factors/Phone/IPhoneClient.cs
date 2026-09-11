@@ -53,6 +53,23 @@ public partial interface IPhoneClient
     );
 
     /// <summary>
+    /// TODO: Link this endpoint to relevant documentation when available.
+    /// </summary>
+    WithRawResponseTask<GetPhoneFactorSettingsResponseContent> GetAsync(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// TODO: Link this endpoint to relevant documentation when available.
+    /// </summary>
+    WithRawResponseTask<SetPhoneFactorSettingsResponseContent> SetAsync(
+        SetPhoneFactorSettingsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve details of the multi-factor authentication enrollment and verification templates for phone-type factors available in your tenant.
     /// </summary>
     WithRawResponseTask<GetGuardianFactorPhoneTemplatesResponseContent> GetTemplatesAsync(

@@ -461,6 +461,11 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadEvents = new(Values.ReadEvents);
 
     /// <summary>
+    /// Update Experimentation
+    /// </summary>
+    public static readonly OauthScope UpdateExperimentation = new(Values.UpdateExperimentation);
+
+    /// <summary>
     /// Create Flows
     /// </summary>
     public static readonly OauthScope CreateFlows = new(Values.CreateFlows);
@@ -1361,24 +1366,10 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Create Organization Templates
-    /// </summary>
-    public static readonly OauthScope CreateOrganizationTemplates = new(
-        Values.CreateOrganizationTemplates
-    );
-
-    /// <summary>
     /// Read Organization Templates
     /// </summary>
     public static readonly OauthScope ReadOrganizationTemplates = new(
         Values.ReadOrganizationTemplates
-    );
-
-    /// <summary>
-    /// Update Organization Templates
-    /// </summary>
-    public static readonly OauthScope UpdateOrganizationTemplates = new(
-        Values.UpdateOrganizationTemplates
     );
 
     /// <summary>
@@ -1913,6 +1904,11 @@ public readonly record struct OauthScope : IStringEnum
         /// Read Events
         /// </summary>
         public const string ReadEvents = "read:events";
+
+        /// <summary>
+        /// Update Experimentation
+        /// </summary>
+        public const string UpdateExperimentation = "update:experimentation";
 
         /// <summary>
         /// Create Flows
@@ -2723,19 +2719,9 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteOrganizationClients = "delete:organization_clients";
 
         /// <summary>
-        /// Create Organization Templates
-        /// </summary>
-        public const string CreateOrganizationTemplates = "create:organization_templates";
-
-        /// <summary>
         /// Read Organization Templates
         /// </summary>
         public const string ReadOrganizationTemplates = "read:organization_templates";
-
-        /// <summary>
-        /// Update Organization Templates
-        /// </summary>
-        public const string UpdateOrganizationTemplates = "update:organization_templates";
 
         /// <summary>
         /// Create Network ACL Keys

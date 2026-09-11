@@ -60,14 +60,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.82.1
-current_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+  - commit_sha: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
+    tree_hash: 26e24cc325d07593b381acd37d2f067ff6c757d9
+    timestamp: 2026-09-11T02:46:20.859Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.82.1
+current_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+    base_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -275,7 +281,7 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+    base_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
@@ -685,7 +691,7 @@ patches:
     original_commit: a4ee94c4b6b4ad1f881465e6680286ef144d2b4f
     original_message: "mgmt: Removed unwanted files"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+    base_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -893,7 +899,7 @@ patches:
     original_commit: f2415ebd2fef2e96471b0d89fbcb35fadec37c0c
     original_message: "chore: Adds CLAUDE.md and AGENTS.md"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+    base_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
     files:
       - references/code-style.md
       - references/commands.md
@@ -1359,7 +1365,7 @@ patches:
     original_commit: c551b36c72ddde8c84bff167b318fcf6d15a9e31
     original_message: "build: Build fix"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 99a906af6e84b9f24d6f4c13094032226125419a
+    base_generation: 7b5de60e2069b8b4f8d9b01d1179c5ffc2ccbb95
     files:
       - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs

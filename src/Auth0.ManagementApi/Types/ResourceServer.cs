@@ -106,6 +106,13 @@ public record ResourceServer : IJsonOnDeserialized
     [JsonPropertyName("enforce_policies")]
     public bool? EnforcePolicies { get; set; }
 
+    /// <summary>
+    /// Expiration value (in seconds) for anonymous-session access tokens issued for this API.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("token_lifetime_for_anonymous_access_tokens")]
+    public int? TokenLifetimeForAnonymousAccessTokens { get; set; }
+
     [Optional]
     [JsonPropertyName("token_dialect")]
     public ResourceServerTokenDialectResponseEnum? TokenDialect { get; set; }

@@ -6,6 +6,7 @@ namespace Auth0.ManagementApi.Guardian;
 
 public partial interface IFactorsClient
 {
+    public IEmailClient Email { get; }
     public Auth0.ManagementApi.Guardian.Factors.IPhoneClient Phone { get; }
     public IPushNotificationClient PushNotification { get; }
     public ISmsClient Sms { get; }

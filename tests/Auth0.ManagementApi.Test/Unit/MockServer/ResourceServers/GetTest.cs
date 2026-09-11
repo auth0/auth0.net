@@ -33,6 +33,7 @@ public class GetTest : BaseMockServerTest
               "token_lifetime": 1,
               "token_lifetime_for_web": 1,
               "enforce_policies": true,
+              "token_lifetime_for_anonymous_access_tokens": 1,
               "token_dialect": "access_token",
               "token_encryption": {
                 "format": "compact-nested-jwe",
@@ -59,6 +60,9 @@ public class GetTest : BaseMockServerTest
                   "policy": "allow_all"
                 },
                 "client": {
+                  "policy": "deny_all"
+                },
+                "anonymous_user": {
                   "policy": "deny_all"
                 }
               },
