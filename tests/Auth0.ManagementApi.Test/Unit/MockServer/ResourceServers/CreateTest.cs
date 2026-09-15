@@ -41,6 +41,16 @@ public class CreateTest : BaseMockServerTest
               "enforce_policies": true,
               "token_lifetime_for_anonymous_access_tokens": 1,
               "token_dialect": "access_token",
+              "access_token": {
+                "claims_mapping": {
+                  "custom_claims": [
+                    {
+                      "name": "name",
+                      "expression": "expression"
+                    }
+                  ]
+                }
+              },
               "token_encryption": {
                 "format": "compact-nested-jwe",
                 "encryption_key": {

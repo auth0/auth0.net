@@ -49,6 +49,20 @@ public record ClientMyOrganizationPostConfiguration : IJsonOnDeserialized
     [JsonPropertyName("invitation_landing_client_id")]
     public string? InvitationLandingClientId { get; set; }
 
+    /// <summary>
+    /// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("enforce_permission_ceiling")]
+    public bool? EnforcePermissionCeiling { get; set; }
+
+    /// <summary>
+    /// When true, prevents organization admins from assigning permissions to themselves.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("enforce_self_assignment_restriction")]
+    public bool? EnforceSelfAssignmentRestriction { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -18,6 +18,7 @@ public class GetTest : BaseMockServerTest
               "show_as_button": true,
               "is_signup_enabled": true,
               "organization_access_level": "none",
+              "organization_member_access_level": "none",
               "is_enabled": true,
               "connection_id": "connection_id",
               "connection": {
