@@ -415,7 +415,9 @@ public class RotateSecretTest : BaseMockServerTest
                   ]
                 },
                 "connection_deletion_behavior": "allow",
-                "invitation_landing_client_id": "invitation_landing_client_id"
+                "invitation_landing_client_id": "invitation_landing_client_id",
+                "enforce_permission_ceiling": true,
+                "enforce_self_assignment_restriction": true
               },
               "identity_assertion_authorization_grant": {
                 "active": true

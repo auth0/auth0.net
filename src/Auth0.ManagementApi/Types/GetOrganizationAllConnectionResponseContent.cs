@@ -43,6 +43,10 @@ public record GetOrganizationAllConnectionResponseContent : IJsonOnDeserialized
     [JsonPropertyName("organization_access_level")]
     public OrganizationAccessLevelEnum? OrganizationAccessLevel { get; set; }
 
+    [Optional]
+    [JsonPropertyName("organization_member_access_level")]
+    public OrganizationMemberAccessLevelEnum? OrganizationMemberAccessLevel { get; set; }
+
     /// <summary>
     /// Whether the connection is enabled for the organization.
     /// </summary>

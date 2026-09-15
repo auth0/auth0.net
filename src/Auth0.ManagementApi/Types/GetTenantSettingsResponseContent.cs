@@ -148,6 +148,10 @@ public record GetTenantSettingsResponseContent : IJsonOnDeserialized
     public IEnumerable<SupportedLocales>? EnabledLocales { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("access_token")]
+    public Optional<ResourceServerAccessToken?> AccessToken { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("security_headers")]
     public Optional<TenantSettingsNullableSecurityHeaders?> SecurityHeaders { get; set; }
 

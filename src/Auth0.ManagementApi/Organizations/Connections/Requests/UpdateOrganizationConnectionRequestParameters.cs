@@ -39,6 +39,10 @@ public record UpdateOrganizationConnectionRequestParameters
     [JsonPropertyName("organization_access_level")]
     public Optional<OrganizationAccessLevelEnumWithNull?> OrganizationAccessLevel { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("organization_member_access_level")]
+    public Optional<OrganizationMemberAccessLevelEnumWithNull?> OrganizationMemberAccessLevel { get; set; }
+
     /// <summary>
     /// Whether the connection is enabled for the organization.
     /// </summary>

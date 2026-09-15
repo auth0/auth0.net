@@ -93,6 +93,16 @@ public class GetTest : BaseMockServerTest
               "enabled_locales": [
                 "am"
               ],
+              "access_token": {
+                "claims_mapping": {
+                  "custom_claims": [
+                    {
+                      "name": "name",
+                      "expression": "expression"
+                    }
+                  ]
+                }
+              },
               "security_headers": {
                 "content_security_policy": {
                   "enabled": true,

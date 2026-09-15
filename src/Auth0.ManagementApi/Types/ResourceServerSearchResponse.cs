@@ -111,6 +111,10 @@ public record ResourceServerSearchResponse : IJsonOnDeserialized
     public ResourceServerTokenDialectResponseEnum? TokenDialect { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("access_token")]
+    public Optional<ResourceServerAccessToken?> AccessToken { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("token_encryption")]
     public Optional<ResourceServerTokenEncryption?> TokenEncryption { get; set; }
 
