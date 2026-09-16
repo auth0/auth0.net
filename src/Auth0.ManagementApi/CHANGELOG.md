@@ -1,5 +1,13 @@
 # Change Log
 
+## [mgmt-10.3.0](https://github.com/auth0/auth0.net/tree/mgmt-10.3.0) (2026-09-16)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.2.0...mgmt-10.3.0)
+
+**Added**
+- **My Organization member management controls (EA):** Two new optional safety controls are available on the `my_organization_configuration` block of application clients. Setting `EnforcePermissionCeiling = true` ensures that organization admins can only assign permissions to members that they themselves already hold - preventing privilege escalation within the organization. Setting `EnforceSelfAssignmentRestriction = true` prevents admins from assigning permissions to themselves. Both settings default to `false` and are available when creating, updating, or reading a client [\#1110](https://github.com/auth0/auth0.net/pull/1110) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Organization connection member access level:** Organization connections now expose an `OrganizationMemberAccessLevel` field that specifies the level of access members gain through that connection when joining an organization. The supported values are `none`, `readonly`, `limited`, and `full`. The field is available on connection create, update, and read operations [\#1110](https://github.com/auth0/auth0.net/pull/1110) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Access token custom claims mapping on resource servers and tenant settings:** Resource servers and tenant settings now accept an `AccessToken.ClaimsMapping.CustomClaims` list of mapping rules. Each rule pairs a `Name` - the claim name to emit in the access token - with an `Expression`, a dot-path into the anonymous-session context (e.g. `anonymous_session.metadata.country`). This lets you declaratively map values from an anonymous session into named claims on the issued access token without writing an Action [\#1110](https://github.com/auth0/auth0.net/pull/1110) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-10.2.0](https://github.com/auth0/auth0.net/tree/mgmt-10.2.0) (2026-09-11)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.1.0...mgmt-10.2.0)
 
