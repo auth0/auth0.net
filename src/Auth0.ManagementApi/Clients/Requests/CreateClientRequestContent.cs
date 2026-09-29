@@ -326,6 +326,10 @@ public record CreateClientRequestContent
     [JsonPropertyName("async_approval_notification_channels")]
     public IEnumerable<AsyncApprovalNotificationsChannelsEnum>? AsyncApprovalNotificationChannels { get; set; }
 
+    [Optional]
+    [JsonPropertyName("oidc_support")]
+    public ClientOidcSupportPost? OidcSupport { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

@@ -46,6 +46,7 @@ public class ListTest : BaseMockServerTest
                     }
                   },
                   "consent_policy": "transactional-authorization-with-mfa",
+                  "require_consent_non_repudiation": true,
                   "proof_of_possession": {
                     "mechanism": "mtls",
                     "required": true

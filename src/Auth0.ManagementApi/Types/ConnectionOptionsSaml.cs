@@ -144,6 +144,10 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("thumbprints")]
     public IEnumerable<string>? Thumbprints { get; set; }
 
+    [Optional]
+    [JsonPropertyName("thumbprints_sha384")]
+    public IEnumerable<string>? ThumbprintsSha384 { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("upstream_params")]
     public Optional<Dictionary<

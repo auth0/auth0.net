@@ -461,9 +461,24 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadEvents = new(Values.ReadEvents);
 
     /// <summary>
+    /// Create Experimentation
+    /// </summary>
+    public static readonly OauthScope CreateExperimentation = new(Values.CreateExperimentation);
+
+    /// <summary>
+    /// Read Experimentation
+    /// </summary>
+    public static readonly OauthScope ReadExperimentation = new(Values.ReadExperimentation);
+
+    /// <summary>
     /// Update Experimentation
     /// </summary>
     public static readonly OauthScope UpdateExperimentation = new(Values.UpdateExperimentation);
+
+    /// <summary>
+    /// Delete Experimentation
+    /// </summary>
+    public static readonly OauthScope DeleteExperimentation = new(Values.DeleteExperimentation);
 
     /// <summary>
     /// Create Flows
@@ -1366,13 +1381,6 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Organization Templates
-    /// </summary>
-    public static readonly OauthScope ReadOrganizationTemplates = new(
-        Values.ReadOrganizationTemplates
-    );
-
-    /// <summary>
     /// Create Network ACL Keys
     /// </summary>
     public static readonly OauthScope CreateNetworkAclKeys = new(Values.CreateNetworkAclKeys);
@@ -1906,9 +1914,24 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadEvents = "read:events";
 
         /// <summary>
+        /// Create Experimentation
+        /// </summary>
+        public const string CreateExperimentation = "create:experimentation";
+
+        /// <summary>
+        /// Read Experimentation
+        /// </summary>
+        public const string ReadExperimentation = "read:experimentation";
+
+        /// <summary>
         /// Update Experimentation
         /// </summary>
         public const string UpdateExperimentation = "update:experimentation";
+
+        /// <summary>
+        /// Delete Experimentation
+        /// </summary>
+        public const string DeleteExperimentation = "delete:experimentation";
 
         /// <summary>
         /// Create Flows
@@ -2717,11 +2740,6 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Organization Client Associations
         /// </summary>
         public const string DeleteOrganizationClients = "delete:organization_clients";
-
-        /// <summary>
-        /// Read Organization Templates
-        /// </summary>
-        public const string ReadOrganizationTemplates = "read:organization_templates";
 
         /// <summary>
         /// Create Network ACL Keys

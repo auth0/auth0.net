@@ -16,6 +16,8 @@ public readonly record struct AsyncApprovalNotificationsChannelsEnum : IStringEn
 
     public static readonly AsyncApprovalNotificationsChannelsEnum Email = new(Values.Email);
 
+    public static readonly AsyncApprovalNotificationsChannelsEnum MyAccount = new(Values.MyAccount);
+
     public AsyncApprovalNotificationsChannelsEnum(string value)
     {
         Value = value;
@@ -118,5 +120,7 @@ public readonly record struct AsyncApprovalNotificationsChannelsEnum : IStringEn
         public const string GuardianPush = "guardian-push";
 
         public const string Email = "email";
+
+        public const string MyAccount = "my-account";
     }
 }
