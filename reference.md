@@ -10245,24 +10245,22 @@ await client.UserBlocks.DeleteAsync("id");
 <dl>
 <dd>
 
-Retrieve details of users. It is possible to:
+This endpoint retrieves details of users. It's best suited to interactive, best-effort search and lookups where slightly stale results are acceptable. With it, you can:
 
-- Specify a search criteria for users
+- Specify search criteria for users
 - Sort the users to be returned
 - Select the fields to be returned
 - Specify the number of users to retrieve per page and the page index
 
+This endpoint is **not suited for use in critical paths**. It is eventually consistent and runs under a short (~2 second) query time limit, so results can be stale and heavy queries can return a 503.
 
+- Do not use this endpoint for authentication, account linking, or logic inside login-flow Actions. Instead, [look users up directly by ID or email](https://auth0.com/docs/manage-users/user-search/get-users-by-id-or-email#management-api) to get their current state.
+- Do not use this endpoint to keep an external system in sync with user data. Instead, subscribe to [Event Streams](https://auth0.com/docs/customize/events/sync-data-across-systems) to receive every change as it happens.
+- Do not use this endpoint to enumerate or export your entire user base. Instead, run a [bulk user export](https://auth0.com/docs/manage-users/user-migration/bulk-user-exports) to retrieve the full set.
 
-The `q` query parameter can be used to get users that match the specified criteria [using query string syntax.](https://auth0.com/docs/users/search/v3/query-syntax)
+Use the `q` query parameter to match users with [query string syntax](https://auth0.com/docs/manage-users/user-search/user-search-query-syntax). For full instructions and guidance, see [How to List and Search Users](https://auth0.com/docs/manage-users/user-search/list-and-search-users).
 
-[Learn more about searching for users.](https://auth0.com/docs/users/search/v3)
-
-Read about [best practices](https://auth0.com/docs/users/search/best-practices) when working with the API endpoints for retrieving users.
-
-
-
-Auth0 limits the number of users you can return. If you exceed this threshold, please redefine your search, use the [export job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports), or the [User Import / Export](https://auth0.com/docs/extensions/user-import-export) extension.
+For efficient queries, prefer indexed top-level fields and exact matches. Certain kinds of queries can be slow and may time out, such as filtering on freeform or multi-value fields (like user-defined attributes in `app_metadata` or `user_metadata`) or using leading wildcards.
 </dd>
 </dl>
 </dd>
@@ -16280,6 +16278,300 @@ await client.EventStreams.Redeliveries.CreateByIdAsync("id", "event_id");
 </details>
 
 ## Experimentation Experiments
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">ListAsync</a>(ListExperimentsRequestParameters { ... }) -> Pager&lt;ExperimentListItem&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of experiments for the tenant, with optional filters.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.ListAsync(
+    new ListExperimentsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Status = ExperimentStatusEnum.Draft,
+        AuthenticationFlow = "authentication_flow",
+        FeatureFlagId = "feature_flag_id",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListExperimentsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">CreateAsync</a>(CreateExperimentRequestContent { ... }) -> WithRawResponseTask&lt;CreateExperimentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new experiment for A/B testing.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.CreateAsync(
+    new CreateExperimentRequestContent
+    {
+        Name = "name",
+        FeatureFlagId = "feature_flag_id",
+        AuthenticationFlow = AuthenticationFlowEnum.Authentication,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateExperimentRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetExperimentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single experiment with its allocations by ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete an experiment and its allocations by ID. Active experiments cannot be deleted; pause or complete first. Idempotent: returns 204 even if the experiment does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">UpdateAsync</a>(id, UpdateExperimentRequestParameters { ... }) -> WithRawResponseTask&lt;UpdateExperimentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update an experiment by ID. Only provided fields are updated. Providing allocations replaces the entire allocations set.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.UpdateAsync("id", new UpdateExperimentRequestParameters());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateExperimentRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">AdvanceRampAsync</a>(id, AdvanceRampRequestContent { ... }) -> WithRawResponseTask&lt;AdvanceRampResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -16334,6 +16626,1097 @@ await client.Experimentation.Experiments.AdvanceRampAsync(
 <dd>
 
 **request:** `AdvanceRampRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">UpdateStatusAsync</a>(id, UpdateExperimentStatusRequestContent { ... }) -> WithRawResponseTask&lt;UpdateExperimentStatusResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Transitions an experiment through its lifecycle: draft → active, active → paused, paused → active, active/paused → completed. Activation runs full readiness validation.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.UpdateStatusAsync(
+    "id",
+    new UpdateExperimentStatusRequestContent { Status = ExperimentTransitionStatusEnum.Active }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to transition.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateExperimentStatusRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">ValidateAsync</a>(id) -> WithRawResponseTask&lt;ValidateExperimentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Checks whether an experiment is ready to be activated. Returns is_valid boolean and an errors array describing any blockers. Read-only; no state is modified.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Experiments.ValidateAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the experiment to validate.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Experimentation FeatureFlags
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">ListAsync</a>(ListFeatureFlagsRequestParameters { ... }) -> Pager&lt;FeatureFlag&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of feature flags for the tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.ListAsync(
+    new ListFeatureFlagsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Type = FeatureFlagTypeEnum.Auth0,
+        Status = FeatureFlagStatusEnum.Draft,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListFeatureFlagsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">CreateAsync</a>(CreateFeatureFlagRequestContent { ... }) -> WithRawResponseTask&lt;CreateFeatureFlagResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new feature flag with parameters for use in experiments.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.CreateAsync(
+    new CreateFeatureFlagRequestContent
+    {
+        Name = "name",
+        Parameters = new Dictionary<string, FeatureFlagConfigParam>() { },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateFeatureFlagRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetFeatureFlagResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single feature flag by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the feature flag to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a feature flag by ID. Idempotent: returns 204 even if flag does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the feature flag to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">UpdateAsync</a>(id, UpdateFeatureFlagRequestContent { ... }) -> WithRawResponseTask&lt;UpdateFeatureFlagResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update a feature flag by ID. Only provided fields are updated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.UpdateAsync("id", new UpdateFeatureFlagRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the feature flag to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateFeatureFlagRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">UpdateStatusAsync</a>(id, UpdateFeatureFlagStatusRequestContent { ... }) -> WithRawResponseTask&lt;UpdateFeatureFlagStatusResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Transitions a feature flag through its lifecycle states: draft → active, draft → archived, active → archived.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.UpdateStatusAsync(
+    "id",
+    new UpdateFeatureFlagStatusRequestContent { Status = FeatureFlagStatusEnum.Draft }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the feature flag to transition.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateFeatureFlagStatusRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Experimentation Segments
+<details><summary><code>client.Experimentation.Segments.<a href="/src/Auth0.ManagementApi/Experimentation/Segments/SegmentsClient.cs">ListAsync</a>(ListSegmentsRequestParameters { ... }) -> Pager&lt;Segment&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of segments for the tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Segments.ListAsync(
+    new ListSegmentsRequestParameters
+    {
+        From = "from",
+        Take = 1,
+        Type = SegmentTypeFilterEnum.Auth0,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListSegmentsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Segments.<a href="/src/Auth0.ManagementApi/Experimentation/Segments/SegmentsClient.cs">CreateAsync</a>(CreateSegmentRequestContent { ... }) -> WithRawResponseTask&lt;CreateSegmentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new segment with rule-based membership criteria for use in experiments.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Segments.CreateAsync(
+    new CreateSegmentRequestContent
+    {
+        Name = "name",
+        Rules = new List<SegmentRule>() { new SegmentRule() },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateSegmentRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Segments.<a href="/src/Auth0.ManagementApi/Experimentation/Segments/SegmentsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetSegmentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single segment by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Segments.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the segment to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Segments.<a href="/src/Auth0.ManagementApi/Experimentation/Segments/SegmentsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a segment by ID. Idempotent: returns 204 even if segment does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Segments.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the segment to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.Segments.<a href="/src/Auth0.ManagementApi/Experimentation/Segments/SegmentsClient.cs">UpdateAsync</a>(id, UpdateSegmentRequestContent { ... }) -> WithRawResponseTask&lt;UpdateSegmentResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update a segment by ID. Only provided fields are updated. Sending rules replaces the entire rules array.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.Segments.UpdateAsync("id", new UpdateSegmentRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the segment to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateSegmentRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Experimentation FeatureFlags Variations
+<details><summary><code>client.Experimentation.FeatureFlags.Variations.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/Variations/VariationsClient.cs">ListAsync</a>(id) -> WithRawResponseTask&lt;ListVariationsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all variations defined for a specific feature flag.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.Variations.ListAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the parent feature flag.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.Variations.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/Variations/VariationsClient.cs">CreateAsync</a>(id, CreateVariationRequestContent { ... }) -> WithRawResponseTask&lt;CreateVariationResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new variation with parameter overrides for a specific feature flag.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.Variations.CreateAsync(
+    "id",
+    new CreateVariationRequestContent
+    {
+        Name = "name",
+        Overrides = new Dictionary<string, object?>() { { "key", "value" } },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the parent feature flag.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CreateVariationRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.Variations.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/Variations/VariationsClient.cs">GetAsync</a>(id, vid) -> WithRawResponseTask&lt;GetVariationResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single variation by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.Variations.GetAsync("id", "vid");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the parent feature flag.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vid:** `string` — The ID of the variation to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.Variations.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/Variations/VariationsClient.cs">DeleteAsync</a>(id, vid) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a variation by ID. Returns 204 if the variation does not exist. Returns 404 if the parent feature flag does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.Variations.DeleteAsync("id", "vid");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the parent feature flag.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vid:** `string` — The ID of the variation to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Experimentation.FeatureFlags.Variations.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/Variations/VariationsClient.cs">UpdateAsync</a>(id, vid, UpdateVariationRequestContent { ... }) -> WithRawResponseTask&lt;UpdateVariationResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update a variation by ID. Only provided fields are updated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Experimentation.FeatureFlags.Variations.UpdateAsync(
+    "id",
+    "vid",
+    new UpdateVariationRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the parent feature flag.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vid:** `string` — The ID of the variation to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateVariationRequestContent` 
     
 </dd>
 </dl>
@@ -22378,191 +23761,6 @@ await client.Organizations.Members.DeleteAsync(
 <dd>
 
 **request:** `DeleteOrganizationMembersRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Organizations OrganizationTemplate
-<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;OrganizationTemplate&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve the organization template assigned to a specific organization. Returns the template object if one is explicitly assigned, or a 404 if no template is assigned.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Organizations.OrganizationTemplate.GetAsync("id");
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the organization.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">AssignOrganizationTemplateAsync</a>(id, templateId) -> WithRawResponseTask</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Assign an Organization Template to an organization.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Organizations.OrganizationTemplate.AssignOrganizationTemplateAsync(
-    "id",
-    "template_id"
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the organization.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**templateId:** `string` — The ID of the organization template to assign.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Organizations.OrganizationTemplate.<a href="/src/Auth0.ManagementApi/Organizations/OrganizationTemplate/OrganizationTemplateClient.cs">UnassignOrganizationTemplateAsync</a>(id, templateId) -> WithRawResponseTask</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Remove an Organization Template assignment from an organization.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Organizations.OrganizationTemplate.UnassignOrganizationTemplateAsync(
-    "id",
-    "template_id"
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the organization.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**templateId:** `string` — The ID of the organization template to unassign.
     
 </dd>
 </dl>

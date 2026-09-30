@@ -46,6 +46,10 @@ public readonly record struct ClientOidcBackchannelLogoutInitiatorsEnum : IStrin
         Values.AccountDeactivated
     );
 
+    public static readonly ClientOidcBackchannelLogoutInitiatorsEnum ProfileChanged = new(
+        Values.ProfileChanged
+    );
+
     public ClientOidcBackchannelLogoutInitiatorsEnum(string value)
     {
         Value = value;
@@ -166,5 +170,7 @@ public readonly record struct ClientOidcBackchannelLogoutInitiatorsEnum : IStrin
         public const string MfaPhoneUnenrolled = "mfa-phone-unenrolled";
 
         public const string AccountDeactivated = "account-deactivated";
+
+        public const string ProfileChanged = "profile-changed";
     }
 }

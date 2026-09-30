@@ -202,6 +202,14 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("oidc_metadata")]
     public Optional<ConnectionsOidcMetadata?> OidcMetadata { get; set; }
 
+    [Optional]
+    [JsonPropertyName("thumbprints")]
+    public IEnumerable<string>? Thumbprints { get; set; }
+
+    [Optional]
+    [JsonPropertyName("thumbprints_sha384")]
+    public IEnumerable<string>? ThumbprintsSha384 { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

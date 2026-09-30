@@ -129,6 +129,13 @@ public record CreateResourceServerResponseContent : IJsonOnDeserialized
     [JsonPropertyName("consent_policy")]
     public Optional<ResourceServerConsentPolicyEnum?> ConsentPolicy { get; set; }
 
+    /// <summary>
+    /// When true, the resource server requires every consent approval to be digitally signed, so the approver cannot later deny a consent they granted. When false, consent decisions do not need a signature. Defaults to false. A configured value is still returned even after the related entitlement is disabled.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("require_consent_non_repudiation")]
+    public bool? RequireConsentNonRepudiation { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("authorization_details")]
     public Optional<IEnumerable<object>?> AuthorizationDetails { get; set; }

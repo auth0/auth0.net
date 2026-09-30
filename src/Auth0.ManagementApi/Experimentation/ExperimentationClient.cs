@@ -10,7 +10,13 @@ public partial class ExperimentationClient : IExperimentationClient
     {
         _client = client;
         Experiments = new ExperimentsClient(_client);
+        FeatureFlags = new FeatureFlagsClient(_client);
+        Segments = new SegmentsClient(_client);
     }
 
     public IExperimentsClient Experiments { get; }
+
+    public IFeatureFlagsClient FeatureFlags { get; }
+
+    public ISegmentsClient Segments { get; }
 }

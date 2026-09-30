@@ -55,6 +55,7 @@ public class GetTest : BaseMockServerTest
                 }
               },
               "consent_policy": "transactional-authorization-with-mfa",
+              "require_consent_non_repudiation": true,
               "authorization_details": [
                 {
                   "key": "value"
