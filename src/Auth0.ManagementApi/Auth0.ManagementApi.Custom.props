@@ -36,5 +36,7 @@
     <InformationalVersion>$(Version)</InformationalVersion>
     <PackageVersion>$(Version)</PackageVersion>
     <FileVersion>$(Version)</FileVersion>
+    <!-- ManagementApi does not import build/common.props; restore MIT license for NuGet/SBOM. -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 </Project>
