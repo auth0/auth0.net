@@ -32,11 +32,30 @@
     <Version>10.4.0</Version>
     <AssemblyVersionNumber>10.4.0</AssemblyVersionNumber>
     <AssemblyVersion>$(AssemblyVersionNumber)</AssemblyVersion>
-    <AssemblyFileVersion>$(AssemblyVersionNumber)</AssemblyFileVersion>  
+    <AssemblyFileVersion>$(AssemblyVersionNumber)</AssemblyFileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
     <PackageVersion>$(Version)</PackageVersion>
     <FileVersion>$(Version)</FileVersion>
-    <!-- ManagementApi does not import build/common.props; restore MIT license for NuGet/SBOM. -->
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <!-- ManagementApi NuGet package metadata -->
+  <PropertyGroup>
+    <Authors>Auth0</Authors>
+    <Copyright>Auth0® Inc.</Copyright>
+    <PackageTags>auth0;management;openid connect;oidc;oauth2</PackageTags>
+    <PackageIcon>Auth0Icon.png</PackageIcon>
+    <PackageIconUrl>https://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/CHANGELOG.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\build\Auth0Icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 </Project>
