@@ -29,6 +29,9 @@ public record ConnectionResponseContentYandex : IJsonOnDeserialized
     [JsonPropertyName("connected_accounts")]
     public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
 
+    [JsonPropertyName("display_name")]
+    public required string DisplayName { get; set; }
+
     [JsonPropertyName("id")]
     public required string Id { get; set; }
 
@@ -45,10 +48,6 @@ public record ConnectionResponseContentYandex : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("enabled_clients")]
     public IEnumerable<string>? EnabledClients { get; set; }
-
-    [Optional]
-    [JsonPropertyName("display_name")]
-    public string? DisplayName { get; set; }
 
     [Optional]
     [JsonPropertyName("is_domain_connection")]

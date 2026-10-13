@@ -94,6 +94,26 @@ public partial interface IClientsClient
     );
 
     /// <summary>
+    /// Search clients using SCIM or Lucene filter syntax with low-latency, eventually consistent results.
+    /// Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene").
+    /// This endpoint provides an alternative to the standard GET /clients endpoint with better performance
+    /// for complex queries. Results may not reflect recent updates immediately.
+    ///
+    /// - This endpoint only supports `read:clients` and `read:client_summary` scopes. The `read:client_keys` and `read:client_credentials` scopes are not supported.
+    /// - The following fields are never returned by this endpoint:
+    ///   - `client_secret`
+    ///   - `encryption_key`
+    ///   - `signing_keys`
+    ///   - `owners`
+    ///   - `addons`
+    /// </summary>
+    Task<Pager<ClientSearchResponse>> SearchAsync(
+        SearchClientsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve client details by ID. Clients are SSO connections or Applications linked with your Auth0 tenant. A list of fields to include or exclude may also be specified.
     /// For more information, read [Applications in Auth0](https://www.auth0.com/docs/get-started/applications) and [Single Sign-On](https://www.auth0.com/docs/authenticate/single-sign-on).
     ///

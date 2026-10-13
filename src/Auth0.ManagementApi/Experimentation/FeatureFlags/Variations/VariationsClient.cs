@@ -536,18 +536,6 @@ public partial class VariationsClient : IVariationsClient
             {
                 switch (response.StatusCode)
                 {
-                    case 400:
-                        throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
-                            rawResponse: new Auth0.ManagementApi.RawResponse()
-                            {
-                                StatusCode = response.Raw.StatusCode,
-                                Url =
-                                    response.Raw.RequestMessage?.RequestUri
-                                    ?? new Uri("about:blank"),
-                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                            }
-                        );
                     case 403:
                         throw new ForbiddenError(
                             JsonUtils.Deserialize<object>(responseBody),

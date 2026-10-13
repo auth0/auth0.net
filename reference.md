@@ -923,6 +923,72 @@ await client.ClientGrants.CreateAsync(
 </dl>
 </details>
 
+<details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">SearchAsync</a>(SearchClientGrantsRequestParameters { ... }) -> Pager&lt;ClientGrantResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search client grants using SCIM or Lucene filter syntax with low-latency, eventually consistent results. Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene"). This endpoint provides an alternative to the standard GET /client-grants endpoint with better performance for complex queries.
+Results may not reflect recent updates immediately.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientGrants.SearchAsync(
+    new SearchClientGrantsRequestParameters
+    {
+        Q = "q",
+        Parser = SearchParserEnum.Scim,
+        Fields = "fields",
+        IncludeFields = true,
+        Take = 1,
+        From = "from",
+        Sort = ClientGrantSortFieldEnum.Audience,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SearchClientGrantsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetClientGrantResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -1083,6 +1149,299 @@ await client.ClientGrants.UpdateAsync("id", new UpdateClientGrantRequestContent(
 <dd>
 
 **request:** `UpdateClientGrantRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## ClientProfiles
+<details><summary><code>client.ClientProfiles.<a href="/src/Auth0.ManagementApi/ClientProfiles/ClientProfilesClient.cs">ListAsync</a>(ListClientProfilesRequestParameters { ... }) -> Pager&lt;ClientProfile&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of client profiles for the tenant. Uses checkpoint pagination: pass the <code>next</code> cursor from a previous response as the <code>from</code> query parameter to retrieve the following page.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientProfiles.ListAsync(
+    new ListClientProfilesRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListClientProfilesRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ClientProfiles.<a href="/src/Auth0.ManagementApi/ClientProfiles/ClientProfilesClient.cs">CreateAsync</a>(CreateClientProfileRequestContent { ... }) -> WithRawResponseTask&lt;ClientProfile&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a client profile. At most one profile is allowed per tenant in this release; attempting to create a second returns <code>409 Conflict</code>. The profile governs Dynamic CIMD clients matched by its <code>apply_policy</code> at runtime.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientProfiles.CreateAsync(
+    new CreateClientProfileRequestContent
+    {
+        Name = "name",
+        ClientConfiguration = new ClientProfileClientConfiguration(),
+        ApplyPolicy = new ClientProfileApplyPolicy
+        {
+            ExternalMetadataType = ClientProfileApplyPolicyExternalMetadataTypeEnum.Cimd,
+            ExternalMetadataCreatedBy =
+                ClientProfileApplyPolicyExternalMetadataCreatedByEnum.Client,
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateClientProfileRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ClientProfiles.<a href="/src/Auth0.ManagementApi/ClientProfiles/ClientProfilesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;ClientProfile&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single client profile by its identifier. Returns <code>404</code> if no profile with the given ID exists for the tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientProfiles.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the client profile.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ClientProfiles.<a href="/src/Auth0.ManagementApi/ClientProfiles/ClientProfilesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a client profile. Idempotent: returns <code>204 No Content</code> whether or not a profile with the given ID existed. Deleting the profile removes fleet governance for matched clients immediately.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientProfiles.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the client profile.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ClientProfiles.<a href="/src/Auth0.ManagementApi/ClientProfiles/ClientProfilesClient.cs">UpdateAsync</a>(id, UpdateClientProfileRequestContent { ... }) -> WithRawResponseTask&lt;ClientProfile&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update a client profile. Supports partial updates at the top level (JSON Merge Patch); omitted top-level fields remain unchanged. Nested objects such as <code>client_configuration</code> must be supplied in full.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientProfiles.UpdateAsync("id", new UpdateClientProfileRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the client profile.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateClientProfileRequestContent` 
     
 </dd>
 </dl>
@@ -1369,6 +1728,82 @@ await client.Clients.RegisterCimdClientAsync(
 <dd>
 
 **request:** `RegisterCimdClientRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Clients.<a href="/src/Auth0.ManagementApi/Clients/ClientsClient.cs">SearchAsync</a>(SearchClientsRequestParameters { ... }) -> Pager&lt;ClientSearchResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search clients using SCIM or Lucene filter syntax with low-latency, eventually consistent results.
+Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene").
+This endpoint provides an alternative to the standard GET /clients endpoint with better performance
+for complex queries. Results may not reflect recent updates immediately.
+
+- This endpoint only supports `read:clients` and `read:client_summary` scopes. The `read:client_keys` and `read:client_credentials` scopes are not supported.
+- The following fields are never returned by this endpoint:
+  - `client_secret`
+  - `encryption_key`
+  - `signing_keys`
+  - `owners`
+  - `addons`
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Clients.SearchAsync(
+    new SearchClientsRequestParameters
+    {
+        Q = "q",
+        Parser = SearchParserEnum.Scim,
+        Fields = "fields",
+        IncludeFields = true,
+        Take = 1,
+        From = "from",
+        Sort = ClientSortFieldEnum.Name,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SearchClientsRequestParameters` 
     
 </dd>
 </dl>
@@ -3169,7 +3604,15 @@ Create an email template.
 
 ```csharp
 await client.EmailTemplates.CreateAsync(
-    new CreateEmailTemplateRequestContent { Template = EmailTemplateNameEnum.VerifyEmail }
+    new CreateEmailTemplateRequestContent
+    {
+        Template = EmailTemplateNameEnum.VerifyEmail,
+        Body = null,
+        From = null,
+        Subject = null,
+        Syntax = null,
+        Enabled = null,
+    }
 );
 ```
 </dd>
@@ -3280,7 +3723,15 @@ Update an email template.
 ```csharp
 await client.EmailTemplates.SetAsync(
     EmailTemplateNameEnum.VerifyEmail,
-    new SetEmailTemplateRequestContent { Template = EmailTemplateNameEnum.VerifyEmail }
+    new SetEmailTemplateRequestContent
+    {
+        Template = EmailTemplateNameEnum.VerifyEmail,
+        Body = null,
+        From = null,
+        Subject = null,
+        Syntax = null,
+        Enabled = null,
+    }
 );
 ```
 </dd>
@@ -7731,7 +8182,7 @@ await client.ResourceServers.UpdateAsync("id", new UpdateResourceServerRequestCo
 <dl>
 <dd>
 
-Retrieve detailed list of user roles created in your tenant.
+Retrieve a list of roles. Includes roles created in your tenant and, when `owner_id=auth0` is supplied, Auth0-managed System Roles.
 
 **Note**: The returned list does not include standard roles available for tenant members, such as Admin or Support Access.
 </dd>
@@ -12340,6 +12791,281 @@ await client.AttackProtection.Captcha.UpdateAsync(
 </dl>
 </details>
 
+## AttackProtection CaptchaPolicies
+<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">ListAsync</a>() -> WithRawResponseTask&lt;IEnumerable&lt;AttackProtectionCaptchaPolicy&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all CAPTCHA attack protection policies for the tenant, sorted by priority ascending.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.AttackProtection.CaptchaPolicies.ListAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">CreateAsync</a>(CreateAttackProtectionCaptchaPolicyRequestContent { ... }) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new CAPTCHA attack protection policy for the tenant. The maximum number of policies per tenant is determined by the tenant's subscription.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.AttackProtection.CaptchaPolicies.CreateAsync(
+    new CreateAttackProtectionCaptchaPolicyRequestContent
+    {
+        Name = "name",
+        Priority = 1,
+        Match = new AttackProtectionCaptchaPolicyMatch(),
+        Action = new AttackProtectionCaptchaPolicyActionInput(),
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateAttackProtectionCaptchaPolicyRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single CAPTCHA attack protection policy for the tenant by ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.AttackProtection.CaptchaPolicies.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the CAPTCHA attack protection policy.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a CAPTCHA attack protection policy for the tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.AttackProtection.CaptchaPolicies.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the CAPTCHA attack protection policy.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">UpdateAsync</a>(id, UpdateAttackProtectionCaptchaPolicyRequestContent { ... }) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update a CAPTCHA attack protection policy. Only the provided fields are modified. A provided match or action replaces the stored value in full rather than merging with it; within action, a provider secret or API key that is omitted from a provided provider block keeps its stored value.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.AttackProtection.CaptchaPolicies.UpdateAsync(
+    "id",
+    new UpdateAttackProtectionCaptchaPolicyRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the CAPTCHA attack protection policy.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateAttackProtectionCaptchaPolicyRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## AttackProtection PhoneProviderProtection
 <details><summary><code>client.AttackProtection.PhoneProviderProtection.<a href="/src/Auth0.ManagementApi/AttackProtection/PhoneProviderProtection/PhoneProviderProtectionClient.cs">GetAsync</a>() -> WithRawResponseTask&lt;GetPhoneProviderProtectionResponseContent&gt;</code></summary>
 <dl>
@@ -16637,71 +17363,6 @@ await client.Experimentation.Experiments.AdvanceRampAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">UpdateStatusAsync</a>(id, UpdateExperimentStatusRequestContent { ... }) -> WithRawResponseTask&lt;UpdateExperimentStatusResponseContent&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Transitions an experiment through its lifecycle: draft → active, active → paused, paused → active, active/paused → completed. Activation runs full readiness validation.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Experimentation.Experiments.UpdateStatusAsync(
-    "id",
-    new UpdateExperimentStatusRequestContent { Status = ExperimentTransitionStatusEnum.Active }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the experiment to transition.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `UpdateExperimentStatusRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.Experimentation.Experiments.<a href="/src/Auth0.ManagementApi/Experimentation/Experiments/ExperimentsClient.cs">ValidateAsync</a>(id) -> WithRawResponseTask&lt;ValidateExperimentResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -17038,71 +17699,6 @@ await client.Experimentation.FeatureFlags.UpdateAsync("id", new UpdateFeatureFla
 <dd>
 
 **request:** `UpdateFeatureFlagRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Experimentation.FeatureFlags.<a href="/src/Auth0.ManagementApi/Experimentation/FeatureFlags/FeatureFlagsClient.cs">UpdateStatusAsync</a>(id, UpdateFeatureFlagStatusRequestContent { ... }) -> WithRawResponseTask&lt;UpdateFeatureFlagStatusResponseContent&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Transitions a feature flag through its lifecycle states: draft → active, draft → archived, active → archived.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Experimentation.FeatureFlags.UpdateStatusAsync(
-    "id",
-    new UpdateFeatureFlagStatusRequestContent { Status = FeatureFlagStatusEnum.Draft }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the feature flag to transition.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `UpdateFeatureFlagStatusRequestContent` 
     
 </dd>
 </dl>

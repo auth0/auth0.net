@@ -634,7 +634,15 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
     /// </summary>
     /// <example><code>
     /// await client.EmailTemplates.CreateAsync(
-    ///     new CreateEmailTemplateRequestContent { Template = EmailTemplateNameEnum.VerifyEmail }
+    ///     new CreateEmailTemplateRequestContent
+    ///     {
+    ///         Template = EmailTemplateNameEnum.VerifyEmail,
+    ///         Body = null,
+    ///         From = null,
+    ///         Subject = null,
+    ///         Syntax = null,
+    ///         Enabled = null,
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<CreateEmailTemplateResponseContent> CreateAsync(
@@ -671,7 +679,15 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
     /// <example><code>
     /// await client.EmailTemplates.SetAsync(
     ///     EmailTemplateNameEnum.VerifyEmail,
-    ///     new SetEmailTemplateRequestContent { Template = EmailTemplateNameEnum.VerifyEmail }
+    ///     new SetEmailTemplateRequestContent
+    ///     {
+    ///         Template = EmailTemplateNameEnum.VerifyEmail,
+    ///         Body = null,
+    ///         From = null,
+    ///         Subject = null,
+    ///         Syntax = null,
+    ///         Enabled = null,
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<SetEmailTemplateResponseContent> SetAsync(

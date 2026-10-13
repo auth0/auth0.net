@@ -43,7 +43,7 @@ public record ListGroupsRequestParameters
     public Optional<bool?> IncludeFields { get; set; }
 
     /// <summary>
-    /// Return results inside an object that contains the total result count (true) or as a direct array of results (false, default).
+    /// Return results inside an object that contains the total result count (true) or as a direct array of results (false, default). The returned total reflects at most 1,000 results.
     /// </summary>
     [JsonIgnore]
     public Optional<bool?> IncludeTotals { get; set; } = true;

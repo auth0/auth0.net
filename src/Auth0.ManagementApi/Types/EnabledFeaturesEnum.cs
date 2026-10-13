@@ -12,6 +12,8 @@ public readonly record struct EnabledFeaturesEnum : IStringEnum
 
     public static readonly EnabledFeaturesEnum UniversalLogout = new(Values.UniversalLogout);
 
+    public static readonly EnabledFeaturesEnum DirectorySync = new(Values.DirectorySync);
+
     public EnabledFeaturesEnum(string value)
     {
         Value = value;
@@ -111,5 +113,7 @@ public readonly record struct EnabledFeaturesEnum : IStringEnum
         public const string Scim = "scim";
 
         public const string UniversalLogout = "universal_logout";
+
+        public const string DirectorySync = "directory_sync";
     }
 }

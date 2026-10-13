@@ -352,6 +352,10 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     public AnonymousSessions? AnonymousSessions { get; set; }
 
     [Optional]
+    [JsonPropertyName("enforce_anon_session_transfer_network_binding")]
+    public ClientAnonymousSessionTransferNetworkBindingEnum? EnforceAnonSessionTransferNetworkBinding { get; set; }
+
+    [Optional]
     [JsonPropertyName("third_party_security_mode")]
     public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
 
@@ -377,6 +381,10 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     [Optional]
     [JsonPropertyName("external_metadata_created_by")]
     public ClientExternalMetadataCreatedByEnum? ExternalMetadataCreatedBy { get; set; }
+
+    [Optional]
+    [JsonPropertyName("external_metadata_status")]
+    public ClientExternalMetadataStatusEnum? ExternalMetadataStatus { get; set; }
 
     /// <summary>
     /// An alternate client identifier to be used during authorization flows. Only supports CIMD-based client identifiers.

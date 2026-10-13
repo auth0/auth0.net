@@ -36,9 +36,6 @@ public record CreateRoleResponseContent : IJsonOnDeserialized
     [JsonPropertyName("type")]
     public RoleTypeEnum? Type { get; set; }
 
-    /// <summary>
-    /// The id of the entity that owns this role, such as an organization id.
-    /// </summary>
     [Optional]
     [JsonPropertyName("owner_id")]
     public string? OwnerId { get; set; }

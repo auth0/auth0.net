@@ -37,7 +37,7 @@ public record ListRolesRequestParameters
     public Optional<RoleTypeEnum?> Type { get; set; }
 
     /// <summary>
-    /// Filter organization-level roles by owner ID. Required when type is "organization".
+    /// Filter organization-level roles by owner ID. Use an organization ID to filter that organization's roles, or "auth0" to retrieve Auth0-managed System Roles. Required when type is "organization".
     /// </summary>
     [JsonIgnore]
     public Optional<string?> OwnerId { get; set; }

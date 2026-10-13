@@ -13,6 +13,7 @@ public partial interface IManagementApiClient
     public IAgentsClient Agents { get; }
     public IBrandingClient Branding { get; }
     public IClientGrantsClient ClientGrants { get; }
+    public IClientProfilesClient ClientProfiles { get; }
     public IClientsClient Clients { get; }
     public IConnectionProfilesClient ConnectionProfiles { get; }
     public IConnectionsClient Connections { get; }

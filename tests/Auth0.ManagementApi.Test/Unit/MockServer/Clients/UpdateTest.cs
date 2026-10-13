@@ -430,6 +430,7 @@ public class UpdateTest : BaseMockServerTest
               "anonymous_sessions": {
                 "active": true
               },
+              "enforce_anon_session_transfer_network_binding": "ip",
               "third_party_security_mode": "strict",
               "redirection_policy": "allow_always",
               "resource_server_identifier": "resource_server_identifier",
@@ -438,6 +439,7 @@ public class UpdateTest : BaseMockServerTest
               ],
               "external_metadata_type": "cimd",
               "external_metadata_created_by": "admin",
+              "external_metadata_status": "available",
               "external_client_id": "external_client_id",
               "jwks_uri": "jwks_uri"
             }

@@ -25,6 +25,16 @@ public partial interface IClientGrantsClient
     );
 
     /// <summary>
+    /// Search client grants using SCIM or Lucene filter syntax with low-latency, eventually consistent results. Use the parser parameter to specify "scim" or "lucene" syntax (default: "lucene"). This endpoint provides an alternative to the standard GET /client-grants endpoint with better performance for complex queries.
+    /// Results may not reflect recent updates immediately.
+    /// </summary>
+    Task<Pager<ClientGrantResponseContent>> SearchAsync(
+        SearchClientGrantsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve a single [client grant](https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants), including the
     /// scopes associated with the application/API pair.
     /// </summary>

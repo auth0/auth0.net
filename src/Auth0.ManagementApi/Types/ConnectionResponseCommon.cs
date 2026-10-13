@@ -11,6 +11,9 @@ public record ConnectionResponseCommon : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [JsonPropertyName("display_name")]
+    public required string DisplayName { get; set; }
+
     [JsonPropertyName("id")]
     public required string Id { get; set; }
 
@@ -27,10 +30,6 @@ public record ConnectionResponseCommon : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("enabled_clients")]
     public IEnumerable<string>? EnabledClients { get; set; }
-
-    [Optional]
-    [JsonPropertyName("display_name")]
-    public string? DisplayName { get; set; }
 
     [Optional]
     [JsonPropertyName("is_domain_connection")]

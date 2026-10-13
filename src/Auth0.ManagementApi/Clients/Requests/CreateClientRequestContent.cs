@@ -303,6 +303,10 @@ public record CreateClientRequestContent
     public CreateAnonymousSessions? AnonymousSessions { get; set; }
 
     [Optional]
+    [JsonPropertyName("enforce_anon_session_transfer_network_binding")]
+    public ClientAnonymousSessionTransferNetworkBindingEnum? EnforceAnonSessionTransferNetworkBinding { get; set; }
+
+    [Optional]
     [JsonPropertyName("third_party_security_mode")]
     public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
 

@@ -49,9 +49,12 @@ public record EventStreamCloudEventGroupMemberDeletedCloudEvent : IJsonOnDeseria
 
     /// <summary>
     /// The auth0 event stream ID of the stream the event was delivered on.
+    /// Present when the event is delivered via an event stream; omitted when
+    /// events are retrieved via the Events API (GET /api/v2/events).
     /// </summary>
+    [Optional]
     [JsonPropertyName("a0stream")]
-    public required string A0Stream { get; set; }
+    public string? A0Stream { get; set; }
 
     [Optional]
     [JsonPropertyName("a0purpose")]

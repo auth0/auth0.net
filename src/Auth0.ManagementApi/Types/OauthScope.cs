@@ -1355,6 +1355,26 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteVdcsTemplates = new(Values.DeleteVdcsTemplates);
 
     /// <summary>
+    /// Create Client Profiles
+    /// </summary>
+    public static readonly OauthScope CreateClientProfiles = new(Values.CreateClientProfiles);
+
+    /// <summary>
+    /// Read Client Profiles
+    /// </summary>
+    public static readonly OauthScope ReadClientProfiles = new(Values.ReadClientProfiles);
+
+    /// <summary>
+    /// Update Client Profiles
+    /// </summary>
+    public static readonly OauthScope UpdateClientProfiles = new(Values.UpdateClientProfiles);
+
+    /// <summary>
+    /// Delete Client Profiles
+    /// </summary>
+    public static readonly OauthScope DeleteClientProfiles = new(Values.DeleteClientProfiles);
+
+    /// <summary>
     /// Create Organization Client Associations
     /// </summary>
     public static readonly OauthScope CreateOrganizationClients = new(
@@ -2720,6 +2740,26 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Vdcs Templates
         /// </summary>
         public const string DeleteVdcsTemplates = "delete:vdcs_templates";
+
+        /// <summary>
+        /// Create Client Profiles
+        /// </summary>
+        public const string CreateClientProfiles = "create:client_profiles";
+
+        /// <summary>
+        /// Read Client Profiles
+        /// </summary>
+        public const string ReadClientProfiles = "read:client_profiles";
+
+        /// <summary>
+        /// Update Client Profiles
+        /// </summary>
+        public const string UpdateClientProfiles = "update:client_profiles";
+
+        /// <summary>
+        /// Delete Client Profiles
+        /// </summary>
+        public const string DeleteClientProfiles = "delete:client_profiles";
 
         /// <summary>
         /// Create Organization Client Associations

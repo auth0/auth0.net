@@ -11,6 +11,9 @@ public record SearchOrganizationsPaginatedResponseContent : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    /// <summary>
+    /// Array of organization objects matching the search criteria.
+    /// </summary>
     [JsonPropertyName("organizations")]
     public IEnumerable<SearchOrganization> Organizations { get; set; } =
         new List<SearchOrganization>();

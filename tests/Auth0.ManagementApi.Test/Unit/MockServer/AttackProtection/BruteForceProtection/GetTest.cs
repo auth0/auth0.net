@@ -21,7 +21,8 @@ public class GetTest : BaseMockServerTest
                 "allowlist"
               ],
               "mode": "count_per_identifier_and_ip",
-              "max_attempts": 1
+              "max_attempts": 1,
+              "form_submission_mode": "auto"
             }
             """;
 

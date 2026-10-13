@@ -48,6 +48,7 @@ public partial class ManagementApiClient : IManagementApiClient
         Agents = new AgentsClient(_client);
         Branding = new BrandingClient(_client);
         ClientGrants = new ClientGrantsClient(_client);
+        ClientProfiles = new ClientProfilesClient(_client);
         Clients = new ClientsClient(_client);
         ConnectionProfiles = new ConnectionProfilesClient(_client);
         Connections = new ConnectionsClient(_client);
@@ -100,6 +101,8 @@ public partial class ManagementApiClient : IManagementApiClient
     public IBrandingClient Branding { get; }
 
     public IClientGrantsClient ClientGrants { get; }
+
+    public IClientProfilesClient ClientProfiles { get; }
 
     public IClientsClient Clients { get; }
 
