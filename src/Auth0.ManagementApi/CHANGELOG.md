@@ -1,5 +1,36 @@
 # Change Log
 
+## [mgmt-10.5.0](https://github.com/auth0/auth0.net/tree/mgmt-10.5.0) (2026-10-14)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.4.0...mgmt-10.5.0)
+
+**⚠️ BREAKING CHANGES**
+
+_Experiment Center status transitions moved into update - [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The dedicated status-transition operations for experiments and feature flags have been removed. To activate, pause, complete, or archive an experiment or feature flag, set the target status on the regular update call instead. Existing code that calls the removed operations will fail to compile.
+
+_Organization search results no longer include metadata - [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- Organization search responses no longer return organization metadata. Fetch the organization directly if you need its metadata.
+
+_Connection display name is now always present - [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- Connection responses now always include a display name, so the field is no longer optional. Reading it is unaffected, but code that builds connection response objects itself (for example, in tests) must now supply a display name.
+
+_Event stream ID is now optional on event payloads - [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The event stream ID on event stream payloads is now optional. It is only present when an event is delivered through an event stream, not when events are retrieved via the Events API. Code that assumes the value is always set should handle it being absent.
+
+**Added**
+- **Client Profiles:** Manage client profiles that apply a consistent configuration, such as refresh token, organization, and proof-of-possession settings, to dynamically registered Client ID Metadata Document (CIMD) clients. Includes the related OAuth scopes [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **CAPTCHA attack protection policies:** Create and manage prioritized CAPTCHA policies that choose a provider and match on criteria such as country [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Client and client grant search:** Search applications and client grants using SCIM or Lucene filter syntax, with fast, eventually consistent, paginated results [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Dynamic CIMD and DPoP tenant settings:** Tenants can now enable dynamic client registration from a client ID metadata URL and strict DPoP refresh token binding (RFC 9449) [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Client enhancements:** Applications support network binding for anonymous session transfer, expose the availability of their external metadata, and accept OIDC support settings on update [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Brute-force protection form submission mode:** Brute-force protection settings now include a form submission mode [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Google Workspace provisioning on connection profiles:** Connection profiles can now configure Google Workspace user sync [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Experiment Center segment lifecycle:** Segments now report a status and can be archived through update [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Additional updates:** Organization-connection events now include the member access level, a new Directory Sync connection feature is available, and listing roles can now return Auth0-managed system roles [\#1125](https://github.com/auth0/auth0.net/pull/1125) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Fixed**
+- mgmt: Restore MIT license metadata on Auth0.ManagementApi NuGet package [\#1122](https://github.com/auth0/auth0.net/pull/1122) ([Hashim1999164](https://github.com/Hashim1999164) / [kailash-b](https://github.com/kailash-b))
+
 ## [mgmt-10.4.0](https://github.com/auth0/auth0.net/tree/mgmt-10.4.0) (2026-09-30)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.3.0...mgmt-10.4.0)
 
