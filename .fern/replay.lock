@@ -78,14 +78,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.82.1
-current_generation: 986022f7245082bcf656580571962a0a3825dc4f
+  - commit_sha: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    tree_hash: 1c58bf42e70ec939344af09098893cfe31680e73
+    timestamp: 2026-10-13T10:25:22.728Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.82.1
+current_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -293,7 +299,7 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
@@ -703,7 +709,7 @@ patches:
     original_commit: a4ee94c4b6b4ad1f881465e6680286ef144d2b4f
     original_message: "mgmt: Removed unwanted files"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -911,7 +917,7 @@ patches:
     original_commit: f2415ebd2fef2e96471b0d89fbcb35fadec37c0c
     original_message: "chore: Adds CLAUDE.md and AGENTS.md"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - references/code-style.md
       - references/commands.md
@@ -1377,7 +1383,7 @@ patches:
     original_commit: c551b36c72ddde8c84bff167b318fcf6d15a9e31
     original_message: "build: Build fix"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
@@ -1696,7 +1702,7 @@ patches:
     original_commit: 83707d13089d52e2aa94a37c46a9d430efbfaab1
     original_message: "build: Build fix"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 986022f7245082bcf656580571962a0a3825dc4f
+    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
     files:
       - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
@@ -2009,3 +2015,4 @@ patches:
                 Assert.Throws<ArgumentNullException>(() => schema.ToDateTime(null!));
             }
         }
+    user_owned: true

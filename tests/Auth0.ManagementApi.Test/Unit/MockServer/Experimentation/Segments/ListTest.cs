@@ -20,6 +20,7 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "description": "description",
                   "type": "self",
+                  "status": "active",
                   "rules": [
                     {}
                   ],

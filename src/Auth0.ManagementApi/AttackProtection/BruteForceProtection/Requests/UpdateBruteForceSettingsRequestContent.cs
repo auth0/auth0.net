@@ -40,6 +40,10 @@ public record UpdateBruteForceSettingsRequestContent
     [JsonPropertyName("max_attempts")]
     public int? MaxAttempts { get; set; }
 
+    [Optional]
+    [JsonPropertyName("form_submission_mode")]
+    public BruteForceProtectionFormSubmissionModeEnum? FormSubmissionMode { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

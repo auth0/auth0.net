@@ -17,6 +17,10 @@ public record PreviewCimdMetadataResponseContent : IJsonOnDeserialized, IJsonOnS
     [JsonPropertyName("client_id")]
     public string? ClientId { get; set; }
 
+    [Optional]
+    [JsonPropertyName("external_metadata_created_by")]
+    public CimdExternalMetadataCreatedByEnum? ExternalMetadataCreatedBy { get; set; }
+
     /// <summary>
     /// Array of retrieval errors (populated when the metadata document could not be fetched). When present, validation is omitted.
     /// </summary>

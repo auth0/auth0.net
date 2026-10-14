@@ -25,6 +25,13 @@ public record UpdateFeatureFlagRequestContent
     [JsonPropertyName("parameters")]
     public Dictionary<string, FeatureFlagConfigParam>? Parameters { get; set; }
 
+    /// <summary>
+    /// Target lifecycle status (draft → active, draft → archived, active → archived). Activating a flag requires at least 2 variations. When combined with field edits, the edits and the transition are applied together; if the transition is rejected, no edits are applied.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("status")]
+    public FeatureFlagStatusEnum? Status { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

@@ -44,6 +44,10 @@ public record UpdateBruteForceSettingsResponseContent : IJsonOnDeserialized
     [JsonPropertyName("max_attempts")]
     public int? MaxAttempts { get; set; }
 
+    [Optional]
+    [JsonPropertyName("form_submission_mode")]
+    public BruteForceProtectionFormSubmissionModeEnum? FormSubmissionMode { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -14,7 +14,12 @@ public class CreateTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "template": "verify_email"
+              "template": "verify_email",
+              "body": null,
+              "from": null,
+              "subject": null,
+              "syntax": null,
+              "enabled": null
             }
             """;
 
@@ -49,7 +54,15 @@ public class CreateTest : BaseMockServerTest
             );
 
         var response = await Client.EmailTemplates.CreateAsync(
-            new CreateEmailTemplateRequestContent { Template = EmailTemplateNameEnum.VerifyEmail }
+            new CreateEmailTemplateRequestContent
+            {
+                Template = EmailTemplateNameEnum.VerifyEmail,
+                Body = null,
+                From = null,
+                Subject = null,
+                Syntax = null,
+                Enabled = null,
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

@@ -28,6 +28,13 @@ public record UpdateSegmentRequestContent
     [JsonPropertyName("rules")]
     public IEnumerable<SegmentRule>? Rules { get; set; }
 
+    /// <summary>
+    /// Target lifecycle status. Archiving removes the segment from the active pool and is terminal (an archived segment cannot return to active). When combined with field edits, the edits apply first and the transition follows.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("status")]
+    public SegmentStatusEnum? Status { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

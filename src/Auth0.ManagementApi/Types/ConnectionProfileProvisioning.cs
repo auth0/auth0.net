@@ -18,6 +18,10 @@ public record ConnectionProfileProvisioning : IJsonOnDeserialized
     [JsonPropertyName("scim")]
     public ConnectionProfileProvisioningScim? Scim { get; set; }
 
+    [Optional]
+    [JsonPropertyName("google_workspace")]
+    public ConnectionProfileProvisioningGoogleWorkspace? GoogleWorkspace { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

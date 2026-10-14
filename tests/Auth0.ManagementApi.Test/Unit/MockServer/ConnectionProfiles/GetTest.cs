@@ -72,6 +72,9 @@ public class GetTest : BaseMockServerTest
                       "get:users"
                     ]
                   }
+                },
+                "google_workspace": {
+                  "sync_users": true
                 }
               },
               "cross_app_access_resource_app": {

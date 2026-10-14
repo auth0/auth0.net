@@ -21,6 +21,7 @@ public class PreviewCimdMetadataTest : BaseMockServerTest
         const string mockResponse = """
             {
               "client_id": "client_id",
+              "external_metadata_created_by": "admin",
               "errors": [
                 "errors"
               ],

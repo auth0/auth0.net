@@ -36,10 +36,6 @@ public record SearchOrganization : IJsonOnDeserialized, IJsonOnSerializing
     public OrganizationBranding? Branding { get; set; }
 
     [Optional]
-    [JsonPropertyName("metadata")]
-    public Dictionary<string, string?>? Metadata { get; set; }
-
-    [Optional]
     [JsonPropertyName("token_quota")]
     public TokenQuota? TokenQuota { get; set; }
 

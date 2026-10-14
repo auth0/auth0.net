@@ -227,6 +227,13 @@ public record UpdateTenantSettingsRequestContent
     public Optional<bool?> AuthorizationResponseIssParameterSupported { get; set; }
 
     /// <summary>
+    /// Enables strict DPoP refresh token binding per RFC 9449: all refresh tokens issued to public clients that present a DPoP proof are bound to the sender's key, and the binding is validated on every subsequent exchange. When disabled, DPoP refresh token binding may still apply for specific audiences for backwards compatibility.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("dpop_strict_refresh_token_binding")]
+    public Optional<bool?> DpopStrictRefreshTokenBinding { get; set; }
+
+    /// <summary>
     /// Controls whether a confirmation prompt is shown during login flows when the redirect URI uses non-verifiable callback URIs (for example, a custom URI schema such as `myapp://`, or `localhost`).
     /// If set to true, a confirmation prompt will not be shown. We recommend that this is set to false for improved protection from malicious apps.
     /// See https://auth0.com/docs/secure/security-guidance/measures-against-app-impersonation for more information.
@@ -245,6 +252,13 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("client_id_metadata_document_supported")]
     public bool? ClientIdMetadataDocumentSupported { get; set; }
+
+    /// <summary>
+    /// Whether the authorization server supports registering clients dynamically from a client_id URL. Requires client_id_metadata_document_supported to be enabled.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("client_id_metadata_document_dynamic_registration_supported")]
+    public bool? ClientIdMetadataDocumentDynamicRegistrationSupported { get; set; }
 
     /// <summary>
     /// Whether Auth0 Guide (AI-powered assistance) is enabled for this tenant.

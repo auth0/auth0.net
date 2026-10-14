@@ -62,16 +62,6 @@ public partial interface IExperimentsClient
     );
 
     /// <summary>
-    /// Transitions an experiment through its lifecycle: draft → active, active → paused, paused → active, active/paused → completed. Activation runs full readiness validation.
-    /// </summary>
-    WithRawResponseTask<UpdateExperimentStatusResponseContent> UpdateStatusAsync(
-        string id,
-        UpdateExperimentStatusRequestContent request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
     /// Checks whether an experiment is ready to be activated. Returns is_valid boolean and an errors array describing any blockers. Read-only; no state is modified.
     /// </summary>
     WithRawResponseTask<ValidateExperimentResponseContent> ValidateAsync(

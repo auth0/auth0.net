@@ -32,6 +32,9 @@ public class GetTemplateTest : BaseMockServerTest
                         "get:users"
                       ]
                     }
+                  },
+                  "google_workspace": {
+                    "sync_users": true
                   }
                 }
               }

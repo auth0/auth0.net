@@ -6,6 +6,7 @@ public partial interface IAttackProtectionClient
     public IBreachedPasswordDetectionClient BreachedPasswordDetection { get; }
     public IBruteForceProtectionClient BruteForceProtection { get; }
     public ICaptchaClient Captcha { get; }
+    public ICaptchaPoliciesClient CaptchaPolicies { get; }
     public IPhoneProviderProtectionClient PhoneProviderProtection { get; }
     public ISuspiciousIpThrottlingClient SuspiciousIpThrottling { get; }
 }

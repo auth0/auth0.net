@@ -56,6 +56,10 @@ public record EventStreamCloudEventOrgConnectionAddedObject : IJsonOnDeserialize
     [JsonPropertyName("organization_access_level")]
     public EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel? OrganizationAccessLevel { get; set; }
 
+    [Optional]
+    [JsonPropertyName("organization_member_access_level")]
+    public EventStreamCloudEventOrgConnectionAddedObjectOrganizationMemberAccessLevel? OrganizationMemberAccessLevel { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

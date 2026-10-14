@@ -53,14 +53,4 @@ public partial interface IFeatureFlagsClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
-
-    /// <summary>
-    /// Transitions a feature flag through its lifecycle states: draft → active, draft → archived, active → archived.
-    /// </summary>
-    WithRawResponseTask<UpdateFeatureFlagStatusResponseContent> UpdateStatusAsync(
-        string id,
-        UpdateFeatureFlagStatusRequestContent request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
 }

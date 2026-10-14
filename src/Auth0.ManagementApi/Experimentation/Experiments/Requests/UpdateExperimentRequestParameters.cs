@@ -49,6 +49,10 @@ public record UpdateExperimentRequestParameters
     [JsonPropertyName("levels")]
     public IEnumerable<int>? Levels { get; set; }
 
+    [Optional]
+    [JsonPropertyName("status")]
+    public ExperimentTransitionStatusEnum? Status { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

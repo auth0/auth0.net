@@ -199,6 +199,10 @@ public record UpdateClientRequestContent
     [JsonPropertyName("anonymous_sessions")]
     public Optional<UpdateAnonymousSessions?> AnonymousSessions { get; set; }
 
+    [Optional]
+    [JsonPropertyName("enforce_anon_session_transfer_network_binding")]
+    public ClientAnonymousSessionTransferNetworkBindingEnum? EnforceAnonSessionTransferNetworkBinding { get; set; }
+
     /// <summary>
     /// Form template for WS-Federation protocol
     /// </summary>
@@ -332,6 +336,10 @@ public record UpdateClientRequestContent
     [Optional]
     [JsonPropertyName("redirection_policy")]
     public ClientRedirectionPolicyEnum? RedirectionPolicy { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("oidc_support")]
+    public Optional<ClientOidcSupportPatch?> OidcSupport { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

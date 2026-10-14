@@ -24,6 +24,9 @@ public record Segment : IJsonOnDeserialized
     [JsonPropertyName("type")]
     public required SegmentTypeEnum Type { get; set; }
 
+    [JsonPropertyName("status")]
+    public required SegmentStatusEnum Status { get; set; }
+
     [JsonPropertyName("rules")]
     public IEnumerable<SegmentRule> Rules { get; set; } = new List<SegmentRule>();
 
