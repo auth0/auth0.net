@@ -30,13 +30,13 @@ public class FlowActionPipedriveAddDealParamsOrganizationId
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FlowActionPipedriveAddDealParamsOrganizationId FromString(string value) =>
         new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a double value.
+    /// Factory method to create a union from a <see cref="double"/> value.
     /// </summary>
     public static FlowActionPipedriveAddDealParamsOrganizationId FromDouble(double value) =>
         new("double", value);

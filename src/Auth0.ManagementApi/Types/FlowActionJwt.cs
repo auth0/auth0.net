@@ -30,21 +30,21 @@ public class FlowActionJwt
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJwtDecodeJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJwtDecodeJwt"/> value.
     /// </summary>
     public static FlowActionJwt FromFlowActionJwtDecodeJwt(
         Auth0.ManagementApi.FlowActionJwtDecodeJwt value
     ) => new("flowActionJwtDecodeJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJwtSignJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJwtSignJwt"/> value.
     /// </summary>
     public static FlowActionJwt FromFlowActionJwtSignJwt(
         Auth0.ManagementApi.FlowActionJwtSignJwt value
     ) => new("flowActionJwtSignJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJwtVerifyJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJwtVerifyJwt"/> value.
     /// </summary>
     public static FlowActionJwt FromFlowActionJwtVerifyJwt(
         Auth0.ManagementApi.FlowActionJwtVerifyJwt value

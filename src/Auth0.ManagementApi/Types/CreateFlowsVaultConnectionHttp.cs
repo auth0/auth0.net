@@ -30,35 +30,35 @@ public class CreateFlowsVaultConnectionHttp
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpBearer(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer value
     ) => new("createFlowsVaultConnectionHttpBearer", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpBasicAuth(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value
     ) => new("createFlowsVaultConnectionHttpBasicAuth", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value
     ) => new("createFlowsVaultConnectionHttpApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpOauthClientCredentials(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value
     ) => new("createFlowsVaultConnectionHttpOauthClientCredentials", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized value

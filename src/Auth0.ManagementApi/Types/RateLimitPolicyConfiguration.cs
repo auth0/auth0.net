@@ -33,21 +33,21 @@ public class RateLimitPolicyConfiguration
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.RateLimitPolicyConfigurationZero value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.RateLimitPolicyConfigurationZero"/> value.
     /// </summary>
     public static RateLimitPolicyConfiguration FromRateLimitPolicyConfigurationZero(
         Auth0.ManagementApi.RateLimitPolicyConfigurationZero value
     ) => new("rateLimitPolicyConfigurationZero", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.RateLimitPolicyConfigurationOne value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.RateLimitPolicyConfigurationOne"/> value.
     /// </summary>
     public static RateLimitPolicyConfiguration FromRateLimitPolicyConfigurationOne(
         Auth0.ManagementApi.RateLimitPolicyConfigurationOne value
     ) => new("rateLimitPolicyConfigurationOne", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.RateLimitPolicyConfigurationAction value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.RateLimitPolicyConfigurationAction"/> value.
     /// </summary>
     public static RateLimitPolicyConfiguration FromRateLimitPolicyConfigurationAction(
         Auth0.ManagementApi.RateLimitPolicyConfigurationAction value

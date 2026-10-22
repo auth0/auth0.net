@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionGoogleSheets
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionGoogleSheets FromCreateFlowsVaultConnectionGoogleSheetsOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsOauthCode value
     ) => new("createFlowsVaultConnectionGoogleSheetsOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionGoogleSheets FromCreateFlowsVaultConnectionGoogleSheetsUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsUninitialized value

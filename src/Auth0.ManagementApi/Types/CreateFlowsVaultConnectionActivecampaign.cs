@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionActivecampaign
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionActivecampaign FromCreateFlowsVaultConnectionActivecampaignApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignApiKey value
     ) => new("createFlowsVaultConnectionActivecampaignApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionActivecampaign FromCreateFlowsVaultConnectionActivecampaignUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignUninitialized value

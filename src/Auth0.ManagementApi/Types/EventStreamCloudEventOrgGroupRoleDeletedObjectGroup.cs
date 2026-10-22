@@ -33,21 +33,21 @@ public class EventStreamCloudEventOrgGroupRoleDeletedObjectGroup
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup0"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleDeletedObjectGroup FromEventStreamCloudEventOrgGroupRoleDeletedObjectGroup0(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup0 value
     ) => new("eventStreamCloudEventOrgGroupRoleDeletedObjectGroup0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup1"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleDeletedObjectGroup FromEventStreamCloudEventOrgGroupRoleDeletedObjectGroup1(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup1 value
     ) => new("eventStreamCloudEventOrgGroupRoleDeletedObjectGroup1", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup2 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup2"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleDeletedObjectGroup FromEventStreamCloudEventOrgGroupRoleDeletedObjectGroup2(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleDeletedObjectGroup2 value

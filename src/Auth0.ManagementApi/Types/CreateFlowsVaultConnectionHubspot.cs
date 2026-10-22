@@ -30,21 +30,21 @@ public class CreateFlowsVaultConnectionHubspot
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHubspot FromCreateFlowsVaultConnectionHubspotApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotApiKey value
     ) => new("createFlowsVaultConnectionHubspotApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHubspot FromCreateFlowsVaultConnectionHubspotOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotOauthCode value
     ) => new("createFlowsVaultConnectionHubspotOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionHubspot FromCreateFlowsVaultConnectionHubspotUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotUninitialized value

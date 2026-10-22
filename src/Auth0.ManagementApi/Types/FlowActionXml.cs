@@ -30,14 +30,14 @@ public class FlowActionXml
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionXmlParseXml value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionXmlParseXml"/> value.
     /// </summary>
     public static FlowActionXml FromFlowActionXmlParseXml(
         Auth0.ManagementApi.FlowActionXmlParseXml value
     ) => new("flowActionXmlParseXml", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionXmlSerializeXml value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionXmlSerializeXml"/> value.
     /// </summary>
     public static FlowActionXml FromFlowActionXmlSerializeXml(
         Auth0.ManagementApi.FlowActionXmlSerializeXml value

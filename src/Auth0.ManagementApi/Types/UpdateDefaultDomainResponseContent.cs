@@ -30,14 +30,14 @@ public class UpdateDefaultDomainResponseContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.UpdateDefaultCustomDomainResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.UpdateDefaultCustomDomainResponseContent"/> value.
     /// </summary>
     public static UpdateDefaultDomainResponseContent FromUpdateDefaultCustomDomainResponseContent(
         Auth0.ManagementApi.UpdateDefaultCustomDomainResponseContent value
     ) => new("updateDefaultCustomDomainResponseContent", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.UpdateDefaultCanonicalDomainResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.UpdateDefaultCanonicalDomainResponseContent"/> value.
     /// </summary>
     public static UpdateDefaultDomainResponseContent FromUpdateDefaultCanonicalDomainResponseContent(
         Auth0.ManagementApi.UpdateDefaultCanonicalDomainResponseContent value

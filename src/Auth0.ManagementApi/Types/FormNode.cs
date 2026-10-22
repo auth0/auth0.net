@@ -30,19 +30,19 @@ public class FormNode
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFlow value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFlow"/> value.
     /// </summary>
     public static FormNode FromFormFlow(Auth0.ManagementApi.FormFlow value) =>
         new("formFlow", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormRouter value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormRouter"/> value.
     /// </summary>
     public static FormNode FromFormRouter(Auth0.ManagementApi.FormRouter value) =>
         new("formRouter", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormStep value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormStep"/> value.
     /// </summary>
     public static FormNode FromFormStep(Auth0.ManagementApi.FormStep value) =>
         new("formStep", value);

@@ -31,14 +31,14 @@ public class ErrorsGetResponse
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a IEnumerable<GetJobErrorResponseContent> value.
+    /// Factory method to create a union from a <see cref="IEnumerable{GetJobErrorResponseContent}"/> value.
     /// </summary>
     public static ErrorsGetResponse FromListOfGetJobErrorResponseContent(
         IEnumerable<GetJobErrorResponseContent> value
     ) => new("list", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.GetJobGenericErrorResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.GetJobGenericErrorResponseContent"/> value.
     /// </summary>
     public static ErrorsGetResponse FromGetJobGenericErrorResponseContent(
         Auth0.ManagementApi.GetJobGenericErrorResponseContent value
@@ -56,7 +56,7 @@ public class ErrorsGetResponse
         Type == "getJobGenericErrorResponseContent";
 
     /// <summary>
-    /// Returns the value as a <see cref="IEnumerable<GetJobErrorResponseContent>"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
+    /// Returns the value as a <see cref="IEnumerable{GetJobErrorResponseContent}"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'list'.</exception>
     public IEnumerable<GetJobErrorResponseContent> AsListOfGetJobErrorResponseContent() =>
@@ -76,7 +76,7 @@ public class ErrorsGetResponse
             );
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="IEnumerable<GetJobErrorResponseContent>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="IEnumerable{GetJobErrorResponseContent}"/> and returns true if successful.
     /// </summary>
     public bool TryGetListOfGetJobErrorResponseContent(
         out IEnumerable<GetJobErrorResponseContent>? value

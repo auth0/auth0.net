@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionTelegram
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramToken value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramToken"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionTelegram FromCreateFlowsVaultConnectionTelegramToken(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramToken value
     ) => new("createFlowsVaultConnectionTelegramToken", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionTelegram FromCreateFlowsVaultConnectionTelegramUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramUninitialized value

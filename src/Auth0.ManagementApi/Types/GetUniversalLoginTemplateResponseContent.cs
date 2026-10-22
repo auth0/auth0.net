@@ -30,14 +30,14 @@ public class GetUniversalLoginTemplateResponseContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.GetUniversalLoginTemplate value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.GetUniversalLoginTemplate"/> value.
     /// </summary>
     public static GetUniversalLoginTemplateResponseContent FromGetUniversalLoginTemplate(
         Auth0.ManagementApi.GetUniversalLoginTemplate value
     ) => new("getUniversalLoginTemplate", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static GetUniversalLoginTemplateResponseContent FromString(string value) =>
         new("string", value);

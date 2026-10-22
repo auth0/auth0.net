@@ -17,6 +17,10 @@ public record ConnectionResponseContentSaml : IJsonOnDeserialized
     [JsonPropertyName("strategy")]
     public required ConnectionResponseContentSamlStrategy Strategy { get; set; }
 
+    [Optional]
+    [JsonPropertyName("cross_app_access_requesting_app")]
+    public CrossAppAccessRequestingApp? CrossAppAccessRequestingApp { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("cross_app_access_resource_app")]
     public Optional<ConnectionCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; set; }

@@ -30,147 +30,147 @@ public class CreateFlowsVaultConnectionRequestContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaign value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaign"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionActivecampaign(
         Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaign value
     ) => new("createFlowsVaultConnectionActivecampaign", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAirtable value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAirtable"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionAirtable(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAirtable value
     ) => new("createFlowsVaultConnectionAirtable", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionAuth0(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0 value
     ) => new("createFlowsVaultConnectionAuth0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionBigquery value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionBigquery"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionBigquery(
         Auth0.ManagementApi.CreateFlowsVaultConnectionBigquery value
     ) => new("createFlowsVaultConnectionBigquery", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionClearbit value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionClearbit"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionClearbit(
         Auth0.ManagementApi.CreateFlowsVaultConnectionClearbit value
     ) => new("createFlowsVaultConnectionClearbit", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionDocusign value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionDocusign"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionDocusign(
         Auth0.ManagementApi.CreateFlowsVaultConnectionDocusign value
     ) => new("createFlowsVaultConnectionDocusign", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheets value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheets"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionGoogleSheets(
         Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheets value
     ) => new("createFlowsVaultConnectionGoogleSheets", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttp"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionHttp(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttp value
     ) => new("createFlowsVaultConnectionHttp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHubspot value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHubspot"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionHubspot(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHubspot value
     ) => new("createFlowsVaultConnectionHubspot", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionJwt"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionJwt(
         Auth0.ManagementApi.CreateFlowsVaultConnectionJwt value
     ) => new("createFlowsVaultConnectionJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimp"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionMailchimp(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimp value
     ) => new("createFlowsVaultConnectionMailchimp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailjet value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailjet"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionMailjet(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailjet value
     ) => new("createFlowsVaultConnectionMailjet", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionPipedrive value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionPipedrive"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionPipedrive(
         Auth0.ManagementApi.CreateFlowsVaultConnectionPipedrive value
     ) => new("createFlowsVaultConnectionPipedrive", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforce value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforce"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionSalesforce(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforce value
     ) => new("createFlowsVaultConnectionSalesforce", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSendgrid value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSendgrid"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionSendgrid(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSendgrid value
     ) => new("createFlowsVaultConnectionSendgrid", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSlack value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSlack"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionSlack(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSlack value
     ) => new("createFlowsVaultConnectionSlack", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionStripe value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionStripe"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionStripe(
         Auth0.ManagementApi.CreateFlowsVaultConnectionStripe value
     ) => new("createFlowsVaultConnectionStripe", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTelegram value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTelegram"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionTelegram(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTelegram value
     ) => new("createFlowsVaultConnectionTelegram", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTwilio value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTwilio"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionTwilio(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTwilio value
     ) => new("createFlowsVaultConnectionTwilio", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsapp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsapp"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionWhatsapp(
         Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsapp value
     ) => new("createFlowsVaultConnectionWhatsapp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionZapier value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionZapier"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionRequestContent FromCreateFlowsVaultConnectionZapier(
         Auth0.ManagementApi.CreateFlowsVaultConnectionZapier value

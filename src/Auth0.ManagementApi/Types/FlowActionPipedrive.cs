@@ -30,21 +30,21 @@ public class FlowActionPipedrive
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionPipedriveAddDeal value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionPipedriveAddDeal"/> value.
     /// </summary>
     public static FlowActionPipedrive FromFlowActionPipedriveAddDeal(
         Auth0.ManagementApi.FlowActionPipedriveAddDeal value
     ) => new("flowActionPipedriveAddDeal", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionPipedriveAddOrganization value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionPipedriveAddOrganization"/> value.
     /// </summary>
     public static FlowActionPipedrive FromFlowActionPipedriveAddOrganization(
         Auth0.ManagementApi.FlowActionPipedriveAddOrganization value
     ) => new("flowActionPipedriveAddOrganization", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionPipedriveAddPerson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionPipedriveAddPerson"/> value.
     /// </summary>
     public static FlowActionPipedrive FromFlowActionPipedriveAddPerson(
         Auth0.ManagementApi.FlowActionPipedriveAddPerson value

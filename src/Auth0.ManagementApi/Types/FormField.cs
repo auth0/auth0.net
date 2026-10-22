@@ -30,97 +30,97 @@ public class FormField
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldBoolean value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldBoolean"/> value.
     /// </summary>
     public static FormField FromFormFieldBoolean(Auth0.ManagementApi.FormFieldBoolean value) =>
         new("formFieldBoolean", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldCards value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldCards"/> value.
     /// </summary>
     public static FormField FromFormFieldCards(Auth0.ManagementApi.FormFieldCards value) =>
         new("formFieldCards", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldChoice value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldChoice"/> value.
     /// </summary>
     public static FormField FromFormFieldChoice(Auth0.ManagementApi.FormFieldChoice value) =>
         new("formFieldChoice", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldCustom value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldCustom"/> value.
     /// </summary>
     public static FormField FromFormFieldCustom(Auth0.ManagementApi.FormFieldCustom value) =>
         new("formFieldCustom", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldDate value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldDate"/> value.
     /// </summary>
     public static FormField FromFormFieldDate(Auth0.ManagementApi.FormFieldDate value) =>
         new("formFieldDate", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldDropdown value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldDropdown"/> value.
     /// </summary>
     public static FormField FromFormFieldDropdown(Auth0.ManagementApi.FormFieldDropdown value) =>
         new("formFieldDropdown", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldEmail value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldEmail"/> value.
     /// </summary>
     public static FormField FromFormFieldEmail(Auth0.ManagementApi.FormFieldEmail value) =>
         new("formFieldEmail", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldFile value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldFile"/> value.
     /// </summary>
     public static FormField FromFormFieldFile(Auth0.ManagementApi.FormFieldFile value) =>
         new("formFieldFile", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldLegal value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldLegal"/> value.
     /// </summary>
     public static FormField FromFormFieldLegal(Auth0.ManagementApi.FormFieldLegal value) =>
         new("formFieldLegal", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldNumber value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldNumber"/> value.
     /// </summary>
     public static FormField FromFormFieldNumber(Auth0.ManagementApi.FormFieldNumber value) =>
         new("formFieldNumber", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldPassword value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldPassword"/> value.
     /// </summary>
     public static FormField FromFormFieldPassword(Auth0.ManagementApi.FormFieldPassword value) =>
         new("formFieldPassword", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldPayment value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldPayment"/> value.
     /// </summary>
     public static FormField FromFormFieldPayment(Auth0.ManagementApi.FormFieldPayment value) =>
         new("formFieldPayment", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldSocial value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldSocial"/> value.
     /// </summary>
     public static FormField FromFormFieldSocial(Auth0.ManagementApi.FormFieldSocial value) =>
         new("formFieldSocial", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldTel value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldTel"/> value.
     /// </summary>
     public static FormField FromFormFieldTel(Auth0.ManagementApi.FormFieldTel value) =>
         new("formFieldTel", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldText value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldText"/> value.
     /// </summary>
     public static FormField FromFormFieldText(Auth0.ManagementApi.FormFieldText value) =>
         new("formFieldText", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldUrl value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldUrl"/> value.
     /// </summary>
     public static FormField FromFormFieldUrl(Auth0.ManagementApi.FormFieldUrl value) =>
         new("formFieldUrl", value);

@@ -33,21 +33,21 @@ public class EventStreamCloudEventGroupUpdatedPreviousObject
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject0"/> value.
     /// </summary>
     public static EventStreamCloudEventGroupUpdatedPreviousObject FromEventStreamCloudEventGroupUpdatedPreviousObject0(
         Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject0 value
     ) => new("eventStreamCloudEventGroupUpdatedPreviousObject0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject1"/> value.
     /// </summary>
     public static EventStreamCloudEventGroupUpdatedPreviousObject FromEventStreamCloudEventGroupUpdatedPreviousObject1(
         Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject1 value
     ) => new("eventStreamCloudEventGroupUpdatedPreviousObject1", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject2 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject2"/> value.
     /// </summary>
     public static EventStreamCloudEventGroupUpdatedPreviousObject FromEventStreamCloudEventGroupUpdatedPreviousObject2(
         Auth0.ManagementApi.EventStreamCloudEventGroupUpdatedPreviousObject2 value

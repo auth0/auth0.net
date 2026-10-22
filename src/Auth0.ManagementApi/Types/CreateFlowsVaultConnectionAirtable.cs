@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionAirtable
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionAirtable FromCreateFlowsVaultConnectionAirtableApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableApiKey value
     ) => new("createFlowsVaultConnectionAirtableApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionAirtable FromCreateFlowsVaultConnectionAirtableUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAirtableUninitialized value

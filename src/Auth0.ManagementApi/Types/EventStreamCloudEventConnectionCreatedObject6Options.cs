@@ -29,7 +29,7 @@ public record EventStreamCloudEventConnectionCreatedObject6Options : IJsonOnDese
     public bool? AllowSettingLoginScopes { get; set; }
 
     /// <summary>
-    /// Enables integration with the Google Workspace Admin SDK Directory API for groups. When true, Auth0 can synchronize groups & group memberships and supports inbound directory provisioning for groups. Defaults to false.
+    /// Enables integration with the Google Workspace Admin SDK Directory API for groups. When true, Auth0 can synchronize groups &amp; group memberships and supports inbound directory provisioning for groups. Defaults to false.
     /// </summary>
     [Optional]
     [JsonPropertyName("api_enable_groups")]

@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionMailjet
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionMailjet FromCreateFlowsVaultConnectionMailjetApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetApiKey value
     ) => new("createFlowsVaultConnectionMailjetApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionMailjet FromCreateFlowsVaultConnectionMailjetUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetUninitialized value

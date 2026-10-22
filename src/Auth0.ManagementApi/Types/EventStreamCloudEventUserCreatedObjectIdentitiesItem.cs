@@ -33,35 +33,35 @@ public class EventStreamCloudEventUserCreatedObjectIdentitiesItem
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemCustom value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemCustom"/> value.
     /// </summary>
     public static EventStreamCloudEventUserCreatedObjectIdentitiesItem FromEventStreamCloudEventUserCreatedObjectIdentitiesItemCustom(
         Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemCustom value
     ) => new("eventStreamCloudEventUserCreatedObjectIdentitiesItemCustom", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemDatabase value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemDatabase"/> value.
     /// </summary>
     public static EventStreamCloudEventUserCreatedObjectIdentitiesItem FromEventStreamCloudEventUserCreatedObjectIdentitiesItemDatabase(
         Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemDatabase value
     ) => new("eventStreamCloudEventUserCreatedObjectIdentitiesItemDatabase", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemEnterprise value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemEnterprise"/> value.
     /// </summary>
     public static EventStreamCloudEventUserCreatedObjectIdentitiesItem FromEventStreamCloudEventUserCreatedObjectIdentitiesItemEnterprise(
         Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemEnterprise value
     ) => new("eventStreamCloudEventUserCreatedObjectIdentitiesItemEnterprise", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemPasswordless value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemPasswordless"/> value.
     /// </summary>
     public static EventStreamCloudEventUserCreatedObjectIdentitiesItem FromEventStreamCloudEventUserCreatedObjectIdentitiesItemPasswordless(
         Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemPasswordless value
     ) => new("eventStreamCloudEventUserCreatedObjectIdentitiesItemPasswordless", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemSocial value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemSocial"/> value.
     /// </summary>
     public static EventStreamCloudEventUserCreatedObjectIdentitiesItem FromEventStreamCloudEventUserCreatedObjectIdentitiesItemSocial(
         Auth0.ManagementApi.EventStreamCloudEventUserCreatedObjectIdentitiesItemSocial value

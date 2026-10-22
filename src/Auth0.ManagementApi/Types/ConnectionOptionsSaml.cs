@@ -14,6 +14,14 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
         new Dictionary<string, object?>();
 
     [Optional]
+    [JsonPropertyName("client_id")]
+    public string? ClientId { get; set; }
+
+    [Optional]
+    [JsonPropertyName("client_secret")]
+    public string? ClientSecret { get; set; }
+
+    [Optional]
     [JsonPropertyName("debug")]
     public bool? Debug { get; set; }
 

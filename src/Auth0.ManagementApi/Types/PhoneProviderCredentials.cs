@@ -33,14 +33,14 @@ public class PhoneProviderCredentials
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.TwilioProviderCredentials value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.TwilioProviderCredentials"/> value.
     /// </summary>
     public static PhoneProviderCredentials FromTwilioProviderCredentials(
         Auth0.ManagementApi.TwilioProviderCredentials value
     ) => new("twilioProviderCredentials", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CustomProviderCredentials value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CustomProviderCredentials"/> value.
     /// </summary>
     public static PhoneProviderCredentials FromCustomProviderCredentials(
         Auth0.ManagementApi.CustomProviderCredentials value

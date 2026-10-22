@@ -30,13 +30,13 @@ public class FlowActionAuth0SendRequestParamsQueryParamsValue
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a double value.
+    /// Factory method to create a union from a <see cref="double"/> value.
     /// </summary>
     public static FlowActionAuth0SendRequestParamsQueryParamsValue FromDouble(double value) =>
         new("double", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FlowActionAuth0SendRequestParamsQueryParamsValue FromString(string value) =>
         new("string", value);

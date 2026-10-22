@@ -30,42 +30,42 @@ public class LogStreamSinkPatch
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamHttpSink value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamHttpSink"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamHttpSink(
         Auth0.ManagementApi.LogStreamHttpSink value
     ) => new("logStreamHttpSink", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamDatadogSink value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamDatadogSink"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamDatadogSink(
         Auth0.ManagementApi.LogStreamDatadogSink value
     ) => new("logStreamDatadogSink", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSplunkSink value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSplunkSink"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamSplunkSink(
         Auth0.ManagementApi.LogStreamSplunkSink value
     ) => new("logStreamSplunkSink", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSumoSink value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSumoSink"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamSumoSink(
         Auth0.ManagementApi.LogStreamSumoSink value
     ) => new("logStreamSumoSink", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSegmentSink value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSegmentSink"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamSegmentSink(
         Auth0.ManagementApi.LogStreamSegmentSink value
     ) => new("logStreamSegmentSink", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamMixpanelSinkPatch value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamMixpanelSinkPatch"/> value.
     /// </summary>
     public static LogStreamSinkPatch FromLogStreamMixpanelSinkPatch(
         Auth0.ManagementApi.LogStreamMixpanelSinkPatch value

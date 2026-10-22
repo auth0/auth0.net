@@ -35,7 +35,7 @@ public partial interface ICredentialsClient
     /// }
     /// ```
     ///
-    /// **Certificate (CA-signed & self-signed)**
+    /// **Certificate (CA-signed &amp; self-signed)**
     ///
     /// Certificate credentials can be used to set up mTLS client authentication. CA-signed certificates can be configured either with a signed certificate or with just the certificate Subject DN.
     ///

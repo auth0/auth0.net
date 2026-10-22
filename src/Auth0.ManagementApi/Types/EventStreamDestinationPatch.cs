@@ -30,14 +30,14 @@ public class EventStreamDestinationPatch
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookDestination value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamWebhookDestination"/> value.
     /// </summary>
     public static EventStreamDestinationPatch FromEventStreamWebhookDestination(
         Auth0.ManagementApi.EventStreamWebhookDestination value
     ) => new("eventStreamWebhookDestination", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamActionDestination value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamActionDestination"/> value.
     /// </summary>
     public static EventStreamDestinationPatch FromEventStreamActionDestination(
         Auth0.ManagementApi.EventStreamActionDestination value

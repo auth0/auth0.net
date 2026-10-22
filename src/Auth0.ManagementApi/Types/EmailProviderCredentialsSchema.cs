@@ -33,56 +33,56 @@ public class EmailProviderCredentialsSchema
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaZero value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaZero"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaZero(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaZero value
     ) => new("emailProviderCredentialsSchemaZero", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaAccessKeyId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaAccessKeyId"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaAccessKeyId(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaAccessKeyId value
     ) => new("emailProviderCredentialsSchemaAccessKeyId", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaSmtpHost value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaSmtpHost"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaSmtpHost(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaSmtpHost value
     ) => new("emailProviderCredentialsSchemaSmtpHost", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaThree value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaThree"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaThree(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaThree value
     ) => new("emailProviderCredentialsSchemaThree", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaApiKey"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaApiKey(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaApiKey value
     ) => new("emailProviderCredentialsSchemaApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaConnectionString value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaConnectionString"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaConnectionString(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaConnectionString value
     ) => new("emailProviderCredentialsSchemaConnectionString", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EmailProviderCredentialsSchemaClientId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EmailProviderCredentialsSchemaClientId"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromEmailProviderCredentialsSchemaClientId(
         Auth0.ManagementApi.EmailProviderCredentialsSchemaClientId value
     ) => new("emailProviderCredentialsSchemaClientId", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.ExtensibilityEmailProviderCredentials value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.ExtensibilityEmailProviderCredentials"/> value.
     /// </summary>
     public static EmailProviderCredentialsSchema FromExtensibilityEmailProviderCredentials(
         Auth0.ManagementApi.ExtensibilityEmailProviderCredentials value

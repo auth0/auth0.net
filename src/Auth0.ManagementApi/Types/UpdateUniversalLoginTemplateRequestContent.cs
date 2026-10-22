@@ -30,13 +30,13 @@ public class UpdateUniversalLoginTemplateRequestContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static UpdateUniversalLoginTemplateRequestContent FromString(string value) =>
         new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.UpdateUniversalLoginTemplateRequestContentTemplate value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.UpdateUniversalLoginTemplateRequestContentTemplate"/> value.
     /// </summary>
     public static UpdateUniversalLoginTemplateRequestContent FromUpdateUniversalLoginTemplateRequestContentTemplate(
         Auth0.ManagementApi.UpdateUniversalLoginTemplateRequestContentTemplate value

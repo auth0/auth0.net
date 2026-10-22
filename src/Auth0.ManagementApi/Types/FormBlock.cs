@@ -30,53 +30,53 @@ public class FormBlock
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockDivider value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockDivider"/> value.
     /// </summary>
     public static FormBlock FromFormBlockDivider(Auth0.ManagementApi.FormBlockDivider value) =>
         new("formBlockDivider", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockHtml value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockHtml"/> value.
     /// </summary>
     public static FormBlock FromFormBlockHtml(Auth0.ManagementApi.FormBlockHtml value) =>
         new("formBlockHtml", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockImage value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockImage"/> value.
     /// </summary>
     public static FormBlock FromFormBlockImage(Auth0.ManagementApi.FormBlockImage value) =>
         new("formBlockImage", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockJumpButton value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockJumpButton"/> value.
     /// </summary>
     public static FormBlock FromFormBlockJumpButton(
         Auth0.ManagementApi.FormBlockJumpButton value
     ) => new("formBlockJumpButton", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockResendButton value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockResendButton"/> value.
     /// </summary>
     public static FormBlock FromFormBlockResendButton(
         Auth0.ManagementApi.FormBlockResendButton value
     ) => new("formBlockResendButton", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockNextButton value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockNextButton"/> value.
     /// </summary>
     public static FormBlock FromFormBlockNextButton(
         Auth0.ManagementApi.FormBlockNextButton value
     ) => new("formBlockNextButton", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockPreviousButton value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockPreviousButton"/> value.
     /// </summary>
     public static FormBlock FromFormBlockPreviousButton(
         Auth0.ManagementApi.FormBlockPreviousButton value
     ) => new("formBlockPreviousButton", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlockRichText value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlockRichText"/> value.
     /// </summary>
     public static FormBlock FromFormBlockRichText(Auth0.ManagementApi.FormBlockRichText value) =>
         new("formBlockRichText", value);

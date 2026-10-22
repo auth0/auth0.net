@@ -19,7 +19,7 @@ public record SubscribeEventsRequestParameters
     public Optional<string?> FromTimestamp { get; set; }
 
     /// <summary>
-    /// Event type(s) to listen for. Specify multiple times for multiple types (e.g., ?event_type=user.created&event_type=user.updated). If not provided, all event types will be streamed.
+    /// Event type(s) to listen for. Specify multiple times for multiple types (e.g., ?event_type=user.created&amp;event_type=user.updated). If not provided, all event types will be streamed.
     /// </summary>
     [JsonIgnore]
     public IEnumerable<EventStreamSubscribeEventsEventTypeEnum?> EventType { get; set; } =

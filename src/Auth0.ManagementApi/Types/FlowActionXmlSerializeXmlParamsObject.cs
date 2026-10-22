@@ -30,13 +30,13 @@ public class FlowActionXmlSerializeXmlParamsObject
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FlowActionXmlSerializeXmlParamsObject FromString(string value) =>
         new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a Dictionary<string, object?> value.
+    /// Factory method to create a union from a <see cref="Dictionary{String, Object}"/> value.
     /// </summary>
     public static FlowActionXmlSerializeXmlParamsObject FromFlowActionXmlSerializeXmlParamsObjectObject(
         Dictionary<string, object?> value
@@ -61,7 +61,7 @@ public class FlowActionXmlSerializeXmlParamsObject
         IsString() ? (string)Value! : throw new ManagementException("Union type is not 'string'");
 
     /// <summary>
-    /// Returns the value as a <see cref="Dictionary<string, object?>"/> if <see cref="Type"/> is 'flowActionXmlSerializeXmlParamsObjectObject', otherwise throws an exception.
+    /// Returns the value as a <see cref="Dictionary{String, Object}"/> if <see cref="Type"/> is 'flowActionXmlSerializeXmlParamsObjectObject', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowActionXmlSerializeXmlParamsObjectObject'.</exception>
     public Dictionary<string, object?> AsFlowActionXmlSerializeXmlParamsObjectObject() =>
@@ -86,7 +86,7 @@ public class FlowActionXmlSerializeXmlParamsObject
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="Dictionary<string, object?>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="Dictionary{String, Object}"/> and returns true if successful.
     /// </summary>
     public bool TryGetFlowActionXmlSerializeXmlParamsObjectObject(
         out Dictionary<string, object?>? value

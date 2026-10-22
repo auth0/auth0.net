@@ -30,19 +30,19 @@ public class FormComponent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormBlock value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormBlock"/> value.
     /// </summary>
     public static FormComponent FromFormBlock(Auth0.ManagementApi.FormBlock value) =>
         new("formBlock", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormWidget value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormWidget"/> value.
     /// </summary>
     public static FormComponent FromFormWidget(Auth0.ManagementApi.FormWidget value) =>
         new("formWidget", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormField value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormField"/> value.
     /// </summary>
     public static FormComponent FromFormField(Auth0.ManagementApi.FormField value) =>
         new("formField", value);

@@ -30,21 +30,21 @@ public class CreateFlowsVaultConnectionPipedrive
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveToken value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveToken"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionPipedrive FromCreateFlowsVaultConnectionPipedriveToken(
         Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveToken value
     ) => new("createFlowsVaultConnectionPipedriveToken", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionPipedrive FromCreateFlowsVaultConnectionPipedriveOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveOauthCode value
     ) => new("createFlowsVaultConnectionPipedriveOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionPipedrive FromCreateFlowsVaultConnectionPipedriveUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionPipedriveUninitialized value

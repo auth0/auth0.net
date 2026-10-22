@@ -30,21 +30,21 @@ public class PatchRateLimitPolicyConfigurationRequestContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentZero value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentZero"/> value.
     /// </summary>
     public static PatchRateLimitPolicyConfigurationRequestContent FromPatchRateLimitPolicyConfigurationRequestContentZero(
         Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentZero value
     ) => new("patchRateLimitPolicyConfigurationRequestContentZero", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentOne value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentOne"/> value.
     /// </summary>
     public static PatchRateLimitPolicyConfigurationRequestContent FromPatchRateLimitPolicyConfigurationRequestContentOne(
         Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentOne value
     ) => new("patchRateLimitPolicyConfigurationRequestContentOne", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentAction value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentAction"/> value.
     /// </summary>
     public static PatchRateLimitPolicyConfigurationRequestContent FromPatchRateLimitPolicyConfigurationRequestContentAction(
         Auth0.ManagementApi.PatchRateLimitPolicyConfigurationRequestContentAction value

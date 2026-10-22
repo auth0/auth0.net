@@ -30,12 +30,12 @@ public class FormNodePointer
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FormNodePointer FromString(string value) => new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormEndingNodeId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormEndingNodeId"/> value.
     /// </summary>
     public static FormNodePointer FromFormEndingNodeId(
         Auth0.ManagementApi.FormEndingNodeId value

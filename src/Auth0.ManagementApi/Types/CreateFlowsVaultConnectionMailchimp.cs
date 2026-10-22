@@ -30,21 +30,21 @@ public class CreateFlowsVaultConnectionMailchimp
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionMailchimp FromCreateFlowsVaultConnectionMailchimpApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpApiKey value
     ) => new("createFlowsVaultConnectionMailchimpApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionMailchimp FromCreateFlowsVaultConnectionMailchimpOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpOauthCode value
     ) => new("createFlowsVaultConnectionMailchimpOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionMailchimp FromCreateFlowsVaultConnectionMailchimpUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimpUninitialized value

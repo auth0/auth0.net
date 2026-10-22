@@ -33,14 +33,14 @@ public class AculDomainFilter
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.AculDomainFilterById value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.AculDomainFilterById"/> value.
     /// </summary>
     public static AculDomainFilter FromAculDomainFilterById(
         Auth0.ManagementApi.AculDomainFilterById value
     ) => new("aculDomainFilterById", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.AculDomainFilterByMetadata value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.AculDomainFilterByMetadata"/> value.
     /// </summary>
     public static AculDomainFilter FromAculDomainFilterByMetadata(
         Auth0.ManagementApi.AculDomainFilterByMetadata value

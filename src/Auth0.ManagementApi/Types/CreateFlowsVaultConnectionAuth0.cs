@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionAuth0
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0OauthApp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0OauthApp"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionAuth0 FromCreateFlowsVaultConnectionAuth0OauthApp(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0OauthApp value
     ) => new("createFlowsVaultConnectionAuth0OauthApp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0Uninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0Uninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionAuth0 FromCreateFlowsVaultConnectionAuth0Uninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0Uninitialized value

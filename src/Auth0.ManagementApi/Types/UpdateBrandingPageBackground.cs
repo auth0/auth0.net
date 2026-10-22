@@ -43,12 +43,12 @@ public class UpdateBrandingPageBackground
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static UpdateBrandingPageBackground FromString(string value) => new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a Dictionary<string, object?> value.
+    /// Factory method to create a union from a <see cref="Dictionary{String, Object}"/> value.
     /// </summary>
     public static UpdateBrandingPageBackground FromMapOfStringToUnknown(
         Dictionary<string, object?> value
@@ -72,7 +72,7 @@ public class UpdateBrandingPageBackground
         IsString() ? (string)Value! : throw new ManagementException("Union type is not 'string'");
 
     /// <summary>
-    /// Returns the value as a <see cref="Dictionary<string, object?>"/> if <see cref="Type"/> is 'map', otherwise throws an exception.
+    /// Returns the value as a <see cref="Dictionary{String, Object}"/> if <see cref="Type"/> is 'map', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'map'.</exception>
     public Dictionary<string, object?> AsMapOfStringToUnknown() =>
@@ -95,7 +95,7 @@ public class UpdateBrandingPageBackground
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="Dictionary<string, object?>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="Dictionary{String, Object}"/> and returns true if successful.
     /// </summary>
     public bool TryGetMapOfStringToUnknown(out Dictionary<string, object?>? value)
     {

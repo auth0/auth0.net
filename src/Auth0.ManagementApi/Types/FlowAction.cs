@@ -30,154 +30,154 @@ public class FlowAction
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionActivecampaign value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionActivecampaign"/> value.
     /// </summary>
     public static FlowAction FromFlowActionActivecampaign(
         Auth0.ManagementApi.FlowActionActivecampaign value
     ) => new("flowActionActivecampaign", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAirtable value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionAirtable"/> value.
     /// </summary>
     public static FlowAction FromFlowActionAirtable(Auth0.ManagementApi.FlowActionAirtable value) =>
         new("flowActionAirtable", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAuth0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionAuth0"/> value.
     /// </summary>
     public static FlowAction FromFlowActionAuth0(Auth0.ManagementApi.FlowActionAuth0 value) =>
         new("flowActionAuth0", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionBigqueryInsertRows value.
+    /// Factory method to create a union from a <see cref="FlowActionBigqueryInsertRows"/> value.
     /// </summary>
     public static FlowAction FromFlowActionBigquery(FlowActionBigqueryInsertRows value) =>
         new("flowActionBigquery", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionClearbit value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionClearbit"/> value.
     /// </summary>
     public static FlowAction FromFlowActionClearbit(Auth0.ManagementApi.FlowActionClearbit value) =>
         new("flowActionClearbit", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionEmailVerifyEmail value.
+    /// Factory method to create a union from a <see cref="FlowActionEmailVerifyEmail"/> value.
     /// </summary>
     public static FlowAction FromFlowActionEmail(FlowActionEmailVerifyEmail value) =>
         new("flowActionEmail", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlow value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlow"/> value.
     /// </summary>
     public static FlowAction FromFlowActionFlow(Auth0.ManagementApi.FlowActionFlow value) =>
         new("flowActionFlow", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionGoogleSheetsAddRow value.
+    /// Factory method to create a union from a <see cref="FlowActionGoogleSheetsAddRow"/> value.
     /// </summary>
     public static FlowAction FromFlowActionGoogleSheets(FlowActionGoogleSheetsAddRow value) =>
         new("flowActionGoogleSheets", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionHttpSendRequest value.
+    /// Factory method to create a union from a <see cref="FlowActionHttpSendRequest"/> value.
     /// </summary>
     public static FlowAction FromFlowActionHttp(FlowActionHttpSendRequest value) =>
         new("flowActionHttp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionHubspot value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionHubspot"/> value.
     /// </summary>
     public static FlowAction FromFlowActionHubspot(Auth0.ManagementApi.FlowActionHubspot value) =>
         new("flowActionHubspot", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJson"/> value.
     /// </summary>
     public static FlowAction FromFlowActionJson(Auth0.ManagementApi.FlowActionJson value) =>
         new("flowActionJson", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJwt"/> value.
     /// </summary>
     public static FlowAction FromFlowActionJwt(Auth0.ManagementApi.FlowActionJwt value) =>
         new("flowActionJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionMailchimpUpsertMember value.
+    /// Factory method to create a union from a <see cref="FlowActionMailchimpUpsertMember"/> value.
     /// </summary>
     public static FlowAction FromFlowActionMailchimp(FlowActionMailchimpUpsertMember value) =>
         new("flowActionMailchimp", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionMailjetSendEmail value.
+    /// Factory method to create a union from a <see cref="FlowActionMailjetSendEmail"/> value.
     /// </summary>
     public static FlowAction FromFlowActionMailjet(FlowActionMailjetSendEmail value) =>
         new("flowActionMailjet", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionOtp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionOtp"/> value.
     /// </summary>
     public static FlowAction FromFlowActionOtp(Auth0.ManagementApi.FlowActionOtp value) =>
         new("flowActionOtp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionPipedrive value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionPipedrive"/> value.
     /// </summary>
     public static FlowAction FromFlowActionPipedrive(
         Auth0.ManagementApi.FlowActionPipedrive value
     ) => new("flowActionPipedrive", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionSalesforce value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionSalesforce"/> value.
     /// </summary>
     public static FlowAction FromFlowActionSalesforce(
         Auth0.ManagementApi.FlowActionSalesforce value
     ) => new("flowActionSalesforce", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionSendgridSendEmail value.
+    /// Factory method to create a union from a <see cref="FlowActionSendgridSendEmail"/> value.
     /// </summary>
     public static FlowAction FromFlowActionSendgrid(FlowActionSendgridSendEmail value) =>
         new("flowActionSendgrid", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionSlackPostMessage value.
+    /// Factory method to create a union from a <see cref="FlowActionSlackPostMessage"/> value.
     /// </summary>
     public static FlowAction FromFlowActionSlack(FlowActionSlackPostMessage value) =>
         new("flowActionSlack", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripe value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripe"/> value.
     /// </summary>
     public static FlowAction FromFlowActionStripe(Auth0.ManagementApi.FlowActionStripe value) =>
         new("flowActionStripe", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionTelegramSendMessage value.
+    /// Factory method to create a union from a <see cref="FlowActionTelegramSendMessage"/> value.
     /// </summary>
     public static FlowAction FromFlowActionTelegram(FlowActionTelegramSendMessage value) =>
         new("flowActionTelegram", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionTwilio value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionTwilio"/> value.
     /// </summary>
     public static FlowAction FromFlowActionTwilio(Auth0.ManagementApi.FlowActionTwilio value) =>
         new("flowActionTwilio", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionWhatsappSendMessage value.
+    /// Factory method to create a union from a <see cref="FlowActionWhatsappSendMessage"/> value.
     /// </summary>
     public static FlowAction FromFlowActionWhatsapp(FlowActionWhatsappSendMessage value) =>
         new("flowActionWhatsapp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionXml value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionXml"/> value.
     /// </summary>
     public static FlowAction FromFlowActionXml(Auth0.ManagementApi.FlowActionXml value) =>
         new("flowActionXml", value);
 
     /// <summary>
-    /// Factory method to create a union from a FlowActionZapierTriggerWebhook value.
+    /// Factory method to create a union from a <see cref="FlowActionZapierTriggerWebhook"/> value.
     /// </summary>
     public static FlowAction FromFlowActionZapier(FlowActionZapierTriggerWebhook value) =>
         new("flowActionZapier", value);

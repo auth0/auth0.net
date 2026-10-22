@@ -17,7 +17,6 @@ internal static partial class JsonOptions
         var options = new JsonSerializerOptions
         {
             Converters = { new DateTimeSerializer(),
-                new BooleanStringConverter(),
 #if USE_PORTABLE_DATE_ONLY
                 new DateOnlyConverter(),
 #endif
@@ -230,6 +229,10 @@ internal static class JsonUtils
             );
         }
         var jsonNode = SerializeToNode(obj);
+        if (jsonNode is null)
+        {
+            return additionalPropertiesJsonObject.ToJsonString(JsonOptions.JsonSerializerOptions);
+        }
         if (jsonNode is not JsonObject jsonObject)
         {
             throw new InvalidOperationException(

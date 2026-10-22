@@ -38,28 +38,28 @@ public class EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLeve
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel0Enum value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel0Enum"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel FromEventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel0Enum(
         Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel0Enum value
     ) => new("eventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel0Enum", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel1Enum value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel1Enum"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel FromEventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel1Enum(
         Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel1Enum value
     ) => new("eventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel1Enum", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel2Enum value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel2Enum"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel FromEventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel2Enum(
         Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel2Enum value
     ) => new("eventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel2Enum", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel3Enum value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel3Enum"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel FromEventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel3Enum(
         Auth0.ManagementApi.EventStreamCloudEventOrgConnectionAddedObjectOrganizationAccessLevel3Enum value

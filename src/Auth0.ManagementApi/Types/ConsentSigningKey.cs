@@ -4,43 +4,36 @@ using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
-/// <summary>
-/// Arkose Labs provider configuration.
-/// </summary>
 [Serializable]
-public record CaptchaPolicyActionArkose : IJsonOnDeserialized
+public record ConsentSigningKey : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// The Arkose Labs site key.
+    /// The key identifier of the consent signing key.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("site_key")]
-    public string? SiteKey { get; set; }
+    [JsonPropertyName("kid")]
+    public required string Kid { get; set; }
 
     /// <summary>
-    /// The Arkose Labs client subdomain.
+    /// A human-readable label for the device holding the corresponding private key.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("client_subdomain")]
-    public string? ClientSubdomain { get; set; }
+    [JsonPropertyName("device_identifier")]
+    public required string DeviceIdentifier { get; set; }
 
     /// <summary>
-    /// The Arkose Labs verify subdomain.
+    /// The ISO 8601 timestamp at which the key was registered.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("verify_subdomain")]
-    public string? VerifySubdomain { get; set; }
+    [JsonPropertyName("created_at")]
+    public required DateTime CreatedAt { get; set; }
 
     /// <summary>
-    /// Whether to allow access when Arkose Labs is unavailable.
+    /// The ISO 8601 timestamp at which the key expires and can no longer be used to verify consent decisions.
     /// </summary>
-    [Optional]
-    [JsonPropertyName("fail_open")]
-    public bool? FailOpen { get; set; }
+    [JsonPropertyName("expires_at")]
+    public required DateTime ExpiresAt { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -30,21 +30,21 @@ public class EventStreamResponseContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamWebhookResponseContent"/> value.
     /// </summary>
     public static EventStreamResponseContent FromEventStreamWebhookResponseContent(
         Auth0.ManagementApi.EventStreamWebhookResponseContent value
     ) => new("eventStreamWebhookResponseContent", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamEventBridgeResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamEventBridgeResponseContent"/> value.
     /// </summary>
     public static EventStreamResponseContent FromEventStreamEventBridgeResponseContent(
         Auth0.ManagementApi.EventStreamEventBridgeResponseContent value
     ) => new("eventStreamEventBridgeResponseContent", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamActionResponseContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamActionResponseContent"/> value.
     /// </summary>
     public static EventStreamResponseContent FromEventStreamActionResponseContent(
         Auth0.ManagementApi.EventStreamActionResponseContent value

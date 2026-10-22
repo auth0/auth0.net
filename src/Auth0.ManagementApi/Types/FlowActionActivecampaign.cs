@@ -30,14 +30,14 @@ public class FlowActionActivecampaign
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionActivecampaignListContacts value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionActivecampaignListContacts"/> value.
     /// </summary>
     public static FlowActionActivecampaign FromFlowActionActivecampaignListContacts(
         Auth0.ManagementApi.FlowActionActivecampaignListContacts value
     ) => new("flowActionActivecampaignListContacts", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionActivecampaignUpsertContact value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionActivecampaignUpsertContact"/> value.
     /// </summary>
     public static FlowActionActivecampaign FromFlowActionActivecampaignUpsertContact(
         Auth0.ManagementApi.FlowActionActivecampaignUpsertContact value

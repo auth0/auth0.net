@@ -30,14 +30,14 @@ public class FlowActionClearbit
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionClearbitFindPerson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionClearbitFindPerson"/> value.
     /// </summary>
     public static FlowActionClearbit FromFlowActionClearbitFindPerson(
         Auth0.ManagementApi.FlowActionClearbitFindPerson value
     ) => new("flowActionClearbitFindPerson", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionClearbitFindCompany value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionClearbitFindCompany"/> value.
     /// </summary>
     public static FlowActionClearbit FromFlowActionClearbitFindCompany(
         Auth0.ManagementApi.FlowActionClearbitFindCompany value

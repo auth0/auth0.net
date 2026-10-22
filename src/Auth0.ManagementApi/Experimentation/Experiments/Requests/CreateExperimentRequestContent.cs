@@ -39,9 +39,8 @@ public record CreateExperimentRequestContent
     /// <summary>
     /// The traffic allocation strategy for this experiment
     /// </summary>
-    [Optional]
     [JsonPropertyName("allocation_strategy")]
-    public AllocationStrategyEnum? AllocationStrategy { get; set; }
+    public required AllocationStrategyEnum AllocationStrategy { get; set; }
 
     /// <summary>
     /// Traffic allocations mapping variations to weights or segments

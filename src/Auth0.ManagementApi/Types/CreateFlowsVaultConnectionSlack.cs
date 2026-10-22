@@ -30,21 +30,21 @@ public class CreateFlowsVaultConnectionSlack
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSlackWebhook value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSlackWebhook"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSlack FromCreateFlowsVaultConnectionSlackWebhook(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSlackWebhook value
     ) => new("createFlowsVaultConnectionSlackWebhook", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSlackOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSlackOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSlack FromCreateFlowsVaultConnectionSlackOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSlackOauthCode value
     ) => new("createFlowsVaultConnectionSlackOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSlackUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSlackUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSlack FromCreateFlowsVaultConnectionSlackUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSlackUninitialized value
