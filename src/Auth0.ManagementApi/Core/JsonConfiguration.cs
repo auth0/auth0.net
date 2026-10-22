@@ -17,6 +17,7 @@ internal static partial class JsonOptions
         var options = new JsonSerializerOptions
         {
             Converters = { new DateTimeSerializer(),
+                new BooleanStringConverter(),
 #if USE_PORTABLE_DATE_ONLY
                 new DateOnlyConverter(),
 #endif

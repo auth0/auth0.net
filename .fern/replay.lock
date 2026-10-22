@@ -84,14 +84,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.82.1
-current_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+  - commit_sha: c0448e19071a4b77f178d98a583b2bad29dd6cc9
+    tree_hash: 574e53c7c1e75f06ccf98b6834b09c74e937958a
+    timestamp: 2026-10-22T18:08:12.118Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.92.4
+current_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
 patches:
   - id: patch-4a7a2c3e
     content_hash: sha256:afae223b4593598543491ca12e36149571f886b494dcf4311dcea092548f7bd0
     original_commit: 4a7a2c3e44bfc06c1f164a3c6ef0ae748ce3075b
     original_message: Adds extension to convert UserDateSchema to DateTime
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -299,13 +305,13 @@ patches:
     original_commit: f898e213a3bde5c59096e7f5eb940e6fd76c26d8
     original_message: Customer customizations (composite)
     original_author: composite
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       - tests/Auth0.ManagementApi.Test/Auth0.ManagementApi.Test.csproj
     patch_content: |
       diff --git a/src/Auth0.ManagementApi/Core/JsonConfiguration.cs b/src/Auth0.ManagementApi/Core/JsonConfiguration.cs
-      index 2ef97a37..7588e83c 100644
+      index d7378ba2..44fe680b 100644
       --- a/src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       +++ b/src/Auth0.ManagementApi/Core/JsonConfiguration.cs
       @@ -17,6 +17,7 @@ static JsonOptions()
@@ -563,6 +569,10 @@ patches:
                     );
                 }
                 var jsonNode = SerializeToNode(obj);
+                if (jsonNode is null)
+                {
+                    return additionalPropertiesJsonObject.ToJsonString(JsonOptions.JsonSerializerOptions);
+                }
                 if (jsonNode is not JsonObject jsonObject)
                 {
                     throw new InvalidOperationException(
@@ -709,7 +719,7 @@ patches:
     original_commit: a4ee94c4b6b4ad1f881465e6680286ef144d2b4f
     original_message: "mgmt: Removed unwanted files"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
     patch_content: |
@@ -917,7 +927,7 @@ patches:
     original_commit: f2415ebd2fef2e96471b0d89fbcb35fadec37c0c
     original_message: "chore: Adds CLAUDE.md and AGENTS.md"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - references/code-style.md
       - references/commands.md
@@ -1383,7 +1393,7 @@ patches:
     original_commit: c551b36c72ddde8c84bff167b318fcf6d15a9e31
     original_message: "build: Build fix"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
@@ -1702,7 +1712,7 @@ patches:
     original_commit: 83707d13089d52e2aa94a37c46a9d430efbfaab1
     original_message: "build: Build fix"
     original_author: Kailash B <kailash.b@okta.com>
-    base_generation: 637b60c26d7aed0d42b306ba1869ddd03903b65e
+    base_generation: c0448e19071a4b77f178d98a583b2bad29dd6cc9
     files:
       - src/Auth0.ManagementApi/Core/Public/ClientOptions.cs
       - tests/Auth0.ManagementApi.Test/Unit/Extensions/UserDateSchemaExtensionsTest.cs
