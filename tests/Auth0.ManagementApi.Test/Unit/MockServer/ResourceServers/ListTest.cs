@@ -54,7 +54,8 @@ public class ListTest : BaseMockServerTest
                   "authorization_policy": {
                     "policy_id": "policy_id"
                   },
-                  "client_id": "client_id"
+                  "client_id": "client_id",
+                  "type": "universal_commerce_protocol_server"
                 }
               ]
             }

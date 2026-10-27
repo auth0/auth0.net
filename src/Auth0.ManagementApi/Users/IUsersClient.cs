@@ -190,6 +190,35 @@ public partial interface IUsersClient
     );
 
     /// <summary>
+    /// Retrieve all consent signing keys registered for a user. Returns an empty array when the user has no keys registered.
+    /// </summary>
+    WithRawResponseTask<IEnumerable<ConsentSigningKey>> ListConsentSigningKeysAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Retrieve a single consent signing key for a user by its key identifier (kid). Returns 404 if the key does not exist.
+    /// </summary>
+    WithRawResponseTask<ConsentSigningKey> GetConsentSigningKeyAsync(
+        string id,
+        string kid,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Remove a single consent signing key for a user by its key identifier (kid). The operation is idempotent and returns 204 whether or not the key existed.
+    /// </summary>
+    WithRawResponseTask DeleteConsentSigningKeyAsync(
+        string id,
+        string kid,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Remove an existing multi-factor authentication (MFA) [recovery code](https://auth0.com/docs/secure/multi-factor-authentication/reset-user-mfa) and generate a new one. If a user cannot access the original device or account used for MFA enrollment, they can use a recovery code to authenticate.
     /// </summary>
     WithRawResponseTask<RegenerateUsersRecoveryCodeResponseContent> RegenerateRecoveryCodeAsync(

@@ -119,6 +119,10 @@ public record UpdateResourceServerRequestContent
     [JsonPropertyName("authorization_policy")]
     public Optional<ResourceServerAuthorizationPolicy?> AuthorizationPolicy { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("type")]
+    public Optional<ResourceServerTypeEnum?> Type { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

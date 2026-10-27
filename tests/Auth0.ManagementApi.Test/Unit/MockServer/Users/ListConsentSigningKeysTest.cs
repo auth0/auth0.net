@@ -2,11 +2,11 @@ using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Test.Unit.MockServer.AttackProtection.CaptchaPolicies;
+namespace Auth0.ManagementApi.Test.Unit.MockServer.Users;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]
-public class ListTest : BaseMockServerTest
+public class ListConsentSigningKeysTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
     public async Task MockServerTest()
@@ -14,23 +14,10 @@ public class ListTest : BaseMockServerTest
         const string mockResponse = """
             [
               {
-                "id": "id",
-                "name": "name",
-                "description": "description",
-                "priority": 1,
-                "match": {
-                  "auth0_managed": [
-                    "auth0_managed"
-                  ],
-                  "geo_country_codes": [
-                    "geo_country_codes"
-                  ]
-                },
-                "action": {
-                  "active_provider_id": "simple_captcha"
-                },
+                "kid": "kid",
+                "device_identifier": "device_identifier",
                 "created_at": "2024-01-15T09:30:00.000Z",
-                "updated_at": "2024-01-15T09:30:00.000Z"
+                "expires_at": "2024-01-15T09:30:00.000Z"
               }
             ]
             """;
@@ -39,7 +26,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/attack-protection/captcha/policies")
+                    .WithPath("/users/id/consent-signing-keys")
                     .UsingGet()
             )
             .RespondWith(
@@ -49,7 +36,7 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.AttackProtection.CaptchaPolicies.ListAsync();
+        var response = await Client.Users.ListConsentSigningKeysAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

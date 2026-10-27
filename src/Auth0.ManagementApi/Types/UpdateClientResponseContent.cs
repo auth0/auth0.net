@@ -360,6 +360,10 @@ public record UpdateClientResponseContent : IJsonOnDeserialized, IJsonOnSerializ
     public ClientThirdPartySecurityModeEnum? ThirdPartySecurityMode { get; set; }
 
     [Optional]
+    [JsonPropertyName("oidc_support")]
+    public ClientOidcSupport? OidcSupport { get; set; }
+
+    [Optional]
     [JsonPropertyName("redirection_policy")]
     public ClientRedirectionPolicyEnum? RedirectionPolicy { get; set; }
 

@@ -17,7 +17,8 @@ public class CreateTest : BaseMockServerTest
             {
               "name": "name",
               "feature_flag_id": "feature_flag_id",
-              "authentication_flow": "authentication"
+              "authentication_flow": "authentication",
+              "allocation_strategy": "percentage"
             }
             """;
 
@@ -90,6 +91,7 @@ public class CreateTest : BaseMockServerTest
                 Name = "name",
                 FeatureFlagId = "feature_flag_id",
                 AuthenticationFlow = AuthenticationFlowEnum.Authentication,
+                AllocationStrategy = AllocationStrategyEnum.Percentage,
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

@@ -33,10 +33,11 @@ public partial class SegmentsClient : ISegmentsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 3)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 4)
             .Add("from", request.From.IsDefined ? request.From.Value : null)
             .Add("take", request.Take.IsDefined ? request.Take.Value : null)
             .Add("type", request.Type.IsDefined ? request.Type.Value : null)
+            .Add("status", request.Status.IsDefined ? request.Status.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
@@ -777,6 +778,7 @@ public partial class SegmentsClient : ISegmentsClient
     ///         From = "from",
     ///         Take = 1,
     ///         Type = SegmentTypeFilterEnum.Auth0,
+    ///         Status = SegmentStatusEnum.Active,
     ///     }
     /// );
     /// </code></example>

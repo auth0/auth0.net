@@ -57,6 +57,10 @@ public record ConnectionOptionsAuth0 : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("mfa")]
     public ConnectionMfa? Mfa { get; set; }
 
+    [Optional]
+    [JsonPropertyName("otp_settings")]
+    public ConnectionOtpSettings? OtpSettings { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("passkey_options")]
     public Optional<ConnectionPasskeyOptions?> PasskeyOptions { get; set; }

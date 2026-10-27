@@ -24,6 +24,8 @@ public readonly record struct GuardianFactorNameEnum : IStringEnum
 
     public static readonly GuardianFactorNameEnum RecoveryCode = new(Values.RecoveryCode);
 
+    public static readonly GuardianFactorNameEnum Passkey = new(Values.Passkey);
+
     public GuardianFactorNameEnum(string value)
     {
         Value = value;
@@ -135,5 +137,7 @@ public readonly record struct GuardianFactorNameEnum : IStringEnum
         public const string WebauthnPlatform = "webauthn-platform";
 
         public const string RecoveryCode = "recovery-code";
+
+        public const string Passkey = "passkey";
     }
 }

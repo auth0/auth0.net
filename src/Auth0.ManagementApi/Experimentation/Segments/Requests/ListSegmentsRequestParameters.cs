@@ -25,6 +25,12 @@ public record ListSegmentsRequestParameters
     [JsonIgnore]
     public Optional<SegmentTypeFilterEnum?> Type { get; set; }
 
+    /// <summary>
+    /// Filter by status. Exact match.
+    /// </summary>
+    [JsonIgnore]
+    public Optional<SegmentStatusEnum?> Status { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

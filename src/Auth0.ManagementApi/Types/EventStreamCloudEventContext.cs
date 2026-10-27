@@ -33,6 +33,10 @@ public record EventStreamCloudEventContext : IJsonOnDeserialized
     [JsonPropertyName("tenant")]
     public required EventStreamCloudEventContextTenant Tenant { get; set; }
 
+    [Optional]
+    [JsonPropertyName("transaction")]
+    public EventStreamCloudEventContextTransaction? Transaction { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

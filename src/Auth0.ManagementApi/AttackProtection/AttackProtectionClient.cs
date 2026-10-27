@@ -13,7 +13,6 @@ public partial class AttackProtectionClient : IAttackProtectionClient
         BreachedPasswordDetection = new BreachedPasswordDetectionClient(_client);
         BruteForceProtection = new BruteForceProtectionClient(_client);
         Captcha = new CaptchaClient(_client);
-        CaptchaPolicies = new CaptchaPoliciesClient(_client);
         PhoneProviderProtection = new PhoneProviderProtectionClient(_client);
         SuspiciousIpThrottling = new SuspiciousIpThrottlingClient(_client);
     }
@@ -25,8 +24,6 @@ public partial class AttackProtectionClient : IAttackProtectionClient
     public IBruteForceProtectionClient BruteForceProtection { get; }
 
     public ICaptchaClient Captcha { get; }
-
-    public ICaptchaPoliciesClient CaptchaPolicies { get; }
 
     public IPhoneProviderProtectionClient PhoneProviderProtection { get; }
 
