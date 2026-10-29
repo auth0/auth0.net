@@ -37,6 +37,9 @@ public record CreateExperimentResponseContent : IJsonOnDeserialized
     [JsonPropertyName("status")]
     public required ExperimentStatusEnum Status { get; set; }
 
+    /// <summary>
+    /// Whether the experiment is valid and ready to activate, as of its last update. It can lag changes made later to related entities. Call POST /experiments/{id}/validate for the current result.
+    /// </summary>
     [JsonPropertyName("is_valid")]
     public required bool IsValid { get; set; }
 

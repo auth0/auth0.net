@@ -148,7 +148,7 @@ public record TenantSettingsFlags : IJsonOnDeserialized
     public bool? DashboardLogStreamsNext { get; set; }
 
     /// <summary>
-    /// Enables new insights activity page view
+    /// Deprecated. This flag has no effect and is retained only for backward compatibility
     /// </summary>
     [Optional]
     [JsonPropertyName("dashboard_insights_view")]

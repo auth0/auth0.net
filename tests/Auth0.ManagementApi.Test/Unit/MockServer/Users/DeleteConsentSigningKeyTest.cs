@@ -1,11 +1,11 @@
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Test.Unit.MockServer.AttackProtection.CaptchaPolicies;
+namespace Auth0.ManagementApi.Test.Unit.MockServer.Users;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]
-public class DeleteTest : BaseMockServerTest
+public class DeleteConsentSigningKeyTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
     public void MockServerTest()
@@ -14,13 +14,13 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/attack-protection/captcha/policies/id")
+                    .WithPath("/users/id/consent-signing-keys/kid")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
         Assert.DoesNotThrowAsync(async () =>
-            await Client.AttackProtection.CaptchaPolicies.DeleteAsync("id")
+            await Client.Users.DeleteConsentSigningKeyAsync("id", "kid")
         );
     }
 }

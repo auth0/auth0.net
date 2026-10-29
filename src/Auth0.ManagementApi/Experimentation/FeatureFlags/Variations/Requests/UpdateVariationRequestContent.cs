@@ -20,9 +20,9 @@ public record UpdateVariationRequestContent
     [JsonPropertyName("description")]
     public Optional<string?> Description { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("overrides")]
-    public Dictionary<string, object?>? Overrides { get; set; }
+    public Optional<Dictionary<string, object?>?> Overrides { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

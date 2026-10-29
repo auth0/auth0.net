@@ -5,28 +5,22 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Traffic matching criteria for the policy. Exactly one of auth0_managed or geo_country_codes must be specified.
+/// One-time password settings, configurable per delivery channel.
 /// </summary>
 [Serializable]
-public record AttackProtectionCaptchaPolicyMatch : IJsonOnDeserialized
+public record ConnectionOtpSettings : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    /// <summary>
-    /// Match by Auth0-managed traffic identifiers.
-    /// </summary>
     [Optional]
-    [JsonPropertyName("auth0_managed")]
-    public IEnumerable<string>? Auth0Managed { get; set; }
+    [JsonPropertyName("email")]
+    public ConnectionOtpChannelSettings? Email { get; set; }
 
-    /// <summary>
-    /// Match by ISO 3166-1 alpha-2 country codes.
-    /// </summary>
     [Optional]
-    [JsonPropertyName("geo_country_codes")]
-    public IEnumerable<string>? GeoCountryCodes { get; set; }
+    [JsonPropertyName("phone")]
+    public ConnectionOtpChannelSettings? Phone { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

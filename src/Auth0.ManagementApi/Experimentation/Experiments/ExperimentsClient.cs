@@ -1161,6 +1161,7 @@ public partial class ExperimentsClient : IExperimentsClient
     ///         Name = "name",
     ///         FeatureFlagId = "feature_flag_id",
     ///         AuthenticationFlow = AuthenticationFlowEnum.Authentication,
+    ///         AllocationStrategy = AllocationStrategyEnum.Percentage,
     ///     }
     /// );
     /// </code></example>

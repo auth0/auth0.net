@@ -5,35 +5,28 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// reCAPTCHA Enterprise provider configuration.
+/// OTP settings for a delivery channel.
 /// </summary>
 [Serializable]
-public record CaptchaPolicyActionRecaptchaEnterpriseInput : IJsonOnDeserialized
+public record ConnectionOtpChannelSettings : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// The reCAPTCHA Enterprise site key.
+    /// Number of digits in the generated one-time password.
     /// </summary>
     [Optional]
-    [JsonPropertyName("site_key")]
-    public string? SiteKey { get; set; }
+    [JsonPropertyName("otp_length")]
+    public int? OtpLength { get; set; }
 
     /// <summary>
-    /// The Google Cloud project ID.
+    /// Number of seconds before the one-time password expires.
     /// </summary>
     [Optional]
-    [JsonPropertyName("project_id")]
-    public string? ProjectId { get; set; }
-
-    /// <summary>
-    /// The reCAPTCHA Enterprise API key. Encrypted at rest.
-    /// </summary>
-    [Optional]
-    [JsonPropertyName("api_key")]
-    public string? ApiKey { get; set; }
+    [JsonPropertyName("otp_expiry")]
+    public int? OtpExpiry { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

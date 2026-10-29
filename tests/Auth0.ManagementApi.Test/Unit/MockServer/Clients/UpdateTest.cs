@@ -432,6 +432,13 @@ public class UpdateTest : BaseMockServerTest
               },
               "enforce_anon_session_transfer_network_binding": "ip",
               "third_party_security_mode": "strict",
+              "oidc_support": {
+                "is_allowed": true,
+                "allow_all_scopes": true,
+                "allowed_scopes": [
+                  "profile"
+                ]
+              },
               "redirection_policy": "allow_always",
               "resource_server_identifier": "resource_server_identifier",
               "async_approval_notification_channels": [

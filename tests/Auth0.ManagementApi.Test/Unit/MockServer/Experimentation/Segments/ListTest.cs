@@ -40,6 +40,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("from", "from")
                     .WithParam("take", "1")
                     .WithParam("type", "auth0")
+                    .WithParam("status", "active")
                     .UsingGet()
             )
             .RespondWith(
@@ -55,6 +56,7 @@ public class ListTest : BaseMockServerTest
                 From = "from",
                 Take = 1,
                 Type = SegmentTypeFilterEnum.Auth0,
+                Status = SegmentStatusEnum.Active,
             }
         );
         await foreach (var item in items)

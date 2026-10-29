@@ -11159,6 +11159,184 @@ await client.Users.UpdateAsync("id", new UpdateUserRequestContent());
 </dl>
 </details>
 
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">ListConsentSigningKeysAsync</a>(id) -> WithRawResponseTask&lt;IEnumerable&lt;ConsentSigningKey&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all consent signing keys registered for a user. Returns an empty array when the user has no keys registered.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.ListConsentSigningKeysAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the user.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">GetConsentSigningKeyAsync</a>(id, kid) -> WithRawResponseTask&lt;ConsentSigningKey&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single consent signing key for a user by its key identifier (kid). Returns 404 if the key does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.GetConsentSigningKeyAsync("id", "kid");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the user.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kid:** `string` — The key identifier of the consent signing key.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">DeleteConsentSigningKeyAsync</a>(id, kid) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove a single consent signing key for a user by its key identifier (kid). The operation is idempotent and returns 204 whether or not the key existed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.DeleteConsentSigningKeyAsync("id", "kid");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the user.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kid:** `string` — The key identifier of the consent signing key.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">RegenerateRecoveryCodeAsync</a>(id) -> WithRawResponseTask&lt;RegenerateUsersRecoveryCodeResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -12780,281 +12958,6 @@ await client.AttackProtection.Captcha.UpdateAsync(
 <dd>
 
 **request:** `UpdateAttackProtectionCaptchaRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## AttackProtection CaptchaPolicies
-<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">ListAsync</a>() -> WithRawResponseTask&lt;IEnumerable&lt;AttackProtectionCaptchaPolicy&gt;&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve all CAPTCHA attack protection policies for the tenant, sorted by priority ascending.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.AttackProtection.CaptchaPolicies.ListAsync();
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">CreateAsync</a>(CreateAttackProtectionCaptchaPolicyRequestContent { ... }) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Create a new CAPTCHA attack protection policy for the tenant. The maximum number of policies per tenant is determined by the tenant's subscription.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.AttackProtection.CaptchaPolicies.CreateAsync(
-    new CreateAttackProtectionCaptchaPolicyRequestContent
-    {
-        Name = "name",
-        Priority = 1,
-        Match = new AttackProtectionCaptchaPolicyMatch(),
-        Action = new AttackProtectionCaptchaPolicyActionInput(),
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CreateAttackProtectionCaptchaPolicyRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve a single CAPTCHA attack protection policy for the tenant by ID.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.AttackProtection.CaptchaPolicies.GetAsync("id");
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the CAPTCHA attack protection policy.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Delete a CAPTCHA attack protection policy for the tenant.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.AttackProtection.CaptchaPolicies.DeleteAsync("id");
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the CAPTCHA attack protection policy.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.AttackProtection.CaptchaPolicies.<a href="/src/Auth0.ManagementApi/AttackProtection/CaptchaPolicies/CaptchaPoliciesClient.cs">UpdateAsync</a>(id, UpdateAttackProtectionCaptchaPolicyRequestContent { ... }) -> WithRawResponseTask&lt;AttackProtectionCaptchaPolicy&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Partially update a CAPTCHA attack protection policy. Only the provided fields are modified. A provided match or action replaces the stored value in full rather than merging with it; within action, a provider secret or API key that is omitted from a provided provider block keeps its stored value.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.AttackProtection.CaptchaPolicies.UpdateAsync(
-    "id",
-    new UpdateAttackProtectionCaptchaPolicyRequestContent()
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the CAPTCHA attack protection policy.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `UpdateAttackProtectionCaptchaPolicyRequestContent` 
     
 </dd>
 </dl>
@@ -17100,6 +17003,7 @@ await client.Experimentation.Experiments.CreateAsync(
         Name = "name",
         FeatureFlagId = "feature_flag_id",
         AuthenticationFlow = AuthenticationFlowEnum.Authentication,
+        AllocationStrategy = AllocationStrategyEnum.Percentage,
     }
 );
 ```
@@ -17744,6 +17648,7 @@ await client.Experimentation.Segments.ListAsync(
         From = "from",
         Take = 1,
         Type = SegmentTypeFilterEnum.Auth0,
+        Status = SegmentStatusEnum.Active,
     }
 );
 ```
@@ -19244,7 +19149,7 @@ await client.Guardian.Factors.SetAsync(
 <dl>
 <dd>
 
-**name:** `GuardianFactorNameEnum` — Factor name. Can be `sms`, `push-notification`, `email`, `duo` `otp` `webauthn-roaming`, `webauthn-platform`, or `recovery-code`.
+**name:** `GuardianFactorNameEnum` — Factor name. Can be `sms`, `push-notification`, `email`, `duo`, `otp`, `webauthn-roaming`, `webauthn-platform`, `recovery-code`, or `passkey`.
     
 </dd>
 </dl>

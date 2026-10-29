@@ -67,6 +67,10 @@ public record UpdateConnectionOptions : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("customScripts")]
     public ConnectionCustomScripts? CustomScripts { get; set; }
 
+    [Optional]
+    [JsonPropertyName("otp_settings")]
+    public ConnectionOtpSettings? OtpSettings { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("authentication_methods")]
     public Optional<ConnectionAuthenticationMethods?> AuthenticationMethods { get; set; }
