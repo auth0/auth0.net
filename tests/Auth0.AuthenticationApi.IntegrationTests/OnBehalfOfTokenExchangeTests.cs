@@ -303,6 +303,7 @@ public class OnBehalfOfTokenExchangeTests
             { "grant_type", "urn:ietf:params:oauth:grant-type:token-exchange" },
             { "subject_token", SubjectToken },
             { "subject_token_type", TokenType.AccessToken },
+            { "requested_token_type", TokenType.AccessToken },
             { "audience", Audience },
             { "scope", "calendar:read" },
             { "organization", "org_123" }
