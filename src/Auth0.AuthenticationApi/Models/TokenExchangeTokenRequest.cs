@@ -43,6 +43,11 @@ public class TokenExchangeTokenRequest : IClientAuthentication
     public string ActorTokenType { get; set; }
 
     /// <summary>
+    /// The type of token requested, sent as <c>requested_token_type</c> when set.
+    /// </summary>
+    internal string RequestedTokenType { get; set; }
+
+    /// <summary>
     /// Optional target audience (API identifier) for the requested token. For a Session
     /// Transfer Token, set this to the session-transfer audience.
     /// </summary>
