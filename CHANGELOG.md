@@ -1,5 +1,15 @@
 # Change Log
 
+## [7.50.0](https://github.com/auth0/auth0.net/tree/7.50.0) (2026-11-10)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.49.0...7.50.0)
+
+**Fixed**
+- Add requested_token_type for On-Behalf-Of token exchange [\#1133](https://github.com/auth0/auth0.net/pull/1133) ([Hawxy](https://github.com/Hawxy))
+
+**Security**
+- Bump Microsoft.IdentityModel.Protocols.OpenIdConnect from 8.22.0 to 8.23.0 [\#1121](https://github.com/auth0/auth0.net/pull/1121) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump System.IdentityModel.Tokens.Jwt from 8.22.0 to 8.23.0 [\#1114](https://github.com/auth0/auth0.net/pull/1114) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [7.49.0](https://github.com/auth0/auth0.net/tree/7.49.0) (2026-08-19)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.48.0...7.49.0)
 
