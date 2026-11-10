@@ -18,7 +18,7 @@ on:
     secrets:
       github-token:
         required: true
-      nuget-token:
+      nuget-user:
         required: true
 
 jobs:
@@ -68,7 +68,7 @@ jobs:
           dotnet-version: ${{ inputs.dotnet-version }}
           project-paths: ${{ inputs.project-paths }}
           version: ${{ steps.get_version.outputs.version }}
-          nuget-token: ${{ secrets.nuget-token }}
+          nuget-user: ${{ secrets.nuget-user }}
           nuget-directory: ${{ github.workspace}}/nuget
 
       # Create a release for the tag
