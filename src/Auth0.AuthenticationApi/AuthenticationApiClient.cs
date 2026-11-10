@@ -254,6 +254,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
 
         body.AddIfNotEmpty("actor_token", request.ActorToken);
         body.AddIfNotEmpty("actor_token_type", request.ActorTokenType);
+        body.AddIfNotEmpty("requested_token_type", request.RequestedTokenType);
         body.AddIfNotEmpty("audience", request.Audience);
         body.AddIfNotEmpty("scope", request.Scope);
         body.AddIfNotEmpty("organization", request.Organization);
@@ -287,6 +288,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
         {
             SubjectToken = request.SubjectToken,
             SubjectTokenType = TokenType.AccessToken,
+            RequestedTokenType = TokenType.AccessToken,
             Audience = request.Audience,
             Scope = request.Scope,
             Organization = request.Organization,
