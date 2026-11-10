@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionTwilio
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionTwilio FromCreateFlowsVaultConnectionTwilioApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioApiKey value
     ) => new("createFlowsVaultConnectionTwilioApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionTwilio FromCreateFlowsVaultConnectionTwilioUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioUninitialized value

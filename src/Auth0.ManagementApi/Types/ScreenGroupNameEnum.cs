@@ -106,6 +106,8 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
         Values.ConsentTenantScopes
     );
 
+    public static readonly ScreenGroupNameEnum PendingConsent = new(Values.PendingConsent);
+
     public static readonly ScreenGroupNameEnum CustomizedConsent = new(Values.CustomizedConsent);
 
     public static readonly ScreenGroupNameEnum Logout = new(Values.Logout);
@@ -449,6 +451,8 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
         public const string Consent = "consent";
 
         public const string ConsentTenantScopes = "consent-tenant-scopes";
+
+        public const string PendingConsent = "pending-consent";
 
         public const string CustomizedConsent = "customized-consent";
 

@@ -33,56 +33,56 @@ public class EventStreamCloudEventConnectionUpdatedPreviousObject
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject0"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject0(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject0 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject1"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject1(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject1 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject1", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject2 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject2"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject2(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject2 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject2", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject3 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject3"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject3(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject3 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject3", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject4 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject4"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject4(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject4 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject4", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject5 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject5"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject5(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject5 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject5", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject6 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject6"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject6(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject6 value
     ) => new("eventStreamCloudEventConnectionUpdatedPreviousObject6", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject7 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject7"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionUpdatedPreviousObject FromEventStreamCloudEventConnectionUpdatedPreviousObject7(
         Auth0.ManagementApi.EventStreamCloudEventConnectionUpdatedPreviousObject7 value

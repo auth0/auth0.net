@@ -443,6 +443,7 @@ public class GetTest : BaseMockServerTest
               "external_metadata_type": "cimd",
               "external_metadata_created_by": "admin",
               "external_metadata_status": "available",
+              "agent_id": "agent_id",
               "external_client_id": "external_client_id",
               "jwks_uri": "jwks_uri"
             }

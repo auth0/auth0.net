@@ -34,6 +34,10 @@ public record ClientProfileClientConfiguration : IJsonOnDeserialized
     [JsonPropertyName("require_proof_of_possession")]
     public ClientProfileClientConfigurationRequireProofOfPossession? RequireProofOfPossession { get; set; }
 
+    [Optional]
+    [JsonPropertyName("oidc_support")]
+    public ClientProfileClientConfigurationOidcSupport? OidcSupport { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

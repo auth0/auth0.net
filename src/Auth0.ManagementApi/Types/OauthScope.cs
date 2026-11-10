@@ -1401,6 +1401,26 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Create Universal Portals
+    /// </summary>
+    public static readonly OauthScope CreatePortals = new(Values.CreatePortals);
+
+    /// <summary>
+    /// Read Universal Portals
+    /// </summary>
+    public static readonly OauthScope ReadPortals = new(Values.ReadPortals);
+
+    /// <summary>
+    /// Update Universal Portals
+    /// </summary>
+    public static readonly OauthScope UpdatePortals = new(Values.UpdatePortals);
+
+    /// <summary>
+    /// Delete Universal Portals
+    /// </summary>
+    public static readonly OauthScope DeletePortals = new(Values.DeletePortals);
+
+    /// <summary>
     /// Create Network ACL Keys
     /// </summary>
     public static readonly OauthScope CreateNetworkAclKeys = new(Values.CreateNetworkAclKeys);
@@ -2780,6 +2800,26 @@ public readonly record struct OauthScope : IStringEnum
         /// Delete Organization Client Associations
         /// </summary>
         public const string DeleteOrganizationClients = "delete:organization_clients";
+
+        /// <summary>
+        /// Create Universal Portals
+        /// </summary>
+        public const string CreatePortals = "create:portals";
+
+        /// <summary>
+        /// Read Universal Portals
+        /// </summary>
+        public const string ReadPortals = "read:portals";
+
+        /// <summary>
+        /// Update Universal Portals
+        /// </summary>
+        public const string UpdatePortals = "update:portals";
+
+        /// <summary>
+        /// Delete Universal Portals
+        /// </summary>
+        public const string DeletePortals = "delete:portals";
 
         /// <summary>
         /// Create Network ACL Keys

@@ -119,6 +119,10 @@ public record UpdateResourceServerRequestContent
     [JsonPropertyName("authorization_policy")]
     public Optional<ResourceServerAuthorizationPolicy?> AuthorizationPolicy { get; set; }
 
+    [Optional]
+    [JsonPropertyName("agent_subject_claims")]
+    public ResourceServerAgentSubjectClaimsSchemaEnum? AgentSubjectClaims { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("type")]
     public Optional<ResourceServerTypeEnum?> Type { get; set; }

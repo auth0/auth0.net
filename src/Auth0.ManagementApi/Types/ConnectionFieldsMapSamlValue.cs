@@ -30,12 +30,12 @@ public class ConnectionFieldsMapSamlValue
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static ConnectionFieldsMapSamlValue FromString(string value) => new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a IEnumerable<string> value.
+    /// Factory method to create a union from a <see cref="IEnumerable{String}"/> value.
     /// </summary>
     public static ConnectionFieldsMapSamlValue FromListOfString(IEnumerable<string> value) =>
         new("list", value);
@@ -58,7 +58,7 @@ public class ConnectionFieldsMapSamlValue
         IsString() ? (string)Value! : throw new ManagementException("Union type is not 'string'");
 
     /// <summary>
-    /// Returns the value as a <see cref="IEnumerable<string>"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
+    /// Returns the value as a <see cref="IEnumerable{String}"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'list'.</exception>
     public IEnumerable<string> AsListOfString() =>
@@ -81,7 +81,7 @@ public class ConnectionFieldsMapSamlValue
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="IEnumerable<string>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="IEnumerable{String}"/> and returns true if successful.
     /// </summary>
     public bool TryGetListOfString(out IEnumerable<string>? value)
     {

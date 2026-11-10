@@ -51,6 +51,7 @@ public class SearchTest : BaseMockServerTest
                     "policy_id": "policy_id"
                   },
                   "client_id": "client_id",
+                  "agent_subject_claims": "off",
                   "type": "universal_commerce_protocol_server"
                 }
               ],

@@ -30,14 +30,14 @@ public class FlowActionTwilio
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionTwilioMakeCall value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionTwilioMakeCall"/> value.
     /// </summary>
     public static FlowActionTwilio FromFlowActionTwilioMakeCall(
         Auth0.ManagementApi.FlowActionTwilioMakeCall value
     ) => new("flowActionTwilioMakeCall", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionTwilioSendSms value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionTwilioSendSms"/> value.
     /// </summary>
     public static FlowActionTwilio FromFlowActionTwilioSendSms(
         Auth0.ManagementApi.FlowActionTwilioSendSms value

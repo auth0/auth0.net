@@ -30,21 +30,21 @@ public class FlowActionJson
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJsonCreateJson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJsonCreateJson"/> value.
     /// </summary>
     public static FlowActionJson FromFlowActionJsonCreateJson(
         Auth0.ManagementApi.FlowActionJsonCreateJson value
     ) => new("flowActionJsonCreateJson", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJsonParseJson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJsonParseJson"/> value.
     /// </summary>
     public static FlowActionJson FromFlowActionJsonParseJson(
         Auth0.ManagementApi.FlowActionJsonParseJson value
     ) => new("flowActionJsonParseJson", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionJsonSerializeJson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionJsonSerializeJson"/> value.
     /// </summary>
     public static FlowActionJson FromFlowActionJsonSerializeJson(
         Auth0.ManagementApi.FlowActionJsonSerializeJson value

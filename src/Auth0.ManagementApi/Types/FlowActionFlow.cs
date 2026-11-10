@@ -30,49 +30,49 @@ public class FlowActionFlow
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowBooleanCondition value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowBooleanCondition"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowBooleanCondition(
         Auth0.ManagementApi.FlowActionFlowBooleanCondition value
     ) => new("flowActionFlowBooleanCondition", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowDelayFlow value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowDelayFlow"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowDelayFlow(
         Auth0.ManagementApi.FlowActionFlowDelayFlow value
     ) => new("flowActionFlowDelayFlow", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowDoNothing value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowDoNothing"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowDoNothing(
         Auth0.ManagementApi.FlowActionFlowDoNothing value
     ) => new("flowActionFlowDoNothing", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowErrorMessage value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowErrorMessage"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowErrorMessage(
         Auth0.ManagementApi.FlowActionFlowErrorMessage value
     ) => new("flowActionFlowErrorMessage", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowMapValue value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowMapValue"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowMapValue(
         Auth0.ManagementApi.FlowActionFlowMapValue value
     ) => new("flowActionFlowMapValue", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowReturnJson value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowReturnJson"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowReturnJson(
         Auth0.ManagementApi.FlowActionFlowReturnJson value
     ) => new("flowActionFlowReturnJson", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionFlowStoreVars value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionFlowStoreVars"/> value.
     /// </summary>
     public static FlowActionFlow FromFlowActionFlowStoreVars(
         Auth0.ManagementApi.FlowActionFlowStoreVars value

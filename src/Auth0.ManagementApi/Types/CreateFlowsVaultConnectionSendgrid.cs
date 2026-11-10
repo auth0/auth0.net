@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionSendgrid
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridApiKey"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSendgrid FromCreateFlowsVaultConnectionSendgridApiKey(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridApiKey value
     ) => new("createFlowsVaultConnectionSendgridApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSendgrid FromCreateFlowsVaultConnectionSendgridUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSendgridUninitialized value

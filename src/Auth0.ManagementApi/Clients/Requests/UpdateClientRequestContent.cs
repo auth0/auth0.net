@@ -337,6 +337,13 @@ public record UpdateClientRequestContent
     [JsonPropertyName("redirection_policy")]
     public ClientRedirectionPolicyEnum? RedirectionPolicy { get; set; }
 
+    /// <summary>
+    /// ID of the agent to associate with this client, or null to remove the association.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("agent_id")]
+    public Optional<string?> AgentId { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("oidc_support")]
     public Optional<ClientOidcSupportPatch?> OidcSupport { get; set; }

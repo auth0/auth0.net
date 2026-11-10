@@ -30,12 +30,12 @@ public class FlowActionGoogleSheetsAddRowParamsSheetId
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a int value.
+    /// Factory method to create a union from a <see cref="int"/> value.
     /// </summary>
     public static FlowActionGoogleSheetsAddRowParamsSheetId FromInt(int value) => new("int", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FlowActionGoogleSheetsAddRowParamsSheetId FromString(string value) =>
         new("string", value);

@@ -30,6 +30,11 @@ public class GetTest : BaseMockServerTest
                 },
                 "require_proof_of_possession": {
                   "default_value": true
+                },
+                "oidc_support": {
+                  "default_value": {
+                    "is_allowed": true
+                  }
                 }
               },
               "apply_policy": {

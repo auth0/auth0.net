@@ -33,17 +33,17 @@ public class SessionActorClaimValue
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static SessionActorClaimValue FromString(string value) => new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a bool value.
+    /// Factory method to create a union from a <see cref="bool"/> value.
     /// </summary>
     public static SessionActorClaimValue FromBool(bool value) => new("bool", value);
 
     /// <summary>
-    /// Factory method to create a union from a double value.
+    /// Factory method to create a union from a <see cref="double"/> value.
     /// </summary>
     public static SessionActorClaimValue FromDouble(double value) => new("double", value);
 

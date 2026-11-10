@@ -30,56 +30,56 @@ public class CreateLogStreamRequestContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamHttpRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamHttpRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamHttpRequestBody(
         Auth0.ManagementApi.CreateLogStreamHttpRequestBody value
     ) => new("createLogStreamHttpRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamEventBridgeRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamEventBridgeRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamEventBridgeRequestBody(
         Auth0.ManagementApi.CreateLogStreamEventBridgeRequestBody value
     ) => new("createLogStreamEventBridgeRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamEventGridRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamEventGridRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamEventGridRequestBody(
         Auth0.ManagementApi.CreateLogStreamEventGridRequestBody value
     ) => new("createLogStreamEventGridRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamDatadogRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamDatadogRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamDatadogRequestBody(
         Auth0.ManagementApi.CreateLogStreamDatadogRequestBody value
     ) => new("createLogStreamDatadogRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamSplunkRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamSplunkRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamSplunkRequestBody(
         Auth0.ManagementApi.CreateLogStreamSplunkRequestBody value
     ) => new("createLogStreamSplunkRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamSumoRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamSumoRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamSumoRequestBody(
         Auth0.ManagementApi.CreateLogStreamSumoRequestBody value
     ) => new("createLogStreamSumoRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamSegmentRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamSegmentRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamSegmentRequestBody(
         Auth0.ManagementApi.CreateLogStreamSegmentRequestBody value
     ) => new("createLogStreamSegmentRequestBody", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateLogStreamMixpanelRequestBody value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateLogStreamMixpanelRequestBody"/> value.
     /// </summary>
     public static CreateLogStreamRequestContent FromCreateLogStreamMixpanelRequestBody(
         Auth0.ManagementApi.CreateLogStreamMixpanelRequestBody value

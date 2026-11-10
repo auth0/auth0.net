@@ -30,14 +30,14 @@ public class FlowActionMailjetSendEmailParams
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionMailjetSendEmailParamsContent value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionMailjetSendEmailParamsContent"/> value.
     /// </summary>
     public static FlowActionMailjetSendEmailParams FromFlowActionMailjetSendEmailParamsContent(
         Auth0.ManagementApi.FlowActionMailjetSendEmailParamsContent value
     ) => new("flowActionMailjetSendEmailParamsContent", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionMailjetSendEmailParamsTemplateId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionMailjetSendEmailParamsTemplateId"/> value.
     /// </summary>
     public static FlowActionMailjetSendEmailParams FromFlowActionMailjetSendEmailParamsTemplateId(
         Auth0.ManagementApi.FlowActionMailjetSendEmailParamsTemplateId value

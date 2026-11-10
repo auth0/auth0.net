@@ -33,6 +33,7 @@ public partial interface IManagementApiClient
     public ILogsClient Logs { get; }
     public INetworkAclsClient NetworkAcls { get; }
     public IOrganizationsClient Organizations { get; }
+    public IPortalsClient Portals { get; }
     public IPromptsClient Prompts { get; }
     public IRateLimitPoliciesClient RateLimitPolicies { get; }
     public IRefreshTokensClient RefreshTokens { get; }

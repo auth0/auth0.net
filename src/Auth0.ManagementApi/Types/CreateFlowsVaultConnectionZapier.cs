@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionZapier
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionZapierWebhook value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionZapierWebhook"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionZapier FromCreateFlowsVaultConnectionZapierWebhook(
         Auth0.ManagementApi.CreateFlowsVaultConnectionZapierWebhook value
     ) => new("createFlowsVaultConnectionZapierWebhook", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionZapierUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionZapierUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionZapier FromCreateFlowsVaultConnectionZapierUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionZapierUninitialized value

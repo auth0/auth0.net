@@ -372,6 +372,13 @@ public record ClientSearchResponse : IJsonOnDeserialized, IJsonOnSerializing
     public ClientExternalMetadataStatusEnum? ExternalMetadataStatus { get; set; }
 
     /// <summary>
+    /// ID of the agent associated with this client.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("agent_id")]
+    public string? AgentId { get; set; }
+
+    /// <summary>
     /// An alternate client identifier to be used during authorization flows. Only supports CIMD-based client identifiers.
     /// </summary>
     [Optional]

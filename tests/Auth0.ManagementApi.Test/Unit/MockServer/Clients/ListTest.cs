@@ -129,6 +129,7 @@ public class ListTest : BaseMockServerTest
                   "external_metadata_type": "cimd",
                   "external_metadata_created_by": "admin",
                   "external_metadata_status": "available",
+                  "agent_id": "agent_id",
                   "external_client_id": "external_client_id",
                   "jwks_uri": "jwks_uri"
                 }
@@ -146,6 +147,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("per_page", "1")
                     .WithParam("app_type", "app_type")
                     .WithParam("external_client_id", "external_client_id")
+                    .WithParam("agent_id", "agent_id")
                     .WithParam("q", "q")
                     .UsingGet()
             )
@@ -168,6 +170,7 @@ public class ListTest : BaseMockServerTest
                 IsFirstParty = true,
                 AppType = "app_type",
                 ExternalClientId = "external_client_id",
+                AgentId = "agent_id",
                 Q = "q",
             }
         );

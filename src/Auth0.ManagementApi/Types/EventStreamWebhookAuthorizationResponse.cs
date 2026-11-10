@@ -30,21 +30,21 @@ public class EventStreamWebhookAuthorizationResponse
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookBasicAuth value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamWebhookBasicAuth"/> value.
     /// </summary>
     public static EventStreamWebhookAuthorizationResponse FromEventStreamWebhookBasicAuth(
         Auth0.ManagementApi.EventStreamWebhookBasicAuth value
     ) => new("eventStreamWebhookBasicAuth", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookBearerAuth value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamWebhookBearerAuth"/> value.
     /// </summary>
     public static EventStreamWebhookAuthorizationResponse FromEventStreamWebhookBearerAuth(
         Auth0.ManagementApi.EventStreamWebhookBearerAuth value
     ) => new("eventStreamWebhookBearerAuth", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth"/> value.
     /// </summary>
     public static EventStreamWebhookAuthorizationResponse FromEventStreamWebhookCustomHeaderAuth(
         Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth value

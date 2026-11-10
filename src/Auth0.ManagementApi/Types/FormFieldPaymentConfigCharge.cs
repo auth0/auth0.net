@@ -30,14 +30,14 @@ public class FormFieldPaymentConfigCharge
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldPaymentConfigChargeOneOff value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldPaymentConfigChargeOneOff"/> value.
     /// </summary>
     public static FormFieldPaymentConfigCharge FromFormFieldPaymentConfigChargeOneOff(
         Auth0.ManagementApi.FormFieldPaymentConfigChargeOneOff value
     ) => new("formFieldPaymentConfigChargeOneOff", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormFieldPaymentConfigChargeSubscription value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormFieldPaymentConfigChargeSubscription"/> value.
     /// </summary>
     public static FormFieldPaymentConfigCharge FromFormFieldPaymentConfigChargeSubscription(
         Auth0.ManagementApi.FormFieldPaymentConfigChargeSubscription value
