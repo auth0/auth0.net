@@ -3,7 +3,7 @@ name: Publish release to NuGet
 inputs:
   dotnet-version:
     required: true
-  nuget-token:
+  nuget-user:
     required: true
   version:
     required: true
@@ -33,11 +33,18 @@ runs:
             dotnet pack $file --configuration Release --output $env:NUGET_DIRECTORY
         }
 
+    # Exchange the GitHub OIDC token for a short-lived (1 hour) NuGet API key via Trusted Publishing
+    - name: NuGet login
+      id: nuget_login
+      uses: NuGet/login@v1
+      with:
+        user: ${{ inputs.nuget-user }}
+
     - name: Publish NuGet packages
       shell: pwsh
       env:
         NUGET_DIRECTORY: ${{ inputs.nuget-directory }}
-        NUGET_TOKEN: ${{ inputs.nuget-token }}
+        NUGET_TOKEN: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
       run: |
         foreach($file in (Get-ChildItem "$env:NUGET_DIRECTORY" -Recurse -Include *.nupkg)) {
             dotnet nuget push $file --api-key "$env:NUGET_TOKEN" --source https://api.nuget.org/v3/index.json --skip-duplicate

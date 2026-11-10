@@ -70,7 +70,7 @@ jobs:
       working-directory: "./"
       tag-prefix: ""
     secrets:
-      nuget-token: ${{ secrets.NUGET_APIKEY }}
+      nuget-user: ${{ secrets.NUGET_USER }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
   management:
@@ -83,7 +83,7 @@ jobs:
       working-directory: "src/Auth0.ManagementApi"
       tag-prefix: "mgmt-"
     secrets:
-      nuget-token: ${{ secrets.NUGET_APIKEY }}
+      nuget-user: ${{ secrets.NUGET_USER }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
   generate-docs:
