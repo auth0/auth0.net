@@ -1,5 +1,32 @@
 # Change Log
 
+## [mgmt-10.6.0](https://github.com/auth0/auth0.net/tree/mgmt-10.6.0) (2026-11-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.5.0...mgmt-10.6.0)
+
+**⚠️ BREAKING CHANGES**
+
+_CAPTCHA attack protection policies removed - [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The CAPTCHA policy management operations introduced in mgmt-10.5.0 have been removed, along with their related models. Existing code that calls them will fail to compile and must be removed.
+
+_Experiment allocation strategy is now required - [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- Creating an experiment now requires an allocation strategy. Code that creates experiments without setting one will fail to compile.
+
+**Added**
+- **Universal Portals:** Create, list, retrieve, update, and delete portals, including their pages, sidebar navigation, page components, and custom code [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Agent association on clients:** Applications can now be linked to an agent on create and update (or unlinked on update), and clients can be listed by their associated agent [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Consent signing keys for users:** List, retrieve, and delete the consent signing keys registered for a user [\#1132](https://github.com/auth0/auth0.net/pull/1132) [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **OIDC support on clients and client profiles:** Applications now return their OIDC support configuration, which controls whether they can receive ID tokens, use the UserInfo endpoint, and which user profile scopes they may request. Client profiles can also define default OIDC support for the clients they apply to [\#1132](https://github.com/auth0/auth0.net/pull/1132) [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Universal Commerce Protocol resource servers:** Resource servers can now be created with the Universal Commerce Protocol server type [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Agent subject claims on resource servers:** Resource servers can now configure how agent subject claims are included in issued tokens [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **SAML connection enhancements:** SAML connections now accept client credentials and token endpoint authentication settings, and support provisioning and rotating connection keys [\#1132](https://github.com/auth0/auth0.net/pull/1132) [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **One-time password settings on connections:** Database connections can configure OTP length and expiry separately for the email and phone channels [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Passkey enhancements:** Passkey is now available as a Guardian MFA factor, and passkey authentication on connections supports a signup behavior setting [\#1132](https://github.com/auth0/auth0.net/pull/1132) [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Event stream transaction context:** Event stream payloads can now include details of the authentication transaction that triggered the event, such as the requested scopes, protocol, and locale [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Additional updates:** Experiment Center segments can be filtered by status, experiments report whether they are ready to activate, feature flag variation overrides can be cleared on update, and a new pending-consent prompt screen group is available [\#1132](https://github.com/auth0/auth0.net/pull/1132) [\#1134](https://github.com/auth0/auth0.net/pull/1134) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Deprecated**
+- The tenant `dashboard_insights_view` flag no longer has any effect and is retained only for backward compatibility [\#1132](https://github.com/auth0/auth0.net/pull/1132) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-10.5.0](https://github.com/auth0/auth0.net/tree/mgmt-10.5.0) (2026-10-14)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.4.0...mgmt-10.5.0)
 
