@@ -30,34 +30,34 @@ public class SegmentMatchExpression
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a IEnumerable<string> value.
+    /// Factory method to create a union from a <see cref="IEnumerable{String}"/> value.
     /// </summary>
     public static SegmentMatchExpression FromListOfString(IEnumerable<string> value) =>
         new("list", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.SegmentContainsExpression value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.SegmentContainsExpression"/> value.
     /// </summary>
     public static SegmentMatchExpression FromSegmentContainsExpression(
         Auth0.ManagementApi.SegmentContainsExpression value
     ) => new("segmentContainsExpression", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.SegmentStartsWithExpression value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.SegmentStartsWithExpression"/> value.
     /// </summary>
     public static SegmentMatchExpression FromSegmentStartsWithExpression(
         Auth0.ManagementApi.SegmentStartsWithExpression value
     ) => new("segmentStartsWithExpression", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.SegmentEndsWithExpression value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.SegmentEndsWithExpression"/> value.
     /// </summary>
     public static SegmentMatchExpression FromSegmentEndsWithExpression(
         Auth0.ManagementApi.SegmentEndsWithExpression value
     ) => new("segmentEndsWithExpression", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.SegmentExistsExpression value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.SegmentExistsExpression"/> value.
     /// </summary>
     public static SegmentMatchExpression FromSegmentExistsExpression(
         Auth0.ManagementApi.SegmentExistsExpression value
@@ -89,7 +89,7 @@ public class SegmentMatchExpression
     public bool IsSegmentExistsExpression() => Type == "segmentExistsExpression";
 
     /// <summary>
-    /// Returns the value as a <see cref="IEnumerable<string>"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
+    /// Returns the value as a <see cref="IEnumerable{String}"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'list'.</exception>
     public IEnumerable<string> AsListOfString() =>
@@ -134,7 +134,7 @@ public class SegmentMatchExpression
             : throw new ManagementException("Union type is not 'segmentExistsExpression'");
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="IEnumerable<string>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="IEnumerable{String}"/> and returns true if successful.
     /// </summary>
     public bool TryGetListOfString(out IEnumerable<string>? value)
     {

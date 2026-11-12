@@ -152,6 +152,10 @@ public record ResourceServerSearchResponse : IJsonOnDeserialized
     [JsonPropertyName("client_id")]
     public string? ClientId { get; set; }
 
+    [Optional]
+    [JsonPropertyName("agent_subject_claims")]
+    public ResourceServerAgentSubjectClaimsResponseEnum? AgentSubjectClaims { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("type")]
     public Optional<ResourceServerTypeEnum?> Type { get; set; }

@@ -330,6 +330,13 @@ public record CreateClientRequestContent
     [JsonPropertyName("async_approval_notification_channels")]
     public IEnumerable<AsyncApprovalNotificationsChannelsEnum>? AsyncApprovalNotificationChannels { get; set; }
 
+    /// <summary>
+    /// ID of the agent to associate with this client.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("agent_id")]
+    public Optional<string?> AgentId { get; set; }
+
     [Optional]
     [JsonPropertyName("oidc_support")]
     public ClientOidcSupportPost? OidcSupport { get; set; }

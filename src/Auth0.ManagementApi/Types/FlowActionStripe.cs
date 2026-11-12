@@ -30,49 +30,49 @@ public class FlowActionStripe
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeAddTaxId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeAddTaxId"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeAddTaxId(
         Auth0.ManagementApi.FlowActionStripeAddTaxId value
     ) => new("flowActionStripeAddTaxId", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeCreateCustomer value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeCreateCustomer"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeCreateCustomer(
         Auth0.ManagementApi.FlowActionStripeCreateCustomer value
     ) => new("flowActionStripeCreateCustomer", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeCreatePortalSession value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeCreatePortalSession"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeCreatePortalSession(
         Auth0.ManagementApi.FlowActionStripeCreatePortalSession value
     ) => new("flowActionStripeCreatePortalSession", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeDeleteTaxId value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeDeleteTaxId"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeDeleteTaxId(
         Auth0.ManagementApi.FlowActionStripeDeleteTaxId value
     ) => new("flowActionStripeDeleteTaxId", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeFindCustomers value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeFindCustomers"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeFindCustomers(
         Auth0.ManagementApi.FlowActionStripeFindCustomers value
     ) => new("flowActionStripeFindCustomers", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeGetCustomer value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeGetCustomer"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeGetCustomer(
         Auth0.ManagementApi.FlowActionStripeGetCustomer value
     ) => new("flowActionStripeGetCustomer", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionStripeUpdateCustomer value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionStripeUpdateCustomer"/> value.
     /// </summary>
     public static FlowActionStripe FromFlowActionStripeUpdateCustomer(
         Auth0.ManagementApi.FlowActionStripeUpdateCustomer value

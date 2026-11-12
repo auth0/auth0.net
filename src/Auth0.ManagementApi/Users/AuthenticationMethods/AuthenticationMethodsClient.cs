@@ -1176,7 +1176,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
     /// <summary>
     /// Replace the specified user <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors"> authentication methods</see> with supplied values.
     ///
-    ///     <b>Note</b>: Authentication methods supplied through this action do not iterate on existing methods. Instead, any methods passed will overwrite the user&#8217s existing settings.
+    ///     <b>Note</b>: Authentication methods supplied through this action do not iterate on existing methods. Instead, any methods passed will overwrite the user&amp;#8217s existing settings.
     /// </summary>
     /// <example><code>
     /// await client.Users.AuthenticationMethods.SetAsync(

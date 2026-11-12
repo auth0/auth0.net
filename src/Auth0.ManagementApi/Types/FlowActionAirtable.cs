@@ -30,21 +30,21 @@ public class FlowActionAirtable
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAirtableCreateRecord value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionAirtableCreateRecord"/> value.
     /// </summary>
     public static FlowActionAirtable FromFlowActionAirtableCreateRecord(
         Auth0.ManagementApi.FlowActionAirtableCreateRecord value
     ) => new("flowActionAirtableCreateRecord", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAirtableListRecords value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionAirtableListRecords"/> value.
     /// </summary>
     public static FlowActionAirtable FromFlowActionAirtableListRecords(
         Auth0.ManagementApi.FlowActionAirtableListRecords value
     ) => new("flowActionAirtableListRecords", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAirtableUpdateRecord value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionAirtableUpdateRecord"/> value.
     /// </summary>
     public static FlowActionAirtable FromFlowActionAirtableUpdateRecord(
         Auth0.ManagementApi.FlowActionAirtableUpdateRecord value

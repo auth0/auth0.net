@@ -22,7 +22,7 @@ public record CspPolicyReporting : IJsonOnDeserialized
     public string? ReportUri { get; set; }
 
     /// <summary>
-    /// Report-To group name for modern reporting.
+    /// Report-To group name for modern reporting. Letters, digits, underscores and hyphens only; enforced on write by the request validator.
     /// </summary>
     [Optional]
     [JsonPropertyName("report_to_group")]

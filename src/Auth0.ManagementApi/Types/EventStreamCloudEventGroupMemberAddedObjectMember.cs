@@ -33,14 +33,14 @@ public class EventStreamCloudEventGroupMemberAddedObjectMember
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember0"/> value.
     /// </summary>
     public static EventStreamCloudEventGroupMemberAddedObjectMember FromEventStreamCloudEventGroupMemberAddedObjectMember0(
         Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember0 value
     ) => new("eventStreamCloudEventGroupMemberAddedObjectMember0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember1"/> value.
     /// </summary>
     public static EventStreamCloudEventGroupMemberAddedObjectMember FromEventStreamCloudEventGroupMemberAddedObjectMember1(
         Auth0.ManagementApi.EventStreamCloudEventGroupMemberAddedObjectMember1 value

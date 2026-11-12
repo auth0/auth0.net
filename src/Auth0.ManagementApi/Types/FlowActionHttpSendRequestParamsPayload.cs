@@ -30,20 +30,20 @@ public class FlowActionHttpSendRequestParamsPayload
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static FlowActionHttpSendRequestParamsPayload FromString(string value) =>
         new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a IEnumerable<object> value.
+    /// Factory method to create a union from a <see cref="IEnumerable{Object}"/> value.
     /// </summary>
     public static FlowActionHttpSendRequestParamsPayload FromListOfUnknown(
         IEnumerable<object> value
     ) => new("list", value);
 
     /// <summary>
-    /// Factory method to create a union from a Dictionary<string, object?> value.
+    /// Factory method to create a union from a <see cref="Dictionary{String, Object}"/> value.
     /// </summary>
     public static FlowActionHttpSendRequestParamsPayload FromFlowActionHttpSendRequestParamsPayloadObject(
         Dictionary<string, object?> value
@@ -73,7 +73,7 @@ public class FlowActionHttpSendRequestParamsPayload
         IsString() ? (string)Value! : throw new ManagementException("Union type is not 'string'");
 
     /// <summary>
-    /// Returns the value as a <see cref="IEnumerable<object>"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
+    /// Returns the value as a <see cref="IEnumerable{Object}"/> if <see cref="Type"/> is 'list', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'list'.</exception>
     public IEnumerable<object> AsListOfUnknown() =>
@@ -82,7 +82,7 @@ public class FlowActionHttpSendRequestParamsPayload
             : throw new ManagementException("Union type is not 'list'");
 
     /// <summary>
-    /// Returns the value as a <see cref="Dictionary<string, object?>"/> if <see cref="Type"/> is 'flowActionHttpSendRequestParamsPayloadObject', otherwise throws an exception.
+    /// Returns the value as a <see cref="Dictionary{String, Object}"/> if <see cref="Type"/> is 'flowActionHttpSendRequestParamsPayloadObject', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowActionHttpSendRequestParamsPayloadObject'.</exception>
     public Dictionary<string, object?> AsFlowActionHttpSendRequestParamsPayloadObject() =>
@@ -107,7 +107,7 @@ public class FlowActionHttpSendRequestParamsPayload
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="IEnumerable<object>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="IEnumerable{Object}"/> and returns true if successful.
     /// </summary>
     public bool TryGetListOfUnknown(out IEnumerable<object>? value)
     {
@@ -121,7 +121,7 @@ public class FlowActionHttpSendRequestParamsPayload
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="Dictionary<string, object?>"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="Dictionary{String, Object}"/> and returns true if successful.
     /// </summary>
     public bool TryGetFlowActionHttpSendRequestParamsPayloadObject(
         out Dictionary<string, object?>? value

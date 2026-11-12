@@ -33,112 +33,112 @@ public class UpdateFlowsVaultConnectionSetup
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupApiKeyWithBaseUrl value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupApiKeyWithBaseUrl"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupApiKeyWithBaseUrl(
         Auth0.ManagementApi.FlowsVaultConnectioSetupApiKeyWithBaseUrl value
     ) => new("flowsVaultConnectioSetupApiKeyWithBaseUrl", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupApiKey"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupApiKey(
         Auth0.ManagementApi.FlowsVaultConnectioSetupApiKey value
     ) => new("flowsVaultConnectioSetupApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupOauthApp value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupOauthApp"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupOauthApp(
         Auth0.ManagementApi.FlowsVaultConnectioSetupOauthApp value
     ) => new("flowsVaultConnectioSetupOauthApp", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupBigqueryOauthJwt(
         Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt value
     ) => new("flowsVaultConnectioSetupBigqueryOauthJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupSecretApiKey(
         Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey value
     ) => new("flowsVaultConnectioSetupSecretApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupHttpBearer(
         Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer value
     ) => new("flowsVaultConnectioSetupHttpBearer", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpBasicAuthSetup(
         Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup value
     ) => new("flowsVaultConnectionHttpBasicAuthSetup", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpApiKeySetup(
         Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup value
     ) => new("flowsVaultConnectionHttpApiKeySetup", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpOauthClientCredentialsSetup(
         Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup value
     ) => new("flowsVaultConnectionHttpOauthClientCredentialsSetup", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupJwt"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupJwt(
         Auth0.ManagementApi.FlowsVaultConnectioSetupJwt value
     ) => new("flowsVaultConnectioSetupJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupMailjetApiKey(
         Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey value
     ) => new("flowsVaultConnectioSetupMailjetApiKey", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupToken value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupToken"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupToken(
         Auth0.ManagementApi.FlowsVaultConnectioSetupToken value
     ) => new("flowsVaultConnectioSetupToken", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupWebhook value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupWebhook"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupWebhook(
         Auth0.ManagementApi.FlowsVaultConnectioSetupWebhook value
     ) => new("flowsVaultConnectioSetupWebhook", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupStripeKeyPair value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupStripeKeyPair"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupStripeKeyPair(
         Auth0.ManagementApi.FlowsVaultConnectioSetupStripeKeyPair value
     ) => new("flowsVaultConnectioSetupStripeKeyPair", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupOauthCode"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupOauthCode(
         Auth0.ManagementApi.FlowsVaultConnectioSetupOauthCode value
     ) => new("flowsVaultConnectioSetupOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupTwilioApiKey value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupTwilioApiKey"/> value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupTwilioApiKey(
         Auth0.ManagementApi.FlowsVaultConnectioSetupTwilioApiKey value

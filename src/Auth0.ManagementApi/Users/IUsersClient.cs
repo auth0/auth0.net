@@ -190,9 +190,9 @@ public partial interface IUsersClient
     );
 
     /// <summary>
-    /// Retrieve all consent signing keys registered for a user. Returns an empty array when the user has no keys registered.
+    /// Retrieve all consent signing keys registered for a user. Returns an empty `keys` array when the user has no keys registered.
     /// </summary>
-    WithRawResponseTask<IEnumerable<ConsentSigningKey>> ListConsentSigningKeysAsync(
+    WithRawResponseTask<ListUserConsentSigningKeysResponseContent> ListConsentSigningKeysAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

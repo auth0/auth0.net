@@ -88,6 +88,18 @@ public record ConnectionOptionsSaml : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("signOutEndpoint")]
     public string? SignOutEndpoint { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("token_endpoint_auth_method")]
+    public Optional<ConnectionTokenEndpointAuthMethodEnum?> TokenEndpointAuthMethod { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("token_endpoint_auth_signing_alg")]
+    public Optional<ConnectionTokenEndpointAuthSigningAlgEnum?> TokenEndpointAuthSigningAlg { get; set; }
+
+    [Optional]
+    [JsonPropertyName("token_endpoint_jwtca_aud_format")]
+    public ConnectionTokenEndpointJwtcaAudFormatEnumOidc? TokenEndpointJwtcaAudFormat { get; set; }
+
     [Optional]
     [JsonPropertyName("user_id_attribute")]
     public string? UserIdAttribute { get; set; }

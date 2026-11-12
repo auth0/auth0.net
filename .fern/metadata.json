@@ -1,7 +1,7 @@
 {
-  "cliVersion": "5.144.3",
+  "cliVersion": "5.166.0",
   "generatorName": "fernapi/fern-csharp-sdk",
-  "generatorVersion": "2.82.1",
+  "generatorVersion": "2.92.4",
   "generatorConfig": {
     "namespace": "Auth0.ManagementApi",
     "package-id": "Auth0.ManagementApi",
@@ -22,7 +22,7 @@
       "solution": "."
     }
   },
-  "originGitCommit": "aefe30334437d71b2ff2f2167e02f15659ee5f83",
+  "originGitCommit": "30874f917fa5eed3526d32a3bfd2ff024d36a4f4",
   "originGitCommitIsDirty": false,
   "invokedBy": "ci",
   "requestedVersion": "7.49.0",

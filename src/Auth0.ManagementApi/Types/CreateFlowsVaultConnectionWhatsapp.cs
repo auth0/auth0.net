@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionWhatsapp
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappToken value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappToken"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionWhatsapp FromCreateFlowsVaultConnectionWhatsappToken(
         Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappToken value
     ) => new("createFlowsVaultConnectionWhatsappToken", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionWhatsapp FromCreateFlowsVaultConnectionWhatsappUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsappUninitialized value

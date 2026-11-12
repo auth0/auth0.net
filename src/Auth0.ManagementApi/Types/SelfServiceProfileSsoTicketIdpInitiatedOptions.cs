@@ -33,7 +33,7 @@ public record SelfServiceProfileSsoTicketIdpInitiatedOptions : IJsonOnDeserializ
     public SelfServiceProfileSsoTicketIdpInitiatedClientProtocolEnum? ClientProtocol { get; set; }
 
     /// <summary>
-    /// Query string options to customize the behaviour for OpenID Connect when <c>idpinitiated.client_protocol</c> is <c>oauth2</c>. Allowed parameters: <c>redirect_uri</c>, <c>scope</c>, <c>response_type</c>. For example, <c>redirect_uri=https://jwt.io&scope=openid email&response_type=token</c>
+    /// Query string options to customize the behaviour for OpenID Connect when <c>idpinitiated.client_protocol</c> is <c>oauth2</c>. Allowed parameters: <c>redirect_uri</c>, <c>scope</c>, <c>response_type</c>. For example, <c>redirect_uri=https://jwt.io&amp;scope=openid email&amp;response_type=token</c>
     /// </summary>
     [Optional]
     [JsonPropertyName("client_authorizequery")]

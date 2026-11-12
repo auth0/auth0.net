@@ -33,14 +33,14 @@ public class ConnectionDecryptionKeySaml
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.ConnectionDecryptionKeySamlCert value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.ConnectionDecryptionKeySamlCert"/> value.
     /// </summary>
     public static ConnectionDecryptionKeySaml FromConnectionDecryptionKeySamlCert(
         Auth0.ManagementApi.ConnectionDecryptionKeySamlCert value
     ) => new("connectionDecryptionKeySamlCert", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static ConnectionDecryptionKeySaml FromString(string value) => new("string", value);
 

@@ -992,7 +992,7 @@ public partial class UsersClient : IUsersClient
     }
 
     private async Task<
-        WithRawResponse<IEnumerable<ConsentSigningKey>>
+        WithRawResponse<ListUserConsentSigningKeysResponseContent>
     > ListConsentSigningKeysAsyncCore(
         string id,
         RequestOptions? options = null,
@@ -1031,10 +1031,10 @@ public partial class UsersClient : IUsersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<IEnumerable<ConsentSigningKey>>(
+                var responseData = JsonUtils.Deserialize<ListUserConsentSigningKeysResponseContent>(
                     responseBody
                 )!;
-                return new WithRawResponse<IEnumerable<ConsentSigningKey>>()
+                return new WithRawResponse<ListUserConsentSigningKeysResponseContent>()
                 {
                     Data = responseData,
                     RawResponse = new Auth0.ManagementApi.RawResponse()
@@ -1938,18 +1938,18 @@ public partial class UsersClient : IUsersClient
     }
 
     /// <summary>
-    /// Retrieve all consent signing keys registered for a user. Returns an empty array when the user has no keys registered.
+    /// Retrieve all consent signing keys registered for a user. Returns an empty `keys` array when the user has no keys registered.
     /// </summary>
     /// <example><code>
     /// await client.Users.ListConsentSigningKeysAsync("id");
     /// </code></example>
-    public WithRawResponseTask<IEnumerable<ConsentSigningKey>> ListConsentSigningKeysAsync(
+    public WithRawResponseTask<ListUserConsentSigningKeysResponseContent> ListConsentSigningKeysAsync(
         string id,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<IEnumerable<ConsentSigningKey>>(
+        return new WithRawResponseTask<ListUserConsentSigningKeysResponseContent>(
             ListConsentSigningKeysAsyncCore(id, options, cancellationToken)
         );
     }

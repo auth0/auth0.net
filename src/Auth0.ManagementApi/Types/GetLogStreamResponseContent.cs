@@ -30,56 +30,56 @@ public class GetLogStreamResponseContent
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamHttpResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamHttpResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamHttpResponseSchema(
         Auth0.ManagementApi.LogStreamHttpResponseSchema value
     ) => new("logStreamHttpResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamEventBridgeResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamEventBridgeResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamEventBridgeResponseSchema(
         Auth0.ManagementApi.LogStreamEventBridgeResponseSchema value
     ) => new("logStreamEventBridgeResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamEventGridResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamEventGridResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamEventGridResponseSchema(
         Auth0.ManagementApi.LogStreamEventGridResponseSchema value
     ) => new("logStreamEventGridResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamDatadogResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamDatadogResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamDatadogResponseSchema(
         Auth0.ManagementApi.LogStreamDatadogResponseSchema value
     ) => new("logStreamDatadogResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSplunkResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSplunkResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamSplunkResponseSchema(
         Auth0.ManagementApi.LogStreamSplunkResponseSchema value
     ) => new("logStreamSplunkResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSumoResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSumoResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamSumoResponseSchema(
         Auth0.ManagementApi.LogStreamSumoResponseSchema value
     ) => new("logStreamSumoResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamSegmentResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamSegmentResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamSegmentResponseSchema(
         Auth0.ManagementApi.LogStreamSegmentResponseSchema value
     ) => new("logStreamSegmentResponseSchema", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.LogStreamMixpanelResponseSchema value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.LogStreamMixpanelResponseSchema"/> value.
     /// </summary>
     public static GetLogStreamResponseContent FromLogStreamMixpanelResponseSchema(
         Auth0.ManagementApi.LogStreamMixpanelResponseSchema value

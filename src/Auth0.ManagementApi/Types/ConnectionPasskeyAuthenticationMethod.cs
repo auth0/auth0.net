@@ -21,6 +21,13 @@ public record ConnectionPasskeyAuthenticationMethod : IJsonOnDeserialized
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
+    /// <summary>
+    /// Specifies the signup behavior for passkey authentication
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("signup_behavior")]
+    public ConnectionSignupBehaviorEnum? SignupBehavior { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

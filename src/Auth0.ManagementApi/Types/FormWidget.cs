@@ -30,21 +30,21 @@ public class FormWidget
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormWidgetAuth0VerifiableCredentials value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormWidgetAuth0VerifiableCredentials"/> value.
     /// </summary>
     public static FormWidget FromFormWidgetAuth0VerifiableCredentials(
         Auth0.ManagementApi.FormWidgetAuth0VerifiableCredentials value
     ) => new("formWidgetAuth0VerifiableCredentials", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormWidgetGMapsAddress value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormWidgetGMapsAddress"/> value.
     /// </summary>
     public static FormWidget FromFormWidgetGMapsAddress(
         Auth0.ManagementApi.FormWidgetGMapsAddress value
     ) => new("formWidgetGMapsAddress", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FormWidgetRecaptcha value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FormWidgetRecaptcha"/> value.
     /// </summary>
     public static FormWidget FromFormWidgetRecaptcha(
         Auth0.ManagementApi.FormWidgetRecaptcha value

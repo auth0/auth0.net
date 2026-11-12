@@ -12,14 +12,16 @@ public class ListConsentSigningKeysTest : BaseMockServerTest
     public async Task MockServerTest()
     {
         const string mockResponse = """
-            [
-              {
-                "kid": "kid",
-                "device_identifier": "device_identifier",
-                "created_at": "2024-01-15T09:30:00.000Z",
-                "expires_at": "2024-01-15T09:30:00.000Z"
-              }
-            ]
+            {
+              "keys": [
+                {
+                  "kid": "kid",
+                  "device_identifier": "device_identifier",
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "expires_at": "2024-01-15T09:30:00.000Z"
+                }
+              ]
+            }
             """;
 
         Server

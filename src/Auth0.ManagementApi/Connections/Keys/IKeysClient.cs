@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Connections;
 public partial interface IKeysClient
 {
     /// <summary>
-    /// Gets the connection keys for the Okta or OIDC connection strategy.
+    /// Gets the connection keys for the Okta, OIDC, or SAML (samlp) connection strategy.
     /// </summary>
     WithRawResponseTask<IEnumerable<ConnectionKey>> GetAsync(
         string id,
@@ -15,7 +15,7 @@ public partial interface IKeysClient
     );
 
     /// <summary>
-    /// Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+    /// Provision initial connection keys for Okta, OIDC, or SAML (samlp) connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
     /// </summary>
     WithRawResponseTask<IEnumerable<PostConnectionsKeysResponseContentItem>> CreateAsync(
         string id,
@@ -25,7 +25,7 @@ public partial interface IKeysClient
     );
 
     /// <summary>
-    /// Rotates the connection keys for the Okta or OIDC connection strategies.
+    /// Rotates the connection keys for the Okta, OIDC, or SAML (samlp) connection strategies.
     /// </summary>
     WithRawResponseTask<RotateConnectionsKeysResponseContent> RotateAsync(
         string id,

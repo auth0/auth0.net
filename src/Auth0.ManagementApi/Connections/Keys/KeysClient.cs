@@ -498,7 +498,7 @@ public partial class KeysClient : IKeysClient
     }
 
     /// <summary>
-    /// Gets the connection keys for the Okta or OIDC connection strategy.
+    /// Gets the connection keys for the Okta, OIDC, or SAML (samlp) connection strategy.
     /// </summary>
     /// <example><code>
     /// await client.Connections.Keys.GetAsync("id");
@@ -515,7 +515,7 @@ public partial class KeysClient : IKeysClient
     }
 
     /// <summary>
-    /// Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+    /// Provision initial connection keys for Okta, OIDC, or SAML (samlp) connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
     /// </summary>
     /// <example><code>
     /// await client.Connections.Keys.CreateAsync("id", new PostConnectionKeysRequestContent());
@@ -533,7 +533,7 @@ public partial class KeysClient : IKeysClient
     }
 
     /// <summary>
-    /// Rotates the connection keys for the Okta or OIDC connection strategies.
+    /// Rotates the connection keys for the Okta, OIDC, or SAML (samlp) connection strategies.
     /// </summary>
     /// <example><code>
     /// await client.Connections.Keys.RotateAsync("id", new RotateConnectionKeysRequestContent());

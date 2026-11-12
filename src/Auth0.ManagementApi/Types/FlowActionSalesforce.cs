@@ -30,28 +30,28 @@ public class FlowActionSalesforce
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionSalesforceCreateLead value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionSalesforceCreateLead"/> value.
     /// </summary>
     public static FlowActionSalesforce FromFlowActionSalesforceCreateLead(
         Auth0.ManagementApi.FlowActionSalesforceCreateLead value
     ) => new("flowActionSalesforceCreateLead", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionSalesforceGetLead value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionSalesforceGetLead"/> value.
     /// </summary>
     public static FlowActionSalesforce FromFlowActionSalesforceGetLead(
         Auth0.ManagementApi.FlowActionSalesforceGetLead value
     ) => new("flowActionSalesforceGetLead", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionSalesforceSearchLeads value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionSalesforceSearchLeads"/> value.
     /// </summary>
     public static FlowActionSalesforce FromFlowActionSalesforceSearchLeads(
         Auth0.ManagementApi.FlowActionSalesforceSearchLeads value
     ) => new("flowActionSalesforceSearchLeads", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionSalesforceUpdateLead value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionSalesforceUpdateLead"/> value.
     /// </summary>
     public static FlowActionSalesforce FromFlowActionSalesforceUpdateLead(
         Auth0.ManagementApi.FlowActionSalesforceUpdateLead value

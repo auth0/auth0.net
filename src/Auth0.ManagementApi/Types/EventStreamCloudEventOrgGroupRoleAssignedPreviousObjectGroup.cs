@@ -33,21 +33,21 @@ public class EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup0"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup FromEventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup0(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup0 value
     ) => new("eventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup1"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup FromEventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup1(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup1 value
     ) => new("eventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup1", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup2 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup2"/> value.
     /// </summary>
     public static EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup FromEventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup2(
         Auth0.ManagementApi.EventStreamCloudEventOrgGroupRoleAssignedPreviousObjectGroup2 value

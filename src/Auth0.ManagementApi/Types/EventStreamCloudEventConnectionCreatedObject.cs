@@ -33,56 +33,56 @@ public class EventStreamCloudEventConnectionCreatedObject
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject0 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject0"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject0(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject0 value
     ) => new("eventStreamCloudEventConnectionCreatedObject0", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject1 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject1"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject1(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject1 value
     ) => new("eventStreamCloudEventConnectionCreatedObject1", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject2 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject2"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject2(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject2 value
     ) => new("eventStreamCloudEventConnectionCreatedObject2", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject3 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject3"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject3(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject3 value
     ) => new("eventStreamCloudEventConnectionCreatedObject3", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject4 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject4"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject4(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject4 value
     ) => new("eventStreamCloudEventConnectionCreatedObject4", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject5 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject5"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject5(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject5 value
     ) => new("eventStreamCloudEventConnectionCreatedObject5", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject6 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject6"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject6(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject6 value
     ) => new("eventStreamCloudEventConnectionCreatedObject6", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject7 value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject7"/> value.
     /// </summary>
     public static EventStreamCloudEventConnectionCreatedObject FromEventStreamCloudEventConnectionCreatedObject7(
         Auth0.ManagementApi.EventStreamCloudEventConnectionCreatedObject7 value

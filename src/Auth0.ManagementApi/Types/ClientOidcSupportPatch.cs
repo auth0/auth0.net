@@ -5,7 +5,7 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// OIDC support configuration for a client. Replaces the stored object entirely; send null to unset it.
+/// Controls whether the client can receive ID tokens and use the UserInfo endpoint, and which user profile information it can request through OIDC scopes.
 /// </summary>
 [Serializable]
 public record ClientOidcSupportPatch : IJsonOnDeserialized
@@ -14,13 +14,22 @@ public record ClientOidcSupportPatch : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    /// <summary>
+    /// Allows the client to use OIDC, including receiving ID tokens and calling the UserInfo endpoint.
+    /// </summary>
     [JsonPropertyName("is_allowed")]
     public required bool IsAllowed { get; set; }
 
+    /// <summary>
+    /// Allows the client to request all supported OIDC scopes. Mutually exclusive with allowed_scopes.
+    /// </summary>
     [Optional]
     [JsonPropertyName("allow_all_scopes")]
     public bool? AllowAllScopes { get; set; }
 
+    /// <summary>
+    /// OIDC scopes the client may request (`profile`, `email`, `address`, and `phone`), which determine the user profile information it can access. Mutually exclusive with allow_all_scopes.
+    /// </summary>
     [Optional]
     [JsonPropertyName("allowed_scopes")]
     public IEnumerable<ClientOidcSupportAllowedScopesEnum>? AllowedScopes { get; set; }

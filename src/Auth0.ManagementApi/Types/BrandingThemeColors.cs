@@ -72,13 +72,13 @@ public record BrandingThemeColors : IJsonOnDeserialized
     public required string InputFilledText { get; set; }
 
     /// <summary>
-    /// Input labels & placeholders
+    /// Input labels &amp; placeholders
     /// </summary>
     [JsonPropertyName("input_labels_placeholders")]
     public required string InputLabelsPlaceholders { get; set; }
 
     /// <summary>
-    /// Links & focused components
+    /// Links &amp; focused components
     /// </summary>
     [JsonPropertyName("links_focused_components")]
     public required string LinksFocusedComponents { get; set; }

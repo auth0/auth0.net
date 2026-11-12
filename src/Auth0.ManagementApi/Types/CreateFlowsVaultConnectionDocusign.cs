@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionDocusign
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionDocusign FromCreateFlowsVaultConnectionDocusignOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignOauthCode value
     ) => new("createFlowsVaultConnectionDocusignOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionDocusign FromCreateFlowsVaultConnectionDocusignUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionDocusignUninitialized value

@@ -30,14 +30,14 @@ public class PhoneProviderConfiguration
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.TwilioProviderConfiguration value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.TwilioProviderConfiguration"/> value.
     /// </summary>
     public static PhoneProviderConfiguration FromTwilioProviderConfiguration(
         Auth0.ManagementApi.TwilioProviderConfiguration value
     ) => new("twilioProviderConfiguration", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CustomProviderConfiguration value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CustomProviderConfiguration"/> value.
     /// </summary>
     public static PhoneProviderConfiguration FromCustomProviderConfiguration(
         Auth0.ManagementApi.CustomProviderConfiguration value

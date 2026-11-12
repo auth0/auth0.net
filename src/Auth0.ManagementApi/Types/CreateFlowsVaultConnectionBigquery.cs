@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionBigquery
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryJwt value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryJwt"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionBigquery FromCreateFlowsVaultConnectionBigqueryJwt(
         Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryJwt value
     ) => new("createFlowsVaultConnectionBigqueryJwt", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionBigquery FromCreateFlowsVaultConnectionBigqueryUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionBigqueryUninitialized value

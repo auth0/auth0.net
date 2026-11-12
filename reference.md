@@ -1517,6 +1517,7 @@ await client.Clients.ListAsync(
         IsFirstParty = true,
         AppType = "app_type",
         ExternalClientId = "external_client_id",
+        AgentId = "agent_id",
         Q = "q",
     }
 );
@@ -7179,6 +7180,213 @@ await client.Organizations.UpdateAsync("id", new UpdateOrganizationRequestConten
 </dl>
 </details>
 
+## Portals
+<details><summary><code>client.Portals.<a href="/src/Auth0.ManagementApi/Portals/PortalsClient.cs">ListAsync</a>() -> WithRawResponseTask&lt;ListPortalsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Portals.ListAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Portals.<a href="/src/Auth0.ManagementApi/Portals/PortalsClient.cs">CreateAsync</a>(CreatePortalRequestContent { ... }) -> WithRawResponseTask&lt;Portal&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Portals.CreateAsync(
+    new CreatePortalRequestContent
+    {
+        Slug = "slug",
+        Name = "name",
+        Client = new PortalClientSecretPostRequest
+        {
+            TokenEndpointAuthMethod =
+                PortalClientSecretPostRequestTokenEndpointAuthMethod.ClientSecretPost,
+            ClientId = "client_id",
+            ClientSecret = "client_secret",
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreatePortalRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Portals.<a href="/src/Auth0.ManagementApi/Portals/PortalsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;Portal&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Portals.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Portals.<a href="/src/Auth0.ManagementApi/Portals/PortalsClient.cs">DeleteAsync</a>(id) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Portals.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Portals.<a href="/src/Auth0.ManagementApi/Portals/PortalsClient.cs">UpdateAsync</a>(id, UpdatePortalRequestContent { ... }) -> WithRawResponseTask&lt;Portal&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Portals.UpdateAsync("id", new UpdatePortalRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdatePortalRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Prompts
 <details><summary><code>client.Prompts.<a href="/src/Auth0.ManagementApi/Prompts/PromptsClient.cs">GetSettingsAsync</a>() -> WithRawResponseTask&lt;GetSettingsResponseContent&gt;</code></summary>
 <dl>
@@ -11159,7 +11367,7 @@ await client.Users.UpdateAsync("id", new UpdateUserRequestContent());
 </dl>
 </details>
 
-<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">ListConsentSigningKeysAsync</a>(id) -> WithRawResponseTask&lt;IEnumerable&lt;ConsentSigningKey&gt;&gt;</code></summary>
+<details><summary><code>client.Users.<a href="/src/Auth0.ManagementApi/Users/UsersClient.cs">ListConsentSigningKeysAsync</a>(id) -> WithRawResponseTask&lt;ListUserConsentSigningKeysResponseContent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11171,7 +11379,7 @@ await client.Users.UpdateAsync("id", new UpdateUserRequestContent());
 <dl>
 <dd>
 
-Retrieve all consent signing keys registered for a user. Returns an empty array when the user has no keys registered.
+Retrieve all consent signing keys registered for a user. Returns an empty `keys` array when the user has no keys registered.
 </dd>
 </dl>
 </dd>
@@ -15970,7 +16178,7 @@ await client.Connections.Clients.UpdateAsync(
 <dl>
 <dd>
 
-Gets the connection keys for the Okta or OIDC connection strategy.
+Gets the connection keys for the Okta, OIDC, or SAML (samlp) connection strategy.
 </dd>
 </dl>
 </dd>
@@ -16024,7 +16232,7 @@ await client.Connections.Keys.GetAsync("id");
 <dl>
 <dd>
 
-Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+Provision initial connection keys for Okta, OIDC, or SAML (samlp) connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
 </dd>
 </dl>
 </dd>
@@ -16086,7 +16294,7 @@ await client.Connections.Keys.CreateAsync("id", new PostConnectionKeysRequestCon
 <dl>
 <dd>
 
-Rotates the connection keys for the Okta or OIDC connection strategies.
+Rotates the connection keys for the Okta, OIDC, or SAML (samlp) connection strategies.
 </dd>
 </dl>
 </dd>

@@ -30,14 +30,14 @@ public class AculContextConfigurationItem
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.AculContextEnum value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.AculContextEnum"/> value.
     /// </summary>
     public static AculContextConfigurationItem FromAculContextEnum(
         Auth0.ManagementApi.AculContextEnum value
     ) => new("aculContextEnum", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a <see cref="string"/> value.
     /// </summary>
     public static AculContextConfigurationItem FromString(string value) => new("string", value);
 

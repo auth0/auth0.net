@@ -30,21 +30,21 @@ public class FlowActionHubspot
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionHubspotEnrollContact value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionHubspotEnrollContact"/> value.
     /// </summary>
     public static FlowActionHubspot FromFlowActionHubspotEnrollContact(
         Auth0.ManagementApi.FlowActionHubspotEnrollContact value
     ) => new("flowActionHubspotEnrollContact", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionHubspotGetContact value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionHubspotGetContact"/> value.
     /// </summary>
     public static FlowActionHubspot FromFlowActionHubspotGetContact(
         Auth0.ManagementApi.FlowActionHubspotGetContact value
     ) => new("flowActionHubspotGetContact", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionHubspotUpsertContact value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.FlowActionHubspotUpsertContact"/> value.
     /// </summary>
     public static FlowActionHubspot FromFlowActionHubspotUpsertContact(
         Auth0.ManagementApi.FlowActionHubspotUpsertContact value

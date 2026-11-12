@@ -30,14 +30,14 @@ public class ConnectionUpstreamAdditionalProperties
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.ConnectionUpstreamAlias value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.ConnectionUpstreamAlias"/> value.
     /// </summary>
     public static ConnectionUpstreamAdditionalProperties FromConnectionUpstreamAlias(
         Auth0.ManagementApi.ConnectionUpstreamAlias value
     ) => new("connectionUpstreamAlias", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.ConnectionUpstreamValue value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.ConnectionUpstreamValue"/> value.
     /// </summary>
     public static ConnectionUpstreamAdditionalProperties FromConnectionUpstreamValue(
         Auth0.ManagementApi.ConnectionUpstreamValue value

@@ -30,14 +30,14 @@ public class CreateFlowsVaultConnectionSalesforce
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSalesforce FromCreateFlowsVaultConnectionSalesforceOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceOauthCode value
     ) => new("createFlowsVaultConnectionSalesforceOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionSalesforce FromCreateFlowsVaultConnectionSalesforceUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforceUninitialized value

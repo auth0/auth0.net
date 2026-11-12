@@ -30,21 +30,21 @@ public class CreateFlowsVaultConnectionStripe
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionStripeKeyPair value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionStripeKeyPair"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionStripe FromCreateFlowsVaultConnectionStripeKeyPair(
         Auth0.ManagementApi.CreateFlowsVaultConnectionStripeKeyPair value
     ) => new("createFlowsVaultConnectionStripeKeyPair", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionStripeOauthCode value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionStripeOauthCode"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionStripe FromCreateFlowsVaultConnectionStripeOauthCode(
         Auth0.ManagementApi.CreateFlowsVaultConnectionStripeOauthCode value
     ) => new("createFlowsVaultConnectionStripeOauthCode", value);
 
     /// <summary>
-    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionStripeUninitialized value.
+    /// Factory method to create a union from a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionStripeUninitialized"/> value.
     /// </summary>
     public static CreateFlowsVaultConnectionStripe FromCreateFlowsVaultConnectionStripeUninitialized(
         Auth0.ManagementApi.CreateFlowsVaultConnectionStripeUninitialized value
