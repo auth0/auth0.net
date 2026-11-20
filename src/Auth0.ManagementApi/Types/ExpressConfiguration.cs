@@ -70,6 +70,13 @@ public record ExpressConfiguration : IJsonOnDeserialized
     [JsonPropertyName("oin_submission_id")]
     public string? OinSubmissionId { get; set; }
 
+    /// <summary>
+    /// URL of the application's listing in the Okta Integration Network (OIN) catalog, used to redirect customers into OIN Express Configuration. Must be an https URL on an okta.com domain with no query string or fragment.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("okta_oin_listing_url")]
+    public string? OktaOinListingUrl { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

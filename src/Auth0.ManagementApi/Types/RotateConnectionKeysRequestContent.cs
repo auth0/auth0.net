@@ -11,6 +11,13 @@ public record RotateConnectionKeysRequestContent : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    /// <summary>
+    /// Whether to rotate the signing key (default) or the encryption key for the connection.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("key_use")]
+    public ConnectionKeyUseEnum? KeyUse { get; set; }
+
     [Optional]
     [JsonPropertyName("signing_alg")]
     public RotateConnectionKeysSigningAlgEnum? SigningAlg { get; set; }

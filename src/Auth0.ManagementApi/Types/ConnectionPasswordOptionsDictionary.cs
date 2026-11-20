@@ -22,11 +22,15 @@ public record ConnectionPasswordOptionsDictionary : IJsonOnDeserialized
     public bool? Active { get; set; }
 
     /// <summary>
-    /// Array of custom words to block in passwords. Maximum 200 items, each up to 50 characters
+    /// Array of custom words to block in passwords
     /// </summary>
     [Optional]
     [JsonPropertyName("custom")]
     public IEnumerable<string>? Custom { get; set; }
+
+    [Optional]
+    [JsonPropertyName("match_type")]
+    public PasswordDictionaryMatchTypeEnum? MatchType { get; set; }
 
     [Optional]
     [JsonPropertyName("default")]

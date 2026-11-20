@@ -327,6 +327,10 @@ public record CreateClientRequestContent
     public ClientMyOrganizationPostConfiguration? MyOrganizationConfiguration { get; set; }
 
     [Optional]
+    [JsonPropertyName("google_account_linking")]
+    public GoogleAccountLinkingConfigurationCreate? GoogleAccountLinking { get; set; }
+
+    [Optional]
     [JsonPropertyName("async_approval_notification_channels")]
     public IEnumerable<AsyncApprovalNotificationsChannelsEnum>? AsyncApprovalNotificationChannels { get; set; }
 

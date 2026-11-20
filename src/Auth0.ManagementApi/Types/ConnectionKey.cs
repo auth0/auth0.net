@@ -11,19 +11,19 @@ public record ConnectionKey : IJsonOnDeserialized, IJsonOnSerializing
         new Dictionary<string, object?>();
 
     /// <summary>
-    /// The key id of the signing key
+    /// The key id of the signing or encryption key
     /// </summary>
     [JsonPropertyName("kid")]
     public required string Kid { get; set; }
 
     /// <summary>
-    /// The public certificate of the signing key
+    /// The public certificate of the signing or encryption key
     /// </summary>
     [JsonPropertyName("cert")]
     public required string Cert { get; set; }
 
     /// <summary>
-    /// The public certificate of the signing key in pkcs7 format
+    /// The public certificate of the signing or encryption key in pkcs7 format
     /// </summary>
     [Optional]
     [JsonPropertyName("pkcs")]
@@ -70,7 +70,7 @@ public record ConnectionKey : IJsonOnDeserialized, IJsonOnSerializing
     public required string Thumbprint { get; set; }
 
     /// <summary>
-    /// Signing key algorithm
+    /// Key algorithm: a signing algorithm for signing keys, or a key-management algorithm for encryption keys
     /// </summary>
     [Optional]
     [JsonPropertyName("algorithm")]
