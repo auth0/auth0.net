@@ -68,6 +68,18 @@ public readonly record struct LogStreamFilterGroupNameEnum : IStringEnum
 
     public static readonly LogStreamFilterGroupNameEnum Actions = new(Values.Actions);
 
+    public static readonly LogStreamFilterGroupNameEnum AgentGatewayAuthenticationFail = new(
+        Values.AgentGatewayAuthenticationFail
+    );
+
+    public static readonly LogStreamFilterGroupNameEnum AgentGatewayOperationFail = new(
+        Values.AgentGatewayOperationFail
+    );
+
+    public static readonly LogStreamFilterGroupNameEnum AgentGatewayOperationSuccess = new(
+        Values.AgentGatewayOperationSuccess
+    );
+
     public static readonly LogStreamFilterGroupNameEnum Other = new(Values.Other);
 
     public LogStreamFilterGroupNameEnum(string value)
@@ -204,6 +216,12 @@ public readonly record struct LogStreamFilterGroupNameEnum : IStringEnum
         public const string UserSuccess = "user.success";
 
         public const string Actions = "actions";
+
+        public const string AgentGatewayAuthenticationFail = "agent_gateway.authentication.fail";
+
+        public const string AgentGatewayOperationFail = "agent_gateway.operation.fail";
+
+        public const string AgentGatewayOperationSuccess = "agent_gateway.operation.success";
 
         public const string Other = "other";
     }

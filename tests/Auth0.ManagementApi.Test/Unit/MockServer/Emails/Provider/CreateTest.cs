@@ -15,10 +15,7 @@ public class CreateTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "name": "mailgun",
-              "credentials": {
-                "api_key": "api_key"
-              }
+              "name": "mailgun"
             }
             """;
 
@@ -57,11 +54,7 @@ public class CreateTest : BaseMockServerTest
             );
 
         var response = await Client.Emails.Provider.CreateAsync(
-            new CreateEmailProviderRequestContent
-            {
-                Name = EmailProviderNameEnum.Mailgun,
-                Credentials = new EmailProviderCredentialsSchemaZero { ApiKey = "api_key" },
-            }
+            new CreateEmailProviderRequestContent { Name = EmailProviderNameEnum.Mailgun }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

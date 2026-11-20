@@ -399,7 +399,8 @@ public class UpdateTest : BaseMockServerTest
                 ],
                 "okta_oin_client_id": "okta_oin_client_id",
                 "admin_login_domain": "admin_login_domain",
-                "oin_submission_id": "oin_submission_id"
+                "oin_submission_id": "oin_submission_id",
+                "okta_oin_listing_url": "okta_oin_listing_url"
               },
               "b2b_integration_configuration": {
                 "sso_profiles": [
@@ -423,6 +424,9 @@ public class UpdateTest : BaseMockServerTest
                 "invitation_landing_client_id": "invitation_landing_client_id",
                 "enforce_permission_ceiling": true,
                 "enforce_self_assignment_restriction": true
+              },
+              "google_account_linking": {
+                "allow_streamlined_linking": true
               },
               "identity_assertion_authorization_grant": {
                 "active": true

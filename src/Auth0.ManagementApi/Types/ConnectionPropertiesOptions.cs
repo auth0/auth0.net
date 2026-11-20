@@ -198,6 +198,20 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("useOauthSpecScope")]
     public bool? UseOauthSpecScope { get; set; }
 
+    /// <summary>
+    /// The client ID registered with the identity provider
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("client_id")]
+    public Optional<string?> ClientId { get; set; }
+
+    /// <summary>
+    /// Additional Google client IDs accepted as the `aud` (audience) of Google ID tokens, used by Google native login and Google Streamlined Linking.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("allowed_audiences")]
+    public Optional<IEnumerable<string>?> AllowedAudiences { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("discovery_url")]
     public Optional<string?> DiscoveryUrl { get; set; }
