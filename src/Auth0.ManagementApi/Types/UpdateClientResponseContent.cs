@@ -344,6 +344,10 @@ public record UpdateClientResponseContent : IJsonOnDeserialized, IJsonOnSerializ
     public ClientMyOrganizationResponseConfiguration? MyOrganizationConfiguration { get; set; }
 
     [Optional]
+    [JsonPropertyName("google_account_linking")]
+    public GoogleAccountLinkingConfiguration? GoogleAccountLinking { get; set; }
+
+    [Optional]
     [JsonPropertyName("identity_assertion_authorization_grant")]
     public IdentityAssertionAuthorizationGrant? IdentityAssertionAuthorizationGrant { get; set; }
 

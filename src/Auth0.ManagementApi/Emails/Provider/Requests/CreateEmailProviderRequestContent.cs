@@ -24,8 +24,9 @@ public record CreateEmailProviderRequestContent
     [JsonPropertyName("default_from_address")]
     public string? DefaultFromAddress { get; set; }
 
+    [Optional]
     [JsonPropertyName("credentials")]
-    public required EmailProviderCredentialsSchema Credentials { get; set; }
+    public EmailProviderCredentialsSchema? Credentials { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("settings")]

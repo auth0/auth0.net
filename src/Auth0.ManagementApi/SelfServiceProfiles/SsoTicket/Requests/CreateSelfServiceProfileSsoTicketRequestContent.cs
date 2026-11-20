@@ -59,6 +59,10 @@ public record CreateSelfServiceProfileSsoTicketRequestContent
     public ThirdPartyClientAccessConfig? ThirdPartyClientAccessConfig { get; set; }
 
     [Optional]
+    [JsonPropertyName("universal_logout_config")]
+    public SelfServiceProfileSsoTicketUniversalLogoutConfig? UniversalLogoutConfig { get; set; }
+
+    [Optional]
     [JsonPropertyName("enabled_features")]
     public SelfServiceProfileSsoTicketEnabledFeatures? EnabledFeatures { get; set; }
 

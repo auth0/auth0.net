@@ -12,6 +12,10 @@ public readonly record struct ResourceServerTypeEnum : IStringEnum
         Values.UniversalCommerceProtocolServer
     );
 
+    public static readonly ResourceServerTypeEnum ModelContextProtocolServer = new(
+        Values.ModelContextProtocolServer
+    );
+
     public ResourceServerTypeEnum(string value)
     {
         Value = value;
@@ -109,5 +113,7 @@ public readonly record struct ResourceServerTypeEnum : IStringEnum
     public static class Values
     {
         public const string UniversalCommerceProtocolServer = "universal_commerce_protocol_server";
+
+        public const string ModelContextProtocolServer = "model_context_protocol_server";
     }
 }

@@ -14,6 +14,10 @@ public readonly record struct ClientCredentialAlgorithmEnum : IStringEnum
 
     public static readonly ClientCredentialAlgorithmEnum Ps256 = new(Values.Ps256);
 
+    public static readonly ClientCredentialAlgorithmEnum Es256 = new(Values.Es256);
+
+    public static readonly ClientCredentialAlgorithmEnum Ps384 = new(Values.Ps384);
+
     public ClientCredentialAlgorithmEnum(string value)
     {
         Value = value;
@@ -116,5 +120,9 @@ public readonly record struct ClientCredentialAlgorithmEnum : IStringEnum
         public const string Rs384 = "RS384";
 
         public const string Ps256 = "PS256";
+
+        public const string Es256 = "ES256";
+
+        public const string Ps384 = "PS384";
     }
 }
