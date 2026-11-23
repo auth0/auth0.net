@@ -326,6 +326,10 @@ public record UpdateClientRequestContent
     public Optional<ClientMyOrganizationPatchConfiguration?> MyOrganizationConfiguration { get; set; }
 
     [Nullable, Optional]
+    [JsonPropertyName("google_account_linking")]
+    public Optional<GoogleAccountLinkingConfigurationOrNull?> GoogleAccountLinking { get; set; }
+
+    [Nullable, Optional]
     [JsonPropertyName("async_approval_notification_channels")]
     public Optional<IEnumerable<AsyncApprovalNotificationsChannelsEnum>?> AsyncApprovalNotificationChannels { get; set; }
 

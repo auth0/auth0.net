@@ -665,11 +665,7 @@ public partial class ProviderClient : IProviderClient
     /// </summary>
     /// <example><code>
     /// await client.Emails.Provider.CreateAsync(
-    ///     new CreateEmailProviderRequestContent
-    ///     {
-    ///         Name = EmailProviderNameEnum.Mailgun,
-    ///         Credentials = new EmailProviderCredentialsSchemaZero { ApiKey = "api_key" },
-    ///     }
+    ///     new CreateEmailProviderRequestContent { Name = EmailProviderNameEnum.Mailgun }
     /// );
     /// </code></example>
     public WithRawResponseTask<CreateEmailProviderResponseContent> CreateAsync(

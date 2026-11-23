@@ -183,13 +183,6 @@ public record TenantSettingsFlags : IJsonOnDeserialized
     public bool? ImprovedSignupBotDetectionInClassic { get; set; }
 
     /// <summary>
-    /// This tenant signed up for the Auth4GenAI trail
-    /// </summary>
-    [Optional]
-    [JsonPropertyName("genai_trial")]
-    public bool? GenaiTrial { get; set; }
-
-    /// <summary>
     /// Whether the Local Resource Discovery endpoint is enabled (true) or disabled (false).
     /// </summary>
     [Optional]

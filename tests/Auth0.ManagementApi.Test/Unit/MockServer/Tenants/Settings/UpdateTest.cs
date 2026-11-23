@@ -70,7 +70,6 @@ public class UpdateTest : BaseMockServerTest
                 "mfa_show_factor_list_on_enrollment": true,
                 "remove_alg_from_jwks": true,
                 "improved_signup_bot_detection_in_classic": true,
-                "genai_trial": true,
                 "local_resource_discovery": true,
                 "enable_dynamic_client_registration": true,
                 "disable_management_api_sms_obfuscation": true,
