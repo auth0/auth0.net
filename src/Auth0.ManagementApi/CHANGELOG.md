@@ -1,5 +1,24 @@
 # Change Log
 
+## [mgmt-10.7.0](https://github.com/auth0/auth0.net/tree/mgmt-10.7.0) (2026-11-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.6.0...mgmt-10.7.0)
+
+**⚠️ BREAKING CHANGES**
+
+_Tenant `genai_trial` flag removed - [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))_
+- The `GenaiTrial` property has been removed from the tenant settings flags. Code that references it will fail to compile and must be removed.
+
+**Added**
+- **OIN listing URL:** Applications can set the URL of their Okta Integration Network (OIN) catalog listing in their Express Configuration [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Universal Logout in Self-Service Enterprise Configuration:** Self-service SSO tickets can let the end user set up Universal Logout [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Connection encryption keys:** Connection keys can be provisioned and rotated as encryption keys for encrypted ID tokens (OIDC and Okta connections only), in addition to signing keys (the default) [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Google account linking:** Applications can enable or clear Google streamlined account linking, and connections accept a client ID and additional Google client IDs allowed as the ID token audience [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Model Context Protocol resource servers:** A new resource server type for Model Context Protocol servers [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+- **Additional updates:** Password dictionaries can match blocked words exactly or as a substring, client credential responses can report the ES256 and PS384 algorithms, and log streams can filter on Agent Gateway authentication and operation events [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+
+**Changed**
+- Credentials are now optional when creating an email provider [\#1145](https://github.com/auth0/auth0.net/pull/1145) ([fern-api[bot]](https://github.com/apps/fern-api))
+
 ## [mgmt-10.6.0](https://github.com/auth0/auth0.net/tree/mgmt-10.6.0) (2026-11-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-10.5.0...mgmt-10.6.0)
 
