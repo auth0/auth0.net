@@ -20,7 +20,7 @@ public class CreateTest : BaseMockServerTest
 
         const string mockResponse = """
             {
-              "id": "id",
+              "grant_id": "grant_id",
               "client_id": "client_id",
               "audience": "audience",
               "scope": [

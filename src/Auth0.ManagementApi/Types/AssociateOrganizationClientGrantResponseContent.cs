@@ -15,8 +15,8 @@ public record AssociateOrganizationClientGrantResponseContent : IJsonOnDeseriali
     /// ID of the client grant.
     /// </summary>
     [Optional]
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
+    [JsonPropertyName("grant_id")]
+    public string? GrantId { get; set; }
 
     /// <summary>
     /// ID of the client.
