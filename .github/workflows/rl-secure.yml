@@ -38,12 +38,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v6
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 8.0.x
 
@@ -67,7 +67,7 @@ jobs:
 
       - name: Run RL Scanner
         id: rl-scan-conclusion
-        uses: auth0/devsecops-tooling/.github/actions/rl-scan@main
+        uses: auth0/devsecops-tooling/.github/actions/rl-scan@e29f26478db18ff0bcbe4bc447a8fbd54fbeec9e # main on 2026-11-27, TODO: use a release instead
         with:
           artifact-name: ${{ inputs.artifact-name }}
           artifact-path: ${{ github.workspace }}/${{ inputs.artifact-name }}
