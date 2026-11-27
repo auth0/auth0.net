@@ -50,7 +50,7 @@ public record TenantSettingsFlags : IJsonOnDeserialized
     public bool? EnablePipeline2 { get; set; }
 
     /// <summary>
-    /// If enabled, clients are able to add legacy delegation grants.
+    /// DEPRECATED property. If enabled, first-party applications can add the legacy delegation grant types. It does not enable the /delegation endpoint.
     /// </summary>
     [Optional]
     [JsonPropertyName("allow_legacy_delegation_grant_types")]
